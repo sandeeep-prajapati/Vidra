@@ -1,0 +1,231 @@
+<?php
+
+return [
+    'seeders' => [
+        'attribute' => [
+            'attribute-families' => [
+                'default' => 'Default',
+            ],
+
+            'attribute-groups' => [
+                'description'      => 'Descripció',
+                'general'          => 'General',
+                'meta-description' => 'Meta descripció',
+                'price'            => 'Preu',
+                'media'            => 'Mitjans',
+            ],
+
+            'attributes' => [
+                'brand'                => 'Brand',
+                'color'                => 'Color',
+                'cost'                 => 'Cost',
+                'description'          => 'Description',
+                'featured'             => 'Featured',
+                'guest-checkout'       => 'Guest Checkout',
+                'height'               => 'Height',
+                'image'                => 'Imatge',
+                'length'               => 'Length',
+                'manage-stock'         => 'Manage Stock',
+                'meta-description'     => 'Meta Description',
+                'meta-keywords'        => 'Meta Keywords',
+                'meta-title'           => 'Meta Title',
+                'name'                 => 'Name',
+                'new'                  => 'New',
+                'price'                => 'Price',
+                'product-number'       => 'Product Number',
+                'short-description'    => 'Short Description',
+                'size'                 => 'Size',
+                'sku'                  => 'SKU',
+                'special-price-from'   => 'Special Price From',
+                'special-price-to'     => 'Special Price To',
+                'special-price'        => 'Special Price',
+                'tax-category'         => 'Tax Category',
+                'url-key'              => 'URL Key',
+                'visible-individually' => 'Visible Individually',
+                'weight'               => 'Weight',
+                'width'                => 'Width',
+            ],
+
+            'attribute-options' => [
+                'black'  => 'Black',
+                'green'  => 'Green',
+                'l'      => 'L',
+                'm'      => 'M',
+                'red'    => 'Red',
+                's'      => 'S',
+                'white'  => 'White',
+                'xl'     => 'XL',
+                'yellow' => 'Yellow',
+            ],
+        ],
+
+        'category' => [
+            'categories' => [
+                'description' => 'Root Category Description',
+                'name'        => 'Root',
+            ],
+
+            'category_fields' => [
+                'name'        => 'Name',
+                'description' => 'Description',
+            ],
+        ],
+
+        'core' => [
+            'channels' => [
+                'meta-title'       => 'Demo store',
+                'meta-keywords'    => 'Demo store meta keyword',
+                'meta-description' => 'Demo store meta description',
+                'name'             => 'Default',
+            ],
+
+            'currencies' => [
+                'AED' => 'Dirham',
+                'AFN' => 'Israeli Shekel',
+                'CNY' => 'Chinese Yuan',
+                'EUR' => 'EURO',
+                'GBP' => 'Pound Sterling',
+                'INR' => 'Indian Rupee',
+                'IRR' => 'Iranian Rial',
+                'JPY' => 'Japanese Yen',
+                'RUB' => 'Russian Ruble',
+                'SAR' => 'Saudi Riyal',
+                'TRY' => 'Turkish Lira',
+                'UAH' => 'Ukrainian Hryvnia',
+                'USD' => 'US Dollar',
+            ],
+        ],
+
+        'user' => [
+            'roles' => [
+                'description' => 'This role users will have all the access',
+                'name'        => 'Administrator',
+            ],
+
+            'users' => [
+                'name' => 'Example',
+            ],
+        ],
+    ],
+
+    'installer' => [
+        'index' => [
+            'create-administrator' => [
+                'admin'            => 'Administrador',
+                'unopim'           => 'UnoPim',
+                'confirm-password' => 'Confirma la contrasenya',
+                'email-address'    => 'admin@example.com',
+                'email'            => 'Correu electrònic',
+                'password'         => 'Contrasenya',
+                'title'            => 'Crea administrador',
+            ],
+
+            'environment-configuration' => [
+                'allowed-currencies'  => 'Monedes permeses',
+                'allowed-locales'     => 'Idiomes permesos',
+                'application-name'    => 'Nom de l’aplicació',
+                'unopim'              => 'UnoPim',
+                'chinese-yuan'        => 'Iuan xinès (CNY)',
+                'database-connection' => 'Connexió a la base de dades',
+                'database-hostname'   => 'Nom del servidor de base de dades',
+                'database-name'       => 'Nom de la base de dades',
+                'database-password'   => 'Contrasenya de la base de dades',
+                'database-port'       => 'Port de la base de dades',
+                'database-prefix'     => 'Prefix de la base de dades',
+                'database-username'   => 'Usuari de la base de dades',
+                'default-currency'    => 'Moneda predeterminada',
+                'default-locale'      => 'Idioma predeterminat',
+                'default-timezone'    => 'Zona horària predeterminada',
+                'default-url-link'    => 'https://localhost',
+                'default-url'         => 'URL predeterminada',
+                'dirham'              => 'Dirham (AED)',
+                'euro'                => 'Euro (EUR)',
+                'iranian'             => 'Rial iranià (IRR)',
+                'israeli'             => 'Nou xéquel israelià (ILS)',
+                'japanese-yen'        => 'Ien japonès (JPY)',
+                'mysql'               => 'MySQL',
+                'pgsql'               => 'pgSQL',
+                'pound'               => 'Lliura esterlina (GBP)',
+                'rupee'               => 'Rupia índia (INR)',
+                'russian-ruble'       => 'Ruble rus (RUB)',
+                'saudi'               => 'Rial saudita (SAR)',
+                'select-timezone'     => 'Selecciona zona horària',
+                'sqlsrv'              => 'SQLSRV',
+                'title'               => 'Configuració de la base de dades',
+                'turkish-lira'        => 'Lira turca (TRY)',
+                'ukrainian-hryvnia'   => 'Hrívnia ucraïnesa (UAH)',
+                'usd'                 => 'Dòlar estatunidenc (USD)',
+                'warning-message'     => 'Atenció! Els ajustos per als idiomes predeterminats i la moneda són permanents i no es poden canviar mai més.',
+            ],
+
+            'installation-processing' => [
+                'unopim'      => 'Instal·lació d’UnoPim',
+                'unopim-info' => 'Creant les taules de la base de dades, aquest procés pot trigar uns instants',
+                'title'       => 'Instal·lació',
+            ],
+
+            'installation-completed' => [
+                'admin-panel'               => 'Panell d’administració',
+                'unopim-forums'             => 'Fòrum UnoPim',
+                'explore-unopim-extensions' => 'Explora extensions d’UnoPim',
+                'title-info'                => 'UnoPim s’ha instal·lat correctament al sistema.',
+                'title'                     => 'Instal·lació completada',
+            ],
+
+            'ready-for-installation' => [
+                'create-databsae-table'   => 'Crea la taula de la base de dades',
+                'install-info-button'     => 'Fes clic al botó següent per',
+                'install-info'            => 'Instal·lar UnoPim',
+                'install'                 => 'Instal·la',
+                'populate-database-table' => 'Omple les taules de la base de dades',
+                'start-installation'      => 'Comença la instal·lació',
+                'title'                   => 'Llest per a la instal·lació',
+            ],
+
+            'start' => [
+                'locale'        => 'Idioma',
+                'main'          => 'Començar',
+                'select-locale' => 'Selecciona idioma',
+                'title'         => 'La teva instal·lació d’UnoPim',
+                'welcome-title' => 'Benvingut a UnoPim :version',
+            ],
+
+            'server-requirements' => [
+                'calendar'    => 'Calendari',
+                'ctype'       => 'cType',
+                'curl'        => 'cURL',
+                'dom'         => 'DOM',
+                'fileinfo'    => 'FileInfo',
+                'filter'      => 'Filtre',
+                'gd'          => 'GD',
+                'hash'        => 'Hash',
+                'intl'        => 'Intl',
+                'json'        => 'JSON',
+                'mbstring'    => 'mbstring',
+                'openssl'     => 'OpenSSL',
+                'pcre'        => 'PCRE',
+                'pdo'         => 'PDO',
+                'php-version' => '8.2 o superior',
+                'php'         => 'PHP',
+                'session'     => 'Sessió',
+                'title'       => 'Requisits del sistema',
+                'tokenizer'   => 'Tokenitzador',
+                'xml'         => 'XML',
+            ],
+
+            'back'                     => 'Enrere',
+            'unopim-info'              => 'Un projecte comunitari de',
+            'unopim-logo'              => 'Logotip UnoPim',
+            'unopim'                   => 'UnoPim',
+            'continue'                 => 'Continuar',
+            'installation-description' => 'La instal·lació d’UnoPim normalment consta de diversos passos. Aquí tens un esquema general del procés d’instal·lació:',
+            'wizard-language'          => 'Idioma de l’assistent d’instal·lació',
+            'installation-info'        => 'Ens alegrem de veure’t aquí!',
+            'installation-title'       => 'Benvingut a la instal·lació',
+            'save-configuration'       => 'Desa configuració',
+            'skip'                     => 'Saltar',
+            'title'                    => 'Instal·lador d’UnoPim',
+            'webkul'                   => 'Webkul',
+        ],
+    ],
+];

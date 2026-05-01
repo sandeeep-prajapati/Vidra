@@ -1,0 +1,231 @@
+<?php
+
+return [
+    'seeders' => [
+        'attribute' => [
+            'attribute-families' => [
+                'default' => 'Standard',
+            ],
+
+            'attribute-groups' => [
+                'description'      => 'Beskrivelse',
+                'general'          => 'Generel',
+                'meta-description' => 'Meta Beskrivelse',
+                'price'            => 'Pris',
+                'media'            => 'Medier',
+            ],
+
+            'attributes' => [
+                'brand'                => 'Mærke',
+                'color'                => 'Farve',
+                'cost'                 => 'Omkostning',
+                'description'          => 'Beskrivelse',
+                'featured'             => 'Fremhævet',
+                'guest-checkout'       => 'Gæstekøb',
+                'height'               => 'Højde',
+                'image'                => 'Billede',
+                'length'               => 'Længde',
+                'manage-stock'         => 'Styr Lager',
+                'meta-description'     => 'Meta Beskrivelse',
+                'meta-keywords'        => 'Meta Nøgler',
+                'meta-title'           => 'Meta Titel',
+                'name'                 => 'Navn',
+                'new'                  => 'Ny',
+                'price'                => 'Pris',
+                'product-number'       => 'Produkt Nummer',
+                'short-description'    => 'Kort Beskrivelse',
+                'size'                 => 'Størrelse',
+                'sku'                  => 'SKU',
+                'special-price-from'   => 'Særlig Pris Fra',
+                'special-price-to'     => 'Særlig Pris Til',
+                'special-price'        => 'Særlig Pris',
+                'tax-category'         => 'Moms Kategori',
+                'url-key'              => 'URL Nøgle',
+                'visible-individually' => 'Synlig Individuelt',
+                'weight'               => 'Vægt',
+                'width'                => 'Bredde',
+            ],
+
+            'attribute-options' => [
+                'black'  => 'Sort',
+                'green'  => 'Grøn',
+                'l'      => 'L',
+                'm'      => 'M',
+                'red'    => 'Rød',
+                's'      => 'S',
+                'white'  => 'Hvid',
+                'xl'     => 'XL',
+                'yellow' => 'Gul',
+            ],
+        ],
+
+        'category' => [
+            'categories' => [
+                'description' => 'Rod Kategori Beskrivelse',
+                'name'        => 'Rod',
+            ],
+
+            'category_fields' => [
+                'name'        => 'Navn',
+                'description' => 'Beskrivelse',
+            ],
+        ],
+
+        'core' => [
+            'channels' => [
+                'meta-title'       => 'Demo butik',
+                'meta-keywords'    => 'Demo butik meta nøgleord',
+                'meta-description' => 'Demo butik meta beskrivelse',
+                'name'             => 'Standard',
+            ],
+
+            'currencies' => [
+                'AED' => 'Dirham',
+                'AFN' => 'Israelsk Shekel',
+                'CNY' => 'Kinesisk Yuan',
+                'EUR' => 'EURO',
+                'GBP' => 'Pund Sterling',
+                'INR' => 'Indisk Rupee',
+                'IRR' => 'Iransk Rial',
+                'JPY' => 'Japansk Yen',
+                'RUB' => 'Russisk Rubel',
+                'SAR' => 'Saudi Riyal',
+                'TRY' => 'Tyrkisk Lira',
+                'UAH' => 'Ukrainsk Hryvnia',
+                'USD' => 'US Dollar',
+            ],
+        ],
+
+        'user' => [
+            'roles' => [
+                'description' => 'Denne rollebrugere vil have alle adgang',
+                'name'        => 'Administrator',
+            ],
+
+            'users' => [
+                'name' => 'Eksempel',
+            ],
+        ],
+    ],
+
+    'installer' => [
+        'index' => [
+            'create-administrator' => [
+                'admin'            => 'Administrator',
+                'unopim'           => 'UnoPim',
+                'confirm-password' => 'Bekræft adgangskode',
+                'email-address'    => 'admin@example.com',
+                'email'            => 'E-mail',
+                'password'         => 'Adgangskode',
+                'title'            => 'Opret administrator',
+            ],
+
+            'environment-configuration' => [
+                'allowed-currencies'  => 'Tilladte valutaer',
+                'allowed-locales'     => 'Tilladte sprog',
+                'application-name'    => 'Applikationsnavn',
+                'unopim'              => 'UnoPim',
+                'chinese-yuan'        => 'Kinesisk yuan (CNY)',
+                'database-connection' => 'Databaseforbindelse',
+                'database-hostname'   => 'Databasevært',
+                'database-name'       => 'Databasenavn',
+                'database-password'   => 'Databaseadgangskode',
+                'database-port'       => 'Databaseport',
+                'database-prefix'     => 'Databaseprefix',
+                'database-username'   => 'Databasebrugernavn',
+                'default-currency'    => 'Standardvaluta',
+                'default-locale'      => 'Standardsprog',
+                'default-timezone'    => 'Standard tidszone',
+                'default-url-link'    => 'https://localhost',
+                'default-url'         => 'Standard URL',
+                'dirham'              => 'Dirham (AED)',
+                'euro'                => 'Euro (EUR)',
+                'iranian'             => 'Iransk rial (IRR)',
+                'israeli'             => 'Israelsk shekel (ILS)',
+                'japanese-yen'        => 'Japansk yen (JPY)',
+                'mysql'               => 'MySQL',
+                'pgsql'               => 'pgSQL',
+                'pound'               => 'Britisk pund (GBP)',
+                'rupee'               => 'Indisk rupee (INR)',
+                'russian-ruble'       => 'Russisk rubel (RUB)',
+                'saudi'               => 'Saudisk riyal (SAR)',
+                'select-timezone'     => 'Vælg tidszone',
+                'sqlsrv'              => 'SQLSRV',
+                'title'               => 'Databasekonfiguration',
+                'turkish-lira'        => 'Tyrkisk lira (TRY)',
+                'ukrainian-hryvnia'   => 'Ukrainsk hryvnia (UAH)',
+                'usd'                 => 'Amerikansk dollar (USD)',
+                'warning-message'     => 'Advarsel! Indstillingerne for standardsprog og -valuta er permanente og kan ikke ændres igen.',
+            ],
+
+            'installation-processing' => [
+                'unopim'      => 'UnoPim Installation',
+                'unopim-info' => 'Opretter databasetabeller, dette kan tage et øjeblik',
+                'title'       => 'Installation',
+            ],
+
+            'installation-completed' => [
+                'admin-panel'               => 'Administratorpanel',
+                'unopim-forums'             => 'UnoPim Forum',
+                'explore-unopim-extensions' => 'Udforsk UnoPim-udvidelser',
+                'title-info'                => 'UnoPim er blevet installeret korrekt på dit system.',
+                'title'                     => 'Installation fuldført',
+            ],
+
+            'ready-for-installation' => [
+                'create-databsae-table'   => 'Opret databasetabeller',
+                'install-info-button'     => 'Klik på knappen nedenfor for at',
+                'install-info'            => 'UnoPim til installation',
+                'install'                 => 'Installation',
+                'populate-database-table' => 'Udfyld databasetabeller',
+                'start-installation'      => 'Start installation',
+                'title'                   => 'Klar til installation',
+            ],
+
+            'start' => [
+                'locale'        => 'Sprog',
+                'main'          => 'Start',
+                'select-locale' => 'Vælg sprog',
+                'title'         => 'Din UnoPim installation',
+                'welcome-title' => 'Velkommen til UnoPim :version',
+            ],
+
+            'server-requirements' => [
+                'calendar'    => 'Kalender',
+                'ctype'       => 'cType',
+                'curl'        => 'cURL',
+                'dom'         => 'DOM',
+                'fileinfo'    => 'FileInfo',
+                'filter'      => 'Filter',
+                'gd'          => 'GD',
+                'hash'        => 'Hash',
+                'intl'        => 'Intl',
+                'json'        => 'JSON',
+                'mbstring'    => 'mbstring',
+                'openssl'     => 'OpenSSL',
+                'pcre'        => 'PCRE',
+                'pdo'         => 'PDO',
+                'php-version' => '8.2 eller nyere',
+                'php'         => 'PHP',
+                'session'     => 'Session',
+                'title'       => 'Systemkrav',
+                'tokenizer'   => 'Tokenizer',
+                'xml'         => 'XML',
+            ],
+
+            'back'                     => 'Tilbage',
+            'unopim-info'              => 'Et fællesskabsprojekt af',
+            'unopim-logo'              => 'UnoPim Logo',
+            'unopim'                   => 'UnoPim',
+            'continue'                 => 'Fortsæt',
+            'installation-description' => 'UnoPim installationen omfatter flere trin. Her er et generelt overblik:',
+            'wizard-language'          => 'Installationsguide sprog',
+            'installation-info'        => 'Vi er glade for at se dig her!',
+            'installation-title'       => 'Velkommen til installation',
+            'save-configuration'       => 'Gem konfiguration',
+            'skip'                     => 'Spring over',
+            'title'                    => 'UnoPim Installationsguide',
+            'webkul'                   => 'Webkul',
+        ],
+    ],
+];

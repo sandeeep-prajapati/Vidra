@@ -1,0 +1,1452 @@
+name: 'Class Management'
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/classes
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"current_page":1,"data":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z","academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"sections":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}],"first_page_url":"http:\/\/localhost\/api\/classes?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/classes?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/classes?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/classes","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/classes
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      class_name:
+        custom: []
+        name: class_name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      class_code:
+        custom: []
+        name: class_code
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: ngzmiyvdljnikhwa
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The <code>academic_year_id</code> of an existing record in the academic_years table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      class_name: b
+      class_code: ngzmiyvdljnikhwa
+      academic_year_id: 16
+      description: 'Eius et animi quos velit et.'
+      is_active: true
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/classes/{schoolClass_class_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schoolClass_class_id:
+        custom: []
+        name: schoolClass_class_id
+        description: 'The ID of the schoolClass class.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schoolClass_class_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z","academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"sections":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/classes/{schoolClass_class_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schoolClass_class_id:
+        custom: []
+        name: schoolClass_class_id
+        description: 'The ID of the schoolClass class.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schoolClass_class_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      class_name:
+        custom: []
+        name: class_name
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      class_code:
+        custom: []
+        name: class_code
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The <code>academic_year_id</code> of an existing record in the academic_years table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      class_name: b
+      academic_year_id: 16
+      description: 'Eius et animi quos velit et.'
+      is_active: true
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/classes/{schoolClass_class_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schoolClass_class_id:
+        custom: []
+        name: schoolClass_class_id
+        description: 'The ID of the schoolClass class.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schoolClass_class_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/sections
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"current_page":1,"data":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}}],"first_page_url":"http:\/\/localhost\/api\/sections?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/sections?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/sections?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/sections","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/sections
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      section_name:
+        custom: []
+        name: section_name
+        description: 'Must not be greater than 10 characters.'
+        required: true
+        example: bngzmi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      class_id:
+        custom: []
+        name: class_id
+        description: 'The <code>class_id</code> of an existing record in the classes table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      class_teacher_id:
+        custom: []
+        name: class_teacher_id
+        description: 'The <code>staff_id</code> of an existing record in the staff table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      capacity:
+        custom: []
+        name: capacity
+        description: 'Must be at least 0.'
+        required: false
+        example: 39
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      section_name: bngzmi
+      class_id: 16
+      class_teacher_id: 16
+      capacity: 39
+      description: 'Eius et animi quos velit et.'
+      is_active: false
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/sections/{section_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      section_id:
+        custom: []
+        name: section_id
+        description: 'The ID of the section.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      section_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/sections/{section_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      section_id:
+        custom: []
+        name: section_id
+        description: 'The ID of the section.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      section_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      section_name:
+        custom: []
+        name: section_name
+        description: 'Must not be greater than 10 characters.'
+        required: false
+        example: bngzmi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      class_id:
+        custom: []
+        name: class_id
+        description: 'The <code>class_id</code> of an existing record in the classes table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      capacity:
+        custom: []
+        name: capacity
+        description: 'Must be at least 0.'
+        required: false
+        example: 39
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      section_name: bngzmi
+      class_id: 16
+      capacity: 39
+      description: 'Eius et animi quos velit et.'
+      is_active: true
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/sections/{section_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      section_id:
+        custom: []
+        name: section_id
+        description: 'The ID of the section.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      section_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/batches
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"current_page":1,"data":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"section":{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"},"academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"enrollments":[]}],"first_page_url":"http:\/\/localhost\/api\/batches?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/batches?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/batches?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/batches","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/batches
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      class_id:
+        custom: []
+        name: class_id
+        description: 'The <code>class_id</code> of an existing record in the classes table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      section_id:
+        custom: []
+        name: section_id
+        description: 'The <code>section_id</code> of an existing record in the sections table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The <code>academic_year_id</code> of an existing record in the academic_years table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      batch_name:
+        custom: []
+        name: batch_name
+        description: 'Must not be greater than 100 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      batch_code:
+        custom: []
+        name: batch_code
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: gzmiyvdljnikhway
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-04-28T14:56:25'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        required: false
+        example: '2052-05-21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      class_id: 16
+      section_id: 16
+      academic_year_id: 16
+      batch_name: 'n'
+      batch_code: gzmiyvdljnikhway
+      start_date: '2026-04-28T14:56:25'
+      end_date: '2052-05-21'
+      is_active: true
+      description: 'Eius et animi quos velit et.'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/batches/{batch_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      batch_id:
+        custom: []
+        name: batch_id
+        description: 'The ID of the batch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      batch_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"section":{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"},"academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"enrollments":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/batches/{batch_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      batch_id:
+        custom: []
+        name: batch_id
+        description: 'The ID of the batch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      batch_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      class_id:
+        custom: []
+        name: class_id
+        description: 'The <code>class_id</code> of an existing record in the classes table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      section_id:
+        custom: []
+        name: section_id
+        description: 'The <code>section_id</code> of an existing record in the sections table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The <code>academic_year_id</code> of an existing record in the academic_years table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      batch_name:
+        custom: []
+        name: batch_name
+        description: 'Must not be greater than 100 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      batch_code:
+        custom: []
+        name: batch_code
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-04-28T14:56:25'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        required: false
+        example: '2052-05-21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      start_time:
+        custom: []
+        name: start_time
+        description: 'Must be a valid date in the format <code>H:i</code>.'
+        required: false
+        example: '14:56'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      end_time:
+        custom: []
+        name: end_time
+        description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
+        required: false
+        example: '2052-05-21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_active:
+        custom: []
+        name: is_active
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      class_id: 16
+      section_id: 16
+      academic_year_id: 16
+      batch_name: 'n'
+      start_date: '2026-04-28T14:56:25'
+      end_date: '2052-05-21'
+      start_time: '14:56'
+      end_time: '2052-05-21'
+      is_active: false
+      description: 'Eius et animi quos velit et.'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/batches/{batch_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      batch_id:
+        custom: []
+        name: batch_id
+        description: 'The ID of the batch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      batch_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/academic-years
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"current_page":1,"data":[{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z","classes":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}],"first_page_url":"http:\/\/localhost\/api\/academic-years?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/academic-years?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/academic-years?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/academic-years","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/academic-years
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      year_range:
+        custom: []
+        name: year_range
+        description: 'Must not be greater than 20 characters.'
+        required: true
+        example: bngzmiyvdljnikhw
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: true
+        example: '2026-04-28T14:56:25'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        required: true
+        example: '2052-05-21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      is_current:
+        custom: []
+        name: is_current
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      year_range: bngzmiyvdljnikhw
+      start_date: '2026-04-28T14:56:25'
+      end_date: '2052-05-21'
+      is_current: true
+      description: 'Eius et animi quos velit et.'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/academic-years/{academic_year_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The ID of the academic year.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      academic_year_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z","classes":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/academic-years/{academic_year_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The ID of the academic year.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      academic_year_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      year_range:
+        custom: []
+        name: year_range
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-04-28T14:56:25'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
+        required: false
+        example: '2052-05-21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_current:
+        custom: []
+        name: is_current
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      start_date: '2026-04-28T14:56:25'
+      end_date: '2052-05-21'
+      is_current: true
+      description: 'Eius et animi quos velit et.'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/academic-years/{academic_year_id}'
+    metadata:
+      custom: []
+      groupName: 'Class Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      academic_year_id:
+        custom: []
+        name: academic_year_id
+        description: 'The ID of the academic year.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      academic_year_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

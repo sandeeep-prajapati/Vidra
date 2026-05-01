@@ -1,0 +1,231 @@
+<?php
+
+return [
+    'seeders' => [
+        'attribute' => [
+            'attribute-families' => [
+                'default' => 'Défaut',
+            ],
+
+            'attribute-groups' => [
+                'description'      => 'Description',
+                'general'          => 'Général',
+                'meta-description' => 'Méta-description',
+                'price'            => 'Prix',
+                'media'            => 'Média',
+            ],
+
+            'attributes' => [
+                'brand'                => 'Marque',
+                'color'                => 'Couleur',
+                'cost'                 => 'Coût',
+                'description'          => 'Description',
+                'featured'             => 'En vedette',
+                'guest-checkout'       => 'Paiement des invités',
+                'height'               => 'Hauteur',
+                'image'                => 'Image',
+                'length'               => 'Longueur',
+                'manage-stock'         => 'Gérer les stocks',
+                'meta-description'     => 'Méta-description',
+                'meta-keywords'        => 'Méta-mots-clés',
+                'meta-title'           => 'Méta-titre',
+                'name'                 => 'Nom',
+                'new'                  => 'Nouveau',
+                'price'                => 'Prix',
+                'product-number'       => 'Numéro de produit',
+                'short-description'    => 'Brève description',
+                'size'                 => 'Taille',
+                'sku'                  => 'UGS',
+                'special-price-from'   => 'Prix ​​spécial à partir de',
+                'special-price-to'     => 'Prix ​​spécial à',
+                'special-price'        => 'Prix ​​spécial',
+                'tax-category'         => 'Catégorie de taxe',
+                'url-key'              => 'Clé URL',
+                'visible-individually' => 'Visible individuellement',
+                'weight'               => 'Poids',
+                'width'                => 'Largeur',
+            ],
+
+            'attribute-options' => [
+                'black'  => 'Noir',
+                'green'  => 'Vert',
+                'l'      => 'L',
+                'm'      => 'M.',
+                'red'    => 'Rouge',
+                's'      => 'S',
+                'white'  => 'Blanc',
+                'xl'     => 'XL',
+                'yellow' => 'Jaune',
+            ],
+        ],
+
+        'category' => [
+            'categories' => [
+                'description' => 'Description de la catégorie racine',
+                'name'        => 'Racine',
+            ],
+
+            'category_fields' => [
+                'name'        => 'Nom',
+                'description' => 'Description',
+            ],
+        ],
+
+        'core' => [
+            'channels' => [
+                'meta-title'       => 'Boutique de démonstration',
+                'meta-keywords'    => 'Mot-clé méta du magasin de démonstration',
+                'meta-description' => 'Méta description de la boutique de démonstration',
+                'name'             => 'Défaut',
+            ],
+
+            'currencies' => [
+                'AED' => 'Dirham',
+                'AFN' => 'Shekel israélien',
+                'CNY' => 'Yuan chinois',
+                'EUR' => 'EURO',
+                'GBP' => 'Livre sterling',
+                'INR' => 'Roupie indienne',
+                'IRR' => 'Rial iranien',
+                'JPY' => 'Yens japonais',
+                'RUB' => 'Rouble russe',
+                'SAR' => 'Riyal saoudien',
+                'TRY' => 'Lire turque',
+                'UAH' => 'Hryvnia ukrainienne',
+                'USD' => 'Dollar américain',
+            ],
+        ],
+
+        'user' => [
+            'roles' => [
+                'description' => 'Les utilisateurs de ce rôle auront tous les accès',
+                'name'        => 'Administrateur',
+            ],
+
+            'users' => [
+                'name' => 'Exemple',
+            ],
+        ],
+    ],
+
+    'installer' => [
+        'index' => [
+            'create-administrator' => [
+                'admin'            => 'Administrateur',
+                'unopim'           => 'UnoPim',
+                'confirm-password' => 'Confirmez le mot de passe',
+                'email-address'    => 'admin@exemple.com',
+                'email'            => 'E-mail',
+                'password'         => 'Mot de passe',
+                'title'            => 'Créer un administrateur',
+            ],
+
+            'environment-configuration' => [
+                'allowed-currencies'  => 'Devises autorisées',
+                'allowed-locales'     => 'Paramètres régionaux autorisés',
+                'application-name'    => 'Nom de la demande',
+                'unopim'              => 'UnoPim',
+                'chinese-yuan'        => 'Yuan chinois (CNY)',
+                'database-connection' => 'Connexion à la base de données',
+                'database-hostname'   => 'Nom d\'hôte de la base de données',
+                'database-name'       => 'Nom de la base de données',
+                'database-password'   => 'Mot de passe de la base de données',
+                'database-port'       => 'Port de base de données',
+                'database-prefix'     => 'Préfixe de base de données',
+                'database-username'   => 'Nom d\'utilisateur de la base de données',
+                'default-currency'    => 'Devise par défaut',
+                'default-locale'      => 'Paramètres régionaux par défaut',
+                'default-timezone'    => 'Fuseau horaire par défaut',
+                'default-url-link'    => 'https://localhost',
+                'default-url'         => 'URL par défaut',
+                'dirham'              => 'Dirham (AED)',
+                'euro'                => 'euros (EUR)',
+                'iranian'             => 'Rial iranien (IRR)',
+                'israeli'             => 'Shekel israélien (AFN)',
+                'japanese-yen'        => 'Yen japonais (JPY)',
+                'mysql'               => 'MySQL',
+                'pgsql'               => 'pgSQL',
+                'pound'               => 'Livre sterling (GBP)',
+                'rupee'               => 'Roupie indienne (INR)',
+                'russian-ruble'       => 'Rouble russe (RUB)',
+                'saudi'               => 'Riyal saoudien (SAR)',
+                'select-timezone'     => 'Sélectionnez le fuseau horaire',
+                'sqlsrv'              => 'SQLSRV',
+                'title'               => 'Configuration de la base de données',
+                'turkish-lira'        => 'Lire turque (TRY)',
+                'ukrainian-hryvnia'   => 'Hryvnia ukrainienne (UAH)',
+                'usd'                 => 'Dollar américain (USD)',
+                'warning-message'     => 'Méfiez-vous! Les paramètres de vos langues système par défaut as well as the default currency are permanent and cannot be changed ever again.',
+            ],
+
+            'installation-processing' => [
+                'unopim'      => 'Installation d\'UnoPim',
+                'unopim-info' => 'Création des tables de la base de données, cela peut prendre quelques instants',
+                'title'       => 'Installation',
+            ],
+
+            'installation-completed' => [
+                'admin-panel'               => 'Panneau d\'administration',
+                'unopim-forums'             => 'Forum UnoPim',
+                'explore-unopim-extensions' => 'Explorez l\'extension UnoPim',
+                'title-info'                => 'UnoPim est installé avec succès sur votre système.',
+                'title'                     => 'Installation terminée',
+            ],
+
+            'ready-for-installation' => [
+                'create-databsae-table'   => 'Créer la table de base de données',
+                'install-info-button'     => 'Cliquez sur le bouton ci-dessous pour',
+                'install-info'            => 'UnoPim pour l\'installation',
+                'install'                 => 'Installation',
+                'populate-database-table' => 'Remplir les tables de la base de données',
+                'start-installation'      => 'Démarrer l\'installation',
+                'title'                   => 'Prêt pour l\'installation',
+            ],
+
+            'start' => [
+                'locale'        => 'Lieu',
+                'main'          => 'Commencer',
+                'select-locale' => 'Sélectionnez les paramètres régionaux',
+                'title'         => 'Votre installation UnoPim',
+                'welcome-title' => 'Bienvenue sur UnoPim :version',
+            ],
+
+            'server-requirements' => [
+                'calendar'    => 'Calendrier',
+                'ctype'       => 'cType',
+                'curl'        => 'boucle',
+                'dom'         => 'dom',
+                'fileinfo'    => 'fichierInfo',
+                'filter'      => 'Filtre',
+                'gd'          => 'DG',
+                'hash'        => 'Hacher',
+                'intl'        => 'international',
+                'json'        => 'JSON',
+                'mbstring'    => 'chaînemb',
+                'openssl'     => 'ouvressl',
+                'pcre'        => 'PCRE',
+                'pdo'         => 'aop',
+                'php-version' => '8.2 ou supérieur',
+                'php'         => 'PHP',
+                'session'     => 'session',
+                'title'       => 'Configuration système requise',
+                'tokenizer'   => 'tokeniseur',
+                'xml'         => 'XML',
+            ],
+
+            'back'                     => 'Dos',
+            'unopim-info'              => 'un projet communautaire par',
+            'unopim-logo'              => 'Logo UnoPim',
+            'unopim'                   => 'UnoPim',
+            'continue'                 => 'Continuer',
+            'installation-description' => 'L\'installation d\'UnoPim implique généralement plusieurs étapes. Voici un aperçu général du processus d\'installation d\'UnoPim:',
+            'wizard-language'          => 'Langue de l\'assistant d\'installation',
+            'installation-info'        => 'Nous sommes heureux de vous voir ici!',
+            'installation-title'       => 'Bienvenue dans l\'Installation',
+            'save-configuration'       => 'Enregistrer la configuration',
+            'skip'                     => 'Sauter',
+            'title'                    => 'Programme d\'installation d\'UnoPim',
+            'webkul'                   => 'Webkul',
+        ],
+    ],
+];
