@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Services\PythonBridgeService;
 
 class InsightsController extends Controller
 {
     public function index()
     {
         // ── Students ──────────────────────────────────────────────
-        $totalStudents   = DB::table('students')->count();
+        $totalStudents = DB::table('students')->count();
+
         $genderBreakdown = DB::table('students')
             ->select('gender', DB::raw('count(*) as total'))
             ->groupBy('gender')
@@ -22,23 +24,24 @@ class InsightsController extends Controller
             ->get();
 
         $studentsPerClass = DB::table('student_enrollments as se')
-            ->join('batches as b', 'se.batch_id', '=', 'b.id')
-            ->join('classes as c', 'b.class_id', '=', 'c.id')
+            ->join('batches as b',  'se.batch_id',  '=', 'b.batch_id')
+            ->join('classes as c',  'b.class_id',   '=', 'c.class_id')
             ->select('c.class_name', DB::raw('count(*) as total'))
             ->groupBy('c.class_name')
             ->orderBy('c.class_name')
             ->get();
 
         // ── Staff ─────────────────────────────────────────────────
-        $totalStaff       = DB::table('staff')->count();
-        $staffByDept      = DB::table('staff as s')
-            ->join('departments as d', 's.department_id', '=', 'd.id')
+        $totalStaff = DB::table('staff')->count();
+
+        $staffByDept = DB::table('staff as s')
+            ->join('departments as d', 's.department_id', '=', 'd.department_id')
             ->select('d.department_name', DB::raw('count(*) as total'))
             ->groupBy('d.department_name')
             ->orderByDesc('total')
             ->get();
 
-        $employmentTypes  = DB::table('staff')
+        $employmentTypes = DB::table('staff')
             ->select('employment_type', DB::raw('count(*) as total'))
             ->groupBy('employment_type')
             ->pluck('total', 'employment_type');
@@ -48,7 +51,7 @@ class InsightsController extends Controller
             ->first();
 
         $topRatedStaff = DB::table('performance_reviews as pr')
-            ->join('staff as s', 'pr.staff_id', '=', 's.id')
+            ->join('staff as s', 'pr.staff_id', '=', 's.staff_id')
             ->select(
                 DB::raw("CONCAT(s.first_name, ' ', s.last_name) as name"),
                 'pr.rating',
@@ -60,8 +63,8 @@ class InsightsController extends Controller
 
         // ── Academics ────────────────────────────────────────────
         $reportCards = DB::table('student_report_cards as rc')
-            ->join('students as s', 'rc.student_id', '=', 's.id')
-            ->join('exams as e', 'rc.exam_id', '=', 'e.id')
+            ->join('students as s', 'rc.student_id', '=', 's.student_id')
+            ->join('exams as e',    'rc.exam_id',    '=', 'e.exam_id')
             ->select(
                 DB::raw("CONCAT(s.first_name, ' ', s.last_name) as name"),
                 'rc.overall_percentage',
@@ -73,8 +76,8 @@ class InsightsController extends Controller
             ->get();
 
         $subjectAvgs = DB::table('student_marks as sm')
-            ->join('exam_schedules as es', 'sm.schedule_id', '=', 'es.id')
-            ->join('subjects as sub', 'es.subject_id', '=', 'sub.id')
+            ->join('exam_schedules as es', 'sm.schedule_id', '=', 'es.schedule_id')
+            ->join('subjects as sub',      'es.subject_id',  '=', 'sub.subject_id')
             ->select('sub.subject_name', DB::raw('AVG(sm.marks_obtained) as avg_marks'))
             ->groupBy('sub.subject_name')
             ->orderByDesc('avg_marks')
@@ -103,6 +106,7 @@ class InsightsController extends Controller
             ->get();
 
         $totalExpenses = DB::table('expenses')->sum('amount');
+
         $expenseByCategory = DB::table('expenses')
             ->select('expense_category', DB::raw('SUM(amount) as total'))
             ->groupBy('expense_category')
@@ -119,19 +123,23 @@ class InsightsController extends Controller
 
         // ── Classes ───────────────────────────────────────────────
         $classCapacity = DB::table('batches as b')
-            ->join('classes as c', 'b.class_id', '=', 'c.id')
-            ->join('sections as sec', 'b.section_id', '=', 'sec.id')
-            ->leftJoin('student_enrollments as se', 'b.id', '=', 'se.batch_id')
+            ->join('classes as c',    'b.class_id',    '=', 'c.class_id')
+            ->join('sections as sec', 'b.section_id',  '=', 'sec.section_id')
+            ->leftJoin('student_enrollments as se', 'b.batch_id', '=', 'se.batch_id')
             ->select(
                 'c.class_name',
                 'sec.section_name',
                 'sec.capacity',
-                DB::raw('count(se.id) as enrolled')
+                DB::raw('count(se.enrollment_id) as enrolled')
             )
-            ->groupBy('c.class_name', 'sec.section_name', 'sec.capacity', 'b.id')
+            ->groupBy('c.class_name', 'sec.section_name', 'sec.capacity', 'b.batch_id')
             ->orderBy('c.class_name')
             ->orderBy('sec.section_name')
             ->get();
+
+        // ── Django / Python-powered analytics ─────────────────────
+        $python = new PythonBridgeService();
+        $djangoStats = $python->get('api/python/analytics/attendance/school-overview/');
 
         return view('insights.index', compact(
             'totalStudents', 'genderBreakdown', 'bloodGroups', 'studentsPerClass',
@@ -139,7 +147,8 @@ class InsightsController extends Controller
             'reportCards', 'subjectAvgs', 'classAvgPct',
             'attendanceSummary', 'overallAttendancePct', 'holidays',
             'feeByStatus', 'totalExpenses', 'expenseByCategory', 'income', 'expense',
-            'classCapacity'
+            'classCapacity',
+            'djangoStats'
         ));
     }
 }

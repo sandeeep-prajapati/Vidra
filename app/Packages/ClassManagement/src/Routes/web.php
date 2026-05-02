@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-classes')->group(function () {
     Route::get('classes', [ClassController::class, 'index'])->name('classes.index');
-    Route::get('classes/{schoolClass}', [ClassController::class, 'show'])->name('classes.show');
+    Route::get('classes/{schoolClass}', [ClassController::class, 'show'])->name('classes.show')->whereNumber('schoolClass');
     Route::get('sections', [SectionController::class, 'index'])->name('sections.index');
-    Route::get('sections/{section}', [SectionController::class, 'show'])->name('sections.show');
+    Route::get('sections/{section}', [SectionController::class, 'show'])->name('sections.show')->whereNumber('section');
     Route::get('batches', [BatchController::class, 'index'])->name('batches.index');
-    Route::get('batches/{batch}', [BatchController::class, 'show'])->name('batches.show');
+    Route::get('batches/{batch}', [BatchController::class, 'show'])->name('batches.show')->whereNumber('batch');
     Route::get('academic-years', [AcademicYearController::class, 'index'])->name('academic-years.index');
-    Route::get('academic-years/{academic_year}', [AcademicYearController::class, 'show'])->name('academic-years.show');
+    Route::get('academic-years/{academic_year}', [AcademicYearController::class, 'show'])->name('academic-years.show')->whereNumber('academic_year');
 });
 
 Route::middleware('permission:create-classes')->group(function () {

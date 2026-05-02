@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-staff')->group(function () {
     Route::get('staff', [StaffController::class, 'index'])->name('staff.index');
-    Route::get('staff/{staff}', [StaffController::class, 'show'])->name('staff.show');
+    Route::get('staff/{staff}', [StaffController::class, 'show'])->name('staff.show')->whereNumber('staff');
 });
 
 Route::middleware('permission:create-staff')->group(function () {

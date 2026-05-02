@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-exams')->group(function () {
     Route::get('exam', 'ExamController@index')->name('exam.index');
-    Route::get('exam/{exam}', 'ExamController@show')->name('exam.show');
+    Route::get('exam/{exam}', 'ExamController@show')->name('exam.show')->whereNumber('exam');
     Route::get('examSchedule', 'ExamScheduleController@index')->name('examSchedule.index');
-    Route::get('examSchedule/{examSchedule}', 'ExamScheduleController@show')->name('examSchedule.show');
+    Route::get('examSchedule/{examSchedule}', 'ExamScheduleController@show')->name('examSchedule.show')->whereNumber('examSchedule');
     Route::get('gradingScheme', 'GradingSchemeController@index')->name('gradingScheme.index');
-    Route::get('gradingScheme/{gradingScheme}', 'GradingSchemeController@show')->name('gradingScheme.show');
+    Route::get('gradingScheme/{gradingScheme}', 'GradingSchemeController@show')->name('gradingScheme.show')->whereNumber('gradingScheme');
     Route::get('studentMark', 'StudentMarkController@index')->name('studentMark.index');
-    Route::get('studentMark/{studentMark}', 'StudentMarkController@show')->name('studentMark.show');
+    Route::get('studentMark/{studentMark}', 'StudentMarkController@show')->name('studentMark.show')->whereNumber('studentMark');
     Route::get('studentReportCard', 'StudentReportCardController@index')->name('studentReportCard.index');
-    Route::get('studentReportCard/{studentReportCard}', 'StudentReportCardController@show')->name('studentReportCard.show');
+    Route::get('studentReportCard/{studentReportCard}', 'StudentReportCardController@show')->name('studentReportCard.show')->whereNumber('studentReportCard');
 });
 
 Route::middleware('permission:create-exams')->group(function () {

@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-timetable')->group(function () {
     Route::get('room', 'RoomController@index')->name('room.index');
-    Route::get('room/{room}', 'RoomController@show')->name('room.show');
+    Route::get('room/{room}', 'RoomController@show')->name('room.show')->whereNumber('room');
     Route::get('day', 'DayController@index')->name('day.index');
-    Route::get('day/{day}', 'DayController@show')->name('day.show');
+    Route::get('day/{day}', 'DayController@show')->name('day.show')->whereNumber('day');
     Route::get('period', 'PeriodController@index')->name('period.index');
-    Route::get('period/{period}', 'PeriodController@show')->name('period.show');
+    Route::get('period/{period}', 'PeriodController@show')->name('period.show')->whereNumber('period');
     Route::get('timetable', 'TimetableController@index')->name('timetable.index');
-    Route::get('timetable/{timetable}', 'TimetableController@show')->name('timetable.show');
+    Route::get('timetable/{timetable}', 'TimetableController@show')->name('timetable.show')->whereNumber('timetable');
     Route::get('substituteAssignment', 'SubstituteAssignmentController@index')->name('substituteAssignment.index');
-    Route::get('substituteAssignment/{substituteAssignment}', 'SubstituteAssignmentController@show')->name('substituteAssignment.show');
+    Route::get('substituteAssignment/{substituteAssignment}', 'SubstituteAssignmentController@show')->name('substituteAssignment.show')->whereNumber('substituteAssignment');
     Route::get('specialEvent', 'SpecialEventController@index')->name('specialEvent.index');
-    Route::get('specialEvent/{specialEvent}', 'SpecialEventController@show')->name('specialEvent.show');
+    Route::get('specialEvent/{specialEvent}', 'SpecialEventController@show')->name('specialEvent.show')->whereNumber('specialEvent');
 });
 
 Route::middleware('permission:create-timetable')->group(function () {

@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-rbac')->group(function () {
     Route::get('roles', 'RoleController@index')->name('roles.index');
-    Route::get('roles/{role}', 'RoleController@show')->name('roles.show');
+    Route::get('roles/{role}', 'RoleController@show')->name('roles.show')->whereNumber('role');
     Route::get('permissions', 'PermissionController@index')->name('permissions.index');
-    Route::get('permissions/{permission}', 'PermissionController@show')->name('permissions.show');
+    Route::get('permissions/{permission}', 'PermissionController@show')->name('permissions.show')->whereNumber('permission');
     Route::get('role-permissions', 'RolePermissionController@index')->name('role-permissions.index');
     Route::get('role-permissions/{role}/edit', 'RolePermissionController@edit')->name('role-permissions.edit');
     Route::get('user-roles', 'UserRoleController@index')->name('user-roles.index');

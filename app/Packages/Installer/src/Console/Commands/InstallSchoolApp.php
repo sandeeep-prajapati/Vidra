@@ -67,7 +67,7 @@ class InstallSchoolApp extends Command
         }
 
         $dbConnection = select('Database connection', ['mysql', 'pgsql'], 'mysql');
-        $dbHost       = text('Database host', default: '127.0.0.1', required: true);
+        $dbHost       = text('Database host', default: env('DB_HOST', 'mysql'), required: true);
         $dbPort       = text('Database port', default: $dbConnection === 'pgsql' ? '5432' : '3306', required: true);
         $dbName       = text('Database name', required: true);
         $dbUsername   = text('Database username', default: 'root', required: true);

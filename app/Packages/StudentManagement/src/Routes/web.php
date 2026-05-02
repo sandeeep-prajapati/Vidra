@@ -3,15 +3,6 @@
 use App\Packages\StudentManagement\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('permission:view-students')->group(function () {
-    Route::get('students', [StudentController::class, 'index'])->name('students.index');
-    Route::get('students/{student}', [StudentController::class, 'show'])->name('students.show');
-    Route::get('students/{student}/health', [StudentController::class, 'indexHealthRecords'])->name('students.health.index');
-    Route::get('students/{student}/documents', [StudentController::class, 'indexDocuments'])->name('students.documents.index');
-    Route::get('students/{student}/activities', [StudentController::class, 'indexActivityLogs'])->name('students.activities.index');
-    Route::get('students/{student}/contacts', [StudentController::class, 'indexContacts'])->name('students.contacts.index');
-});
-
 Route::middleware('permission:create-students')->group(function () {
     Route::get('students/create', [StudentController::class, 'create'])->name('students.create');
     Route::post('students', [StudentController::class, 'store'])->name('students.store');
@@ -22,6 +13,15 @@ Route::middleware('permission:create-students')->group(function () {
     Route::post('students/{student}/promote', [StudentController::class, 'promoteStudent'])->name('students.promote.store');
     Route::post('students/{student}/documents', [StudentController::class, 'storeDocument'])->name('students.documents.store');
     Route::post('students/{student}/contacts', [StudentController::class, 'storeContact'])->name('students.contacts.store');
+});
+
+Route::middleware('permission:view-students')->group(function () {
+    Route::get('students', [StudentController::class, 'index'])->name('students.index');
+    Route::get('students/{student}', [StudentController::class, 'show'])->name('students.show');
+    Route::get('students/{student}/health', [StudentController::class, 'indexHealthRecords'])->name('students.health.index');
+    Route::get('students/{student}/documents', [StudentController::class, 'indexDocuments'])->name('students.documents.index');
+    Route::get('students/{student}/activities', [StudentController::class, 'indexActivityLogs'])->name('students.activities.index');
+    Route::get('students/{student}/contacts', [StudentController::class, 'indexContacts'])->name('students.contacts.index');
 });
 
 Route::middleware('permission:edit-students')->group(function () {

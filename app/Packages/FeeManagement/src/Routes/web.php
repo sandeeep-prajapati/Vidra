@@ -4,21 +4,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-fees')->group(function () {
     Route::get('feeCategory', 'FeeCategoryController@index')->name('feeCategory.index');
-    Route::get('feeCategory/{feeCategory}', 'FeeCategoryController@show')->name('feeCategory.show');
+    Route::get('feeCategory/{feeCategory}', 'FeeCategoryController@show')->name('feeCategory.show')->whereNumber('feeCategory');
     Route::get('feeStructure', 'FeeStructureController@index')->name('feeStructure.index');
-    Route::get('feeStructure/{feeStructure}', 'FeeStructureController@show')->name('feeStructure.show');
+    Route::get('feeStructure/{feeStructure}', 'FeeStructureController@show')->name('feeStructure.show')->whereNumber('feeStructure');
     Route::get('studentFee', 'StudentFeeController@index')->name('studentFee.index');
-    Route::get('studentFee/{studentFee}', 'StudentFeeController@show')->name('studentFee.show');
+    Route::get('studentFee/{studentFee}', 'StudentFeeController@show')->name('studentFee.show')->whereNumber('studentFee');
     Route::get('feePayment', 'FeePaymentController@index')->name('feePayment.index');
-    Route::get('feePayment/{feePayment}', 'FeePaymentController@show')->name('feePayment.show');
+    Route::get('feePayment/{feePayment}', 'FeePaymentController@show')->name('feePayment.show')->whereNumber('feePayment');
     Route::get('discount', 'DiscountController@index')->name('discount.index');
-    Route::get('discount/{discount}', 'DiscountController@show')->name('discount.show');
+    Route::get('discount/{discount}', 'DiscountController@show')->name('discount.show')->whereNumber('discount');
     Route::get('studentDiscount', 'StudentDiscountController@index')->name('studentDiscount.index');
-    Route::get('studentDiscount/{studentDiscount}', 'StudentDiscountController@show')->name('studentDiscount.show');
+    Route::get('studentDiscount/{studentDiscount}', 'StudentDiscountController@show')->name('studentDiscount.show')->whereNumber('studentDiscount');
     Route::get('expense', 'ExpenseController@index')->name('expense.index');
-    Route::get('expense/{expense}', 'ExpenseController@show')->name('expense.show');
+    Route::get('expense/{expense}', 'ExpenseController@show')->name('expense.show')->whereNumber('expense');
     Route::get('financialReport', 'FinancialReportController@index')->name('financialReport.index');
-    Route::get('financialReport/{financialReport}', 'FinancialReportController@show')->name('financialReport.show');
+    Route::get('financialReport/{financialReport}', 'FinancialReportController@show')->name('financialReport.show')->whereNumber('financialReport');
 });
 
 Route::middleware('permission:create-fees')->group(function () {

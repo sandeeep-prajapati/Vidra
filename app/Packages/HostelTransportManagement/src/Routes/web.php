@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Route;
 // Hostel routes
 Route::middleware('permission:view-hostel')->group(function () {
     Route::get('hostels', [HostelController::class, 'index'])->name('hostels.index');
-    Route::get('hostels/{hostel}', [HostelController::class, 'show'])->name('hostels.show');
+    Route::get('hostels/{hostel}', [HostelController::class, 'show'])->name('hostels.show')->whereNumber('hostel');
     Route::get('hostel-rooms', [RoomController::class, 'index'])->name('hostel-rooms.index');
-    Route::get('hostel-rooms/{room}', [RoomController::class, 'show'])->name('hostel-rooms.show');
+    Route::get('hostel-rooms/{room}', [RoomController::class, 'show'])->name('hostel-rooms.show')->whereNumber('room');
     Route::get('student-hostels', [StudentHostelController::class, 'index'])->name('student-hostels.index');
-    Route::get('student-hostels/{studentHostel}', [StudentHostelController::class, 'show'])->name('student-hostels.show');
+    Route::get('student-hostels/{studentHostel}', [StudentHostelController::class, 'show'])->name('student-hostels.show')->whereNumber('studentHostel');
     Route::get('facilities', [FacilityManagementController::class, 'index'])->name('facilities.index');
-    Route::get('facilities/{facility}', [FacilityManagementController::class, 'show'])->name('facilities.show');
+    Route::get('facilities/{facility}', [FacilityManagementController::class, 'show'])->name('facilities.show')->whereNumber('facility');
     Route::get('facility-bookings', [FacilityBookingController::class, 'index'])->name('facility-bookings.index');
-    Route::get('facility-bookings/{facilityBooking}', [FacilityBookingController::class, 'show'])->name('facility-bookings.show');
+    Route::get('facility-bookings/{facilityBooking}', [FacilityBookingController::class, 'show'])->name('facility-bookings.show')->whereNumber('facilityBooking');
 });
 
 Route::middleware('permission:create-hostel')->group(function () {
@@ -65,9 +65,9 @@ Route::middleware('permission:delete-hostel')->group(function () {
 // Transport routes
 Route::middleware('permission:view-transport')->group(function () {
     Route::get('transportation', [TransportationController::class, 'index'])->name('transportation.index');
-    Route::get('transportation/{transportation}', [TransportationController::class, 'show'])->name('transportation.show');
+    Route::get('transportation/{transportation}', [TransportationController::class, 'show'])->name('transportation.show')->whereNumber('transportation');
     Route::get('student-transport', [StudentTransportController::class, 'index'])->name('student-transport.index');
-    Route::get('student-transport/{studentTransport}', [StudentTransportController::class, 'show'])->name('student-transport.show');
+    Route::get('student-transport/{studentTransport}', [StudentTransportController::class, 'show'])->name('student-transport.show')->whereNumber('studentTransport');
 });
 
 Route::middleware('permission:create-transport')->group(function () {

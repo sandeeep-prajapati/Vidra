@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('permission:view-communication')->group(function () {
     Route::get('message', 'MessageController@index')->name('message.index');
-    Route::get('message/{message}', 'MessageController@show')->name('message.show');
+    Route::get('message/{message}', 'MessageController@show')->name('message.show')->whereNumber('message');
     Route::get('messageRecipient', 'MessageRecipientController@index')->name('messageRecipient.index');
-    Route::get('messageRecipient/{messageRecipient}', 'MessageRecipientController@show')->name('messageRecipient.show');
+    Route::get('messageRecipient/{messageRecipient}', 'MessageRecipientController@show')->name('messageRecipient.show')->whereNumber('messageRecipient');
     Route::get('circular', 'CircularController@index')->name('circular.index');
-    Route::get('circular/{circular}', 'CircularController@show')->name('circular.show');
+    Route::get('circular/{circular}', 'CircularController@show')->name('circular.show')->whereNumber('circular');
     Route::get('notificationSetting', 'NotificationSettingController@index')->name('notificationSetting.index');
-    Route::get('notificationSetting/{notificationSetting}', 'NotificationSettingController@show')->name('notificationSetting.show');
+    Route::get('notificationSetting/{notificationSetting}', 'NotificationSettingController@show')->name('notificationSetting.show')->whereNumber('notificationSetting');
 });
 
 Route::middleware('permission:create-communication')->group(function () {

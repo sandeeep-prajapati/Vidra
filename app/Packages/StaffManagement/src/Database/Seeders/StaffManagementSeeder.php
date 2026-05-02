@@ -13,7 +13,7 @@ class StaffManagementSeeder extends Seeder
         $dummyImage = 'dummy/dummy-image.jpg';
 
         // Departments
-        DB::table('departments')->insert([
+        DB::table('departments')->insertOrIgnore([
             ['department_name' => 'Mathematics & Science', 'description' => 'Handles all science and mathematics subjects', 'created_at' => $now, 'updated_at' => $now],
             ['department_name' => 'Languages & Arts',      'description' => 'Covers languages, arts and social studies', 'created_at' => $now, 'updated_at' => $now],
             ['department_name' => 'Physical Education',    'description' => 'Sports, health and physical activities', 'created_at' => $now, 'updated_at' => $now],
@@ -35,7 +35,7 @@ class StaffManagementSeeder extends Seeder
         ];
 
         foreach ($staff as $s) {
-            DB::table('staff')->insert([
+            DB::table('staff')->insertOrIgnore([
                 'first_name'      => $s['first_name'],
                 'last_name'       => $s['last_name'],
                 'date_of_birth'   => $s['dob'],
@@ -58,7 +58,7 @@ class StaffManagementSeeder extends Seeder
         // Staff Department Assignments (primary assignment)
         foreach (range(1, 10) as $staffId) {
             $deptMap = [1=>1, 2=>1, 3=>2, 4=>2, 5=>1, 6=>3, 7=>2, 8=>1, 9=>4, 10=>4];
-            DB::table('staff_department_assignments')->insert([
+            DB::table('staff_department_assignments')->insertOrIgnore([
                 'staff_id'      => $staffId,
                 'department_id' => $deptMap[$staffId],
                 'is_primary'    => true,
@@ -83,7 +83,7 @@ class StaffManagementSeeder extends Seeder
         ];
 
         foreach ($qualifications as [$staffId, $degree, $spec, $university, $year]) {
-            DB::table('qualifications')->insert([
+            DB::table('qualifications')->insertOrIgnore([
                 'staff_id'           => $staffId,
                 'degree'             => $degree,
                 'specialization'     => $spec,
@@ -109,7 +109,7 @@ class StaffManagementSeeder extends Seeder
         ];
 
         foreach ($assignments as [$staffId, $class, $subject]) {
-            DB::table('teacher_assignments')->insert([
+            DB::table('teacher_assignments')->insertOrIgnore([
                 'staff_id'   => $staffId,
                 'class_name' => $class,
                 'subject'    => $subject,
