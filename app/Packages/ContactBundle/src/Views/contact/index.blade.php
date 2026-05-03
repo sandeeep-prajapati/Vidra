@@ -184,43 +184,43 @@
                     </div>
 
                     <!-- Features -->
-                    <div class="space-y-4">
+                    <div class="space-y-4 bg-white dark:bg-[#161615] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-lg p-6">
                         <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider">Why contact us?</p>
-                        <div class="space-y-3">
-                            <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        <div class="space-y-4 mt-4">
+                            <div class="flex gap-4 pb-4 border-b border-[#e3e3e0] dark:border-[#3E3E3A] last:border-b-0 last:pb-0">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#4f46e5]/20 to-[#6366f1]/20 dark:from-[#4f46e5]/30 dark:to-[#6366f1]/30 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
-                                <div>
-                                    <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Premium Packages</p>
-                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-0.5">Ask about AI, Blockchain & IoT add-ons</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Custom Development</p>
-                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-0.5">Request custom features for your school</p>
+                                <div class="flex-1">
+                                    <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Premium Packages</p>
+                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-1">Ask about AI, Blockchain & IoT add-ons coming in 2026</p>
                                 </div>
                             </div>
-                            <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <div class="flex gap-4 pb-4 border-b border-[#e3e3e0] dark:border-[#3E3E3A] last:border-b-0 last:pb-0">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#4f46e5]/20 to-[#6366f1]/20 dark:from-[#4f46e5]/30 dark:to-[#6366f1]/30 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 6L9 9"/></svg>
                                 </div>
-                                <div>
-                                    <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Support & Deployment</p>
-                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-0.5">Get help with setup and deployment</p>
+                                <div class="flex-1">
+                                    <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Custom Development</p>
+                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-1">Request custom features tailored to your school's needs</p>
                                 </div>
                             </div>
-                            <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <div class="flex gap-4 pb-4 border-b border-[#e3e3e0] dark:border-[#3E3E3A] last:border-b-0 last:pb-0">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#4f46e5]/20 to-[#6366f1]/20 dark:from-[#4f46e5]/30 dark:to-[#6366f1]/30 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                                 </div>
-                                <div>
-                                    <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Report Issues</p>
-                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-0.5">Found a bug? Let us know directly</p>
+                                <div class="flex-1">
+                                    <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Setup & Deployment</p>
+                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-1">Expert guidance for installation and deployment assistance</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 pb-0">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#4f46e5]/20 to-[#6366f1]/20 dark:from-[#4f46e5]/30 dark:to-[#6366f1]/30 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Report Issues</p>
+                                    <p class="text-[12px] text-[#706f6c] dark:text-[#A1A09A] mt-1">Found a bug? We'd love to hear from you directly</p>
                                 </div>
                             </div>
                         </div>
@@ -229,39 +229,40 @@
             </div>
 
             <!-- FAQs Section -->
-            <div class="space-y-4">
+            <div class="space-y-6 mt-16">
                 <div>
-                    <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-6">Frequently Asked Questions</p>
+                    <h2 class="text-lg font-semibold text-[#1b1b18] dark:text-[#EDEDEC] mb-2">Frequently Asked Questions</h2>
+                    <p class="text-xs text-[#706f6c] dark:text-[#A1A09A]">Everything you need to know about School ERP</p>
                 </div>
 
                 <div class="space-y-3">
-                    <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
-                        <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
+                    <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Is the free version really free forever?</span>
-                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
-                        <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
-                            Yes! The free version includes all core features and will remain free forever. It's 100% open source and can be self-hosted on your own infrastructure.
+                        <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
+                            <p class="pt-4">Yes! The free version includes all core features and will remain free forever. It's 100% open source and can be self-hosted on your own infrastructure with complete control over your data.</p>
                         </div>
                     </div>
 
-                    <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
-                        <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
+                    <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">When will premium packages be available?</span>
-                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
-                        <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
-                            Premium packages are currently in development. We're aiming for Q3 2026 launch. Sign up with your email to be notified when they become available.
+                        <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
+                            <p class="pt-4">Premium packages (AI Pack, Blockchain Pack, and IoT Pack) are currently in development. We're aiming for <strong>Q3 2026</strong> launch. Get notified by submitting your interest through the contact form above.</p>
                         </div>
                     </div>
 
-                    <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
-                        <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
+                    <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Do you offer support for the open source version?</span>
-                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
-                        <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
-                            Yes! Community support is available through GitHub issues and discussions. For priority support and guaranteed response times, check out our premium packages.
+                        <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
+                            <p class="pt-4">Yes! Community support is available through <a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-[#4f46e5] dark:text-[#6366f1] hover:underline">GitHub issues and discussions</a>. For priority support with guaranteed response times and SLA, check out our premium packages.</p>
                         </div>
                     </div>
                 </div>
@@ -271,37 +272,83 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-white dark:bg-[#0a0a0a] mt-20">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <footer class="w-full border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-white dark:bg-[#0a0a0a] mt-24">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- About Column -->
                 <div>
-                    <h3 class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-4">About</h3>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#4f46e5] to-[#6366f1] rounded-md">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <p class="text-sm font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">School ERP</p>
+                    </div>
                     <p class="text-xs text-[#706f6c] dark:text-[#A1A09A] leading-relaxed">
-                        School ERP is a comprehensive, open-source school management system built to simplify school operations.
+                        A comprehensive, open-source school management system built to simplify operations and empower education.
                     </p>
                 </div>
+
+                <!-- Navigation Column -->
                 <div>
                     <h3 class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-4">Navigation</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="{{ url('/') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Home</a></li>
+                    <ul class="space-y-3 text-xs">
+                        <li>
+                            <a href="{{ url('/') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                <span class="w-1 h-1 bg-[#4f46e5] dark:bg-[#6366f1] rounded-full"></span>
+                                Home
+                            </a>
+                        </li>
                         @auth
-                            <li><a href="{{ url('/dashboard') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Dashboard</a></li>
+                            <li>
+                                <a href="{{ url('/dashboard') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-[#4f46e5] dark:bg-[#6366f1] rounded-full"></span>
+                                    Dashboard
+                                </a>
+                            </li>
                         @else
-                            <li><a href="{{ route('login') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Login</a></li>
+                            <li>
+                                <a href="{{ route('login') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                    <span class="w-1 h-1 bg-[#4f46e5] dark:bg-[#6366f1] rounded-full"></span>
+                                    Login
+                                </a>
+                            </li>
                         @endauth
-                        <li><a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Open Source Repo</a></li>
+                        <li>
+                            <a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                <span class="w-1 h-1 bg-[#4f46e5] dark:bg-[#6366f1] rounded-full"></span>
+                                Repository
+                            </a>
+                        </li>
                     </ul>
                 </div>
+
+                <!-- Connect Column -->
                 <div>
                     <h3 class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-4">Connect</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="https://github.com/sandeeep-prajapati" target="_blank" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">GitHub Profile</a></li>
-                        <li><a href="#" onclick="document.querySelector('input[name=email]').focus()" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Send a Message</a></li>
+                    <ul class="space-y-3 text-xs">
+                        <li>
+                            <a href="https://github.com/sandeeep-prajapati" target="_blank" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="document.querySelector('input[name=email]').focus()" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition inline-flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                Send a Message
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-[#e3e3e0] dark:border-[#3E3E3A] pt-8 text-center text-xs text-[#706f6c] dark:text-[#A1A09A]">
-                <p>&copy; 2026 School ERP. Built by Sandeep Prajapati. Open source & free forever.</p>
+
+            <!-- Divider -->
+            <div class="border-t border-[#e3e3e0] dark:border-[#3E3E3A] pt-8">
+                <p class="text-center text-[12px] text-[#706f6c] dark:text-[#A1A09A]">
+                    &copy; 2026 <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">School ERP</span>. Built by Sandeep Prajapati. Open source & free forever.
+                </p>
             </div>
         </div>
     </footer>
