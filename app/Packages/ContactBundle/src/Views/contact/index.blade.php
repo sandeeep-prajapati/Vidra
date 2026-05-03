@@ -239,7 +239,7 @@
                     <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
                         <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Is the free version really free forever?</span>
-                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
                             <p class="pt-4">Yes! The free version includes all core features and will remain free forever. It's 100% open source and can be self-hosted on your own infrastructure with complete control over your data.</p>
@@ -249,7 +249,7 @@
                     <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
                         <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">When will premium packages be available?</span>
-                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
                             <p class="pt-4">Premium packages (AI Pack, Blockchain Pack, and IoT Pack) are currently in development. We're aiming for <strong>Q3 2026</strong> launch. Get notified by submitting your interest through the contact form above.</p>
@@ -259,7 +259,7 @@
                     <div class="text-[13px] leading-[20px] bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#4f46e5] dark:hover:border-[#6366f1] rounded-lg overflow-hidden transition">
                         <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center hover:bg-[#FDFDFC] dark:hover:bg-[#0a0a0a] transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Do you offer support for the open source version?</span>
-                            <svg class="w-4 h-4 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1] transform transition flex-shrink-0 ml-2" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden px-6 pb-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#706f6c] dark:text-[#A1A09A] text-sm">
                             <p class="pt-4">Yes! Community support is available through <a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-[#4f46e5] dark:text-[#6366f1] hover:underline">GitHub issues and discussions</a>. For priority support with guaranteed response times and SLA, check out our premium packages.</p>
