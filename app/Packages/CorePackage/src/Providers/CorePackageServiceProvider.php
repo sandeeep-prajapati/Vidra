@@ -31,6 +31,15 @@ class CorePackageServiceProvider extends ServiceProvider
         $this->registerDefaultMenuItems();
     }
 
+    private function routeExists(string $name): bool
+    {
+        try {
+            return $this->app->make('router')->has($name);
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     private function registerDefaultMenuItems(): void
     {
         $menu = $this->app->make(MenuService::class);
@@ -447,13 +456,15 @@ class CorePackageServiceProvider extends ServiceProvider
             'system'
         ));
 
-        // Contact & Support section
-        $menu->addItem('support', new MenuItem(
-            'Contact Us',
-            '<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',
-            'contact.index',
-            'support'
-        ));
+        // Contact & Support section (only if route exists)
+        if ($this->routeExists('contact.index')) {
+            $menu->addItem('support', new MenuItem(
+                'Contact Us',
+                '<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',
+                'contact.index',
+                'support'
+            ));
+        }
 
         // $menu->addItem('system', new MenuItem(
         //     'Bundle Installer',
