@@ -1,4 +1,4 @@
-# School Management App
+# School ERP
 
 A comprehensive school management system built with **Laravel 13**, covering students, staff, classes, subjects, exams, fees, timetables, attendance, communication, hostels, transport, and RBAC.
 
