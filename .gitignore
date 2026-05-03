@@ -28,3 +28,5 @@ package-lock.json
 yarn.lock
 yarn-error.log
 text.txt
+/.scribe
+/.claude
