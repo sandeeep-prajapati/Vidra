@@ -30,6 +30,7 @@
             "App\\Packages\\StudentManagement\\": "app/Packages/StudentManagement/src/",
             "App\\Packages\\StaffManagement\\": "app/Packages/StaffManagement/src/",
             "App\\Packages\\ClassManagement\\": "app/Packages/ClassManagement/src/",
+            "App\\Packages\\ContactBundle\\": "app/Packages/ContactBundle/src/",
             "App\\Packages\\SubjectManagement\\": "app/Packages/SubjectManagement/src/",
             "App\\Packages\\AttendanceManagement\\": "app/Packages/AttendanceManagement/src/",
             "App\\Packages\\ExamManagement\\": "app/Packages/ExamManagement/src/",

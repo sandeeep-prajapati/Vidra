@@ -30,3 +30,5 @@ yarn-error.log
 text.txt
 /.scribe
 /.claude
+DB_Structure
+docs

@@ -3,6 +3,7 @@
 use App\Packages\AttendanceManagement\Providers\AttendanceManagementServiceProvider;
 use App\Packages\ClassManagement\Providers\ClassManagementServiceProvider;
 use App\Packages\CommunicationManagement\Providers\CommunicationManagementServiceProvider;
+use App\Packages\ContactBundle\Providers\ContactBundleServiceProvider;
 use App\Packages\CorePackage\Providers\CorePackageServiceProvider;
 use App\Packages\ExamManagement\Providers\ExamManagementServiceProvider;
 use App\Packages\FeeManagement\Providers\FeeManagementServiceProvider;
@@ -36,6 +37,7 @@ return [
     FeeManagementServiceProvider::class,
     TimetableManagementServiceProvider::class,
     CommunicationManagementServiceProvider::class,
+    ContactBundleServiceProvider::class,
     RbacManagementServiceProvider::class,
     HostelTransportManagementServiceProvider::class,
     WebhookServiceProvider::class,
