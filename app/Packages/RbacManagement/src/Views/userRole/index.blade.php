@@ -13,6 +13,7 @@
         <h1 style="font-size:1.375rem;font-weight:700;color:#1e293b;margin:0;">User Role Assignment</h1>
         <p style="font-size:.8125rem;color:#64748b;margin:.25rem 0 0;">Assign roles to system users</p>
     </div>
+    <x-core-package::btn :href="route('users.create')" color="primary">+ Create User</x-core-package::btn>
 </div>
 
 @if(session('success'))

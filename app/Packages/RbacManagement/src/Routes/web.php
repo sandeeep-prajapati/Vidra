@@ -19,6 +19,8 @@ Route::middleware('permission:create-rbac')->group(function () {
     Route::post('roles', 'RoleController@store')->name('roles.store');
     Route::get('permissions/create', 'PermissionController@create')->name('permissions.create');
     Route::post('permissions', 'PermissionController@store')->name('permissions.store');
+    Route::get('users/create', 'UserController@create')->name('users.create');
+    Route::post('users', 'UserController@store')->name('users.store');
 });
 
 Route::middleware('permission:edit-rbac')->group(function () {
