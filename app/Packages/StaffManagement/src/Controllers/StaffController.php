@@ -69,9 +69,9 @@ class StaffController extends Controller
         $this->syncTeacherAssignments($staff, $validated['teacher_assignments'] ?? []);
         $this->syncDepartmentAssignments($staff, $validated['department_assignments'] ?? []);
 
-        Event::dispatch('webhook.staff.created', $staff->only([
+        Event::dispatch('webhook.staff.created', [$staff->only([
             'staff_id', 'first_name', 'last_name', 'email', 'designation', 'status',
-        ]));
+        ])]);
 
         if ($request->expectsJson()) {
             return response()->json($staff->load($this->relations()), 201);
@@ -126,9 +126,9 @@ class StaffController extends Controller
             $this->syncDepartmentAssignments($staff, $validated['department_assignments'] ?? []);
         }
 
-        Event::dispatch('webhook.staff.updated', $staff->only([
+        Event::dispatch('webhook.staff.updated', [$staff->only([
             'staff_id', 'first_name', 'last_name', 'email', 'designation', 'status',
-        ]));
+        ])]);
 
         if ($request->expectsJson()) {
             return response()->json($staff->load($this->relations()));

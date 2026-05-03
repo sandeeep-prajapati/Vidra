@@ -130,9 +130,9 @@ class StudentController extends Controller
 
         $this->syncContacts($student, $validated['contacts'] ?? []);
 
-        Event::dispatch('webhook.student.created', $student->only([
+        Event::dispatch('webhook.student.created', [$student->only([
             'student_id', 'first_name', 'last_name', 'admission_number', 'gender', 'status',
-        ]));
+        ])]);
 
         if ($request->expectsJson()) {
             $student->load(['parentInfo', 'previousEducations', 'healthRecord', 'contacts']);
@@ -272,9 +272,9 @@ class StudentController extends Controller
             $this->syncContacts($student, $validated['contacts'] ?? []);
         }
 
-        Event::dispatch('webhook.student.updated', $student->only([
+        Event::dispatch('webhook.student.updated', [$student->only([
             'student_id', 'first_name', 'last_name', 'admission_number', 'gender', 'status',
-        ]));
+        ])]);
 
         if ($request->expectsJson()) {
             $student->load(['parentInfo', 'previousEducations', 'healthRecord', 'contacts']);
