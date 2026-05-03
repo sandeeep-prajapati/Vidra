@@ -3,7 +3,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.3",
@@ -36,6 +39,7 @@
             "App\\Packages\\RbacManagement\\": "app/Packages/RbacManagement/src/",
             "App\\Packages\\HostelTransportManagement\\": "app/Packages/HostelTransportManagement/src/",
             "App\\Packages\\Installer\\": "app/Packages/Installer/src/",
+            "App\\Packages\\BundleInstaller\\": "app/Packages/BundleInstaller/src/",
             "App\\Packages\\DataTransfer\\": "app/Packages/DataTransfer/src/",
             "App\\Packages\\Webhook\\": "app/Packages/Webhook/src/",
             "Database\\Factories\\": "database/factories/",

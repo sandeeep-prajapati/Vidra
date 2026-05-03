@@ -4,7 +4,15 @@ use App\Packages\StudentManagement\Controllers\Api\StudentApiController;
 use Illuminate\Support\Facades\Route;
 
 // API routes
-Route::apiResource('students', StudentApiController::class);
+Route::apiResource('students', StudentApiController::class, [
+    'names' => [
+        'index' => 'api.students.index',
+        'store' => 'api.students.store',
+        'show' => 'api.students.show',
+        'update' => 'api.students.update',
+        'destroy' => 'api.students.destroy',
+    ]
+]);
 
 // Parent info routes (API)
 Route::post('students/{student}/parent', [StudentApiController::class, 'storeParent']);

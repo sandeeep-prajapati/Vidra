@@ -14,12 +14,17 @@ use App\Packages\SubjectManagement\Providers\SubjectManagementServiceProvider;
 use App\Packages\TimetableManagement\Providers\TimetableManagementServiceProvider;
 use App\Packages\DataTransfer\Providers\DataTransferServiceProvider;
 use App\Packages\Installer\Providers\InstallerServiceProvider;
+use App\Packages\BundleInstaller\Providers\BundleInstallerServiceProvider;
 use App\Packages\Webhook\Providers\WebhookServiceProvider;
+// intalled apps are here
+
+
 use App\Providers\AppServiceProvider;
 
 return [
     AppServiceProvider::class,
     InstallerServiceProvider::class,
+    BundleInstallerServiceProvider::class,
     DataTransferServiceProvider::class,
     CorePackageServiceProvider::class,
     StudentManagementServiceProvider::class,
