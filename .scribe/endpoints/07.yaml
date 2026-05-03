@@ -29,8 +29,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '[]'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -80,7 +80,7 @@ endpoints:
         name: room_type
         description: ''
         required: true
-        example: Lab
+        example: Auditorium
         type: string
         enumValues:
           - Classroom
@@ -114,7 +114,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       room_name: b
-      room_type: Lab
+      room_type: Auditorium
       capacity: 22
       description: 'Eius et animi quos velit et.'
     fileParameters: []
@@ -148,14 +148,14 @@ endpoints:
         name: room_id
         description: 'The ID of the room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_id: 16
+      room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -164,11 +164,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\Room] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -204,14 +201,14 @@ endpoints:
         name: room_id
         description: 'The ID of the room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_id: 16
+      room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -231,7 +228,7 @@ endpoints:
         name: room_type
         description: ''
         required: true
-        example: Classroom
+        example: Auditorium
         type: string
         enumValues:
           - Classroom
@@ -264,7 +261,7 @@ endpoints:
         nullable: true
         deprecated: false
     cleanBodyParameters:
-      room_type: Classroom
+      room_type: Auditorium
       capacity: 16
       description: 'Eius et animi quos velit et.'
     fileParameters: []
@@ -298,14 +295,14 @@ endpoints:
         name: room_id
         description: 'The ID of the room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_id: 16
+      room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -345,8 +342,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '[]'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -424,14 +421,14 @@ endpoints:
         name: day_id
         description: 'The ID of the day.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      day_id: 16
+      day_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -440,11 +437,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\Day] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -480,14 +474,14 @@ endpoints:
         name: day_id
         description: 'The ID of the day.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      day_id: 16
+      day_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -534,14 +528,14 @@ endpoints:
         name: day_id
         description: 'The ID of the day.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      day_id: 16
+      day_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -581,8 +575,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '[]'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -621,7 +615,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: true
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -632,15 +626,15 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      start_time: '14:56'
-      end_time: '2052-05-21'
+      start_time: '17:21'
+      end_time: '2052-05-26'
     fileParameters: []
     responses: []
     responseFields: []
@@ -672,14 +666,14 @@ endpoints:
         name: period_id
         description: 'The ID of the period.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      period_id: 16
+      period_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -688,11 +682,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\Period] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -728,14 +719,14 @@ endpoints:
         name: period_id
         description: 'The ID of the period.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      period_id: 16
+      period_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -744,7 +735,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: true
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -755,15 +746,15 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      start_time: '14:56'
-      end_time: '2052-05-21'
+      start_time: '17:21'
+      end_time: '2052-05-26'
     fileParameters: []
     responses: []
     responseFields: []
@@ -795,14 +786,14 @@ endpoints:
         name: period_id
         description: 'The ID of the period.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      period_id: 16
+      period_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -842,8 +833,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/timetable?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/timetable?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/timetable?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/timetable","per_page":50,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1005,14 +996,14 @@ endpoints:
         name: timetable_id
         description: 'The ID of the timetable.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      timetable_id: 16
+      timetable_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1021,11 +1012,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\Timetable] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1061,14 +1049,14 @@ endpoints:
         name: timetable_id
         description: 'The ID of the timetable.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      timetable_id: 16
+      timetable_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1200,14 +1188,14 @@ endpoints:
         name: timetable_id
         description: 'The ID of the timetable.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      timetable_id: 16
+      timetable_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1247,8 +1235,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/substituteAssignment?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/substituteAssignment?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/substituteAssignment?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/substituteAssignment","per_page":50,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1320,7 +1308,7 @@ endpoints:
         name: date_of_substitution
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1330,7 +1318,7 @@ endpoints:
       timetable_id: 16
       original_teacher_id: 16
       substitute_teacher_id: 16
-      date_of_substitution: '2026-04-28T14:56:26'
+      date_of_substitution: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1362,14 +1350,14 @@ endpoints:
         name: substitute_id
         description: 'The ID of the substitute.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      substitute_id: 16
+      substitute_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1378,11 +1366,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\SubstituteAssignment] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1418,14 +1403,14 @@ endpoints:
         name: substitute_id
         description: 'The ID of the substitute.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      substitute_id: 16
+      substitute_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1467,7 +1452,7 @@ endpoints:
         name: date_of_substitution
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1477,7 +1462,7 @@ endpoints:
       timetable_id: 16
       original_teacher_id: 16
       substitute_teacher_id: 16
-      date_of_substitution: '2026-04-28T14:56:26'
+      date_of_substitution: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1509,14 +1494,14 @@ endpoints:
         name: substitute_id
         description: 'The ID of the substitute.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      substitute_id: 16
+      substitute_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1556,8 +1541,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/specialEvent?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/specialEvent?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/specialEvent?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/specialEvent","per_page":50,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1607,7 +1592,7 @@ endpoints:
         name: event_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1618,7 +1603,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: true
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1629,7 +1614,7 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1659,9 +1644,9 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       event_name: b
-      event_date: '2026-04-28T14:56:26'
-      start_time: '14:56'
-      end_time: '2052-05-21'
+      event_date: '2026-05-03T17:21:19'
+      start_time: '17:21'
+      end_time: '2052-05-26'
       description: 'Eius et animi quos velit et.'
       room_id: 16
     fileParameters: []
@@ -1695,14 +1680,14 @@ endpoints:
         name: event_id
         description: 'The ID of the event.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      event_id: 16
+      event_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1711,11 +1696,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\TimetableManagement\\Models\\SpecialEvent] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1751,14 +1733,14 @@ endpoints:
         name: event_id
         description: 'The ID of the event.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      event_id: 16
+      event_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1778,7 +1760,7 @@ endpoints:
         name: event_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1789,7 +1771,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: true
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1800,7 +1782,7 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1830,9 +1812,9 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       event_name: b
-      event_date: '2026-04-28T14:56:26'
-      start_time: '14:56'
-      end_time: '2052-05-21'
+      event_date: '2026-05-03T17:21:19'
+      start_time: '17:21'
+      end_time: '2052-05-26'
       description: 'Eius et animi quos velit et.'
       room_id: 16
     fileParameters: []
@@ -1866,14 +1848,14 @@ endpoints:
         name: event_id
         description: 'The ID of the event.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      event_id: 16
+      event_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

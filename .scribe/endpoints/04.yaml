@@ -29,8 +29,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/studentAttendance?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/studentAttendance?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/studentAttendance?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/studentAttendance","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -80,7 +80,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -91,7 +91,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: Absent
+        example: Leave
         type: string
         enumValues:
           - Present
@@ -135,8 +135,8 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       student_id: 16
-      date: '2026-04-28T14:56:25'
-      status: Absent
+      date: '2026-05-03T17:21:18'
+      status: Leave
       batch_id: 16
       remarks: architecto
       marked_by: 16
@@ -171,14 +171,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -187,11 +187,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\AttendanceManagement\\Models\\StudentAttendance] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -227,14 +224,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -254,7 +251,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -265,7 +262,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: Absent
+        example: Present
         type: string
         enumValues:
           - Present
@@ -309,8 +306,8 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       student_id: 16
-      date: '2026-04-28T14:56:25'
-      status: Absent
+      date: '2026-05-03T17:21:18'
+      status: Present
       batch_id: 16
       remarks: architecto
       marked_by: 16
@@ -345,14 +342,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -392,8 +389,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/teacherAttendance?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/teacherAttendance?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/teacherAttendance?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/teacherAttendance","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -443,7 +440,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -454,7 +451,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: Absent
+        example: Leave
         type: string
         enumValues:
           - Present
@@ -476,8 +473,8 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       staff_id: 16
-      date: '2026-04-28T14:56:25'
-      status: Absent
+      date: '2026-05-03T17:21:18'
+      status: Leave
       remarks: architecto
     fileParameters: []
     responses: []
@@ -510,14 +507,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -526,11 +523,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\AttendanceManagement\\Models\\TeacherAttendance] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -566,14 +560,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -593,7 +587,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -626,7 +620,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       staff_id: 16
-      date: '2026-04-28T14:56:25'
+      date: '2026-05-03T17:21:18'
       status: Present
       remarks: architecto
     fileParameters: []
@@ -660,14 +654,14 @@ endpoints:
         name: attendance_id
         description: 'The ID of the attendance.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      attendance_id: 16
+      attendance_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -707,8 +701,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/studentLeaveRequest?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/studentLeaveRequest?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/studentLeaveRequest?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/studentLeaveRequest","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -758,7 +752,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -769,394 +763,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
         required: true
-        example: '2052-05-21'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      reason:
-        custom: []
-        name: reason
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: true
-        example: Approved
-        type: string
-        enumValues:
-          - Pending
-          - Approved
-          - Rejected
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      applied_on:
-        custom: []
-        name: applied_on
-        description: 'Must be a valid date.'
-        required: true
-        example: '2026-04-28T14:56:25'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      approved_by:
-        custom: []
-        name: approved_by
-        description: ''
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-    cleanBodyParameters:
-      student_id: 16
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
-      reason: architecto
-      status: Approved
-      applied_on: '2026-04-28T14:56:25'
-      approved_by: 16
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: 'api/studentLeaveRequest/{leave_request_id}'
-    metadata:
-      custom: []
-      groupName: 'Attendance Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      leave_request_id:
-        custom: []
-        name: leave_request_id
-        description: 'The ID of the leave request.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      leave_request_id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\AttendanceManagement\\Models\\StudentLeaveRequest] 16"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/studentLeaveRequest/{leave_request_id}'
-    metadata:
-      custom: []
-      groupName: 'Attendance Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      leave_request_id:
-        custom: []
-        name: leave_request_id
-        description: 'The ID of the leave request.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      leave_request_id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      student_id:
-        custom: []
-        name: student_id
-        description: ''
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      start_date:
-        custom: []
-        name: start_date
-        description: 'Must be a valid date.'
-        required: true
-        example: '2026-04-28T14:56:25'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      end_date:
-        custom: []
-        name: end_date
-        description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
-        required: true
-        example: '2052-05-21'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      reason:
-        custom: []
-        name: reason
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: true
-        example: Approved
-        type: string
-        enumValues:
-          - Pending
-          - Approved
-          - Rejected
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      applied_on:
-        custom: []
-        name: applied_on
-        description: 'Must be a valid date.'
-        required: true
-        example: '2026-04-28T14:56:25'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      approved_by:
-        custom: []
-        name: approved_by
-        description: ''
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-    cleanBodyParameters:
-      student_id: 16
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
-      reason: architecto
-      status: Approved
-      applied_on: '2026-04-28T14:56:25'
-      approved_by: 16
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - DELETE
-    uri: 'api/studentLeaveRequest/{leave_request_id}'
-    metadata:
-      custom: []
-      groupName: 'Attendance Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      leave_request_id:
-        custom: []
-        name: leave_request_id
-        description: 'The ID of the leave request.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      leave_request_id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/teacherLeaveRequest
-    metadata:
-      custom: []
-      groupName: 'Attendance Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/teacherLeaveRequest?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/teacherLeaveRequest?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/teacherLeaveRequest?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/teacherLeaveRequest","per_page":20,"prev_page_url":null,"to":null,"total":0}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: api/teacherLeaveRequest
-    metadata:
-      custom: []
-      groupName: 'Attendance Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      staff_id:
-        custom: []
-        name: staff_id
-        description: ''
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      start_date:
-        custom: []
-        name: start_date
-        description: 'Must be a valid date.'
-        required: true
-        example: '2026-04-28T14:56:25'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      end_date:
-        custom: []
-        name: end_date
-        description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
-        required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1192,7 +799,391 @@ endpoints:
         name: applied_on
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      approved_by:
+        custom: []
+        name: approved_by
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      student_id: 16
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
+      reason: architecto
+      status: Pending
+      applied_on: '2026-05-03T17:21:18'
+      approved_by: 16
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/studentLeaveRequest/{leave_request_id}'
+    metadata:
+      custom: []
+      groupName: 'Attendance Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      leave_request_id:
+        custom: []
+        name: leave_request_id
+        description: 'The ID of the leave request.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      leave_request_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/studentLeaveRequest/{leave_request_id}'
+    metadata:
+      custom: []
+      groupName: 'Attendance Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      leave_request_id:
+        custom: []
+        name: leave_request_id
+        description: 'The ID of the leave request.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      leave_request_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      student_id:
+        custom: []
+        name: student_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: true
+        example: '2026-05-03T17:21:18'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
+        required: true
+        example: '2052-05-26'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      reason:
+        custom: []
+        name: reason
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: true
+        example: Pending
+        type: string
+        enumValues:
+          - Pending
+          - Approved
+          - Rejected
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      applied_on:
+        custom: []
+        name: applied_on
+        description: 'Must be a valid date.'
+        required: true
+        example: '2026-05-03T17:21:18'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      approved_by:
+        custom: []
+        name: approved_by
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      student_id: 16
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
+      reason: architecto
+      status: Pending
+      applied_on: '2026-05-03T17:21:18'
+      approved_by: 16
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/studentLeaveRequest/{leave_request_id}'
+    metadata:
+      custom: []
+      groupName: 'Attendance Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      leave_request_id:
+        custom: []
+        name: leave_request_id
+        description: 'The ID of the leave request.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      leave_request_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/teacherLeaveRequest
+    metadata:
+      custom: []
+      groupName: 'Attendance Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/teacherLeaveRequest
+    metadata:
+      custom: []
+      groupName: 'Attendance Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      staff_id:
+        custom: []
+        name: staff_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_date:
+        custom: []
+        name: start_date
+        description: 'Must be a valid date.'
+        required: true
+        example: '2026-05-03T17:21:18'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      end_date:
+        custom: []
+        name: end_date
+        description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
+        required: true
+        example: '2052-05-26'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      reason:
+        custom: []
+        name: reason
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: true
+        example: Rejected
+        type: string
+        enumValues:
+          - Pending
+          - Approved
+          - Rejected
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      applied_on:
+        custom: []
+        name: applied_on
+        description: 'Must be a valid date.'
+        required: true
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1211,11 +1202,11 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       staff_id: 16
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
       reason: architecto
-      status: Pending
-      applied_on: '2026-04-28T14:56:25'
+      status: Rejected
+      applied_on: '2026-05-03T17:21:18'
       approved_by: 16
     fileParameters: []
     responses: []
@@ -1248,14 +1239,14 @@ endpoints:
         name: leave_request_id
         description: 'The ID of the leave request.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      leave_request_id: 16
+      leave_request_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1264,11 +1255,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\AttendanceManagement\\Models\\TeacherLeaveRequest] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1304,14 +1292,14 @@ endpoints:
         name: leave_request_id
         description: 'The ID of the leave request.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      leave_request_id: 16
+      leave_request_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1331,7 +1319,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1342,7 +1330,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after or equal to <code>start_date</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1364,7 +1352,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: Approved
+        example: Pending
         type: string
         enumValues:
           - Pending
@@ -1378,7 +1366,7 @@ endpoints:
         name: applied_on
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1397,11 +1385,11 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       staff_id: 16
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
       reason: architecto
-      status: Approved
-      applied_on: '2026-04-28T14:56:25'
+      status: Pending
+      applied_on: '2026-05-03T17:21:18'
       approved_by: 16
     fileParameters: []
     responses: []
@@ -1434,14 +1422,14 @@ endpoints:
         name: leave_request_id
         description: 'The ID of the leave request.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      leave_request_id: 16
+      leave_request_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1481,8 +1469,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/holiday?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/holiday?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/holiday?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/holiday","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1532,7 +1520,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1562,7 +1550,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       title: b
-      date: '2026-04-28T14:56:25'
+      date: '2026-05-03T17:21:18'
       description: 'Eius et animi quos velit et.'
       is_recurring: true
     fileParameters: []
@@ -1596,14 +1584,14 @@ endpoints:
         name: holiday_id
         description: 'The ID of the holiday.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      holiday_id: 16
+      holiday_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1612,11 +1600,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\AttendanceManagement\\Models\\Holiday] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1652,14 +1637,14 @@ endpoints:
         name: holiday_id
         description: 'The ID of the holiday.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      holiday_id: 16
+      holiday_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1679,7 +1664,7 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1709,7 +1694,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       title: b
-      date: '2026-04-28T14:56:25'
+      date: '2026-05-03T17:21:18'
       description: 'Eius et animi quos velit et.'
       is_recurring: false
     fileParameters: []
@@ -1743,14 +1728,14 @@ endpoints:
         name: holiday_id
         description: 'The ID of the holiday.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      holiday_id: 16
+      holiday_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

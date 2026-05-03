@@ -1011,7 +1011,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: April 28, 2026</li>
+        <li>Last updated: May 3, 2026</li>
     </ul>
 </div>
 
@@ -1118,7 +1118,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentAttendance">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1130,38 +1130,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentAttendance?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentAttendance?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentAttendance?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentAttendance&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -1256,8 +1225,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
-    \"date\": \"2026-04-28T14:56:25\",
-    \"status\": \"Absent\",
+    \"date\": \"2026-05-03T17:21:18\",
+    \"status\": \"Leave\",
     \"batch_id\": 16,
     \"remarks\": \"architecto\",
     \"marked_by\": 16
@@ -1277,8 +1246,8 @@ const headers = {
 
 let body = {
     "student_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Leave",
     "batch_id": 16,
     "remarks": "architecto",
     "marked_by": 16
@@ -1303,8 +1272,8 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'student_id' =&gt; 16,
-            'date' =&gt; '2026-04-28T14:56:25',
-            'status' =&gt; 'Absent',
+            'date' =&gt; '2026-05-03T17:21:18',
+            'status' =&gt; 'Leave',
             'batch_id' =&gt; 16,
             'remarks' =&gt; 'architecto',
             'marked_by' =&gt; 16,
@@ -1322,8 +1291,8 @@ import json
 url = 'http://localhost/api/studentAttendance'
 payload = {
     "student_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Leave",
     "batch_id": 16,
     "remarks": "architecto",
     "marked_by": 16
@@ -1431,10 +1400,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="POSTapi-studentAttendance"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -1443,10 +1412,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-studentAttendance"
-               value="Absent"
+               value="Leave"
                data-component="body">
     <br>
-<p>Example: <code>Absent</code></p>
+<p>Example: <code>Leave</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Present</code></li> <li><code>Absent</code></li> <li><code>Leave</code></li></ul>
         </div>
@@ -1501,14 +1470,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentAttendance/16" \
+    --get "http://localhost/api/studentAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentAttendance/16"
+    "http://localhost/api/studentAttendance/1"
 );
 
 const headers = {
@@ -1525,7 +1494,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentAttendance/16';
+$url = 'http://localhost/api/studentAttendance/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -1543,7 +1512,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentAttendance/16'
+url = 'http://localhost/api/studentAttendance/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -1556,7 +1525,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentAttendance--attendance_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1568,7 +1537,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\AttendanceManagement\\Models\\StudentAttendance] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -1651,10 +1620,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="GETapi-studentAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -1671,13 +1640,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentAttendance/16" \
+    "http://localhost/api/studentAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
-    \"date\": \"2026-04-28T14:56:25\",
-    \"status\": \"Absent\",
+    \"date\": \"2026-05-03T17:21:18\",
+    \"status\": \"Present\",
     \"batch_id\": 16,
     \"remarks\": \"architecto\",
     \"marked_by\": 16
@@ -1687,7 +1656,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentAttendance/16"
+    "http://localhost/api/studentAttendance/1"
 );
 
 const headers = {
@@ -1697,8 +1666,8 @@ const headers = {
 
 let body = {
     "student_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Present",
     "batch_id": 16,
     "remarks": "architecto",
     "marked_by": 16
@@ -1713,7 +1682,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentAttendance/16';
+$url = 'http://localhost/api/studentAttendance/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -1723,8 +1692,8 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'student_id' =&gt; 16,
-            'date' =&gt; '2026-04-28T14:56:25',
-            'status' =&gt; 'Absent',
+            'date' =&gt; '2026-05-03T17:21:18',
+            'status' =&gt; 'Present',
             'batch_id' =&gt; 16,
             'remarks' =&gt; 'architecto',
             'marked_by' =&gt; 16,
@@ -1739,11 +1708,11 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentAttendance/16'
+url = 'http://localhost/api/studentAttendance/1'
 payload = {
     "student_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Present",
     "batch_id": 16,
     "remarks": "architecto",
     "marked_by": 16
@@ -1843,10 +1812,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="PUTapi-studentAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1868,10 +1837,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="PUTapi-studentAttendance--attendance_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -1880,10 +1849,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-studentAttendance--attendance_id-"
-               value="Absent"
+               value="Present"
                data-component="body">
     <br>
-<p>Example: <code>Absent</code></p>
+<p>Example: <code>Present</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Present</code></li> <li><code>Absent</code></li> <li><code>Leave</code></li></ul>
         </div>
@@ -1938,14 +1907,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentAttendance/16" \
+    "http://localhost/api/studentAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentAttendance/16"
+    "http://localhost/api/studentAttendance/1"
 );
 
 const headers = {
@@ -1962,7 +1931,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentAttendance/16';
+$url = 'http://localhost/api/studentAttendance/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -1980,7 +1949,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentAttendance/16'
+url = 'http://localhost/api/studentAttendance/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -2072,10 +2041,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="DELETEapi-studentAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -2147,7 +2116,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherAttendance">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2159,38 +2128,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/teacherAttendance?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/teacherAttendance?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/teacherAttendance?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/teacherAttendance&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -2285,8 +2223,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"staff_id\": 16,
-    \"date\": \"2026-04-28T14:56:25\",
-    \"status\": \"Absent\",
+    \"date\": \"2026-05-03T17:21:18\",
+    \"status\": \"Leave\",
     \"remarks\": \"architecto\"
 }"
 </code></pre></div>
@@ -2304,8 +2242,8 @@ const headers = {
 
 let body = {
     "staff_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Leave",
     "remarks": "architecto"
 };
 
@@ -2328,8 +2266,8 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'staff_id' =&gt; 16,
-            'date' =&gt; '2026-04-28T14:56:25',
-            'status' =&gt; 'Absent',
+            'date' =&gt; '2026-05-03T17:21:18',
+            'status' =&gt; 'Leave',
             'remarks' =&gt; 'architecto',
         ],
     ]
@@ -2345,8 +2283,8 @@ import json
 url = 'http://localhost/api/teacherAttendance'
 payload = {
     "staff_id": 16,
-    "date": "2026-04-28T14:56:25",
-    "status": "Absent",
+    "date": "2026-05-03T17:21:18",
+    "status": "Leave",
     "remarks": "architecto"
 }
 headers = {
@@ -2452,10 +2390,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="POSTapi-teacherAttendance"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -2464,10 +2402,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-teacherAttendance"
-               value="Absent"
+               value="Leave"
                data-component="body">
     <br>
-<p>Example: <code>Absent</code></p>
+<p>Example: <code>Leave</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Present</code></li> <li><code>Absent</code></li> <li><code>Leave</code></li></ul>
         </div>
@@ -2498,14 +2436,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/teacherAttendance/16" \
+    --get "http://localhost/api/teacherAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherAttendance/16"
+    "http://localhost/api/teacherAttendance/1"
 );
 
 const headers = {
@@ -2522,7 +2460,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherAttendance/16';
+$url = 'http://localhost/api/teacherAttendance/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -2540,7 +2478,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherAttendance/16'
+url = 'http://localhost/api/teacherAttendance/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -2553,7 +2491,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherAttendance--attendance_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2565,7 +2503,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\AttendanceManagement\\Models\\TeacherAttendance] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -2648,10 +2586,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="GETapi-teacherAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -2668,12 +2606,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/teacherAttendance/16" \
+    "http://localhost/api/teacherAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"staff_id\": 16,
-    \"date\": \"2026-04-28T14:56:25\",
+    \"date\": \"2026-05-03T17:21:18\",
     \"status\": \"Present\",
     \"remarks\": \"architecto\"
 }"
@@ -2682,7 +2620,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherAttendance/16"
+    "http://localhost/api/teacherAttendance/1"
 );
 
 const headers = {
@@ -2692,7 +2630,7 @@ const headers = {
 
 let body = {
     "staff_id": 16,
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "status": "Present",
     "remarks": "architecto"
 };
@@ -2706,7 +2644,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherAttendance/16';
+$url = 'http://localhost/api/teacherAttendance/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -2716,7 +2654,7 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'staff_id' =&gt; 16,
-            'date' =&gt; '2026-04-28T14:56:25',
+            'date' =&gt; '2026-05-03T17:21:18',
             'status' =&gt; 'Present',
             'remarks' =&gt; 'architecto',
         ],
@@ -2730,10 +2668,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherAttendance/16'
+url = 'http://localhost/api/teacherAttendance/1'
 payload = {
     "staff_id": 16,
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "status": "Present",
     "remarks": "architecto"
 }
@@ -2832,10 +2770,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="PUTapi-teacherAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -2857,10 +2795,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="PUTapi-teacherAttendance--attendance_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -2903,14 +2841,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/teacherAttendance/16" \
+    "http://localhost/api/teacherAttendance/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherAttendance/16"
+    "http://localhost/api/teacherAttendance/1"
 );
 
 const headers = {
@@ -2927,7 +2865,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherAttendance/16';
+$url = 'http://localhost/api/teacherAttendance/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -2945,7 +2883,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherAttendance/16'
+url = 'http://localhost/api/teacherAttendance/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -3037,10 +2975,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="attendance_id"                data-endpoint="DELETEapi-teacherAttendance--attendance_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the attendance. Example: <code>16</code></p>
+<p>The ID of the attendance. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -3112,7 +3050,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentLeaveRequest">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3124,38 +3062,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentLeaveRequest?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentLeaveRequest?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentLeaveRequest?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentLeaveRequest&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -3250,11 +3157,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"reason\": \"architecto\",
-    \"status\": \"Approved\",
-    \"applied_on\": \"2026-04-28T14:56:25\",
+    \"status\": \"Pending\",
+    \"applied_on\": \"2026-05-03T17:21:18\",
     \"approved_by\": 16
 }"
 </code></pre></div>
@@ -3272,11 +3179,11 @@ const headers = {
 
 let body = {
     "student_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 };
 
@@ -3299,11 +3206,11 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'student_id' =&gt; 16,
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'reason' =&gt; 'architecto',
-            'status' =&gt; 'Approved',
-            'applied_on' =&gt; '2026-04-28T14:56:25',
+            'status' =&gt; 'Pending',
+            'applied_on' =&gt; '2026-05-03T17:21:18',
             'approved_by' =&gt; 16,
         ],
     ]
@@ -3319,11 +3226,11 @@ import json
 url = 'http://localhost/api/studentLeaveRequest'
 payload = {
     "student_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 }
 headers = {
@@ -3429,10 +3336,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-studentLeaveRequest"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -3441,10 +3348,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="POSTapi-studentLeaveRequest"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
@@ -3465,10 +3372,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-studentLeaveRequest"
-               value="Approved"
+               value="Pending"
                data-component="body">
     <br>
-<p>Example: <code>Approved</code></p>
+<p>Example: <code>Pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Pending</code></li> <li><code>Approved</code></li> <li><code>Rejected</code></li></ul>
         </div>
@@ -3479,10 +3386,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="applied_on"                data-endpoint="POSTapi-studentLeaveRequest"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>approved_by</code></b>&nbsp;&nbsp;
@@ -3511,14 +3418,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentLeaveRequest/16" \
+    --get "http://localhost/api/studentLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentLeaveRequest/16"
+    "http://localhost/api/studentLeaveRequest/1"
 );
 
 const headers = {
@@ -3535,7 +3442,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentLeaveRequest/16';
+$url = 'http://localhost/api/studentLeaveRequest/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -3553,7 +3460,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentLeaveRequest/16'
+url = 'http://localhost/api/studentLeaveRequest/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -3566,7 +3473,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentLeaveRequest--leave_request_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3578,7 +3485,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\AttendanceManagement\\Models\\StudentLeaveRequest] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -3661,10 +3568,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="GETapi-studentLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -3681,16 +3588,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentLeaveRequest/16" \
+    "http://localhost/api/studentLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"reason\": \"architecto\",
-    \"status\": \"Approved\",
-    \"applied_on\": \"2026-04-28T14:56:25\",
+    \"status\": \"Pending\",
+    \"applied_on\": \"2026-05-03T17:21:18\",
     \"approved_by\": 16
 }"
 </code></pre></div>
@@ -3698,7 +3605,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentLeaveRequest/16"
+    "http://localhost/api/studentLeaveRequest/1"
 );
 
 const headers = {
@@ -3708,11 +3615,11 @@ const headers = {
 
 let body = {
     "student_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 };
 
@@ -3725,7 +3632,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentLeaveRequest/16';
+$url = 'http://localhost/api/studentLeaveRequest/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -3735,11 +3642,11 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'student_id' =&gt; 16,
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'reason' =&gt; 'architecto',
-            'status' =&gt; 'Approved',
-            'applied_on' =&gt; '2026-04-28T14:56:25',
+            'status' =&gt; 'Pending',
+            'applied_on' =&gt; '2026-05-03T17:21:18',
             'approved_by' =&gt; 16,
         ],
     ]
@@ -3752,14 +3659,14 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentLeaveRequest/16'
+url = 'http://localhost/api/studentLeaveRequest/1'
 payload = {
     "student_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 }
 headers = {
@@ -3857,10 +3764,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="PUTapi-studentLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3882,10 +3789,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="PUTapi-studentLeaveRequest--leave_request_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -3894,10 +3801,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="PUTapi-studentLeaveRequest--leave_request_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
@@ -3918,10 +3825,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-studentLeaveRequest--leave_request_id-"
-               value="Approved"
+               value="Pending"
                data-component="body">
     <br>
-<p>Example: <code>Approved</code></p>
+<p>Example: <code>Pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Pending</code></li> <li><code>Approved</code></li> <li><code>Rejected</code></li></ul>
         </div>
@@ -3932,10 +3839,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="applied_on"                data-endpoint="PUTapi-studentLeaveRequest--leave_request_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>approved_by</code></b>&nbsp;&nbsp;
@@ -3964,14 +3871,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentLeaveRequest/16" \
+    "http://localhost/api/studentLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentLeaveRequest/16"
+    "http://localhost/api/studentLeaveRequest/1"
 );
 
 const headers = {
@@ -3988,7 +3895,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentLeaveRequest/16';
+$url = 'http://localhost/api/studentLeaveRequest/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -4006,7 +3913,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentLeaveRequest/16'
+url = 'http://localhost/api/studentLeaveRequest/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -4098,10 +4005,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="DELETEapi-studentLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -4173,7 +4080,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherLeaveRequest">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -4185,38 +4092,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/teacherLeaveRequest?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/teacherLeaveRequest?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/teacherLeaveRequest?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/teacherLeaveRequest&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -4311,11 +4187,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"staff_id\": 16,
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"reason\": \"architecto\",
-    \"status\": \"Pending\",
-    \"applied_on\": \"2026-04-28T14:56:25\",
+    \"status\": \"Rejected\",
+    \"applied_on\": \"2026-05-03T17:21:18\",
     \"approved_by\": 16
 }"
 </code></pre></div>
@@ -4333,11 +4209,11 @@ const headers = {
 
 let body = {
     "staff_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Pending",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Rejected",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 };
 
@@ -4360,11 +4236,11 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'staff_id' =&gt; 16,
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'reason' =&gt; 'architecto',
-            'status' =&gt; 'Pending',
-            'applied_on' =&gt; '2026-04-28T14:56:25',
+            'status' =&gt; 'Rejected',
+            'applied_on' =&gt; '2026-05-03T17:21:18',
             'approved_by' =&gt; 16,
         ],
     ]
@@ -4380,11 +4256,11 @@ import json
 url = 'http://localhost/api/teacherLeaveRequest'
 payload = {
     "staff_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Pending",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Rejected",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 }
 headers = {
@@ -4490,10 +4366,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-teacherLeaveRequest"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -4502,10 +4378,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="POSTapi-teacherLeaveRequest"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
@@ -4526,10 +4402,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-teacherLeaveRequest"
-               value="Pending"
+               value="Rejected"
                data-component="body">
     <br>
-<p>Example: <code>Pending</code></p>
+<p>Example: <code>Rejected</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Pending</code></li> <li><code>Approved</code></li> <li><code>Rejected</code></li></ul>
         </div>
@@ -4540,10 +4416,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="applied_on"                data-endpoint="POSTapi-teacherLeaveRequest"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>approved_by</code></b>&nbsp;&nbsp;
@@ -4572,14 +4448,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/teacherLeaveRequest/16" \
+    --get "http://localhost/api/teacherLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherLeaveRequest/16"
+    "http://localhost/api/teacherLeaveRequest/1"
 );
 
 const headers = {
@@ -4596,7 +4472,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherLeaveRequest/16';
+$url = 'http://localhost/api/teacherLeaveRequest/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -4614,7 +4490,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherLeaveRequest/16'
+url = 'http://localhost/api/teacherLeaveRequest/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -4627,7 +4503,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherLeaveRequest--leave_request_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -4639,7 +4515,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\AttendanceManagement\\Models\\TeacherLeaveRequest] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -4722,10 +4598,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="GETapi-teacherLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -4742,16 +4618,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/teacherLeaveRequest/16" \
+    "http://localhost/api/teacherLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"staff_id\": 16,
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"reason\": \"architecto\",
-    \"status\": \"Approved\",
-    \"applied_on\": \"2026-04-28T14:56:25\",
+    \"status\": \"Pending\",
+    \"applied_on\": \"2026-05-03T17:21:18\",
     \"approved_by\": 16
 }"
 </code></pre></div>
@@ -4759,7 +4635,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherLeaveRequest/16"
+    "http://localhost/api/teacherLeaveRequest/1"
 );
 
 const headers = {
@@ -4769,11 +4645,11 @@ const headers = {
 
 let body = {
     "staff_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 };
 
@@ -4786,7 +4662,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherLeaveRequest/16';
+$url = 'http://localhost/api/teacherLeaveRequest/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -4796,11 +4672,11 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'staff_id' =&gt; 16,
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'reason' =&gt; 'architecto',
-            'status' =&gt; 'Approved',
-            'applied_on' =&gt; '2026-04-28T14:56:25',
+            'status' =&gt; 'Pending',
+            'applied_on' =&gt; '2026-05-03T17:21:18',
             'approved_by' =&gt; 16,
         ],
     ]
@@ -4813,14 +4689,14 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherLeaveRequest/16'
+url = 'http://localhost/api/teacherLeaveRequest/1'
 payload = {
     "staff_id": 16,
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "reason": "architecto",
-    "status": "Approved",
-    "applied_on": "2026-04-28T14:56:25",
+    "status": "Pending",
+    "applied_on": "2026-05-03T17:21:18",
     "approved_by": 16
 }
 headers = {
@@ -4918,10 +4794,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="PUTapi-teacherLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -4943,10 +4819,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="PUTapi-teacherLeaveRequest--leave_request_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -4955,10 +4831,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="PUTapi-teacherLeaveRequest--leave_request_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
@@ -4979,10 +4855,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-teacherLeaveRequest--leave_request_id-"
-               value="Approved"
+               value="Pending"
                data-component="body">
     <br>
-<p>Example: <code>Approved</code></p>
+<p>Example: <code>Pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Pending</code></li> <li><code>Approved</code></li> <li><code>Rejected</code></li></ul>
         </div>
@@ -4993,10 +4869,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="applied_on"                data-endpoint="PUTapi-teacherLeaveRequest--leave_request_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>approved_by</code></b>&nbsp;&nbsp;
@@ -5025,14 +4901,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/teacherLeaveRequest/16" \
+    "http://localhost/api/teacherLeaveRequest/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherLeaveRequest/16"
+    "http://localhost/api/teacherLeaveRequest/1"
 );
 
 const headers = {
@@ -5049,7 +4925,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherLeaveRequest/16';
+$url = 'http://localhost/api/teacherLeaveRequest/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5067,7 +4943,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherLeaveRequest/16'
+url = 'http://localhost/api/teacherLeaveRequest/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -5159,10 +5035,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="leave_request_id"                data-endpoint="DELETEapi-teacherLeaveRequest--leave_request_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the leave request. Example: <code>16</code></p>
+<p>The ID of the leave request. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -5234,7 +5110,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-holiday">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -5246,38 +5122,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/holiday?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/holiday?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/holiday?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/holiday&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -5372,7 +5217,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"title\": \"b\",
-    \"date\": \"2026-04-28T14:56:25\",
+    \"date\": \"2026-05-03T17:21:18\",
     \"description\": \"Eius et animi quos velit et.\",
     \"is_recurring\": true
 }"
@@ -5391,7 +5236,7 @@ const headers = {
 
 let body = {
     "title": "b",
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "description": "Eius et animi quos velit et.",
     "is_recurring": true
 };
@@ -5415,7 +5260,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'title' =&gt; 'b',
-            'date' =&gt; '2026-04-28T14:56:25',
+            'date' =&gt; '2026-05-03T17:21:18',
             'description' =&gt; 'Eius et animi quos velit et.',
             'is_recurring' =&gt; true,
         ],
@@ -5432,7 +5277,7 @@ import json
 url = 'http://localhost/api/holiday'
 payload = {
     "title": "b",
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "description": "Eius et animi quos velit et.",
     "is_recurring": true
 }
@@ -5539,10 +5384,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="POSTapi-holiday"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -5593,14 +5438,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/holiday/16" \
+    --get "http://localhost/api/holiday/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/holiday/16"
+    "http://localhost/api/holiday/1"
 );
 
 const headers = {
@@ -5617,7 +5462,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/holiday/16';
+$url = 'http://localhost/api/holiday/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -5635,7 +5480,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/holiday/16'
+url = 'http://localhost/api/holiday/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -5648,7 +5493,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-holiday--holiday_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -5660,7 +5505,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\AttendanceManagement\\Models\\Holiday] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -5743,10 +5588,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="holiday_id"                data-endpoint="GETapi-holiday--holiday_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the holiday. Example: <code>16</code></p>
+<p>The ID of the holiday. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -5763,12 +5608,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/holiday/16" \
+    "http://localhost/api/holiday/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"title\": \"b\",
-    \"date\": \"2026-04-28T14:56:25\",
+    \"date\": \"2026-05-03T17:21:18\",
     \"description\": \"Eius et animi quos velit et.\",
     \"is_recurring\": false
 }"
@@ -5777,7 +5622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/holiday/16"
+    "http://localhost/api/holiday/1"
 );
 
 const headers = {
@@ -5787,7 +5632,7 @@ const headers = {
 
 let body = {
     "title": "b",
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "description": "Eius et animi quos velit et.",
     "is_recurring": false
 };
@@ -5801,7 +5646,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/holiday/16';
+$url = 'http://localhost/api/holiday/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -5811,7 +5656,7 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'title' =&gt; 'b',
-            'date' =&gt; '2026-04-28T14:56:25',
+            'date' =&gt; '2026-05-03T17:21:18',
             'description' =&gt; 'Eius et animi quos velit et.',
             'is_recurring' =&gt; false,
         ],
@@ -5825,10 +5670,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/holiday/16'
+url = 'http://localhost/api/holiday/1'
 payload = {
     "title": "b",
-    "date": "2026-04-28T14:56:25",
+    "date": "2026-05-03T17:21:18",
     "description": "Eius et animi quos velit et.",
     "is_recurring": false
 }
@@ -5927,10 +5772,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="holiday_id"                data-endpoint="PUTapi-holiday--holiday_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the holiday. Example: <code>16</code></p>
+<p>The ID of the holiday. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -5952,10 +5797,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="PUTapi-holiday--holiday_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -6006,14 +5851,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/holiday/16" \
+    "http://localhost/api/holiday/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/holiday/16"
+    "http://localhost/api/holiday/1"
 );
 
 const headers = {
@@ -6030,7 +5875,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/holiday/16';
+$url = 'http://localhost/api/holiday/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -6048,7 +5893,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/holiday/16'
+url = 'http://localhost/api/holiday/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -6140,10 +5985,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="holiday_id"                data-endpoint="DELETEapi-holiday--holiday_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the holiday. Example: <code>16</code></p>
+<p>The ID of the holiday. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -6219,7 +6064,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-classes">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -6231,90 +6076,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;class_id&quot;: 1,
-            &quot;class_name&quot;: &quot;Class 10&quot;,
-            &quot;class_code&quot;: &quot;0011&quot;,
-            &quot;academic_year_id&quot;: 1,
-            &quot;description&quot;: &quot;d,jjfdk&quot;,
-            &quot;is_active&quot;: true,
-            &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-            &quot;academic_year&quot;: {
-                &quot;academic_year_id&quot;: 1,
-                &quot;year_range&quot;: &quot;2025-2026&quot;,
-                &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-                &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-                &quot;is_current&quot;: false,
-                &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-                &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;
-            },
-            &quot;sections&quot;: [
-                {
-                    &quot;section_id&quot;: 1,
-                    &quot;class_id&quot;: 1,
-                    &quot;section_name&quot;: &quot;A&quot;,
-                    &quot;capacity&quot;: 100,
-                    &quot;class_teacher_id&quot;: null,
-                    &quot;description&quot;: &quot;xcxcxc&quot;,
-                    &quot;is_active&quot;: true,
-                    &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-                    &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;
-                }
-            ],
-            &quot;batches&quot;: [
-                {
-                    &quot;batch_id&quot;: 1,
-                    &quot;class_id&quot;: 1,
-                    &quot;section_id&quot;: 1,
-                    &quot;academic_year_id&quot;: 1,
-                    &quot;batch_name&quot;: &quot;math&quot;,
-                    &quot;batch_code&quot;: &quot;1001&quot;,
-                    &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-                    &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-                    &quot;start_time&quot;: &quot;12:54&quot;,
-                    &quot;end_time&quot;: &quot;01:54&quot;,
-                    &quot;is_active&quot;: true,
-                    &quot;description&quot;: &quot;cvcv&quot;,
-                    &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-                    &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;
-                }
-            ]
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/classes?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/classes?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/classes?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/classes&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -6701,7 +6463,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-classes--schoolClass_class_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -6713,55 +6475,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;class_id&quot;: 1,
-    &quot;class_name&quot;: &quot;Class 10&quot;,
-    &quot;class_code&quot;: &quot;0011&quot;,
-    &quot;academic_year_id&quot;: 1,
-    &quot;description&quot;: &quot;d,jjfdk&quot;,
-    &quot;is_active&quot;: true,
-    &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-    &quot;academic_year&quot;: {
-        &quot;academic_year_id&quot;: 1,
-        &quot;year_range&quot;: &quot;2025-2026&quot;,
-        &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-        &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-        &quot;is_current&quot;: false,
-        &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-        &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;
-    },
-    &quot;sections&quot;: [
-        {
-            &quot;section_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_name&quot;: &quot;A&quot;,
-            &quot;capacity&quot;: 100,
-            &quot;class_teacher_id&quot;: null,
-            &quot;description&quot;: &quot;xcxcxc&quot;,
-            &quot;is_active&quot;: true,
-            &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;
-        }
-    ],
-    &quot;batches&quot;: [
-        {
-            &quot;batch_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_id&quot;: 1,
-            &quot;academic_year_id&quot;: 1,
-            &quot;batch_name&quot;: &quot;math&quot;,
-            &quot;batch_code&quot;: &quot;1001&quot;,
-            &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-            &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-            &quot;start_time&quot;: &quot;12:54&quot;,
-            &quot;end_time&quot;: &quot;01:54&quot;,
-            &quot;is_active&quot;: true,
-            &quot;description&quot;: &quot;cvcv&quot;,
-            &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;
-        }
-    ]
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -7328,7 +7042,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-sections">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -7340,60 +7054,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;section_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_name&quot;: &quot;A&quot;,
-            &quot;capacity&quot;: 100,
-            &quot;class_teacher_id&quot;: null,
-            &quot;description&quot;: &quot;xcxcxc&quot;,
-            &quot;is_active&quot;: true,
-            &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-            &quot;school_class&quot;: {
-                &quot;class_id&quot;: 1,
-                &quot;class_name&quot;: &quot;Class 10&quot;,
-                &quot;class_code&quot;: &quot;0011&quot;,
-                &quot;academic_year_id&quot;: 1,
-                &quot;description&quot;: &quot;d,jjfdk&quot;,
-                &quot;is_active&quot;: true,
-                &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-            }
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/sections?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/sections?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/sections?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/sections&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -7492,7 +7153,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"class_teacher_id\": 16,
     \"capacity\": 39,
     \"description\": \"Eius et animi quos velit et.\",
-    \"is_active\": false
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -7513,7 +7174,7 @@ let body = {
     "class_teacher_id": 16,
     "capacity": 39,
     "description": "Eius et animi quos velit et.",
-    "is_active": false
+    "is_active": true
 };
 
 fetch(url, {
@@ -7539,7 +7200,7 @@ $response = $client-&gt;post(
             'class_teacher_id' =&gt; 16,
             'capacity' =&gt; 39,
             'description' =&gt; 'Eius et animi quos velit et.',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
         ],
     ]
 );
@@ -7558,7 +7219,7 @@ payload = {
     "class_teacher_id": 16,
     "capacity": 39,
     "description": "Eius et animi quos velit et.",
-    "is_active": false
+    "is_active": true
 }
 headers = {
   'Content-Type': 'application/json',
@@ -7724,7 +7385,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -7796,7 +7457,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-sections--section_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -7808,43 +7469,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;section_id&quot;: 1,
-    &quot;class_id&quot;: 1,
-    &quot;section_name&quot;: &quot;A&quot;,
-    &quot;capacity&quot;: 100,
-    &quot;class_teacher_id&quot;: null,
-    &quot;description&quot;: &quot;xcxcxc&quot;,
-    &quot;is_active&quot;: true,
-    &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-    &quot;school_class&quot;: {
-        &quot;class_id&quot;: 1,
-        &quot;class_name&quot;: &quot;Class 10&quot;,
-        &quot;class_code&quot;: &quot;0011&quot;,
-        &quot;academic_year_id&quot;: 1,
-        &quot;description&quot;: &quot;d,jjfdk&quot;,
-        &quot;is_active&quot;: true,
-        &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-    },
-    &quot;batches&quot;: [
-        {
-            &quot;batch_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_id&quot;: 1,
-            &quot;academic_year_id&quot;: 1,
-            &quot;batch_name&quot;: &quot;math&quot;,
-            &quot;batch_code&quot;: &quot;1001&quot;,
-            &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-            &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-            &quot;start_time&quot;: &quot;12:54&quot;,
-            &quot;end_time&quot;: &quot;01:54&quot;,
-            &quot;is_active&quot;: true,
-            &quot;description&quot;: &quot;cvcv&quot;,
-            &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;
-        }
-    ]
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -7955,7 +7580,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"class_id\": 16,
     \"capacity\": 39,
     \"description\": \"Eius et animi quos velit et.\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -7975,7 +7600,7 @@ let body = {
     "class_id": 16,
     "capacity": 39,
     "description": "Eius et animi quos velit et.",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -8000,7 +7625,7 @@ $response = $client-&gt;put(
             'class_id' =&gt; 16,
             'capacity' =&gt; 39,
             'description' =&gt; 'Eius et animi quos velit et.',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -8018,7 +7643,7 @@ payload = {
     "class_id": 16,
     "capacity": 39,
     "description": "Eius et animi quos velit et.",
-    "is_active": true
+    "is_active": false
 }
 headers = {
   'Content-Type': 'application/json',
@@ -8189,7 +7814,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -8415,7 +8040,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-batches">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -8427,87 +8052,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;batch_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_id&quot;: 1,
-            &quot;academic_year_id&quot;: 1,
-            &quot;batch_name&quot;: &quot;math&quot;,
-            &quot;batch_code&quot;: &quot;1001&quot;,
-            &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-            &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-            &quot;start_time&quot;: &quot;12:54&quot;,
-            &quot;end_time&quot;: &quot;01:54&quot;,
-            &quot;is_active&quot;: true,
-            &quot;description&quot;: &quot;cvcv&quot;,
-            &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-            &quot;school_class&quot;: {
-                &quot;class_id&quot;: 1,
-                &quot;class_name&quot;: &quot;Class 10&quot;,
-                &quot;class_code&quot;: &quot;0011&quot;,
-                &quot;academic_year_id&quot;: 1,
-                &quot;description&quot;: &quot;d,jjfdk&quot;,
-                &quot;is_active&quot;: true,
-                &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-            },
-            &quot;section&quot;: {
-                &quot;section_id&quot;: 1,
-                &quot;class_id&quot;: 1,
-                &quot;section_name&quot;: &quot;A&quot;,
-                &quot;capacity&quot;: 100,
-                &quot;class_teacher_id&quot;: null,
-                &quot;description&quot;: &quot;xcxcxc&quot;,
-                &quot;is_active&quot;: true,
-                &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;
-            },
-            &quot;academic_year&quot;: {
-                &quot;academic_year_id&quot;: 1,
-                &quot;year_range&quot;: &quot;2025-2026&quot;,
-                &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-                &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-                &quot;is_current&quot;: false,
-                &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-                &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-                &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;
-            },
-            &quot;enrollments&quot;: []
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/batches?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/batches?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/batches?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/batches&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -8606,8 +8151,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"academic_year_id\": 16,
     \"batch_name\": \"n\",
     \"batch_code\": \"gzmiyvdljnikhway\",
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"is_active\": true,
     \"description\": \"Eius et animi quos velit et.\"
 }"
@@ -8630,8 +8175,8 @@ let body = {
     "academic_year_id": 16,
     "batch_name": "n",
     "batch_code": "gzmiyvdljnikhway",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "is_active": true,
     "description": "Eius et animi quos velit et."
 };
@@ -8659,8 +8204,8 @@ $response = $client-&gt;post(
             'academic_year_id' =&gt; 16,
             'batch_name' =&gt; 'n',
             'batch_code' =&gt; 'gzmiyvdljnikhway',
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'is_active' =&gt; true,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
@@ -8681,8 +8226,8 @@ payload = {
     "academic_year_id": 16,
     "batch_name": "n",
     "batch_code": "gzmiyvdljnikhway",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "is_active": true,
     "description": "Eius et animi quos velit et."
 }
@@ -8837,10 +8382,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-batches"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -8849,10 +8394,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="POSTapi-batches"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -8958,7 +8503,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-batches--batch_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -8970,52 +8515,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;batch_id&quot;: 1,
-    &quot;class_id&quot;: 1,
-    &quot;section_id&quot;: 1,
-    &quot;academic_year_id&quot;: 1,
-    &quot;batch_name&quot;: &quot;math&quot;,
-    &quot;batch_code&quot;: &quot;1001&quot;,
-    &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-    &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-    &quot;start_time&quot;: &quot;12:54&quot;,
-    &quot;end_time&quot;: &quot;01:54&quot;,
-    &quot;is_active&quot;: true,
-    &quot;description&quot;: &quot;cvcv&quot;,
-    &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-    &quot;school_class&quot;: {
-        &quot;class_id&quot;: 1,
-        &quot;class_name&quot;: &quot;Class 10&quot;,
-        &quot;class_code&quot;: &quot;0011&quot;,
-        &quot;academic_year_id&quot;: 1,
-        &quot;description&quot;: &quot;d,jjfdk&quot;,
-        &quot;is_active&quot;: true,
-        &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-    },
-    &quot;section&quot;: {
-        &quot;section_id&quot;: 1,
-        &quot;class_id&quot;: 1,
-        &quot;section_name&quot;: &quot;A&quot;,
-        &quot;capacity&quot;: 100,
-        &quot;class_teacher_id&quot;: null,
-        &quot;description&quot;: &quot;xcxcxc&quot;,
-        &quot;is_active&quot;: true,
-        &quot;created_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-04-27T15:23:08.000000Z&quot;
-    },
-    &quot;academic_year&quot;: {
-        &quot;academic_year_id&quot;: 1,
-        &quot;year_range&quot;: &quot;2025-2026&quot;,
-        &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-        &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-        &quot;is_current&quot;: false,
-        &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-        &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;
-    },
-    &quot;enrollments&quot;: []
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -9126,11 +8626,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"section_id\": 16,
     \"academic_year_id\": 16,
     \"batch_name\": \"n\",
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\",
-    \"is_active\": false,
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\",
+    \"is_active\": true,
     \"description\": \"Eius et animi quos velit et.\"
 }"
 </code></pre></div>
@@ -9151,11 +8651,11 @@ let body = {
     "section_id": 16,
     "academic_year_id": 16,
     "batch_name": "n",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
-    "is_active": false,
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
+    "is_active": true,
     "description": "Eius et animi quos velit et."
 };
 
@@ -9181,11 +8681,11 @@ $response = $client-&gt;put(
             'section_id' =&gt; 16,
             'academic_year_id' =&gt; 16,
             'batch_name' =&gt; 'n',
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
-            'is_active' =&gt; false,
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
+            'is_active' =&gt; true,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
     ]
@@ -9204,11 +8704,11 @@ payload = {
     "section_id": 16,
     "academic_year_id": 16,
     "batch_name": "n",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
-    "is_active": false,
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
+    "is_active": true,
     "description": "Eius et animi quos velit et."
 }
 headers = {
@@ -9379,10 +8879,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="PUTapi-batches--batch_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -9391,10 +8891,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="PUTapi-batches--batch_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -9403,10 +8903,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="PUTapi-batches--batch_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -9415,10 +8915,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="PUTapi-batches--batch_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -9440,7 +8940,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -9678,7 +9178,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-academic-years">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -9690,79 +9190,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;academic_year_id&quot;: 1,
-            &quot;year_range&quot;: &quot;2025-2026&quot;,
-            &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-            &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-            &quot;is_current&quot;: false,
-            &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-            &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-            &quot;classes&quot;: [
-                {
-                    &quot;class_id&quot;: 1,
-                    &quot;class_name&quot;: &quot;Class 10&quot;,
-                    &quot;class_code&quot;: &quot;0011&quot;,
-                    &quot;academic_year_id&quot;: 1,
-                    &quot;description&quot;: &quot;d,jjfdk&quot;,
-                    &quot;is_active&quot;: true,
-                    &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-                    &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-                }
-            ],
-            &quot;batches&quot;: [
-                {
-                    &quot;batch_id&quot;: 1,
-                    &quot;class_id&quot;: 1,
-                    &quot;section_id&quot;: 1,
-                    &quot;academic_year_id&quot;: 1,
-                    &quot;batch_name&quot;: &quot;math&quot;,
-                    &quot;batch_code&quot;: &quot;1001&quot;,
-                    &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-                    &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-                    &quot;start_time&quot;: &quot;12:54&quot;,
-                    &quot;end_time&quot;: &quot;01:54&quot;,
-                    &quot;is_active&quot;: true,
-                    &quot;description&quot;: &quot;cvcv&quot;,
-                    &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-                    &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;
-                }
-            ]
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/academic-years?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/academic-years?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/academic-years?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/academic-years&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -9857,9 +9285,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"year_range\": \"bngzmiyvdljnikhw\",
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
-    \"is_current\": true,
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
+    \"is_current\": false,
     \"description\": \"Eius et animi quos velit et.\"
 }"
 </code></pre></div>
@@ -9877,9 +9305,9 @@ const headers = {
 
 let body = {
     "year_range": "bngzmiyvdljnikhw",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
-    "is_current": true,
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
+    "is_current": false,
     "description": "Eius et animi quos velit et."
 };
 
@@ -9902,9 +9330,9 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'year_range' =&gt; 'bngzmiyvdljnikhw',
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
-            'is_current' =&gt; true,
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
+            'is_current' =&gt; false,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
     ]
@@ -9920,9 +9348,9 @@ import json
 url = 'http://localhost/api/academic-years'
 payload = {
     "year_range": "bngzmiyvdljnikhw",
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
-    "is_current": true,
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
+    "is_current": false,
     "description": "Eius et animi quos velit et."
 }
 headers = {
@@ -10028,10 +9456,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-academic-years"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -10040,10 +9468,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="POSTapi-academic-years"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_current</code></b>&nbsp;&nbsp;
@@ -10065,7 +9493,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -10149,7 +9577,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-academic-years--academic_year_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -10161,44 +9589,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;academic_year_id&quot;: 1,
-    &quot;year_range&quot;: &quot;2025-2026&quot;,
-    &quot;start_date&quot;: &quot;2025-10-10T00:00:00.000000Z&quot;,
-    &quot;end_date&quot;: &quot;2026-10-10T00:00:00.000000Z&quot;,
-    &quot;is_current&quot;: false,
-    &quot;description&quot;: &quot;sdhfksdhkhksdhk&quot;,
-    &quot;created_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-04-26T09:30:51.000000Z&quot;,
-    &quot;classes&quot;: [
-        {
-            &quot;class_id&quot;: 1,
-            &quot;class_name&quot;: &quot;Class 10&quot;,
-            &quot;class_code&quot;: &quot;0011&quot;,
-            &quot;academic_year_id&quot;: 1,
-            &quot;description&quot;: &quot;d,jjfdk&quot;,
-            &quot;is_active&quot;: true,
-            &quot;created_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T01:41:47.000000Z&quot;
-        }
-    ],
-    &quot;batches&quot;: [
-        {
-            &quot;batch_id&quot;: 1,
-            &quot;class_id&quot;: 1,
-            &quot;section_id&quot;: 1,
-            &quot;academic_year_id&quot;: 1,
-            &quot;batch_name&quot;: &quot;math&quot;,
-            &quot;batch_code&quot;: &quot;1001&quot;,
-            &quot;start_date&quot;: &quot;2025-10-20T00:00:00.000000Z&quot;,
-            &quot;end_date&quot;: &quot;2026-10-20T00:00:00.000000Z&quot;,
-            &quot;start_time&quot;: &quot;12:54&quot;,
-            &quot;end_time&quot;: &quot;01:54&quot;,
-            &quot;is_active&quot;: true,
-            &quot;description&quot;: &quot;cvcv&quot;,
-            &quot;created_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:24:26.000000Z&quot;
-        }
-    ]
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -10305,8 +9696,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"start_date\": \"2026-04-28T14:56:25\",
-    \"end_date\": \"2052-05-21\",
+    \"start_date\": \"2026-05-03T17:21:18\",
+    \"end_date\": \"2052-05-26\",
     \"is_current\": true,
     \"description\": \"Eius et animi quos velit et.\"
 }"
@@ -10324,8 +9715,8 @@ const headers = {
 };
 
 let body = {
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "is_current": true,
     "description": "Eius et animi quos velit et."
 };
@@ -10348,8 +9739,8 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'start_date' =&gt; '2026-04-28T14:56:25',
-            'end_date' =&gt; '2052-05-21',
+            'start_date' =&gt; '2026-05-03T17:21:18',
+            'end_date' =&gt; '2052-05-26',
             'is_current' =&gt; true,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
@@ -10365,8 +9756,8 @@ import json
 
 url = 'http://localhost/api/academic-years/1'
 payload = {
-    "start_date": "2026-04-28T14:56:25",
-    "end_date": "2052-05-21",
+    "start_date": "2026-05-03T17:21:18",
+    "end_date": "2052-05-26",
     "is_current": true,
     "description": "Eius et animi quos velit et."
 }
@@ -10490,10 +9881,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="PUTapi-academic-years--academic_year_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:18"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
@@ -10502,10 +9893,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_date"                data-endpoint="PUTapi-academic-years--academic_year_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_current</code></b>&nbsp;&nbsp;
@@ -10769,7 +10160,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-message">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -10781,38 +10172,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/message?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/message?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/message?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/message&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -10909,8 +10269,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"title\": \"b\",
     \"content\": \"architecto\",
     \"message_type\": \"Email\",
-    \"scheduled_at\": \"2026-04-28T14:56:26\",
-    \"priority\": \"Normal\",
+    \"scheduled_at\": \"2026-05-03T17:21:19\",
+    \"priority\": \"High\",
     \"is_sent\": true
 }"
 </code></pre></div>
@@ -10930,8 +10290,8 @@ let body = {
     "title": "b",
     "content": "architecto",
     "message_type": "Email",
-    "scheduled_at": "2026-04-28T14:56:26",
-    "priority": "Normal",
+    "scheduled_at": "2026-05-03T17:21:19",
+    "priority": "High",
     "is_sent": true
 };
 
@@ -10956,8 +10316,8 @@ $response = $client-&gt;post(
             'title' =&gt; 'b',
             'content' =&gt; 'architecto',
             'message_type' =&gt; 'Email',
-            'scheduled_at' =&gt; '2026-04-28T14:56:26',
-            'priority' =&gt; 'Normal',
+            'scheduled_at' =&gt; '2026-05-03T17:21:19',
+            'priority' =&gt; 'High',
             'is_sent' =&gt; true,
         ],
     ]
@@ -10975,8 +10335,8 @@ payload = {
     "title": "b",
     "content": "architecto",
     "message_type": "Email",
-    "scheduled_at": "2026-04-28T14:56:26",
-    "priority": "Normal",
+    "scheduled_at": "2026-05-03T17:21:19",
+    "priority": "High",
     "is_sent": true
 }
 headers = {
@@ -11120,10 +10480,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-message"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
@@ -11132,10 +10492,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="priority"                data-endpoint="POSTapi-message"
-               value="Normal"
+               value="High"
                data-component="body">
     <br>
-<p>Example: <code>Normal</code></p>
+<p>Example: <code>High</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Low</code></li> <li><code>Normal</code></li> <li><code>High</code></li> <li><code>Urgent</code></li></ul>
         </div>
@@ -11176,14 +10536,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/message/16" \
+    --get "http://localhost/api/message/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/message/16"
+    "http://localhost/api/message/1"
 );
 
 const headers = {
@@ -11200,7 +10560,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/message/16';
+$url = 'http://localhost/api/message/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -11218,7 +10578,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/message/16'
+url = 'http://localhost/api/message/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -11231,7 +10591,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-message--message_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -11243,7 +10603,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\CommunicationManagement\\Models\\Message] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -11326,10 +10686,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="message_id"                data-endpoint="GETapi-message--message_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the message. Example: <code>16</code></p>
+<p>The ID of the message. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -11346,23 +10706,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/message/16" \
+    "http://localhost/api/message/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"title\": \"b\",
     \"content\": \"architecto\",
     \"message_type\": \"SMS\",
-    \"scheduled_at\": \"2026-04-28T14:56:26\",
-    \"priority\": \"Low\",
-    \"is_sent\": true
+    \"scheduled_at\": \"2026-05-03T17:21:19\",
+    \"priority\": \"Normal\",
+    \"is_sent\": false
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/message/16"
+    "http://localhost/api/message/1"
 );
 
 const headers = {
@@ -11374,9 +10734,9 @@ let body = {
     "title": "b",
     "content": "architecto",
     "message_type": "SMS",
-    "scheduled_at": "2026-04-28T14:56:26",
-    "priority": "Low",
-    "is_sent": true
+    "scheduled_at": "2026-05-03T17:21:19",
+    "priority": "Normal",
+    "is_sent": false
 };
 
 fetch(url, {
@@ -11388,7 +10748,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/message/16';
+$url = 'http://localhost/api/message/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -11400,9 +10760,9 @@ $response = $client-&gt;put(
             'title' =&gt; 'b',
             'content' =&gt; 'architecto',
             'message_type' =&gt; 'SMS',
-            'scheduled_at' =&gt; '2026-04-28T14:56:26',
-            'priority' =&gt; 'Low',
-            'is_sent' =&gt; true,
+            'scheduled_at' =&gt; '2026-05-03T17:21:19',
+            'priority' =&gt; 'Normal',
+            'is_sent' =&gt; false,
         ],
     ]
 );
@@ -11414,14 +10774,14 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/message/16'
+url = 'http://localhost/api/message/1'
 payload = {
     "title": "b",
     "content": "architecto",
     "message_type": "SMS",
-    "scheduled_at": "2026-04-28T14:56:26",
-    "priority": "Low",
-    "is_sent": true
+    "scheduled_at": "2026-05-03T17:21:19",
+    "priority": "Normal",
+    "is_sent": false
 }
 headers = {
   'Content-Type': 'application/json',
@@ -11518,10 +10878,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="message_id"                data-endpoint="PUTapi-message--message_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the message. Example: <code>16</code></p>
+<p>The ID of the message. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -11581,10 +10941,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="PUTapi-message--message_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
@@ -11593,10 +10953,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="priority"                data-endpoint="PUTapi-message--message_id-"
-               value="Low"
+               value="Normal"
                data-component="body">
     <br>
-<p>Example: <code>Low</code></p>
+<p>Example: <code>Normal</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Low</code></li> <li><code>Normal</code></li> <li><code>High</code></li> <li><code>Urgent</code></li></ul>
         </div>
@@ -11620,7 +10980,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -11637,14 +10997,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/message/16" \
+    "http://localhost/api/message/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/message/16"
+    "http://localhost/api/message/1"
 );
 
 const headers = {
@@ -11661,7 +11021,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/message/16';
+$url = 'http://localhost/api/message/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -11679,7 +11039,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/message/16'
+url = 'http://localhost/api/message/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -11771,10 +11131,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="message_id"                data-endpoint="DELETEapi-message--message_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the message. Example: <code>16</code></p>
+<p>The ID of the message. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -11846,7 +11206,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-messageRecipient">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -11858,38 +11218,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/messageRecipient?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/messageRecipient?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/messageRecipient?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/messageRecipient&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -11986,8 +11315,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"message_id\": \"architecto\",
     \"user_id\": \"architecto\",
     \"status\": \"Failed\",
-    \"delivered_at\": \"2026-04-28T14:56:26\",
-    \"read_at\": \"2026-04-28T14:56:26\"
+    \"delivered_at\": \"2026-05-03T17:21:19\",
+    \"read_at\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
@@ -12006,8 +11335,8 @@ let body = {
     "message_id": "architecto",
     "user_id": "architecto",
     "status": "Failed",
-    "delivered_at": "2026-04-28T14:56:26",
-    "read_at": "2026-04-28T14:56:26"
+    "delivered_at": "2026-05-03T17:21:19",
+    "read_at": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -12031,8 +11360,8 @@ $response = $client-&gt;post(
             'message_id' =&gt; 'architecto',
             'user_id' =&gt; 'architecto',
             'status' =&gt; 'Failed',
-            'delivered_at' =&gt; '2026-04-28T14:56:26',
-            'read_at' =&gt; '2026-04-28T14:56:26',
+            'delivered_at' =&gt; '2026-05-03T17:21:19',
+            'read_at' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -12049,8 +11378,8 @@ payload = {
     "message_id": "architecto",
     "user_id": "architecto",
     "status": "Failed",
-    "delivered_at": "2026-04-28T14:56:26",
-    "read_at": "2026-04-28T14:56:26"
+    "delivered_at": "2026-05-03T17:21:19",
+    "read_at": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -12181,10 +11510,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="delivered_at"                data-endpoint="POSTapi-messageRecipient"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>read_at</code></b>&nbsp;&nbsp;
@@ -12193,10 +11522,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="read_at"                data-endpoint="POSTapi-messageRecipient"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -12213,14 +11542,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/messageRecipient/16" \
+    --get "http://localhost/api/messageRecipient/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/messageRecipient/16"
+    "http://localhost/api/messageRecipient/1"
 );
 
 const headers = {
@@ -12237,7 +11566,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/messageRecipient/16';
+$url = 'http://localhost/api/messageRecipient/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -12255,7 +11584,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/messageRecipient/16'
+url = 'http://localhost/api/messageRecipient/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -12268,7 +11597,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-messageRecipient--recipient_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -12280,7 +11609,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\CommunicationManagement\\Models\\MessageRecipient] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -12363,10 +11692,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="recipient_id"                data-endpoint="GETapi-messageRecipient--recipient_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the recipient. Example: <code>16</code></p>
+<p>The ID of the recipient. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -12383,22 +11712,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/messageRecipient/16" \
+    "http://localhost/api/messageRecipient/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"message_id\": \"architecto\",
     \"user_id\": \"architecto\",
-    \"status\": \"Read\",
-    \"delivered_at\": \"2026-04-28T14:56:26\",
-    \"read_at\": \"2026-04-28T14:56:26\"
+    \"status\": \"Sent\",
+    \"delivered_at\": \"2026-05-03T17:21:19\",
+    \"read_at\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/messageRecipient/16"
+    "http://localhost/api/messageRecipient/1"
 );
 
 const headers = {
@@ -12409,9 +11738,9 @@ const headers = {
 let body = {
     "message_id": "architecto",
     "user_id": "architecto",
-    "status": "Read",
-    "delivered_at": "2026-04-28T14:56:26",
-    "read_at": "2026-04-28T14:56:26"
+    "status": "Sent",
+    "delivered_at": "2026-05-03T17:21:19",
+    "read_at": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -12423,7 +11752,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/messageRecipient/16';
+$url = 'http://localhost/api/messageRecipient/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -12434,9 +11763,9 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'message_id' =&gt; 'architecto',
             'user_id' =&gt; 'architecto',
-            'status' =&gt; 'Read',
-            'delivered_at' =&gt; '2026-04-28T14:56:26',
-            'read_at' =&gt; '2026-04-28T14:56:26',
+            'status' =&gt; 'Sent',
+            'delivered_at' =&gt; '2026-05-03T17:21:19',
+            'read_at' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -12448,13 +11777,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/messageRecipient/16'
+url = 'http://localhost/api/messageRecipient/1'
 payload = {
     "message_id": "architecto",
     "user_id": "architecto",
-    "status": "Read",
-    "delivered_at": "2026-04-28T14:56:26",
-    "read_at": "2026-04-28T14:56:26"
+    "status": "Sent",
+    "delivered_at": "2026-05-03T17:21:19",
+    "read_at": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -12551,10 +11880,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="recipient_id"                data-endpoint="PUTapi-messageRecipient--recipient_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the recipient. Example: <code>16</code></p>
+<p>The ID of the recipient. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -12588,10 +11917,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-messageRecipient--recipient_id-"
-               value="Read"
+               value="Sent"
                data-component="body">
     <br>
-<p>Example: <code>Read</code></p>
+<p>Example: <code>Sent</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Pending</code></li> <li><code>Sent</code></li> <li><code>Failed</code></li> <li><code>Read</code></li></ul>
         </div>
@@ -12602,10 +11931,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="delivered_at"                data-endpoint="PUTapi-messageRecipient--recipient_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>read_at</code></b>&nbsp;&nbsp;
@@ -12614,10 +11943,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="read_at"                data-endpoint="PUTapi-messageRecipient--recipient_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -12634,14 +11963,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/messageRecipient/16" \
+    "http://localhost/api/messageRecipient/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/messageRecipient/16"
+    "http://localhost/api/messageRecipient/1"
 );
 
 const headers = {
@@ -12658,7 +11987,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/messageRecipient/16';
+$url = 'http://localhost/api/messageRecipient/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -12676,7 +12005,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/messageRecipient/16'
+url = 'http://localhost/api/messageRecipient/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -12768,10 +12097,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="recipient_id"                data-endpoint="DELETEapi-messageRecipient--recipient_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the recipient. Example: <code>16</code></p>
+<p>The ID of the recipient. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -12843,7 +12172,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-circular">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -12855,38 +12184,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/circular?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/circular?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/circular?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/circular&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -12982,8 +12280,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"title\": \"b\",
     \"content\": \"architecto\",
-    \"issued_date\": \"2026-04-28T14:56:26\",
-    \"target_audience\": \"Students\",
+    \"issued_date\": \"2026-05-03T17:21:19\",
+    \"target_audience\": \"Staff\",
     \"attachment_url\": \"http:\\/\\/bailey.com\\/\"
 }"
 </code></pre></div>
@@ -13002,8 +12300,8 @@ const headers = {
 let body = {
     "title": "b",
     "content": "architecto",
-    "issued_date": "2026-04-28T14:56:26",
-    "target_audience": "Students",
+    "issued_date": "2026-05-03T17:21:19",
+    "target_audience": "Staff",
     "attachment_url": "http:\/\/bailey.com\/"
 };
 
@@ -13027,8 +12325,8 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'title' =&gt; 'b',
             'content' =&gt; 'architecto',
-            'issued_date' =&gt; '2026-04-28T14:56:26',
-            'target_audience' =&gt; 'Students',
+            'issued_date' =&gt; '2026-05-03T17:21:19',
+            'target_audience' =&gt; 'Staff',
             'attachment_url' =&gt; 'http://bailey.com/',
         ],
     ]
@@ -13045,8 +12343,8 @@ url = 'http://localhost/api/circular'
 payload = {
     "title": "b",
     "content": "architecto",
-    "issued_date": "2026-04-28T14:56:26",
-    "target_audience": "Students",
+    "issued_date": "2026-05-03T17:21:19",
+    "target_audience": "Staff",
     "attachment_url": "http:\/\/bailey.com\/"
 }
 headers = {
@@ -13176,10 +12474,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="issued_date"                data-endpoint="POSTapi-circular"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>target_audience</code></b>&nbsp;&nbsp;
@@ -13188,10 +12486,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="target_audience"                data-endpoint="POSTapi-circular"
-               value="Students"
+               value="Staff"
                data-component="body">
     <br>
-<p>Example: <code>Students</code></p>
+<p>Example: <code>Staff</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>All</code></li> <li><code>Students</code></li> <li><code>Parents</code></li> <li><code>Teachers</code></li> <li><code>Staff</code></li></ul>
         </div>
@@ -13222,14 +12520,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/circular/16" \
+    --get "http://localhost/api/circular/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/circular/16"
+    "http://localhost/api/circular/1"
 );
 
 const headers = {
@@ -13246,7 +12544,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/circular/16';
+$url = 'http://localhost/api/circular/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -13264,7 +12562,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/circular/16'
+url = 'http://localhost/api/circular/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -13277,7 +12575,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-circular--circular_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -13289,7 +12587,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\CommunicationManagement\\Models\\Circular] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -13372,10 +12670,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="circular_id"                data-endpoint="GETapi-circular--circular_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the circular. Example: <code>16</code></p>
+<p>The ID of the circular. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -13392,14 +12690,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/circular/16" \
+    "http://localhost/api/circular/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"title\": \"b\",
     \"content\": \"architecto\",
-    \"issued_date\": \"2026-04-28T14:56:26\",
-    \"target_audience\": \"Teachers\",
+    \"issued_date\": \"2026-05-03T17:21:19\",
+    \"target_audience\": \"Parents\",
     \"attachment_url\": \"http:\\/\\/bailey.com\\/\"
 }"
 </code></pre></div>
@@ -13407,7 +12705,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/circular/16"
+    "http://localhost/api/circular/1"
 );
 
 const headers = {
@@ -13418,8 +12716,8 @@ const headers = {
 let body = {
     "title": "b",
     "content": "architecto",
-    "issued_date": "2026-04-28T14:56:26",
-    "target_audience": "Teachers",
+    "issued_date": "2026-05-03T17:21:19",
+    "target_audience": "Parents",
     "attachment_url": "http:\/\/bailey.com\/"
 };
 
@@ -13432,7 +12730,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/circular/16';
+$url = 'http://localhost/api/circular/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -13443,8 +12741,8 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'title' =&gt; 'b',
             'content' =&gt; 'architecto',
-            'issued_date' =&gt; '2026-04-28T14:56:26',
-            'target_audience' =&gt; 'Teachers',
+            'issued_date' =&gt; '2026-05-03T17:21:19',
+            'target_audience' =&gt; 'Parents',
             'attachment_url' =&gt; 'http://bailey.com/',
         ],
     ]
@@ -13457,12 +12755,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/circular/16'
+url = 'http://localhost/api/circular/1'
 payload = {
     "title": "b",
     "content": "architecto",
-    "issued_date": "2026-04-28T14:56:26",
-    "target_audience": "Teachers",
+    "issued_date": "2026-05-03T17:21:19",
+    "target_audience": "Parents",
     "attachment_url": "http:\/\/bailey.com\/"
 }
 headers = {
@@ -13560,10 +12858,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="circular_id"                data-endpoint="PUTapi-circular--circular_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the circular. Example: <code>16</code></p>
+<p>The ID of the circular. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -13609,10 +12907,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="issued_date"                data-endpoint="PUTapi-circular--circular_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>target_audience</code></b>&nbsp;&nbsp;
@@ -13621,10 +12919,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="target_audience"                data-endpoint="PUTapi-circular--circular_id-"
-               value="Teachers"
+               value="Parents"
                data-component="body">
     <br>
-<p>Example: <code>Teachers</code></p>
+<p>Example: <code>Parents</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>All</code></li> <li><code>Students</code></li> <li><code>Parents</code></li> <li><code>Teachers</code></li> <li><code>Staff</code></li></ul>
         </div>
@@ -13655,14 +12953,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/circular/16" \
+    "http://localhost/api/circular/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/circular/16"
+    "http://localhost/api/circular/1"
 );
 
 const headers = {
@@ -13679,7 +12977,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/circular/16';
+$url = 'http://localhost/api/circular/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -13697,7 +12995,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/circular/16'
+url = 'http://localhost/api/circular/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -13789,10 +13087,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="circular_id"                data-endpoint="DELETEapi-circular--circular_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the circular. Example: <code>16</code></p>
+<p>The ID of the circular. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -13864,7 +13162,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-notificationSetting">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -13876,38 +13174,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/notificationSetting?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/notificationSetting?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/notificationSetting?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/notificationSetting&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -14003,10 +13270,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"user_id\": \"architecto\",
     \"allow_sms\": false,
-    \"allow_email\": true,
+    \"allow_email\": false,
     \"allow_app\": true,
-    \"allow_announcements\": false,
-    \"allow_circulars\": true
+    \"allow_announcements\": true,
+    \"allow_circulars\": false
 }"
 </code></pre></div>
 
@@ -14024,10 +13291,10 @@ const headers = {
 let body = {
     "user_id": "architecto",
     "allow_sms": false,
-    "allow_email": true,
+    "allow_email": false,
     "allow_app": true,
-    "allow_announcements": false,
-    "allow_circulars": true
+    "allow_announcements": true,
+    "allow_circulars": false
 };
 
 fetch(url, {
@@ -14050,10 +13317,10 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'user_id' =&gt; 'architecto',
             'allow_sms' =&gt; false,
-            'allow_email' =&gt; true,
+            'allow_email' =&gt; false,
             'allow_app' =&gt; true,
-            'allow_announcements' =&gt; false,
-            'allow_circulars' =&gt; true,
+            'allow_announcements' =&gt; true,
+            'allow_circulars' =&gt; false,
         ],
     ]
 );
@@ -14069,10 +13336,10 @@ url = 'http://localhost/api/notificationSetting'
 payload = {
     "user_id": "architecto",
     "allow_sms": false,
-    "allow_email": true,
+    "allow_email": false,
     "allow_app": true,
-    "allow_announcements": false,
-    "allow_circulars": true
+    "allow_announcements": true,
+    "allow_circulars": false
 }
 headers = {
   'Content-Type': 'application/json',
@@ -14212,7 +13479,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>allow_app</code></b>&nbsp;&nbsp;
@@ -14256,7 +13523,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>allow_circulars</code></b>&nbsp;&nbsp;
@@ -14278,7 +13545,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -14295,14 +13562,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/notificationSetting/16" \
+    --get "http://localhost/api/notificationSetting/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/notificationSetting/16"
+    "http://localhost/api/notificationSetting/1"
 );
 
 const headers = {
@@ -14319,7 +13586,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/notificationSetting/16';
+$url = 'http://localhost/api/notificationSetting/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -14337,7 +13604,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/notificationSetting/16'
+url = 'http://localhost/api/notificationSetting/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -14350,7 +13617,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-notificationSetting--setting_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -14362,7 +13629,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\CommunicationManagement\\Models\\NotificationSetting] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -14445,10 +13712,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="setting_id"                data-endpoint="GETapi-notificationSetting--setting_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the setting. Example: <code>16</code></p>
+<p>The ID of the setting. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -14465,7 +13732,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/notificationSetting/16" \
+    "http://localhost/api/notificationSetting/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -14473,14 +13740,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"allow_email\": true,
     \"allow_app\": true,
     \"allow_announcements\": true,
-    \"allow_circulars\": false
+    \"allow_circulars\": true
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/notificationSetting/16"
+    "http://localhost/api/notificationSetting/1"
 );
 
 const headers = {
@@ -14493,7 +13760,7 @@ let body = {
     "allow_email": true,
     "allow_app": true,
     "allow_announcements": true,
-    "allow_circulars": false
+    "allow_circulars": true
 };
 
 fetch(url, {
@@ -14505,7 +13772,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/notificationSetting/16';
+$url = 'http://localhost/api/notificationSetting/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -14518,7 +13785,7 @@ $response = $client-&gt;put(
             'allow_email' =&gt; true,
             'allow_app' =&gt; true,
             'allow_announcements' =&gt; true,
-            'allow_circulars' =&gt; false,
+            'allow_circulars' =&gt; true,
         ],
     ]
 );
@@ -14530,13 +13797,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/notificationSetting/16'
+url = 'http://localhost/api/notificationSetting/1'
 payload = {
     "allow_sms": true,
     "allow_email": true,
     "allow_app": true,
     "allow_announcements": true,
-    "allow_circulars": false
+    "allow_circulars": true
 }
 headers = {
   'Content-Type': 'application/json',
@@ -14633,10 +13900,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="setting_id"                data-endpoint="PUTapi-notificationSetting--setting_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the setting. Example: <code>16</code></p>
+<p>The ID of the setting. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -14747,7 +14014,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -14764,14 +14031,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/notificationSetting/16" \
+    "http://localhost/api/notificationSetting/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/notificationSetting/16"
+    "http://localhost/api/notificationSetting/1"
 );
 
 const headers = {
@@ -14788,7 +14055,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/notificationSetting/16';
+$url = 'http://localhost/api/notificationSetting/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -14806,7 +14073,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/notificationSetting/16'
+url = 'http://localhost/api/notificationSetting/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -14898,10 +14165,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="setting_id"                data-endpoint="DELETEapi-notificationSetting--setting_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the setting. Example: <code>16</code></p>
+<p>The ID of the setting. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -14977,7 +14244,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-exam">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -14989,38 +14256,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/exam?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/exam?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/exam?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/exam&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -15251,14 +14487,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/exam/16" \
+    --get "http://localhost/api/exam/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/exam/16"
+    "http://localhost/api/exam/1"
 );
 
 const headers = {
@@ -15275,7 +14511,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/exam/16';
+$url = 'http://localhost/api/exam/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -15293,7 +14529,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/exam/16'
+url = 'http://localhost/api/exam/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -15306,7 +14542,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-exam--exam_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -15318,7 +14554,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\ExamManagement\\Models\\Exam] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -15401,10 +14637,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="exam_id"                data-endpoint="GETapi-exam--exam_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the exam. Example: <code>16</code></p>
+<p>The ID of the exam. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -15421,14 +14657,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/exam/16" \
+    "http://localhost/api/exam/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/exam/16"
+    "http://localhost/api/exam/1"
 );
 
 const headers = {
@@ -15445,7 +14681,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/exam/16';
+$url = 'http://localhost/api/exam/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -15463,7 +14699,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/exam/16'
+url = 'http://localhost/api/exam/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -15559,10 +14795,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="exam_id"                data-endpoint="PUTapi-exam--exam_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the exam. Example: <code>16</code></p>
+<p>The ID of the exam. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -15579,14 +14815,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/exam/16" \
+    "http://localhost/api/exam/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/exam/16"
+    "http://localhost/api/exam/1"
 );
 
 const headers = {
@@ -15603,7 +14839,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/exam/16';
+$url = 'http://localhost/api/exam/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -15621,7 +14857,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/exam/16'
+url = 'http://localhost/api/exam/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -15713,10 +14949,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="exam_id"                data-endpoint="DELETEapi-exam--exam_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the exam. Example: <code>16</code></p>
+<p>The ID of the exam. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -15788,7 +15024,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-examSchedule">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -15800,38 +15036,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/examSchedule?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/examSchedule?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/examSchedule?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/examSchedule&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -16062,14 +15267,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/examSchedule/16" \
+    --get "http://localhost/api/examSchedule/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/examSchedule/16"
+    "http://localhost/api/examSchedule/1"
 );
 
 const headers = {
@@ -16086,7 +15291,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/examSchedule/16';
+$url = 'http://localhost/api/examSchedule/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -16104,7 +15309,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/examSchedule/16'
+url = 'http://localhost/api/examSchedule/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -16117,7 +15322,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-examSchedule--schedule_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -16129,7 +15334,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\ExamManagement\\Models\\ExamSchedule] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -16212,10 +15417,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="schedule_id"                data-endpoint="GETapi-examSchedule--schedule_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the schedule. Example: <code>16</code></p>
+<p>The ID of the schedule. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -16232,14 +15437,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/examSchedule/16" \
+    "http://localhost/api/examSchedule/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/examSchedule/16"
+    "http://localhost/api/examSchedule/1"
 );
 
 const headers = {
@@ -16256,7 +15461,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/examSchedule/16';
+$url = 'http://localhost/api/examSchedule/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -16274,7 +15479,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/examSchedule/16'
+url = 'http://localhost/api/examSchedule/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -16370,10 +15575,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="schedule_id"                data-endpoint="PUTapi-examSchedule--schedule_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the schedule. Example: <code>16</code></p>
+<p>The ID of the schedule. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -16390,14 +15595,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/examSchedule/16" \
+    "http://localhost/api/examSchedule/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/examSchedule/16"
+    "http://localhost/api/examSchedule/1"
 );
 
 const headers = {
@@ -16414,7 +15619,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/examSchedule/16';
+$url = 'http://localhost/api/examSchedule/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -16432,7 +15637,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/examSchedule/16'
+url = 'http://localhost/api/examSchedule/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -16524,10 +15729,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="schedule_id"                data-endpoint="DELETEapi-examSchedule--schedule_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the schedule. Example: <code>16</code></p>
+<p>The ID of the schedule. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -16599,7 +15804,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-gradingScheme">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -16611,38 +15816,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/gradingScheme?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/gradingScheme?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/gradingScheme?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/gradingScheme&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -16873,14 +16047,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/gradingScheme/16" \
+    --get "http://localhost/api/gradingScheme/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/gradingScheme/16"
+    "http://localhost/api/gradingScheme/1"
 );
 
 const headers = {
@@ -16897,7 +16071,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/gradingScheme/16';
+$url = 'http://localhost/api/gradingScheme/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -16915,7 +16089,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/gradingScheme/16'
+url = 'http://localhost/api/gradingScheme/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -16928,7 +16102,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-gradingScheme--grading_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -16940,7 +16114,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\ExamManagement\\Models\\GradingScheme] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -17023,10 +16197,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="grading_id"                data-endpoint="GETapi-gradingScheme--grading_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the grading. Example: <code>16</code></p>
+<p>The ID of the grading. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -17043,14 +16217,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/gradingScheme/16" \
+    "http://localhost/api/gradingScheme/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/gradingScheme/16"
+    "http://localhost/api/gradingScheme/1"
 );
 
 const headers = {
@@ -17067,7 +16241,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/gradingScheme/16';
+$url = 'http://localhost/api/gradingScheme/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -17085,7 +16259,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/gradingScheme/16'
+url = 'http://localhost/api/gradingScheme/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -17181,10 +16355,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="grading_id"                data-endpoint="PUTapi-gradingScheme--grading_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the grading. Example: <code>16</code></p>
+<p>The ID of the grading. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -17201,14 +16375,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/gradingScheme/16" \
+    "http://localhost/api/gradingScheme/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/gradingScheme/16"
+    "http://localhost/api/gradingScheme/1"
 );
 
 const headers = {
@@ -17225,7 +16399,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/gradingScheme/16';
+$url = 'http://localhost/api/gradingScheme/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -17243,7 +16417,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/gradingScheme/16'
+url = 'http://localhost/api/gradingScheme/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -17335,10 +16509,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="grading_id"                data-endpoint="DELETEapi-gradingScheme--grading_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the grading. Example: <code>16</code></p>
+<p>The ID of the grading. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -17410,7 +16584,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentMark">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -17422,38 +16596,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentMark?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentMark?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentMark?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentMark&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -17684,14 +16827,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentMark/16" \
+    --get "http://localhost/api/studentMark/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentMark/16"
+    "http://localhost/api/studentMark/1"
 );
 
 const headers = {
@@ -17708,7 +16851,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentMark/16';
+$url = 'http://localhost/api/studentMark/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -17726,7 +16869,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentMark/16'
+url = 'http://localhost/api/studentMark/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -17739,7 +16882,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentMark--mark_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -17751,7 +16894,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\ExamManagement\\Models\\StudentMark] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -17834,10 +16977,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mark_id"                data-endpoint="GETapi-studentMark--mark_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mark. Example: <code>16</code></p>
+<p>The ID of the mark. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -17854,14 +16997,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentMark/16" \
+    "http://localhost/api/studentMark/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentMark/16"
+    "http://localhost/api/studentMark/1"
 );
 
 const headers = {
@@ -17878,7 +17021,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentMark/16';
+$url = 'http://localhost/api/studentMark/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -17896,7 +17039,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentMark/16'
+url = 'http://localhost/api/studentMark/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -17992,10 +17135,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mark_id"                data-endpoint="PUTapi-studentMark--mark_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mark. Example: <code>16</code></p>
+<p>The ID of the mark. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -18012,14 +17155,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentMark/16" \
+    "http://localhost/api/studentMark/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentMark/16"
+    "http://localhost/api/studentMark/1"
 );
 
 const headers = {
@@ -18036,7 +17179,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentMark/16';
+$url = 'http://localhost/api/studentMark/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -18054,7 +17197,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentMark/16'
+url = 'http://localhost/api/studentMark/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -18146,10 +17289,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mark_id"                data-endpoint="DELETEapi-studentMark--mark_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mark. Example: <code>16</code></p>
+<p>The ID of the mark. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -18221,7 +17364,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentReportCard">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -18233,38 +17376,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentReportCard?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentReportCard?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentReportCard?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentReportCard&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -18495,14 +17607,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentReportCard/16" \
+    --get "http://localhost/api/studentReportCard/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentReportCard/16"
+    "http://localhost/api/studentReportCard/1"
 );
 
 const headers = {
@@ -18519,7 +17631,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentReportCard/16';
+$url = 'http://localhost/api/studentReportCard/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -18537,7 +17649,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentReportCard/16'
+url = 'http://localhost/api/studentReportCard/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -18550,7 +17662,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentReportCard--report_card_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -18562,7 +17674,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\ExamManagement\\Models\\StudentReportCard] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -18645,10 +17757,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_card_id"                data-endpoint="GETapi-studentReportCard--report_card_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report card. Example: <code>16</code></p>
+<p>The ID of the report card. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -18665,14 +17777,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentReportCard/16" \
+    "http://localhost/api/studentReportCard/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentReportCard/16"
+    "http://localhost/api/studentReportCard/1"
 );
 
 const headers = {
@@ -18689,7 +17801,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentReportCard/16';
+$url = 'http://localhost/api/studentReportCard/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -18707,7 +17819,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentReportCard/16'
+url = 'http://localhost/api/studentReportCard/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -18803,10 +17915,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_card_id"                data-endpoint="PUTapi-studentReportCard--report_card_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report card. Example: <code>16</code></p>
+<p>The ID of the report card. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -18823,14 +17935,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentReportCard/16" \
+    "http://localhost/api/studentReportCard/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentReportCard/16"
+    "http://localhost/api/studentReportCard/1"
 );
 
 const headers = {
@@ -18847,7 +17959,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentReportCard/16';
+$url = 'http://localhost/api/studentReportCard/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -18865,7 +17977,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentReportCard/16'
+url = 'http://localhost/api/studentReportCard/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -18957,10 +18069,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_card_id"                data-endpoint="DELETEapi-studentReportCard--report_card_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report card. Example: <code>16</code></p>
+<p>The ID of the report card. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -19036,7 +18148,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feeCategory">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -19048,38 +18160,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/feeCategory?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/feeCategory?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/feeCategory?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/feeCategory&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -19310,14 +18391,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/feeCategory/16" \
+    --get "http://localhost/api/feeCategory/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeCategory/16"
+    "http://localhost/api/feeCategory/1"
 );
 
 const headers = {
@@ -19334,7 +18415,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeCategory/16';
+$url = 'http://localhost/api/feeCategory/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -19352,7 +18433,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeCategory/16'
+url = 'http://localhost/api/feeCategory/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -19365,7 +18446,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feeCategory--fee_category_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -19377,7 +18458,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\FeeCategory] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -19460,10 +18541,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_category_id"                data-endpoint="GETapi-feeCategory--fee_category_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee category. Example: <code>16</code></p>
+<p>The ID of the fee category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -19480,14 +18561,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/feeCategory/16" \
+    "http://localhost/api/feeCategory/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeCategory/16"
+    "http://localhost/api/feeCategory/1"
 );
 
 const headers = {
@@ -19504,7 +18585,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeCategory/16';
+$url = 'http://localhost/api/feeCategory/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -19522,7 +18603,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeCategory/16'
+url = 'http://localhost/api/feeCategory/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -19618,10 +18699,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_category_id"                data-endpoint="PUTapi-feeCategory--fee_category_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee category. Example: <code>16</code></p>
+<p>The ID of the fee category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -19638,14 +18719,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/feeCategory/16" \
+    "http://localhost/api/feeCategory/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeCategory/16"
+    "http://localhost/api/feeCategory/1"
 );
 
 const headers = {
@@ -19662,7 +18743,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeCategory/16';
+$url = 'http://localhost/api/feeCategory/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -19680,7 +18761,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeCategory/16'
+url = 'http://localhost/api/feeCategory/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -19772,10 +18853,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_category_id"                data-endpoint="DELETEapi-feeCategory--fee_category_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee category. Example: <code>16</code></p>
+<p>The ID of the fee category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -19847,7 +18928,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feeStructure">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -19859,38 +18940,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/feeStructure?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/feeStructure?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/feeStructure?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/feeStructure&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -20121,14 +19171,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/feeStructure/16" \
+    --get "http://localhost/api/feeStructure/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeStructure/16"
+    "http://localhost/api/feeStructure/1"
 );
 
 const headers = {
@@ -20145,7 +19195,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeStructure/16';
+$url = 'http://localhost/api/feeStructure/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -20163,7 +19213,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeStructure/16'
+url = 'http://localhost/api/feeStructure/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -20176,7 +19226,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feeStructure--fee_structure_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -20188,7 +19238,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\FeeStructure] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -20271,10 +19321,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_structure_id"                data-endpoint="GETapi-feeStructure--fee_structure_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee structure. Example: <code>16</code></p>
+<p>The ID of the fee structure. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -20291,14 +19341,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/feeStructure/16" \
+    "http://localhost/api/feeStructure/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeStructure/16"
+    "http://localhost/api/feeStructure/1"
 );
 
 const headers = {
@@ -20315,7 +19365,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeStructure/16';
+$url = 'http://localhost/api/feeStructure/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -20333,7 +19383,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeStructure/16'
+url = 'http://localhost/api/feeStructure/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -20429,10 +19479,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_structure_id"                data-endpoint="PUTapi-feeStructure--fee_structure_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee structure. Example: <code>16</code></p>
+<p>The ID of the fee structure. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -20449,14 +19499,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/feeStructure/16" \
+    "http://localhost/api/feeStructure/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feeStructure/16"
+    "http://localhost/api/feeStructure/1"
 );
 
 const headers = {
@@ -20473,7 +19523,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feeStructure/16';
+$url = 'http://localhost/api/feeStructure/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -20491,7 +19541,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feeStructure/16'
+url = 'http://localhost/api/feeStructure/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -20583,10 +19633,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="fee_structure_id"                data-endpoint="DELETEapi-feeStructure--fee_structure_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the fee structure. Example: <code>16</code></p>
+<p>The ID of the fee structure. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -20658,7 +19708,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentFee">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -20670,38 +19720,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentFee?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentFee?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentFee?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentFee&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -20932,14 +19951,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentFee/16" \
+    --get "http://localhost/api/studentFee/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentFee/16"
+    "http://localhost/api/studentFee/1"
 );
 
 const headers = {
@@ -20956,7 +19975,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentFee/16';
+$url = 'http://localhost/api/studentFee/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -20974,7 +19993,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentFee/16'
+url = 'http://localhost/api/studentFee/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -20987,7 +20006,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentFee--student_fee_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -20999,7 +20018,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\StudentFee] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -21082,10 +20101,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_fee_id"                data-endpoint="GETapi-studentFee--student_fee_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student fee. Example: <code>16</code></p>
+<p>The ID of the student fee. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -21102,14 +20121,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentFee/16" \
+    "http://localhost/api/studentFee/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentFee/16"
+    "http://localhost/api/studentFee/1"
 );
 
 const headers = {
@@ -21126,7 +20145,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentFee/16';
+$url = 'http://localhost/api/studentFee/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -21144,7 +20163,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentFee/16'
+url = 'http://localhost/api/studentFee/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -21240,10 +20259,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_fee_id"                data-endpoint="PUTapi-studentFee--student_fee_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student fee. Example: <code>16</code></p>
+<p>The ID of the student fee. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -21260,14 +20279,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentFee/16" \
+    "http://localhost/api/studentFee/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentFee/16"
+    "http://localhost/api/studentFee/1"
 );
 
 const headers = {
@@ -21284,7 +20303,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentFee/16';
+$url = 'http://localhost/api/studentFee/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -21302,7 +20321,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentFee/16'
+url = 'http://localhost/api/studentFee/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -21394,10 +20413,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_fee_id"                data-endpoint="DELETEapi-studentFee--student_fee_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student fee. Example: <code>16</code></p>
+<p>The ID of the student fee. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -21469,7 +20488,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feePayment">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -21481,38 +20500,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/feePayment?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/feePayment?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/feePayment?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/feePayment&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -21743,14 +20731,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/feePayment/16" \
+    --get "http://localhost/api/feePayment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feePayment/16"
+    "http://localhost/api/feePayment/1"
 );
 
 const headers = {
@@ -21767,7 +20755,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feePayment/16';
+$url = 'http://localhost/api/feePayment/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -21785,7 +20773,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feePayment/16'
+url = 'http://localhost/api/feePayment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -21798,7 +20786,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-feePayment--payment_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -21810,7 +20798,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\FeePayment] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -21893,10 +20881,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="payment_id"                data-endpoint="GETapi-feePayment--payment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the payment. Example: <code>16</code></p>
+<p>The ID of the payment. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -21913,14 +20901,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/feePayment/16" \
+    "http://localhost/api/feePayment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feePayment/16"
+    "http://localhost/api/feePayment/1"
 );
 
 const headers = {
@@ -21937,7 +20925,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feePayment/16';
+$url = 'http://localhost/api/feePayment/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -21955,7 +20943,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feePayment/16'
+url = 'http://localhost/api/feePayment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -22051,10 +21039,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="payment_id"                data-endpoint="PUTapi-feePayment--payment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the payment. Example: <code>16</code></p>
+<p>The ID of the payment. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -22071,14 +21059,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/feePayment/16" \
+    "http://localhost/api/feePayment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/feePayment/16"
+    "http://localhost/api/feePayment/1"
 );
 
 const headers = {
@@ -22095,7 +21083,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/feePayment/16';
+$url = 'http://localhost/api/feePayment/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -22113,7 +21101,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/feePayment/16'
+url = 'http://localhost/api/feePayment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -22205,10 +21193,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="payment_id"                data-endpoint="DELETEapi-feePayment--payment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the payment. Example: <code>16</code></p>
+<p>The ID of the payment. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -22280,7 +21268,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-discount">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -22292,38 +21280,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/discount?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/discount?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/discount?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/discount&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -22554,14 +21511,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/discount/16" \
+    --get "http://localhost/api/discount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/discount/16"
+    "http://localhost/api/discount/1"
 );
 
 const headers = {
@@ -22578,7 +21535,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/discount/16';
+$url = 'http://localhost/api/discount/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -22596,7 +21553,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/discount/16'
+url = 'http://localhost/api/discount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -22609,7 +21566,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-discount--discount_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -22621,7 +21578,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\Discount] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -22704,10 +21661,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="discount_id"                data-endpoint="GETapi-discount--discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the discount. Example: <code>16</code></p>
+<p>The ID of the discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -22724,14 +21681,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/discount/16" \
+    "http://localhost/api/discount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/discount/16"
+    "http://localhost/api/discount/1"
 );
 
 const headers = {
@@ -22748,7 +21705,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/discount/16';
+$url = 'http://localhost/api/discount/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -22766,7 +21723,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/discount/16'
+url = 'http://localhost/api/discount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -22862,10 +21819,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="discount_id"                data-endpoint="PUTapi-discount--discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the discount. Example: <code>16</code></p>
+<p>The ID of the discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -22882,14 +21839,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/discount/16" \
+    "http://localhost/api/discount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/discount/16"
+    "http://localhost/api/discount/1"
 );
 
 const headers = {
@@ -22906,7 +21863,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/discount/16';
+$url = 'http://localhost/api/discount/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -22924,7 +21881,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/discount/16'
+url = 'http://localhost/api/discount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -23016,10 +21973,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="discount_id"                data-endpoint="DELETEapi-discount--discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the discount. Example: <code>16</code></p>
+<p>The ID of the discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -23091,7 +22048,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentDiscount">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -23103,38 +22060,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/studentDiscount?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/studentDiscount?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/studentDiscount?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/studentDiscount&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -23365,14 +22291,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/studentDiscount/16" \
+    --get "http://localhost/api/studentDiscount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentDiscount/16"
+    "http://localhost/api/studentDiscount/1"
 );
 
 const headers = {
@@ -23389,7 +22315,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentDiscount/16';
+$url = 'http://localhost/api/studentDiscount/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -23407,7 +22333,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentDiscount/16'
+url = 'http://localhost/api/studentDiscount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -23420,7 +22346,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-studentDiscount--student_discount_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -23432,7 +22358,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\StudentDiscount] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -23515,10 +22441,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_discount_id"                data-endpoint="GETapi-studentDiscount--student_discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student discount. Example: <code>16</code></p>
+<p>The ID of the student discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -23535,14 +22461,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/studentDiscount/16" \
+    "http://localhost/api/studentDiscount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentDiscount/16"
+    "http://localhost/api/studentDiscount/1"
 );
 
 const headers = {
@@ -23559,7 +22485,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentDiscount/16';
+$url = 'http://localhost/api/studentDiscount/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -23577,7 +22503,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentDiscount/16'
+url = 'http://localhost/api/studentDiscount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -23673,10 +22599,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_discount_id"                data-endpoint="PUTapi-studentDiscount--student_discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student discount. Example: <code>16</code></p>
+<p>The ID of the student discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -23693,14 +22619,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/studentDiscount/16" \
+    "http://localhost/api/studentDiscount/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/studentDiscount/16"
+    "http://localhost/api/studentDiscount/1"
 );
 
 const headers = {
@@ -23717,7 +22643,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/studentDiscount/16';
+$url = 'http://localhost/api/studentDiscount/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -23735,7 +22661,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/studentDiscount/16'
+url = 'http://localhost/api/studentDiscount/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -23827,10 +22753,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_discount_id"                data-endpoint="DELETEapi-studentDiscount--student_discount_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student discount. Example: <code>16</code></p>
+<p>The ID of the student discount. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -23902,7 +22828,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-expense">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -23914,38 +22840,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/expense?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/expense?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/expense?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/expense&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -24176,14 +23071,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/expense/16" \
+    --get "http://localhost/api/expense/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/expense/16"
+    "http://localhost/api/expense/1"
 );
 
 const headers = {
@@ -24200,7 +23095,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/expense/16';
+$url = 'http://localhost/api/expense/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -24218,7 +23113,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/expense/16'
+url = 'http://localhost/api/expense/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -24231,7 +23126,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-expense--expense_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -24243,7 +23138,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\Expense] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -24326,10 +23221,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="expense_id"                data-endpoint="GETapi-expense--expense_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the expense. Example: <code>16</code></p>
+<p>The ID of the expense. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -24346,14 +23241,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/expense/16" \
+    "http://localhost/api/expense/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/expense/16"
+    "http://localhost/api/expense/1"
 );
 
 const headers = {
@@ -24370,7 +23265,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/expense/16';
+$url = 'http://localhost/api/expense/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -24388,7 +23283,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/expense/16'
+url = 'http://localhost/api/expense/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -24484,10 +23379,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="expense_id"                data-endpoint="PUTapi-expense--expense_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the expense. Example: <code>16</code></p>
+<p>The ID of the expense. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -24504,14 +23399,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/expense/16" \
+    "http://localhost/api/expense/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/expense/16"
+    "http://localhost/api/expense/1"
 );
 
 const headers = {
@@ -24528,7 +23423,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/expense/16';
+$url = 'http://localhost/api/expense/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -24546,7 +23441,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/expense/16'
+url = 'http://localhost/api/expense/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -24638,10 +23533,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="expense_id"                data-endpoint="DELETEapi-expense--expense_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the expense. Example: <code>16</code></p>
+<p>The ID of the expense. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -24713,7 +23608,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-financialReport">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -24725,38 +23620,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/financialReport?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/financialReport?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/financialReport?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/financialReport&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -24987,14 +23851,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/financialReport/16" \
+    --get "http://localhost/api/financialReport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/financialReport/16"
+    "http://localhost/api/financialReport/1"
 );
 
 const headers = {
@@ -25011,7 +23875,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/financialReport/16';
+$url = 'http://localhost/api/financialReport/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -25029,7 +23893,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/financialReport/16'
+url = 'http://localhost/api/financialReport/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -25042,7 +23906,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-financialReport--report_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -25054,7 +23918,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\FeeManagement\\Models\\FinancialReport] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -25137,10 +24001,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_id"                data-endpoint="GETapi-financialReport--report_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report. Example: <code>16</code></p>
+<p>The ID of the report. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -25157,14 +24021,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/financialReport/16" \
+    "http://localhost/api/financialReport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/financialReport/16"
+    "http://localhost/api/financialReport/1"
 );
 
 const headers = {
@@ -25181,7 +24045,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/financialReport/16';
+$url = 'http://localhost/api/financialReport/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -25199,7 +24063,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/financialReport/16'
+url = 'http://localhost/api/financialReport/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -25295,10 +24159,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_id"                data-endpoint="PUTapi-financialReport--report_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report. Example: <code>16</code></p>
+<p>The ID of the report. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -25315,14 +24179,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/financialReport/16" \
+    "http://localhost/api/financialReport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/financialReport/16"
+    "http://localhost/api/financialReport/1"
 );
 
 const headers = {
@@ -25339,7 +24203,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/financialReport/16';
+$url = 'http://localhost/api/financialReport/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -25357,7 +24221,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/financialReport/16'
+url = 'http://localhost/api/financialReport/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -25449,10 +24313,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="report_id"                data-endpoint="DELETEapi-financialReport--report_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the report. Example: <code>16</code></p>
+<p>The ID of the report. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -25528,7 +24392,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-hostels">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -25540,38 +24404,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/hostels?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/hostels?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/hostels?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/hostels&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -25895,14 +24728,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/hostels/16" \
+    --get "http://localhost/api/hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostels/16"
+    "http://localhost/api/hostels/1"
 );
 
 const headers = {
@@ -25919,7 +24752,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostels/16';
+$url = 'http://localhost/api/hostels/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -25937,7 +24770,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostels/16'
+url = 'http://localhost/api/hostels/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -25950,7 +24783,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-hostels--hostel_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -25962,7 +24795,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Hostel] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -26045,10 +24878,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="hostel_id"                data-endpoint="GETapi-hostels--hostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the hostel. Example: <code>16</code></p>
+<p>The ID of the hostel. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -26065,12 +24898,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/hostels/16" \
+    "http://localhost/api/hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"hostel_name\": \"b\",
-    \"hostel_type\": \"Co-ed\",
+    \"hostel_type\": \"Girls\",
     \"total_capacity\": 22,
     \"available_capacity\": 84,
     \"location\": \"z\"
@@ -26080,7 +24913,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostels/16"
+    "http://localhost/api/hostels/1"
 );
 
 const headers = {
@@ -26090,7 +24923,7 @@ const headers = {
 
 let body = {
     "hostel_name": "b",
-    "hostel_type": "Co-ed",
+    "hostel_type": "Girls",
     "total_capacity": 22,
     "available_capacity": 84,
     "location": "z"
@@ -26105,7 +24938,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostels/16';
+$url = 'http://localhost/api/hostels/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -26115,7 +24948,7 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'hostel_name' =&gt; 'b',
-            'hostel_type' =&gt; 'Co-ed',
+            'hostel_type' =&gt; 'Girls',
             'total_capacity' =&gt; 22,
             'available_capacity' =&gt; 84,
             'location' =&gt; 'z',
@@ -26130,10 +24963,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostels/16'
+url = 'http://localhost/api/hostels/1'
 payload = {
     "hostel_name": "b",
-    "hostel_type": "Co-ed",
+    "hostel_type": "Girls",
     "total_capacity": 22,
     "available_capacity": 84,
     "location": "z"
@@ -26233,10 +25066,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="hostel_id"                data-endpoint="PUTapi-hostels--hostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the hostel. Example: <code>16</code></p>
+<p>The ID of the hostel. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -26258,10 +25091,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="hostel_type"                data-endpoint="PUTapi-hostels--hostel_id-"
-               value="Co-ed"
+               value="Girls"
                data-component="body">
     <br>
-<p>Example: <code>Co-ed</code></p>
+<p>Example: <code>Girls</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Boys</code></li> <li><code>Girls</code></li> <li><code>Co-ed</code></li></ul>
         </div>
@@ -26316,14 +25149,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/hostels/16" \
+    "http://localhost/api/hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostels/16"
+    "http://localhost/api/hostels/1"
 );
 
 const headers = {
@@ -26340,7 +25173,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostels/16';
+$url = 'http://localhost/api/hostels/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -26358,7 +25191,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostels/16'
+url = 'http://localhost/api/hostels/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -26450,10 +25283,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="hostel_id"                data-endpoint="DELETEapi-hostels--hostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the hostel. Example: <code>16</code></p>
+<p>The ID of the hostel. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -26525,7 +25358,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-hostel-rooms">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -26537,38 +25370,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/hostel-rooms?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/hostel-rooms?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/hostel-rooms?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/hostel-rooms&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -26892,14 +25694,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/hostel-rooms/16" \
+    --get "http://localhost/api/hostel-rooms/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostel-rooms/16"
+    "http://localhost/api/hostel-rooms/1"
 );
 
 const headers = {
@@ -26916,7 +25718,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostel-rooms/16';
+$url = 'http://localhost/api/hostel-rooms/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -26934,7 +25736,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostel-rooms/16'
+url = 'http://localhost/api/hostel-rooms/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -26947,7 +25749,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-hostel-rooms--room_room_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -26959,7 +25761,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Room] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -27042,10 +25844,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_room_id"                data-endpoint="GETapi-hostel-rooms--room_room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room room. Example: <code>16</code></p>
+<p>The ID of the room room. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -27062,13 +25864,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/hostel-rooms/16" \
+    "http://localhost/api/hostel-rooms/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"hostel_id\": 16,
     \"room_number\": \"ngzmiy\",
-    \"room_type\": \"Triple\",
+    \"room_type\": \"Quad\",
     \"capacity\": 16,
     \"occupied\": 42
 }"
@@ -27077,7 +25879,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostel-rooms/16"
+    "http://localhost/api/hostel-rooms/1"
 );
 
 const headers = {
@@ -27088,7 +25890,7 @@ const headers = {
 let body = {
     "hostel_id": 16,
     "room_number": "ngzmiy",
-    "room_type": "Triple",
+    "room_type": "Quad",
     "capacity": 16,
     "occupied": 42
 };
@@ -27102,7 +25904,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostel-rooms/16';
+$url = 'http://localhost/api/hostel-rooms/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -27113,7 +25915,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'hostel_id' =&gt; 16,
             'room_number' =&gt; 'ngzmiy',
-            'room_type' =&gt; 'Triple',
+            'room_type' =&gt; 'Quad',
             'capacity' =&gt; 16,
             'occupied' =&gt; 42,
         ],
@@ -27127,11 +25929,11 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostel-rooms/16'
+url = 'http://localhost/api/hostel-rooms/1'
 payload = {
     "hostel_id": 16,
     "room_number": "ngzmiy",
-    "room_type": "Triple",
+    "room_type": "Quad",
     "capacity": 16,
     "occupied": 42
 }
@@ -27230,10 +26032,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_room_id"                data-endpoint="PUTapi-hostel-rooms--room_room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room room. Example: <code>16</code></p>
+<p>The ID of the room room. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -27267,10 +26069,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="room_type"                data-endpoint="PUTapi-hostel-rooms--room_room_id-"
-               value="Triple"
+               value="Quad"
                data-component="body">
     <br>
-<p>Example: <code>Triple</code></p>
+<p>Example: <code>Quad</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Single</code></li> <li><code>Double</code></li> <li><code>Triple</code></li> <li><code>Quad</code></li></ul>
         </div>
@@ -27313,14 +26115,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/hostel-rooms/16" \
+    "http://localhost/api/hostel-rooms/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/hostel-rooms/16"
+    "http://localhost/api/hostel-rooms/1"
 );
 
 const headers = {
@@ -27337,7 +26139,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/hostel-rooms/16';
+$url = 'http://localhost/api/hostel-rooms/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -27355,7 +26157,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/hostel-rooms/16'
+url = 'http://localhost/api/hostel-rooms/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -27447,10 +26249,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_room_id"                data-endpoint="DELETEapi-hostel-rooms--room_room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room room. Example: <code>16</code></p>
+<p>The ID of the room room. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -27522,7 +26324,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-student-hostels">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -27534,38 +26336,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/student-hostels?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/student-hostels?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/student-hostels?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/student-hostels&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -27662,8 +26433,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"student_id\": 16,
     \"hostel_id\": 16,
     \"room_id\": 16,
-    \"assigned_date\": \"2026-04-28T14:56:26\",
-    \"checkout_date\": \"2052-05-21\"
+    \"assigned_date\": \"2026-05-03T17:21:19\",
+    \"checkout_date\": \"2052-05-26\"
 }"
 </code></pre></div>
 
@@ -27682,8 +26453,8 @@ let body = {
     "student_id": 16,
     "hostel_id": 16,
     "room_id": 16,
-    "assigned_date": "2026-04-28T14:56:26",
-    "checkout_date": "2052-05-21"
+    "assigned_date": "2026-05-03T17:21:19",
+    "checkout_date": "2052-05-26"
 };
 
 fetch(url, {
@@ -27707,8 +26478,8 @@ $response = $client-&gt;post(
             'student_id' =&gt; 16,
             'hostel_id' =&gt; 16,
             'room_id' =&gt; 16,
-            'assigned_date' =&gt; '2026-04-28T14:56:26',
-            'checkout_date' =&gt; '2052-05-21',
+            'assigned_date' =&gt; '2026-05-03T17:21:19',
+            'checkout_date' =&gt; '2052-05-26',
         ],
     ]
 );
@@ -27725,8 +26496,8 @@ payload = {
     "student_id": 16,
     "hostel_id": 16,
     "room_id": 16,
-    "assigned_date": "2026-04-28T14:56:26",
-    "checkout_date": "2052-05-21"
+    "assigned_date": "2026-05-03T17:21:19",
+    "checkout_date": "2052-05-26"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -27855,10 +26626,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="assigned_date"                data-endpoint="POSTapi-student-hostels"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>checkout_date</code></b>&nbsp;&nbsp;
@@ -27867,10 +26638,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="checkout_date"                data-endpoint="POSTapi-student-hostels"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>assigned_date</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>assigned_date</code>. Example: <code>2052-05-26</code></p>
         </div>
         </form>
 
@@ -27887,14 +26658,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/student-hostels/16" \
+    --get "http://localhost/api/student-hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-hostels/16"
+    "http://localhost/api/student-hostels/1"
 );
 
 const headers = {
@@ -27911,7 +26682,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-hostels/16';
+$url = 'http://localhost/api/student-hostels/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -27929,7 +26700,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-hostels/16'
+url = 'http://localhost/api/student-hostels/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -27942,7 +26713,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-student-hostels--studentHostel_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -27954,7 +26725,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\StudentHostel] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -28037,10 +26808,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentHostel_id"                data-endpoint="GETapi-student-hostels--studentHostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentHostel. Example: <code>16</code></p>
+<p>The ID of the studentHostel. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -28057,22 +26828,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/student-hostels/16" \
+    "http://localhost/api/student-hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
     \"hostel_id\": 16,
     \"room_id\": 16,
-    \"assigned_date\": \"2026-04-28T14:56:26\",
-    \"checkout_date\": \"2026-04-28T14:56:26\"
+    \"assigned_date\": \"2026-05-03T17:21:19\",
+    \"checkout_date\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-hostels/16"
+    "http://localhost/api/student-hostels/1"
 );
 
 const headers = {
@@ -28084,8 +26855,8 @@ let body = {
     "student_id": 16,
     "hostel_id": 16,
     "room_id": 16,
-    "assigned_date": "2026-04-28T14:56:26",
-    "checkout_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "checkout_date": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -28097,7 +26868,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-hostels/16';
+$url = 'http://localhost/api/student-hostels/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -28109,8 +26880,8 @@ $response = $client-&gt;put(
             'student_id' =&gt; 16,
             'hostel_id' =&gt; 16,
             'room_id' =&gt; 16,
-            'assigned_date' =&gt; '2026-04-28T14:56:26',
-            'checkout_date' =&gt; '2026-04-28T14:56:26',
+            'assigned_date' =&gt; '2026-05-03T17:21:19',
+            'checkout_date' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -28122,13 +26893,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-hostels/16'
+url = 'http://localhost/api/student-hostels/1'
 payload = {
     "student_id": 16,
     "hostel_id": 16,
     "room_id": 16,
-    "assigned_date": "2026-04-28T14:56:26",
-    "checkout_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "checkout_date": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -28225,10 +26996,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentHostel_id"                data-endpoint="PUTapi-student-hostels--studentHostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentHostel. Example: <code>16</code></p>
+<p>The ID of the studentHostel. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -28274,10 +27045,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="assigned_date"                data-endpoint="PUTapi-student-hostels--studentHostel_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>checkout_date</code></b>&nbsp;&nbsp;
@@ -28286,10 +27057,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="checkout_date"                data-endpoint="PUTapi-student-hostels--studentHostel_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -28306,14 +27077,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/student-hostels/16" \
+    "http://localhost/api/student-hostels/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-hostels/16"
+    "http://localhost/api/student-hostels/1"
 );
 
 const headers = {
@@ -28330,7 +27101,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-hostels/16';
+$url = 'http://localhost/api/student-hostels/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -28348,7 +27119,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-hostels/16'
+url = 'http://localhost/api/student-hostels/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -28440,10 +27211,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentHostel_id"                data-endpoint="DELETEapi-student-hostels--studentHostel_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentHostel. Example: <code>16</code></p>
+<p>The ID of the studentHostel. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -28515,7 +27286,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-transportation">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -28527,38 +27298,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/transportation?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/transportation?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/transportation?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/transportation&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -28656,7 +27396,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"transport_type\": \"Shuttle\",
     \"capacity\": 22,
     \"route\": \"g\",
-    \"departure_time\": \"14:56\"
+    \"departure_time\": \"17:21\"
 }"
 </code></pre></div>
 
@@ -28676,7 +27416,7 @@ let body = {
     "transport_type": "Shuttle",
     "capacity": 22,
     "route": "g",
-    "departure_time": "14:56"
+    "departure_time": "17:21"
 };
 
 fetch(url, {
@@ -28701,7 +27441,7 @@ $response = $client-&gt;post(
             'transport_type' =&gt; 'Shuttle',
             'capacity' =&gt; 22,
             'route' =&gt; 'g',
-            'departure_time' =&gt; '14:56',
+            'departure_time' =&gt; '17:21',
         ],
     ]
 );
@@ -28719,7 +27459,7 @@ payload = {
     "transport_type": "Shuttle",
     "capacity": 22,
     "route": "g",
-    "departure_time": "14:56"
+    "departure_time": "17:21"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -28862,10 +27602,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="departure_time"                data-endpoint="POSTapi-transportation"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
         </form>
 
@@ -28882,14 +27622,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/transportation/16" \
+    --get "http://localhost/api/transportation/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/transportation/16"
+    "http://localhost/api/transportation/1"
 );
 
 const headers = {
@@ -28906,7 +27646,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/transportation/16';
+$url = 'http://localhost/api/transportation/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -28924,7 +27664,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/transportation/16'
+url = 'http://localhost/api/transportation/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -28937,7 +27677,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-transportation--transport_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -28949,7 +27689,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Transportation] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -29032,10 +27772,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="transport_id"                data-endpoint="GETapi-transportation--transport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the transport. Example: <code>16</code></p>
+<p>The ID of the transport. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -29052,22 +27792,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/transportation/16" \
+    "http://localhost/api/transportation/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"transport_name\": \"b\",
-    \"transport_type\": \"Shuttle\",
+    \"transport_type\": \"Van\",
     \"capacity\": 22,
     \"route\": \"g\",
-    \"departure_time\": \"14:56\"
+    \"departure_time\": \"17:21\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/transportation/16"
+    "http://localhost/api/transportation/1"
 );
 
 const headers = {
@@ -29077,10 +27817,10 @@ const headers = {
 
 let body = {
     "transport_name": "b",
-    "transport_type": "Shuttle",
+    "transport_type": "Van",
     "capacity": 22,
     "route": "g",
-    "departure_time": "14:56"
+    "departure_time": "17:21"
 };
 
 fetch(url, {
@@ -29092,7 +27832,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/transportation/16';
+$url = 'http://localhost/api/transportation/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -29102,10 +27842,10 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'transport_name' =&gt; 'b',
-            'transport_type' =&gt; 'Shuttle',
+            'transport_type' =&gt; 'Van',
             'capacity' =&gt; 22,
             'route' =&gt; 'g',
-            'departure_time' =&gt; '14:56',
+            'departure_time' =&gt; '17:21',
         ],
     ]
 );
@@ -29117,13 +27857,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/transportation/16'
+url = 'http://localhost/api/transportation/1'
 payload = {
     "transport_name": "b",
-    "transport_type": "Shuttle",
+    "transport_type": "Van",
     "capacity": 22,
     "route": "g",
-    "departure_time": "14:56"
+    "departure_time": "17:21"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -29220,10 +27960,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="transport_id"                data-endpoint="PUTapi-transportation--transport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the transport. Example: <code>16</code></p>
+<p>The ID of the transport. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -29245,10 +27985,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="transport_type"                data-endpoint="PUTapi-transportation--transport_id-"
-               value="Shuttle"
+               value="Van"
                data-component="body">
     <br>
-<p>Example: <code>Shuttle</code></p>
+<p>Example: <code>Van</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Bus</code></li> <li><code>Van</code></li> <li><code>Shuttle</code></li></ul>
         </div>
@@ -29283,10 +28023,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="departure_time"                data-endpoint="PUTapi-transportation--transport_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
         </form>
 
@@ -29303,14 +28043,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/transportation/16" \
+    "http://localhost/api/transportation/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/transportation/16"
+    "http://localhost/api/transportation/1"
 );
 
 const headers = {
@@ -29327,7 +28067,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/transportation/16';
+$url = 'http://localhost/api/transportation/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -29345,7 +28085,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/transportation/16'
+url = 'http://localhost/api/transportation/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -29437,10 +28177,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="transport_id"                data-endpoint="DELETEapi-transportation--transport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the transport. Example: <code>16</code></p>
+<p>The ID of the transport. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -29512,7 +28252,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-student-transport">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -29524,38 +28264,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/student-transport?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/student-transport?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/student-transport?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/student-transport&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -29653,8 +28362,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"transport_id\": 16,
     \"pickup_location\": \"n\",
     \"drop_location\": \"g\",
-    \"assigned_date\": \"2026-04-28T14:56:26\",
-    \"leave_date\": \"2026-04-28T14:56:26\"
+    \"assigned_date\": \"2026-05-03T17:21:19\",
+    \"leave_date\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
@@ -29674,8 +28383,8 @@ let body = {
     "transport_id": 16,
     "pickup_location": "n",
     "drop_location": "g",
-    "assigned_date": "2026-04-28T14:56:26",
-    "leave_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "leave_date": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -29700,8 +28409,8 @@ $response = $client-&gt;post(
             'transport_id' =&gt; 16,
             'pickup_location' =&gt; 'n',
             'drop_location' =&gt; 'g',
-            'assigned_date' =&gt; '2026-04-28T14:56:26',
-            'leave_date' =&gt; '2026-04-28T14:56:26',
+            'assigned_date' =&gt; '2026-05-03T17:21:19',
+            'leave_date' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -29719,8 +28428,8 @@ payload = {
     "transport_id": 16,
     "pickup_location": "n",
     "drop_location": "g",
-    "assigned_date": "2026-04-28T14:56:26",
-    "leave_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "leave_date": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -29861,10 +28570,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="assigned_date"                data-endpoint="POSTapi-student-transport"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>leave_date</code></b>&nbsp;&nbsp;
@@ -29873,10 +28582,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="leave_date"                data-endpoint="POSTapi-student-transport"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -29893,14 +28602,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/student-transport/16" \
+    --get "http://localhost/api/student-transport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-transport/16"
+    "http://localhost/api/student-transport/1"
 );
 
 const headers = {
@@ -29917,7 +28626,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-transport/16';
+$url = 'http://localhost/api/student-transport/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -29935,7 +28644,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-transport/16'
+url = 'http://localhost/api/student-transport/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -29948,7 +28657,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-student-transport--studentTransport_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -29960,7 +28669,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\StudentTransport] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -30043,10 +28752,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentTransport_id"                data-endpoint="GETapi-student-transport--studentTransport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentTransport. Example: <code>16</code></p>
+<p>The ID of the studentTransport. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -30063,7 +28772,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/student-transport/16" \
+    "http://localhost/api/student-transport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -30071,15 +28780,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"transport_id\": 16,
     \"pickup_location\": \"n\",
     \"drop_location\": \"g\",
-    \"assigned_date\": \"2026-04-28T14:56:26\",
-    \"leave_date\": \"2026-04-28T14:56:26\"
+    \"assigned_date\": \"2026-05-03T17:21:19\",
+    \"leave_date\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-transport/16"
+    "http://localhost/api/student-transport/1"
 );
 
 const headers = {
@@ -30092,8 +28801,8 @@ let body = {
     "transport_id": 16,
     "pickup_location": "n",
     "drop_location": "g",
-    "assigned_date": "2026-04-28T14:56:26",
-    "leave_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "leave_date": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -30105,7 +28814,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-transport/16';
+$url = 'http://localhost/api/student-transport/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -30118,8 +28827,8 @@ $response = $client-&gt;put(
             'transport_id' =&gt; 16,
             'pickup_location' =&gt; 'n',
             'drop_location' =&gt; 'g',
-            'assigned_date' =&gt; '2026-04-28T14:56:26',
-            'leave_date' =&gt; '2026-04-28T14:56:26',
+            'assigned_date' =&gt; '2026-05-03T17:21:19',
+            'leave_date' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -30131,14 +28840,14 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-transport/16'
+url = 'http://localhost/api/student-transport/1'
 payload = {
     "student_id": 16,
     "transport_id": 16,
     "pickup_location": "n",
     "drop_location": "g",
-    "assigned_date": "2026-04-28T14:56:26",
-    "leave_date": "2026-04-28T14:56:26"
+    "assigned_date": "2026-05-03T17:21:19",
+    "leave_date": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -30235,10 +28944,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentTransport_id"                data-endpoint="PUTapi-student-transport--studentTransport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentTransport. Example: <code>16</code></p>
+<p>The ID of the studentTransport. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -30296,10 +29005,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="assigned_date"                data-endpoint="PUTapi-student-transport--studentTransport_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>leave_date</code></b>&nbsp;&nbsp;
@@ -30308,10 +29017,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="leave_date"                data-endpoint="PUTapi-student-transport--studentTransport_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -30328,14 +29037,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/student-transport/16" \
+    "http://localhost/api/student-transport/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/student-transport/16"
+    "http://localhost/api/student-transport/1"
 );
 
 const headers = {
@@ -30352,7 +29061,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/student-transport/16';
+$url = 'http://localhost/api/student-transport/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -30370,7 +29079,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/student-transport/16'
+url = 'http://localhost/api/student-transport/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -30462,10 +29171,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="studentTransport_id"                data-endpoint="DELETEapi-student-transport--studentTransport_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the studentTransport. Example: <code>16</code></p>
+<p>The ID of the studentTransport. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -30537,7 +29246,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-facilities">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -30549,38 +29258,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/facilities?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/facilities?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/facilities?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/facilities&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -30904,14 +29582,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/facilities/16" \
+    --get "http://localhost/api/facilities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facilities/16"
+    "http://localhost/api/facilities/1"
 );
 
 const headers = {
@@ -30928,7 +29606,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facilities/16';
+$url = 'http://localhost/api/facilities/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -30946,7 +29624,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facilities/16'
+url = 'http://localhost/api/facilities/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -30959,7 +29637,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-facilities--facility_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -30971,7 +29649,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\FacilityManagement] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -31054,10 +29732,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facility_id"                data-endpoint="GETapi-facilities--facility_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facility. Example: <code>16</code></p>
+<p>The ID of the facility. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -31074,12 +29752,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/facilities/16" \
+    "http://localhost/api/facilities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"facility_name\": \"b\",
-    \"facility_type\": \"Lab\",
+    \"facility_type\": \"Library\",
     \"location\": \"n\",
     \"capacity\": 67,
     \"available_capacity\": 12
@@ -31089,7 +29767,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facilities/16"
+    "http://localhost/api/facilities/1"
 );
 
 const headers = {
@@ -31099,7 +29777,7 @@ const headers = {
 
 let body = {
     "facility_name": "b",
-    "facility_type": "Lab",
+    "facility_type": "Library",
     "location": "n",
     "capacity": 67,
     "available_capacity": 12
@@ -31114,7 +29792,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facilities/16';
+$url = 'http://localhost/api/facilities/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -31124,7 +29802,7 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'facility_name' =&gt; 'b',
-            'facility_type' =&gt; 'Lab',
+            'facility_type' =&gt; 'Library',
             'location' =&gt; 'n',
             'capacity' =&gt; 67,
             'available_capacity' =&gt; 12,
@@ -31139,10 +29817,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facilities/16'
+url = 'http://localhost/api/facilities/1'
 payload = {
     "facility_name": "b",
-    "facility_type": "Lab",
+    "facility_type": "Library",
     "location": "n",
     "capacity": 67,
     "available_capacity": 12
@@ -31242,10 +29920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facility_id"                data-endpoint="PUTapi-facilities--facility_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facility. Example: <code>16</code></p>
+<p>The ID of the facility. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -31267,10 +29945,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="facility_type"                data-endpoint="PUTapi-facilities--facility_id-"
-               value="Lab"
+               value="Library"
                data-component="body">
     <br>
-<p>Example: <code>Lab</code></p>
+<p>Example: <code>Library</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Sports</code></li> <li><code>Library</code></li> <li><code>Cafeteria</code></li> <li><code>Lab</code></li></ul>
         </div>
@@ -31325,14 +30003,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/facilities/16" \
+    "http://localhost/api/facilities/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facilities/16"
+    "http://localhost/api/facilities/1"
 );
 
 const headers = {
@@ -31349,7 +30027,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facilities/16';
+$url = 'http://localhost/api/facilities/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -31367,7 +30045,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facilities/16'
+url = 'http://localhost/api/facilities/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -31459,10 +30137,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facility_id"                data-endpoint="DELETEapi-facilities--facility_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facility. Example: <code>16</code></p>
+<p>The ID of the facility. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -31534,7 +30212,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-facility-bookings">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -31546,38 +30224,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/facility-bookings?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/facility-bookings?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/facility-bookings?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/facility-bookings&quot;,
-    &quot;per_page&quot;: 15,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -31673,9 +30320,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"student_id\": 16,
     \"facility_id\": 16,
-    \"booking_date\": \"2026-04-28T14:56:26\",
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\"
+    \"booking_date\": \"2026-05-03T17:21:19\",
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\"
 }"
 </code></pre></div>
 
@@ -31693,9 +30340,9 @@ const headers = {
 let body = {
     "student_id": 16,
     "facility_id": 16,
-    "booking_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "booking_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 };
 
 fetch(url, {
@@ -31718,9 +30365,9 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'student_id' =&gt; 16,
             'facility_id' =&gt; 16,
-            'booking_date' =&gt; '2026-04-28T14:56:26',
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
+            'booking_date' =&gt; '2026-05-03T17:21:19',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
         ],
     ]
 );
@@ -31736,9 +30383,9 @@ url = 'http://localhost/api/facility-bookings'
 payload = {
     "student_id": 16,
     "facility_id": 16,
-    "booking_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "booking_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -31855,10 +30502,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="booking_date"                data-endpoint="POSTapi-facility-bookings"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -31867,10 +30514,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="POSTapi-facility-bookings"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -31879,10 +30526,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="POSTapi-facility-bookings"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
         </form>
 
@@ -31899,14 +30546,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/facility-bookings/16" \
+    --get "http://localhost/api/facility-bookings/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facility-bookings/16"
+    "http://localhost/api/facility-bookings/1"
 );
 
 const headers = {
@@ -31923,7 +30570,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facility-bookings/16';
+$url = 'http://localhost/api/facility-bookings/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -31941,7 +30588,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facility-bookings/16'
+url = 'http://localhost/api/facility-bookings/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -31954,7 +30601,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-facility-bookings--facilityBooking_booking_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -31966,7 +30613,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\HostelTransportManagement\\Models\\FacilityBooking] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -32049,10 +30696,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facilityBooking_booking_id"                data-endpoint="GETapi-facility-bookings--facilityBooking_booking_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facilityBooking booking. Example: <code>16</code></p>
+<p>The ID of the facilityBooking booking. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -32069,22 +30716,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/facility-bookings/16" \
+    "http://localhost/api/facility-bookings/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"student_id\": 16,
     \"facility_id\": 16,
-    \"booking_date\": \"2026-04-28T14:56:27\",
-    \"start_time\": \"14:56\",
-    \"end_time\": \"14:56\"
+    \"booking_date\": \"2026-05-03T17:21:19\",
+    \"start_time\": \"17:21\",
+    \"end_time\": \"17:21\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facility-bookings/16"
+    "http://localhost/api/facility-bookings/1"
 );
 
 const headers = {
@@ -32095,9 +30742,9 @@ const headers = {
 let body = {
     "student_id": 16,
     "facility_id": 16,
-    "booking_date": "2026-04-28T14:56:27",
-    "start_time": "14:56",
-    "end_time": "14:56"
+    "booking_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "17:21"
 };
 
 fetch(url, {
@@ -32109,7 +30756,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facility-bookings/16';
+$url = 'http://localhost/api/facility-bookings/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -32120,9 +30767,9 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'student_id' =&gt; 16,
             'facility_id' =&gt; 16,
-            'booking_date' =&gt; '2026-04-28T14:56:27',
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '14:56',
+            'booking_date' =&gt; '2026-05-03T17:21:19',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '17:21',
         ],
     ]
 );
@@ -32134,13 +30781,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facility-bookings/16'
+url = 'http://localhost/api/facility-bookings/1'
 payload = {
     "student_id": 16,
     "facility_id": 16,
-    "booking_date": "2026-04-28T14:56:27",
-    "start_time": "14:56",
-    "end_time": "14:56"
+    "booking_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "17:21"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -32237,10 +30884,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facilityBooking_booking_id"                data-endpoint="PUTapi-facility-bookings--facilityBooking_booking_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facilityBooking booking. Example: <code>16</code></p>
+<p>The ID of the facilityBooking booking. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -32274,10 +30921,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="booking_date"                data-endpoint="PUTapi-facility-bookings--facilityBooking_booking_id-"
-               value="2026-04-28T14:56:27"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:27</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -32286,10 +30933,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="PUTapi-facility-bookings--facilityBooking_booking_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -32298,10 +30945,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="PUTapi-facility-bookings--facilityBooking_booking_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
         </form>
 
@@ -32318,14 +30965,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/facility-bookings/16" \
+    "http://localhost/api/facility-bookings/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/facility-bookings/16"
+    "http://localhost/api/facility-bookings/1"
 );
 
 const headers = {
@@ -32342,7 +30989,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/facility-bookings/16';
+$url = 'http://localhost/api/facility-bookings/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -32360,7 +31007,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/facility-bookings/16'
+url = 'http://localhost/api/facility-bookings/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -32452,10 +31099,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="facilityBooking_booking_id"                data-endpoint="DELETEapi-facility-bookings--facilityBooking_booking_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the facilityBooking booking. Example: <code>16</code></p>
+<p>The ID of the facilityBooking booking. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -32531,7 +31178,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-roles">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -32543,38 +31190,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/roles?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/roles?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/roles?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/roles&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -32848,14 +31464,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles/16" \
+    --get "http://localhost/api/roles/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/16"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
@@ -32872,7 +31488,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/16';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -32890,7 +31506,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/roles/16'
+url = 'http://localhost/api/roles/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -32903,7 +31519,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-roles--id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -32915,7 +31531,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\RbacManagement\\Models\\Role] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -32998,10 +31614,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-roles--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -33018,7 +31634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/roles/16" \
+    "http://localhost/api/roles/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -33029,7 +31645,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/16"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
@@ -33050,7 +31666,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/16';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -33071,7 +31687,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/roles/16'
+url = 'http://localhost/api/roles/1'
 payload = {
     "description": "Eius et animi quos velit et."
 }
@@ -33170,10 +31786,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-roles--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -33215,14 +31831,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/roles/16" \
+    "http://localhost/api/roles/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/16"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
@@ -33239,7 +31855,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/16';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -33257,7 +31873,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/roles/16'
+url = 'http://localhost/api/roles/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -33349,10 +31965,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-roles--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -33369,7 +31985,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/roles/16/sync-permissions" \
+    "http://localhost/api/roles/1/sync-permissions" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
 </code></pre></div>
@@ -33377,7 +31993,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/16/sync-permissions"
+    "http://localhost/api/roles/1/sync-permissions"
 );
 
 const headers = {
@@ -33394,7 +32010,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/16/sync-permissions';
+$url = 'http://localhost/api/roles/1/sync-permissions';
 $response = $client-&gt;put(
     $url,
     [
@@ -33412,7 +32028,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/roles/16/sync-permissions'
+url = 'http://localhost/api/roles/1/sync-permissions'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -33504,10 +32120,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="role_id"                data-endpoint="PUTapi-roles--role_id--sync-permissions"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -33594,7 +32210,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-permissions">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -33606,38 +32222,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/permissions?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/permissions?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/permissions?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/permissions&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -33927,14 +32512,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions/16" \
+    --get "http://localhost/api/permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/16"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
@@ -33951,7 +32536,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/16';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -33969,7 +32554,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/permissions/16'
+url = 'http://localhost/api/permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -33982,7 +32567,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-permissions--id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -33994,7 +32579,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\RbacManagement\\Models\\Permission] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -34077,10 +32662,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-permissions--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the permission. Example: <code>16</code></p>
+<p>The ID of the permission. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -34097,7 +32682,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/permissions/16" \
+    "http://localhost/api/permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -34109,7 +32694,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/16"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
@@ -34131,7 +32716,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/16';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -34153,7 +32738,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/permissions/16'
+url = 'http://localhost/api/permissions/1'
 payload = {
     "description": "Eius et animi quos velit et.",
     "module_name": "v"
@@ -34253,10 +32838,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-permissions--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the permission. Example: <code>16</code></p>
+<p>The ID of the permission. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -34310,14 +32895,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/permissions/16" \
+    "http://localhost/api/permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/16"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
@@ -34334,7 +32919,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/16';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -34352,7 +32937,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/permissions/16'
+url = 'http://localhost/api/permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -34444,10 +33029,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-permissions--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the permission. Example: <code>16</code></p>
+<p>The ID of the permission. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -34519,7 +33104,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-role-permissions">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -34530,7 +33115,9 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-role-permissions" hidden>
@@ -34619,14 +33206,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/role-permissions/16" \
+    --get "http://localhost/api/role-permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/role-permissions/16"
+    "http://localhost/api/role-permissions/1"
 );
 
 const headers = {
@@ -34643,7 +33230,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/role-permissions/16';
+$url = 'http://localhost/api/role-permissions/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -34661,7 +33248,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/role-permissions/16'
+url = 'http://localhost/api/role-permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -34674,7 +33261,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-role-permissions--role_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -34686,7 +33273,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\RbacManagement\\Models\\Role] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -34769,10 +33356,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="role_id"                data-endpoint="GETapi-role-permissions--role_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -34789,7 +33376,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/role-permissions/16" \
+    "http://localhost/api/role-permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
 </code></pre></div>
@@ -34797,7 +33384,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/role-permissions/16"
+    "http://localhost/api/role-permissions/1"
 );
 
 const headers = {
@@ -34814,7 +33401,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/role-permissions/16';
+$url = 'http://localhost/api/role-permissions/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -34832,7 +33419,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/role-permissions/16'
+url = 'http://localhost/api/role-permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -34924,10 +33511,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="role_id"                data-endpoint="PUTapi-role-permissions--role_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the role. Example: <code>16</code></p>
+<p>The ID of the role. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -35014,7 +33601,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-user-roles">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -35026,38 +33613,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/user-roles?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/user-roles?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/user-roles?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/user-roles&quot;,
-    &quot;per_page&quot;: 20,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -35147,14 +33703,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/user-roles/16" \
+    --get "http://localhost/api/user-roles/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user-roles/16"
+    "http://localhost/api/user-roles/1"
 );
 
 const headers = {
@@ -35171,7 +33727,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/user-roles/16';
+$url = 'http://localhost/api/user-roles/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -35189,7 +33745,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/user-roles/16'
+url = 'http://localhost/api/user-roles/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -35202,7 +33758,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-user-roles--user_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -35214,7 +33770,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\User] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -35297,10 +33853,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="GETapi-user-roles--user_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -35317,7 +33873,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/user-roles/16" \
+    "http://localhost/api/user-roles/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
 </code></pre></div>
@@ -35325,7 +33881,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user-roles/16"
+    "http://localhost/api/user-roles/1"
 );
 
 const headers = {
@@ -35342,7 +33898,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/user-roles/16';
+$url = 'http://localhost/api/user-roles/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -35360,7 +33916,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/user-roles/16'
+url = 'http://localhost/api/user-roles/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -35452,10 +34008,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="PUTapi-user-roles--user_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -35487,14 +34043,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/user-permissions/16" \
+    --get "http://localhost/api/user-permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user-permissions/16"
+    "http://localhost/api/user-permissions/1"
 );
 
 const headers = {
@@ -35511,7 +34067,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/user-permissions/16';
+$url = 'http://localhost/api/user-permissions/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -35529,7 +34085,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/user-permissions/16'
+url = 'http://localhost/api/user-permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -35542,7 +34098,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-user-permissions--user_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -35554,7 +34110,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\User] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -35637,10 +34193,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="GETapi-user-permissions--user_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -35657,7 +34213,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/user-permissions/16" \
+    "http://localhost/api/user-permissions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
 </code></pre></div>
@@ -35665,7 +34221,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user-permissions/16"
+    "http://localhost/api/user-permissions/1"
 );
 
 const headers = {
@@ -35682,7 +34238,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/user-permissions/16';
+$url = 'http://localhost/api/user-permissions/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -35700,7 +34256,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/user-permissions/16'
+url = 'http://localhost/api/user-permissions/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -35792,10 +34348,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="PUTapi-user-permissions--user_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -35886,7 +34442,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-staff-departments">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -35897,7 +34453,9 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-staff-departments" hidden>
@@ -36182,7 +34740,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-staff">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -36194,38 +34752,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/staff?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/staff?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/staff?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/staff&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -36456,14 +34983,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/staff/16" \
+    --get "http://localhost/api/staff/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16"
+    "http://localhost/api/staff/1"
 );
 
 const headers = {
@@ -36480,7 +35007,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16';
+$url = 'http://localhost/api/staff/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -36498,7 +35025,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16'
+url = 'http://localhost/api/staff/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -36511,7 +35038,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-staff--staff_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -36523,7 +35050,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StaffManagement\\Models\\Staff] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -36606,10 +35133,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_id"                data-endpoint="GETapi-staff--staff_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff. Example: <code>16</code></p>
+<p>The ID of the staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -36626,14 +35153,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/staff/16" \
+    "http://localhost/api/staff/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16"
+    "http://localhost/api/staff/1"
 );
 
 const headers = {
@@ -36650,7 +35177,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16';
+$url = 'http://localhost/api/staff/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -36668,7 +35195,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16'
+url = 'http://localhost/api/staff/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -36764,10 +35291,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_id"                data-endpoint="PUTapi-staff--staff_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff. Example: <code>16</code></p>
+<p>The ID of the staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -36784,14 +35311,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/staff/16" \
+    "http://localhost/api/staff/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16"
+    "http://localhost/api/staff/1"
 );
 
 const headers = {
@@ -36808,7 +35335,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16';
+$url = 'http://localhost/api/staff/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -36826,7 +35353,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16'
+url = 'http://localhost/api/staff/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -36918,10 +35445,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_id"                data-endpoint="DELETEapi-staff--staff_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff. Example: <code>16</code></p>
+<p>The ID of the staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -36938,14 +35465,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/staff/16/attendance" \
+    "http://localhost/api/staff/1/attendance" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16/attendance"
+    "http://localhost/api/staff/1/attendance"
 );
 
 const headers = {
@@ -36962,7 +35489,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16/attendance';
+$url = 'http://localhost/api/staff/1/attendance';
 $response = $client-&gt;post(
     $url,
     [
@@ -36980,7 +35507,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16/attendance'
+url = 'http://localhost/api/staff/1/attendance'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -37072,10 +35599,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_staff_id"                data-endpoint="POSTapi-staff--staff_staff_id--attendance"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff staff. Example: <code>16</code></p>
+<p>The ID of the staff staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -37092,7 +35619,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/staff/16/salary" \
+    "http://localhost/api/staff/1/salary" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -37100,14 +35627,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"allowances\": 1,
     \"deductions\": 0,
     \"net_salary\": 1,
-    \"payment_date\": \"2026-04-28T14:56:25\"
+    \"payment_date\": \"2026-05-03T17:21:17\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16/salary"
+    "http://localhost/api/staff/1/salary"
 );
 
 const headers = {
@@ -37120,7 +35647,7 @@ let body = {
     "allowances": 1,
     "deductions": 0,
     "net_salary": 1,
-    "payment_date": "2026-04-28T14:56:25"
+    "payment_date": "2026-05-03T17:21:17"
 };
 
 fetch(url, {
@@ -37132,7 +35659,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16/salary';
+$url = 'http://localhost/api/staff/1/salary';
 $response = $client-&gt;post(
     $url,
     [
@@ -37145,7 +35672,7 @@ $response = $client-&gt;post(
             'allowances' =&gt; 1,
             'deductions' =&gt; 0,
             'net_salary' =&gt; 1,
-            'payment_date' =&gt; '2026-04-28T14:56:25',
+            'payment_date' =&gt; '2026-05-03T17:21:17',
         ],
     ]
 );
@@ -37157,13 +35684,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16/salary'
+url = 'http://localhost/api/staff/1/salary'
 payload = {
     "basic_salary": 1,
     "allowances": 1,
     "deductions": 0,
     "net_salary": 1,
-    "payment_date": "2026-04-28T14:56:25"
+    "payment_date": "2026-05-03T17:21:17"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -37256,10 +35783,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_staff_id"                data-endpoint="POSTapi-staff--staff_staff_id--salary"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff staff. Example: <code>16</code></p>
+<p>The ID of the staff staff. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -37317,10 +35844,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="payment_date"                data-endpoint="POSTapi-staff--staff_staff_id--salary"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
         </form>
 
@@ -37337,14 +35864,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/staff/16/reviews" \
+    "http://localhost/api/staff/1/reviews" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16/reviews"
+    "http://localhost/api/staff/1/reviews"
 );
 
 const headers = {
@@ -37361,7 +35888,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16/reviews';
+$url = 'http://localhost/api/staff/1/reviews';
 $response = $client-&gt;post(
     $url,
     [
@@ -37379,7 +35906,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16/reviews'
+url = 'http://localhost/api/staff/1/reviews'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -37471,10 +35998,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_staff_id"                data-endpoint="POSTapi-staff--staff_staff_id--reviews"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff staff. Example: <code>16</code></p>
+<p>The ID of the staff staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -37491,14 +36018,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/staff/16/leave-requests" \
+    "http://localhost/api/staff/1/leave-requests" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/staff/16/leave-requests"
+    "http://localhost/api/staff/1/leave-requests"
 );
 
 const headers = {
@@ -37515,7 +36042,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/staff/16/leave-requests';
+$url = 'http://localhost/api/staff/1/leave-requests';
 $response = $client-&gt;post(
     $url,
     [
@@ -37533,7 +36060,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/staff/16/leave-requests'
+url = 'http://localhost/api/staff/1/leave-requests'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -37625,10 +36152,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="staff_staff_id"                data-endpoint="POSTapi-staff--staff_staff_id--leave-requests"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the staff staff. Example: <code>16</code></p>
+<p>The ID of the staff staff. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -37704,7 +36231,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -37716,38 +36243,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/students?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/students?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/students?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/students&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -37843,8 +36339,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"b\",
     \"last_name\": \"n\",
-    \"date_of_birth\": \"2026-04-28T14:56:25\",
-    \"gender\": \"Male\",
+    \"date_of_birth\": \"2026-05-03T17:21:17\",
+    \"gender\": \"Other\",
     \"blood_group\": \"g\",
     \"nationality\": \"z\",
     \"religion\": \"m\",
@@ -37853,9 +36349,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"phone_number\": \"ngzmiyvdljnikhwa\",
     \"email\": \"breitenberg.gilbert@example.com\",
     \"profile_photo\": \"u\",
-    \"date_of_admission\": \"2026-04-28T14:56:25\",
+    \"date_of_admission\": \"2026-05-03T17:21:17\",
     \"admission_number\": \"w\",
-    \"status\": \"Active\",
+    \"status\": \"Graduated\",
     \"father_name\": \"p\",
     \"father_phone\": \"wlvqwrsitcpscqld\",
     \"father_email\": \"nstokes@example.org\",
@@ -37899,8 +36395,8 @@ const headers = {
 let body = {
     "first_name": "b",
     "last_name": "n",
-    "date_of_birth": "2026-04-28T14:56:25",
-    "gender": "Male",
+    "date_of_birth": "2026-05-03T17:21:17",
+    "gender": "Other",
     "blood_group": "g",
     "nationality": "z",
     "religion": "m",
@@ -37909,9 +36405,9 @@ let body = {
     "phone_number": "ngzmiyvdljnikhwa",
     "email": "breitenberg.gilbert@example.com",
     "profile_photo": "u",
-    "date_of_admission": "2026-04-28T14:56:25",
+    "date_of_admission": "2026-05-03T17:21:17",
     "admission_number": "w",
-    "status": "Active",
+    "status": "Graduated",
     "father_name": "p",
     "father_phone": "wlvqwrsitcpscqld",
     "father_email": "nstokes@example.org",
@@ -37960,8 +36456,8 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'first_name' =&gt; 'b',
             'last_name' =&gt; 'n',
-            'date_of_birth' =&gt; '2026-04-28T14:56:25',
-            'gender' =&gt; 'Male',
+            'date_of_birth' =&gt; '2026-05-03T17:21:17',
+            'gender' =&gt; 'Other',
             'blood_group' =&gt; 'g',
             'nationality' =&gt; 'z',
             'religion' =&gt; 'm',
@@ -37970,9 +36466,9 @@ $response = $client-&gt;post(
             'phone_number' =&gt; 'ngzmiyvdljnikhwa',
             'email' =&gt; 'breitenberg.gilbert@example.com',
             'profile_photo' =&gt; 'u',
-            'date_of_admission' =&gt; '2026-04-28T14:56:25',
+            'date_of_admission' =&gt; '2026-05-03T17:21:17',
             'admission_number' =&gt; 'w',
-            'status' =&gt; 'Active',
+            'status' =&gt; 'Graduated',
             'father_name' =&gt; 'p',
             'father_phone' =&gt; 'wlvqwrsitcpscqld',
             'father_email' =&gt; 'nstokes@example.org',
@@ -38014,8 +36510,8 @@ url = 'http://localhost/api/students'
 payload = {
     "first_name": "b",
     "last_name": "n",
-    "date_of_birth": "2026-04-28T14:56:25",
-    "gender": "Male",
+    "date_of_birth": "2026-05-03T17:21:17",
+    "gender": "Other",
     "blood_group": "g",
     "nationality": "z",
     "religion": "m",
@@ -38024,9 +36520,9 @@ payload = {
     "phone_number": "ngzmiyvdljnikhwa",
     "email": "breitenberg.gilbert@example.com",
     "profile_photo": "u",
-    "date_of_admission": "2026-04-28T14:56:25",
+    "date_of_admission": "2026-05-03T17:21:17",
     "admission_number": "w",
-    "status": "Active",
+    "status": "Graduated",
     "father_name": "p",
     "father_phone": "wlvqwrsitcpscqld",
     "father_email": "nstokes@example.org",
@@ -38169,10 +36665,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_birth"                data-endpoint="POSTapi-students"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -38181,10 +36677,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="POSTapi-students"
-               value="Male"
+               value="Other"
                data-component="body">
     <br>
-<p>Example: <code>Male</code></p>
+<p>Example: <code>Other</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Male</code></li> <li><code>Female</code></li> <li><code>Other</code></li></ul>
         </div>
@@ -38291,10 +36787,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_admission"                data-endpoint="POSTapi-students"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>admission_number</code></b>&nbsp;&nbsp;
@@ -38315,10 +36811,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-students"
-               value="Active"
+               value="Graduated"
                data-component="body">
     <br>
-<p>Example: <code>Active</code></p>
+<p>Example: <code>Graduated</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Active</code></li> <li><code>Inactive</code></li> <li><code>Graduated</code></li> <li><code>Transferred</code></li></ul>
         </div>
@@ -38613,14 +37109,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16" \
+    --get "http://localhost/api/students/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16"
+    "http://localhost/api/students/1"
 );
 
 const headers = {
@@ -38637,7 +37133,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16';
+$url = 'http://localhost/api/students/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -38655,7 +37151,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16'
+url = 'http://localhost/api/students/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -38668,7 +37164,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -38680,7 +37176,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -38763,10 +37259,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_id"                data-endpoint="GETapi-students--student_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student. Example: <code>16</code></p>
+<p>The ID of the student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -38783,14 +37279,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16" \
+    "http://localhost/api/students/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"first_name\": \"b\",
     \"last_name\": \"n\",
-    \"date_of_birth\": \"2026-04-28T14:56:25\",
-    \"gender\": \"Male\",
+    \"date_of_birth\": \"2026-05-03T17:21:17\",
+    \"gender\": \"Other\",
     \"blood_group\": \"g\",
     \"nationality\": \"z\",
     \"religion\": \"m\",
@@ -38799,7 +37295,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"phone_number\": \"ngzmiyvdljnikhwa\",
     \"email\": \"breitenberg.gilbert@example.com\",
     \"profile_photo\": \"u\",
-    \"date_of_admission\": \"2026-04-28T14:56:25\",
+    \"date_of_admission\": \"2026-05-03T17:21:17\",
     \"status\": \"Inactive\",
     \"father_name\": \"w\",
     \"father_phone\": \"pwlvqwrsitcpscql\",
@@ -38829,7 +37325,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     ],
     \"contacts\": [
         {
-            \"contact_type\": \"emergency\",
+            \"contact_type\": \"phone\",
             \"contact_value\": \"n\",
             \"is_primary\": false,
             \"label\": \"g\"
@@ -38841,7 +37337,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16"
+    "http://localhost/api/students/1"
 );
 
 const headers = {
@@ -38852,8 +37348,8 @@ const headers = {
 let body = {
     "first_name": "b",
     "last_name": "n",
-    "date_of_birth": "2026-04-28T14:56:25",
-    "gender": "Male",
+    "date_of_birth": "2026-05-03T17:21:17",
+    "gender": "Other",
     "blood_group": "g",
     "nationality": "z",
     "religion": "m",
@@ -38862,7 +37358,7 @@ let body = {
     "phone_number": "ngzmiyvdljnikhwa",
     "email": "breitenberg.gilbert@example.com",
     "profile_photo": "u",
-    "date_of_admission": "2026-04-28T14:56:25",
+    "date_of_admission": "2026-05-03T17:21:17",
     "status": "Inactive",
     "father_name": "w",
     "father_phone": "pwlvqwrsitcpscql",
@@ -38892,7 +37388,7 @@ let body = {
     ],
     "contacts": [
         {
-            "contact_type": "emergency",
+            "contact_type": "phone",
             "contact_value": "n",
             "is_primary": false,
             "label": "g"
@@ -38909,7 +37405,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16';
+$url = 'http://localhost/api/students/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -38920,8 +37416,8 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'first_name' =&gt; 'b',
             'last_name' =&gt; 'n',
-            'date_of_birth' =&gt; '2026-04-28T14:56:25',
-            'gender' =&gt; 'Male',
+            'date_of_birth' =&gt; '2026-05-03T17:21:17',
+            'gender' =&gt; 'Other',
             'blood_group' =&gt; 'g',
             'nationality' =&gt; 'z',
             'religion' =&gt; 'm',
@@ -38930,7 +37426,7 @@ $response = $client-&gt;put(
             'phone_number' =&gt; 'ngzmiyvdljnikhwa',
             'email' =&gt; 'breitenberg.gilbert@example.com',
             'profile_photo' =&gt; 'u',
-            'date_of_admission' =&gt; '2026-04-28T14:56:25',
+            'date_of_admission' =&gt; '2026-05-03T17:21:17',
             'status' =&gt; 'Inactive',
             'father_name' =&gt; 'w',
             'father_phone' =&gt; 'pwlvqwrsitcpscql',
@@ -38960,7 +37456,7 @@ $response = $client-&gt;put(
             ],
             'contacts' =&gt; [
                 [
-                    'contact_type' =&gt; 'emergency',
+                    'contact_type' =&gt; 'phone',
                     'contact_value' =&gt; 'n',
                     'is_primary' =&gt; false,
                     'label' =&gt; 'g',
@@ -38977,12 +37473,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16'
+url = 'http://localhost/api/students/1'
 payload = {
     "first_name": "b",
     "last_name": "n",
-    "date_of_birth": "2026-04-28T14:56:25",
-    "gender": "Male",
+    "date_of_birth": "2026-05-03T17:21:17",
+    "gender": "Other",
     "blood_group": "g",
     "nationality": "z",
     "religion": "m",
@@ -38991,7 +37487,7 @@ payload = {
     "phone_number": "ngzmiyvdljnikhwa",
     "email": "breitenberg.gilbert@example.com",
     "profile_photo": "u",
-    "date_of_admission": "2026-04-28T14:56:25",
+    "date_of_admission": "2026-05-03T17:21:17",
     "status": "Inactive",
     "father_name": "w",
     "father_phone": "pwlvqwrsitcpscql",
@@ -39021,7 +37517,7 @@ payload = {
     ],
     "contacts": [
         {
-            "contact_type": "emergency",
+            "contact_type": "phone",
             "contact_value": "n",
             "is_primary": false,
             "label": "g"
@@ -39123,10 +37619,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_id"                data-endpoint="PUTapi-students--student_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student. Example: <code>16</code></p>
+<p>The ID of the student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -39160,10 +37656,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_birth"                data-endpoint="PUTapi-students--student_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -39172,10 +37668,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="gender"                data-endpoint="PUTapi-students--student_id-"
-               value="Male"
+               value="Other"
                data-component="body">
     <br>
-<p>Example: <code>Male</code></p>
+<p>Example: <code>Other</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Male</code></li> <li><code>Female</code></li> <li><code>Other</code></li></ul>
         </div>
@@ -39282,10 +37778,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_admission"                data-endpoint="PUTapi-students--student_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>admission_number</code></b>&nbsp;&nbsp;
@@ -39606,10 +38102,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="contacts.0.contact_type"                data-endpoint="PUTapi-students--student_id-"
-               value="emergency"
+               value="phone"
                data-component="body">
     <br>
-<p>Example: <code>emergency</code></p>
+<p>Example: <code>phone</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>phone</code></li> <li><code>mobile</code></li> <li><code>emergency</code></li> <li><code>work</code></li> <li><code>fax</code></li> <li><code>other</code></li></ul>
                     </div>
@@ -39676,14 +38172,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16" \
+    "http://localhost/api/students/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16"
+    "http://localhost/api/students/1"
 );
 
 const headers = {
@@ -39700,7 +38196,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16';
+$url = 'http://localhost/api/students/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -39718,7 +38214,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16'
+url = 'http://localhost/api/students/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -39810,10 +38306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_id"                data-endpoint="DELETEapi-students--student_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student. Example: <code>16</code></p>
+<p>The ID of the student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -39830,7 +38326,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/parent" \
+    "http://localhost/api/students/1/parent" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -39852,7 +38348,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/parent"
+    "http://localhost/api/students/1/parent"
 );
 
 const headers = {
@@ -39884,7 +38380,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/parent';
+$url = 'http://localhost/api/students/1/parent';
 $response = $client-&gt;post(
     $url,
     [
@@ -39916,7 +38412,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/parent'
+url = 'http://localhost/api/students/1/parent'
 payload = {
     "father_name": "b",
     "father_phone": "ngzmiyvdljnikhwa",
@@ -40022,10 +38518,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--parent"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -40187,7 +38683,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/parent" \
+    "http://localhost/api/students/1/parent" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -40209,7 +38705,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/parent"
+    "http://localhost/api/students/1/parent"
 );
 
 const headers = {
@@ -40241,7 +38737,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/parent';
+$url = 'http://localhost/api/students/1/parent';
 $response = $client-&gt;put(
     $url,
     [
@@ -40273,7 +38769,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/parent'
+url = 'http://localhost/api/students/1/parent'
 payload = {
     "father_name": "b",
     "father_phone": "ngzmiyvdljnikhwa",
@@ -40379,10 +38875,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--parent"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -40544,7 +39040,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/education" \
+    "http://localhost/api/students/1/education" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -40559,7 +39055,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/education"
+    "http://localhost/api/students/1/education"
 );
 
 const headers = {
@@ -40584,7 +39080,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/education';
+$url = 'http://localhost/api/students/1/education';
 $response = $client-&gt;post(
     $url,
     [
@@ -40609,7 +39105,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/education'
+url = 'http://localhost/api/students/1/education'
 payload = {
     "school_name": "b",
     "board": "n",
@@ -40708,10 +39204,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--education"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -40789,7 +39285,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/education/16" \
+    "http://localhost/api/students/1/education/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -40804,7 +39300,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/education/16"
+    "http://localhost/api/students/1/education/1"
 );
 
 const headers = {
@@ -40829,7 +39325,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/education/16';
+$url = 'http://localhost/api/students/1/education/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -40854,7 +39350,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/education/16'
+url = 'http://localhost/api/students/1/education/1'
 payload = {
     "school_name": "b",
     "board": "n",
@@ -40953,10 +39449,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--education--education_education_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>education_education_id</code></b>&nbsp;&nbsp;
@@ -40965,10 +39461,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="education_education_id"                data-endpoint="PUTapi-students--student_student_id--education--education_education_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the education education. Example: <code>16</code></p>
+<p>The ID of the education education. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -41046,14 +39542,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/education/16" \
+    "http://localhost/api/students/1/education/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/education/16"
+    "http://localhost/api/students/1/education/1"
 );
 
 const headers = {
@@ -41070,7 +39566,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/education/16';
+$url = 'http://localhost/api/students/1/education/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -41088,7 +39584,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/education/16'
+url = 'http://localhost/api/students/1/education/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -41180,10 +39676,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--education--education_education_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>education_education_id</code></b>&nbsp;&nbsp;
@@ -41192,10 +39688,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="education_education_id"                data-endpoint="DELETEapi-students--student_student_id--education--education_education_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the education education. Example: <code>16</code></p>
+<p>The ID of the education education. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -41212,14 +39708,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/health" \
+    --get "http://localhost/api/students/1/health" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/health"
+    "http://localhost/api/students/1/health"
 );
 
 const headers = {
@@ -41236,7 +39732,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/health';
+$url = 'http://localhost/api/students/1/health';
 $response = $client-&gt;get(
     $url,
     [
@@ -41254,7 +39750,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/health'
+url = 'http://localhost/api/students/1/health'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -41267,7 +39763,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--health">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -41279,7 +39775,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -41362,10 +39858,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--health"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -41382,7 +39878,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/health" \
+    "http://localhost/api/students/1/health" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -41398,7 +39894,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/health"
+    "http://localhost/api/students/1/health"
 );
 
 const headers = {
@@ -41424,7 +39920,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/health';
+$url = 'http://localhost/api/students/1/health';
 $response = $client-&gt;post(
     $url,
     [
@@ -41450,7 +39946,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/health'
+url = 'http://localhost/api/students/1/health'
 payload = {
     "height_cm": 1,
     "weight_kg": 1,
@@ -41550,10 +40046,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--health"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -41643,7 +40139,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/health/16" \
+    "http://localhost/api/students/1/health/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -41659,7 +40155,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/health/16"
+    "http://localhost/api/students/1/health/1"
 );
 
 const headers = {
@@ -41685,7 +40181,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/health/16';
+$url = 'http://localhost/api/students/1/health/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -41711,7 +40207,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/health/16'
+url = 'http://localhost/api/students/1/health/1'
 payload = {
     "height_cm": 1,
     "weight_kg": 1,
@@ -41811,10 +40307,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--health--healthRecord_health_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>healthRecord_health_id</code></b>&nbsp;&nbsp;
@@ -41823,10 +40319,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="healthRecord_health_id"                data-endpoint="PUTapi-students--student_student_id--health--healthRecord_health_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the healthRecord health. Example: <code>16</code></p>
+<p>The ID of the healthRecord health. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -41916,14 +40412,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/health/16" \
+    "http://localhost/api/students/1/health/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/health/16"
+    "http://localhost/api/students/1/health/1"
 );
 
 const headers = {
@@ -41940,7 +40436,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/health/16';
+$url = 'http://localhost/api/students/1/health/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -41958,7 +40454,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/health/16'
+url = 'http://localhost/api/students/1/health/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -42050,10 +40546,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--health--healthRecord_health_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>healthRecord_health_id</code></b>&nbsp;&nbsp;
@@ -42062,10 +40558,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="healthRecord_health_id"                data-endpoint="DELETEapi-students--student_student_id--health--healthRecord_health_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the healthRecord health. Example: <code>16</code></p>
+<p>The ID of the healthRecord health. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -42082,14 +40578,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/enroll" \
+    "http://localhost/api/students/1/enroll" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"batch_id\": 16,
     \"academic_year_id\": 16,
-    \"enrollment_date\": \"2026-04-28T14:56:25\",
-    \"status\": \"Graduated\",
+    \"enrollment_date\": \"2026-05-03T17:21:17\",
+    \"status\": \"Active\",
     \"remarks\": \"architecto\"
 }"
 </code></pre></div>
@@ -42097,7 +40593,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/enroll"
+    "http://localhost/api/students/1/enroll"
 );
 
 const headers = {
@@ -42108,8 +40604,8 @@ const headers = {
 let body = {
     "batch_id": 16,
     "academic_year_id": 16,
-    "enrollment_date": "2026-04-28T14:56:25",
-    "status": "Graduated",
+    "enrollment_date": "2026-05-03T17:21:17",
+    "status": "Active",
     "remarks": "architecto"
 };
 
@@ -42122,7 +40618,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/enroll';
+$url = 'http://localhost/api/students/1/enroll';
 $response = $client-&gt;post(
     $url,
     [
@@ -42133,8 +40629,8 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'batch_id' =&gt; 16,
             'academic_year_id' =&gt; 16,
-            'enrollment_date' =&gt; '2026-04-28T14:56:25',
-            'status' =&gt; 'Graduated',
+            'enrollment_date' =&gt; '2026-05-03T17:21:17',
+            'status' =&gt; 'Active',
             'remarks' =&gt; 'architecto',
         ],
     ]
@@ -42147,12 +40643,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/enroll'
+url = 'http://localhost/api/students/1/enroll'
 payload = {
     "batch_id": 16,
     "academic_year_id": 16,
-    "enrollment_date": "2026-04-28T14:56:25",
-    "status": "Graduated",
+    "enrollment_date": "2026-05-03T17:21:17",
+    "status": "Active",
     "remarks": "architecto"
 }
 headers = {
@@ -42246,10 +40742,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--enroll"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -42283,10 +40779,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="enrollment_date"                data-endpoint="POSTapi-students--student_student_id--enroll"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -42295,10 +40791,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-students--student_student_id--enroll"
-               value="Graduated"
+               value="Active"
                data-component="body">
     <br>
-<p>Example: <code>Graduated</code></p>
+<p>Example: <code>Active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Active</code></li> <li><code>Inactive</code></li> <li><code>Graduated</code></li> <li><code>Transferred</code></li></ul>
         </div>
@@ -42329,12 +40825,12 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/enrollment/16" \
+    "http://localhost/api/students/1/enrollment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"enrollment_date\": \"2026-04-28T14:56:25\",
-    \"status\": \"Transferred\",
+    \"enrollment_date\": \"2026-05-03T17:21:17\",
+    \"status\": \"Graduated\",
     \"remarks\": \"architecto\"
 }"
 </code></pre></div>
@@ -42342,7 +40838,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/enrollment/16"
+    "http://localhost/api/students/1/enrollment/1"
 );
 
 const headers = {
@@ -42351,8 +40847,8 @@ const headers = {
 };
 
 let body = {
-    "enrollment_date": "2026-04-28T14:56:25",
-    "status": "Transferred",
+    "enrollment_date": "2026-05-03T17:21:17",
+    "status": "Graduated",
     "remarks": "architecto"
 };
 
@@ -42365,7 +40861,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/enrollment/16';
+$url = 'http://localhost/api/students/1/enrollment/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -42374,8 +40870,8 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'enrollment_date' =&gt; '2026-04-28T14:56:25',
-            'status' =&gt; 'Transferred',
+            'enrollment_date' =&gt; '2026-05-03T17:21:17',
+            'status' =&gt; 'Graduated',
             'remarks' =&gt; 'architecto',
         ],
     ]
@@ -42388,10 +40884,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/enrollment/16'
+url = 'http://localhost/api/students/1/enrollment/1'
 payload = {
-    "enrollment_date": "2026-04-28T14:56:25",
-    "status": "Transferred",
+    "enrollment_date": "2026-05-03T17:21:17",
+    "status": "Graduated",
     "remarks": "architecto"
 }
 headers = {
@@ -42485,10 +40981,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>enrollment_enrollment_id</code></b>&nbsp;&nbsp;
@@ -42497,10 +40993,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="enrollment_enrollment_id"                data-endpoint="PUTapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the enrollment enrollment. Example: <code>16</code></p>
+<p>The ID of the enrollment enrollment. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -42510,10 +41006,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="enrollment_date"                data-endpoint="PUTapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -42522,10 +41018,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="Transferred"
+               value="Graduated"
                data-component="body">
     <br>
-<p>Example: <code>Transferred</code></p>
+<p>Example: <code>Graduated</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Active</code></li> <li><code>Inactive</code></li> <li><code>Graduated</code></li> <li><code>Transferred</code></li></ul>
         </div>
@@ -42556,14 +41052,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/enrollment/16" \
+    "http://localhost/api/students/1/enrollment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/enrollment/16"
+    "http://localhost/api/students/1/enrollment/1"
 );
 
 const headers = {
@@ -42580,7 +41076,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/enrollment/16';
+$url = 'http://localhost/api/students/1/enrollment/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -42598,7 +41094,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/enrollment/16'
+url = 'http://localhost/api/students/1/enrollment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -42690,10 +41186,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>enrollment_enrollment_id</code></b>&nbsp;&nbsp;
@@ -42702,10 +41198,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="enrollment_enrollment_id"                data-endpoint="DELETEapi-students--student_student_id--enrollment--enrollment_enrollment_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the enrollment enrollment. Example: <code>16</code></p>
+<p>The ID of the enrollment enrollment. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -42722,14 +41218,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/enrollments" \
+    --get "http://localhost/api/students/1/enrollments" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/enrollments"
+    "http://localhost/api/students/1/enrollments"
 );
 
 const headers = {
@@ -42746,7 +41242,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/enrollments';
+$url = 'http://localhost/api/students/1/enrollments';
 $response = $client-&gt;get(
     $url,
     [
@@ -42764,7 +41260,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/enrollments'
+url = 'http://localhost/api/students/1/enrollments'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -42777,7 +41273,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--enrollments">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -42789,7 +41285,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -42872,10 +41368,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--enrollments"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -42892,7 +41388,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/promote" \
+    "http://localhost/api/students/1/promote" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -42900,7 +41396,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"to_batch_id\": 16,
     \"from_academic_year_id\": 16,
     \"to_academic_year_id\": 16,
-    \"promotion_date\": \"2026-04-28T14:56:25\",
+    \"promotion_date\": \"2026-05-03T17:21:17\",
     \"remarks\": \"architecto\"
 }"
 </code></pre></div>
@@ -42908,7 +41404,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/promote"
+    "http://localhost/api/students/1/promote"
 );
 
 const headers = {
@@ -42921,7 +41417,7 @@ let body = {
     "to_batch_id": 16,
     "from_academic_year_id": 16,
     "to_academic_year_id": 16,
-    "promotion_date": "2026-04-28T14:56:25",
+    "promotion_date": "2026-05-03T17:21:17",
     "remarks": "architecto"
 };
 
@@ -42934,7 +41430,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/promote';
+$url = 'http://localhost/api/students/1/promote';
 $response = $client-&gt;post(
     $url,
     [
@@ -42947,7 +41443,7 @@ $response = $client-&gt;post(
             'to_batch_id' =&gt; 16,
             'from_academic_year_id' =&gt; 16,
             'to_academic_year_id' =&gt; 16,
-            'promotion_date' =&gt; '2026-04-28T14:56:25',
+            'promotion_date' =&gt; '2026-05-03T17:21:17',
             'remarks' =&gt; 'architecto',
         ],
     ]
@@ -42960,13 +41456,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/promote'
+url = 'http://localhost/api/students/1/promote'
 payload = {
     "from_batch_id": 16,
     "to_batch_id": 16,
     "from_academic_year_id": 16,
     "to_academic_year_id": 16,
-    "promotion_date": "2026-04-28T14:56:25",
+    "promotion_date": "2026-05-03T17:21:17",
     "remarks": "architecto"
 }
 headers = {
@@ -43060,10 +41556,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--promote"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -43121,10 +41617,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="promotion_date"                data-endpoint="POSTapi-students--student_student_id--promote"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>remarks</code></b>&nbsp;&nbsp;
@@ -43153,14 +41649,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/promotions" \
+    --get "http://localhost/api/students/1/promotions" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/promotions"
+    "http://localhost/api/students/1/promotions"
 );
 
 const headers = {
@@ -43177,7 +41673,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/promotions';
+$url = 'http://localhost/api/students/1/promotions';
 $response = $client-&gt;get(
     $url,
     [
@@ -43195,7 +41691,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/promotions'
+url = 'http://localhost/api/students/1/promotions'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -43208,7 +41704,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--promotions">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -43220,7 +41716,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -43303,10 +41799,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--promotions"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -43323,14 +41819,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/promotion/16" \
+    "http://localhost/api/students/1/promotion/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/promotion/16"
+    "http://localhost/api/students/1/promotion/16"
 );
 
 const headers = {
@@ -43347,7 +41843,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/promotion/16';
+$url = 'http://localhost/api/students/1/promotion/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -43365,7 +41861,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/promotion/16'
+url = 'http://localhost/api/students/1/promotion/16'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -43457,10 +41953,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--promotion--promotion_promotion_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>promotion_promotion_id</code></b>&nbsp;&nbsp;
@@ -43489,14 +41985,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/documents" \
+    --get "http://localhost/api/students/1/documents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/documents"
+    "http://localhost/api/students/1/documents"
 );
 
 const headers = {
@@ -43513,7 +42009,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/documents';
+$url = 'http://localhost/api/students/1/documents';
 $response = $client-&gt;get(
     $url,
     [
@@ -43531,7 +42027,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/documents'
+url = 'http://localhost/api/students/1/documents'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -43544,7 +42040,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--documents">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -43556,7 +42052,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -43639,10 +42135,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--documents"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -43659,25 +42155,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/documents" \
+    "http://localhost/api/students/1/documents" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"document_type\": \"other\",
+    \"document_type\": \"transfer_certificate\",
     \"document_name\": \"b\",
     \"file_path\": \"n\",
     \"file_size\": 16,
     \"mime_type\": \"n\",
     \"uploaded_by\": 16,
     \"notes\": \"architecto\",
-    \"expiry_date\": \"2026-04-28T14:56:25\"
+    \"expiry_date\": \"2026-05-03T17:21:17\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/documents"
+    "http://localhost/api/students/1/documents"
 );
 
 const headers = {
@@ -43686,14 +42182,14 @@ const headers = {
 };
 
 let body = {
-    "document_type": "other",
+    "document_type": "transfer_certificate",
     "document_name": "b",
     "file_path": "n",
     "file_size": 16,
     "mime_type": "n",
     "uploaded_by": 16,
     "notes": "architecto",
-    "expiry_date": "2026-04-28T14:56:25"
+    "expiry_date": "2026-05-03T17:21:17"
 };
 
 fetch(url, {
@@ -43705,7 +42201,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/documents';
+$url = 'http://localhost/api/students/1/documents';
 $response = $client-&gt;post(
     $url,
     [
@@ -43714,14 +42210,14 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'document_type' =&gt; 'other',
+            'document_type' =&gt; 'transfer_certificate',
             'document_name' =&gt; 'b',
             'file_path' =&gt; 'n',
             'file_size' =&gt; 16,
             'mime_type' =&gt; 'n',
             'uploaded_by' =&gt; 16,
             'notes' =&gt; 'architecto',
-            'expiry_date' =&gt; '2026-04-28T14:56:25',
+            'expiry_date' =&gt; '2026-05-03T17:21:17',
         ],
     ]
 );
@@ -43733,16 +42229,16 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/documents'
+url = 'http://localhost/api/students/1/documents'
 payload = {
-    "document_type": "other",
+    "document_type": "transfer_certificate",
     "document_name": "b",
     "file_path": "n",
     "file_size": 16,
     "mime_type": "n",
     "uploaded_by": 16,
     "notes": "architecto",
-    "expiry_date": "2026-04-28T14:56:25"
+    "expiry_date": "2026-05-03T17:21:17"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -43835,10 +42331,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--documents"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -43848,10 +42344,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="document_type"                data-endpoint="POSTapi-students--student_student_id--documents"
-               value="other"
+               value="transfer_certificate"
                data-component="body">
     <br>
-<p>Example: <code>other</code></p>
+<p>Example: <code>transfer_certificate</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>birth_certificate</code></li> <li><code>transfer_certificate</code></li> <li><code>character_certificate</code></li> <li><code>previous_school_certificate</code></li> <li><code>medical_certificate</code></li> <li><code>passport</code></li> <li><code>id_proof</code></li> <li><code>address_proof</code></li> <li><code>photograph</code></li> <li><code>other</code></li></ul>
         </div>
@@ -43934,10 +42430,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="expiry_date"                data-endpoint="POSTapi-students--student_student_id--documents"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
         </form>
 
@@ -43954,24 +42450,24 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/document/16" \
+    "http://localhost/api/students/1/document/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"document_type\": \"other\",
+    \"document_type\": \"birth_certificate\",
     \"document_name\": \"b\",
     \"file_path\": \"n\",
     \"file_size\": 16,
     \"mime_type\": \"n\",
     \"notes\": \"architecto\",
-    \"expiry_date\": \"2026-04-28T14:56:25\"
+    \"expiry_date\": \"2026-05-03T17:21:17\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/document/16"
+    "http://localhost/api/students/1/document/1"
 );
 
 const headers = {
@@ -43980,13 +42476,13 @@ const headers = {
 };
 
 let body = {
-    "document_type": "other",
+    "document_type": "birth_certificate",
     "document_name": "b",
     "file_path": "n",
     "file_size": 16,
     "mime_type": "n",
     "notes": "architecto",
-    "expiry_date": "2026-04-28T14:56:25"
+    "expiry_date": "2026-05-03T17:21:17"
 };
 
 fetch(url, {
@@ -43998,7 +42494,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/document/16';
+$url = 'http://localhost/api/students/1/document/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -44007,13 +42503,13 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'document_type' =&gt; 'other',
+            'document_type' =&gt; 'birth_certificate',
             'document_name' =&gt; 'b',
             'file_path' =&gt; 'n',
             'file_size' =&gt; 16,
             'mime_type' =&gt; 'n',
             'notes' =&gt; 'architecto',
-            'expiry_date' =&gt; '2026-04-28T14:56:25',
+            'expiry_date' =&gt; '2026-05-03T17:21:17',
         ],
     ]
 );
@@ -44025,15 +42521,15 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/document/16'
+url = 'http://localhost/api/students/1/document/1'
 payload = {
-    "document_type": "other",
+    "document_type": "birth_certificate",
     "document_name": "b",
     "file_path": "n",
     "file_size": 16,
     "mime_type": "n",
     "notes": "architecto",
-    "expiry_date": "2026-04-28T14:56:25"
+    "expiry_date": "2026-05-03T17:21:17"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -44126,10 +42622,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--document--document_document_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>document_document_id</code></b>&nbsp;&nbsp;
@@ -44138,10 +42634,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="document_document_id"                data-endpoint="PUTapi-students--student_student_id--document--document_document_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the document document. Example: <code>16</code></p>
+<p>The ID of the document document. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -44151,10 +42647,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="document_type"                data-endpoint="PUTapi-students--student_student_id--document--document_document_id-"
-               value="other"
+               value="birth_certificate"
                data-component="body">
     <br>
-<p>Example: <code>other</code></p>
+<p>Example: <code>birth_certificate</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>birth_certificate</code></li> <li><code>transfer_certificate</code></li> <li><code>character_certificate</code></li> <li><code>previous_school_certificate</code></li> <li><code>medical_certificate</code></li> <li><code>passport</code></li> <li><code>id_proof</code></li> <li><code>address_proof</code></li> <li><code>photograph</code></li> <li><code>other</code></li></ul>
         </div>
@@ -44225,10 +42721,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="expiry_date"                data-endpoint="PUTapi-students--student_student_id--document--document_document_id-"
-               value="2026-04-28T14:56:25"
+               value="2026-05-03T17:21:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:25</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:17</code></p>
         </div>
         </form>
 
@@ -44245,14 +42741,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/document/16" \
+    "http://localhost/api/students/1/document/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/document/16"
+    "http://localhost/api/students/1/document/1"
 );
 
 const headers = {
@@ -44269,7 +42765,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/document/16';
+$url = 'http://localhost/api/students/1/document/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -44287,7 +42783,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/document/16'
+url = 'http://localhost/api/students/1/document/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -44379,10 +42875,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--document--document_document_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>document_document_id</code></b>&nbsp;&nbsp;
@@ -44391,10 +42887,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="document_document_id"                data-endpoint="DELETEapi-students--student_student_id--document--document_document_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the document document. Example: <code>16</code></p>
+<p>The ID of the document document. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -44411,14 +42907,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/activities" \
+    --get "http://localhost/api/students/1/activities" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/activities"
+    "http://localhost/api/students/1/activities"
 );
 
 const headers = {
@@ -44435,7 +42931,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/activities';
+$url = 'http://localhost/api/students/1/activities';
 $response = $client-&gt;get(
     $url,
     [
@@ -44453,7 +42949,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/activities'
+url = 'http://localhost/api/students/1/activities'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -44466,7 +42962,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--activities">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -44478,7 +42974,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -44561,10 +43057,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--activities"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -44581,14 +43077,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/students/16/contacts" \
+    --get "http://localhost/api/students/1/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/contacts"
+    "http://localhost/api/students/1/contacts"
 );
 
 const headers = {
@@ -44605,7 +43101,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/contacts';
+$url = 'http://localhost/api/students/1/contacts';
 $response = $client-&gt;get(
     $url,
     [
@@ -44623,7 +43119,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/contacts'
+url = 'http://localhost/api/students/1/contacts'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -44636,7 +43132,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-students--student_student_id--contacts">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -44648,7 +43144,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -44731,10 +43227,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="GETapi-students--student_student_id--contacts"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -44751,11 +43247,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/students/16/contacts" \
+    "http://localhost/api/students/1/contacts" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"contact_type\": \"other\",
+    \"contact_type\": \"phone\",
     \"contact_value\": \"b\",
     \"is_primary\": false,
     \"label\": \"n\"
@@ -44765,7 +43261,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/contacts"
+    "http://localhost/api/students/1/contacts"
 );
 
 const headers = {
@@ -44774,7 +43270,7 @@ const headers = {
 };
 
 let body = {
-    "contact_type": "other",
+    "contact_type": "phone",
     "contact_value": "b",
     "is_primary": false,
     "label": "n"
@@ -44789,7 +43285,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/contacts';
+$url = 'http://localhost/api/students/1/contacts';
 $response = $client-&gt;post(
     $url,
     [
@@ -44798,7 +43294,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'contact_type' =&gt; 'other',
+            'contact_type' =&gt; 'phone',
             'contact_value' =&gt; 'b',
             'is_primary' =&gt; false,
             'label' =&gt; 'n',
@@ -44813,9 +43309,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/contacts'
+url = 'http://localhost/api/students/1/contacts'
 payload = {
-    "contact_type": "other",
+    "contact_type": "phone",
     "contact_value": "b",
     "is_primary": false,
     "label": "n"
@@ -44911,10 +43407,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="POSTapi-students--student_student_id--contacts"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -44924,10 +43420,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_type"                data-endpoint="POSTapi-students--student_student_id--contacts"
-               value="other"
+               value="phone"
                data-component="body">
     <br>
-<p>Example: <code>other</code></p>
+<p>Example: <code>phone</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>phone</code></li> <li><code>mobile</code></li> <li><code>emergency</code></li> <li><code>work</code></li> <li><code>fax</code></li> <li><code>other</code></li></ul>
         </div>
@@ -44992,11 +43488,11 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/students/16/contact/16" \
+    "http://localhost/api/students/1/contact/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"contact_type\": \"phone\",
+    \"contact_type\": \"fax\",
     \"contact_value\": \"b\",
     \"is_primary\": false,
     \"label\": \"n\"
@@ -45006,7 +43502,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/contact/16"
+    "http://localhost/api/students/1/contact/1"
 );
 
 const headers = {
@@ -45015,7 +43511,7 @@ const headers = {
 };
 
 let body = {
-    "contact_type": "phone",
+    "contact_type": "fax",
     "contact_value": "b",
     "is_primary": false,
     "label": "n"
@@ -45030,7 +43526,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/contact/16';
+$url = 'http://localhost/api/students/1/contact/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -45039,7 +43535,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'contact_type' =&gt; 'phone',
+            'contact_type' =&gt; 'fax',
             'contact_value' =&gt; 'b',
             'is_primary' =&gt; false,
             'label' =&gt; 'n',
@@ -45054,9 +43550,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/contact/16'
+url = 'http://localhost/api/students/1/contact/1'
 payload = {
-    "contact_type": "phone",
+    "contact_type": "fax",
     "contact_value": "b",
     "is_primary": false,
     "label": "n"
@@ -45152,10 +43648,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="PUTapi-students--student_student_id--contact--contact_contact_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>contact_contact_id</code></b>&nbsp;&nbsp;
@@ -45164,10 +43660,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="contact_contact_id"                data-endpoint="PUTapi-students--student_student_id--contact--contact_contact_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the contact contact. Example: <code>16</code></p>
+<p>The ID of the contact contact. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -45177,10 +43673,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="contact_type"                data-endpoint="PUTapi-students--student_student_id--contact--contact_contact_id-"
-               value="phone"
+               value="fax"
                data-component="body">
     <br>
-<p>Example: <code>phone</code></p>
+<p>Example: <code>fax</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>phone</code></li> <li><code>mobile</code></li> <li><code>emergency</code></li> <li><code>work</code></li> <li><code>fax</code></li> <li><code>other</code></li></ul>
         </div>
@@ -45245,14 +43741,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/students/16/contact/16" \
+    "http://localhost/api/students/1/contact/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/students/16/contact/16"
+    "http://localhost/api/students/1/contact/1"
 );
 
 const headers = {
@@ -45269,7 +43765,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/students/16/contact/16';
+$url = 'http://localhost/api/students/1/contact/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -45287,7 +43783,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/students/16/contact/16'
+url = 'http://localhost/api/students/1/contact/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -45379,10 +43875,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="student_student_id"                data-endpoint="DELETEapi-students--student_student_id--contact--contact_contact_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the student student. Example: <code>16</code></p>
+<p>The ID of the student student. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>contact_contact_id</code></b>&nbsp;&nbsp;
@@ -45391,10 +43887,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="contact_contact_id"                data-endpoint="DELETEapi-students--student_student_id--contact--contact_contact_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the contact contact. Example: <code>16</code></p>
+<p>The ID of the contact contact. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -45470,7 +43966,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-subject">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -45482,49 +43978,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;subject_id&quot;: 1,
-            &quot;subject_name&quot;: &quot;math&quot;,
-            &quot;subject_code&quot;: &quot;10001&quot;,
-            &quot;subject_type&quot;: &quot;Practical&quot;,
-            &quot;description&quot;: &quot;xckjhckx&quot;,
-            &quot;is_optional&quot;: true,
-            &quot;created_at&quot;: &quot;2026-04-27T15:24:54.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-04-27T15:24:54.000000Z&quot;
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/subject?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/subject?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/subject?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/subject&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -45810,7 +44264,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-subject--subject_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -45822,14 +44276,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;subject_id&quot;: 1,
-    &quot;subject_name&quot;: &quot;math&quot;,
-    &quot;subject_code&quot;: &quot;10001&quot;,
-    &quot;subject_type&quot;: &quot;Practical&quot;,
-    &quot;description&quot;: &quot;xckjhckx&quot;,
-    &quot;is_optional&quot;: true,
-    &quot;created_at&quot;: &quot;2026-04-27T15:24:54.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-04-27T15:24:54.000000Z&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -46299,7 +44746,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-classSubject">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -46311,38 +44758,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/classSubject?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/classSubject?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/classSubject?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/classSubject&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -46573,14 +44989,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/classSubject/16" \
+    --get "http://localhost/api/classSubject/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/classSubject/16"
+    "http://localhost/api/classSubject/1"
 );
 
 const headers = {
@@ -46597,7 +45013,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/classSubject/16';
+$url = 'http://localhost/api/classSubject/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -46615,7 +45031,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/classSubject/16'
+url = 'http://localhost/api/classSubject/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -46628,7 +45044,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-classSubject--class_subject_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -46640,7 +45056,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\SubjectManagement\\Models\\ClassSubject] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -46723,10 +45139,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="class_subject_id"                data-endpoint="GETapi-classSubject--class_subject_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the class subject. Example: <code>16</code></p>
+<p>The ID of the class subject. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -46743,14 +45159,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/classSubject/16" \
+    "http://localhost/api/classSubject/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/classSubject/16"
+    "http://localhost/api/classSubject/1"
 );
 
 const headers = {
@@ -46767,7 +45183,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/classSubject/16';
+$url = 'http://localhost/api/classSubject/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -46785,7 +45201,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/classSubject/16'
+url = 'http://localhost/api/classSubject/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -46881,10 +45297,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="class_subject_id"                data-endpoint="PUTapi-classSubject--class_subject_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the class subject. Example: <code>16</code></p>
+<p>The ID of the class subject. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -46901,14 +45317,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/classSubject/16" \
+    "http://localhost/api/classSubject/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/classSubject/16"
+    "http://localhost/api/classSubject/1"
 );
 
 const headers = {
@@ -46925,7 +45341,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/classSubject/16';
+$url = 'http://localhost/api/classSubject/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -46943,7 +45359,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/classSubject/16'
+url = 'http://localhost/api/classSubject/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -47035,10 +45451,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="class_subject_id"                data-endpoint="DELETEapi-classSubject--class_subject_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the class subject. Example: <code>16</code></p>
+<p>The ID of the class subject. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -47110,7 +45526,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-curriculum">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -47122,38 +45538,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/curriculum?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/curriculum?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/curriculum?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/curriculum&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -47384,14 +45769,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/curriculum/16" \
+    --get "http://localhost/api/curriculum/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/curriculum/16"
+    "http://localhost/api/curriculum/1"
 );
 
 const headers = {
@@ -47408,7 +45793,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/curriculum/16';
+$url = 'http://localhost/api/curriculum/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -47426,7 +45811,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/curriculum/16'
+url = 'http://localhost/api/curriculum/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -47439,7 +45824,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-curriculum--curriculum_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -47451,7 +45836,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\SubjectManagement\\Models\\Curriculum] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -47534,10 +45919,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="curriculum_id"                data-endpoint="GETapi-curriculum--curriculum_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the curriculum. Example: <code>16</code></p>
+<p>The ID of the curriculum. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -47554,14 +45939,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/curriculum/16" \
+    "http://localhost/api/curriculum/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/curriculum/16"
+    "http://localhost/api/curriculum/1"
 );
 
 const headers = {
@@ -47578,7 +45963,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/curriculum/16';
+$url = 'http://localhost/api/curriculum/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -47596,7 +45981,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/curriculum/16'
+url = 'http://localhost/api/curriculum/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -47692,10 +46077,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="curriculum_id"                data-endpoint="PUTapi-curriculum--curriculum_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the curriculum. Example: <code>16</code></p>
+<p>The ID of the curriculum. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -47712,14 +46097,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/curriculum/16" \
+    "http://localhost/api/curriculum/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/curriculum/16"
+    "http://localhost/api/curriculum/1"
 );
 
 const headers = {
@@ -47736,7 +46121,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/curriculum/16';
+$url = 'http://localhost/api/curriculum/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -47754,7 +46139,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/curriculum/16'
+url = 'http://localhost/api/curriculum/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -47846,10 +46231,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="curriculum_id"                data-endpoint="DELETEapi-curriculum--curriculum_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the curriculum. Example: <code>16</code></p>
+<p>The ID of the curriculum. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -47921,7 +46306,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-lessonPlan">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -47933,38 +46318,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/lessonPlan?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/lessonPlan?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/lessonPlan?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/lessonPlan&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -48195,14 +46549,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/lessonPlan/16" \
+    --get "http://localhost/api/lessonPlan/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/lessonPlan/16"
+    "http://localhost/api/lessonPlan/1"
 );
 
 const headers = {
@@ -48219,7 +46573,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/lessonPlan/16';
+$url = 'http://localhost/api/lessonPlan/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -48237,7 +46591,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/lessonPlan/16'
+url = 'http://localhost/api/lessonPlan/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -48250,7 +46604,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-lessonPlan--lesson_plan_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -48262,7 +46616,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\SubjectManagement\\Models\\LessonPlan] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -48345,10 +46699,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="lesson_plan_id"                data-endpoint="GETapi-lessonPlan--lesson_plan_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the lesson plan. Example: <code>16</code></p>
+<p>The ID of the lesson plan. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -48365,14 +46719,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/lessonPlan/16" \
+    "http://localhost/api/lessonPlan/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/lessonPlan/16"
+    "http://localhost/api/lessonPlan/1"
 );
 
 const headers = {
@@ -48389,7 +46743,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/lessonPlan/16';
+$url = 'http://localhost/api/lessonPlan/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -48407,7 +46761,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/lessonPlan/16'
+url = 'http://localhost/api/lessonPlan/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -48503,10 +46857,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="lesson_plan_id"                data-endpoint="PUTapi-lessonPlan--lesson_plan_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the lesson plan. Example: <code>16</code></p>
+<p>The ID of the lesson plan. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -48523,14 +46877,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/lessonPlan/16" \
+    "http://localhost/api/lessonPlan/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/lessonPlan/16"
+    "http://localhost/api/lessonPlan/1"
 );
 
 const headers = {
@@ -48547,7 +46901,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/lessonPlan/16';
+$url = 'http://localhost/api/lessonPlan/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -48565,7 +46919,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/lessonPlan/16'
+url = 'http://localhost/api/lessonPlan/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -48657,10 +47011,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="lesson_plan_id"                data-endpoint="DELETEapi-lessonPlan--lesson_plan_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the lesson plan. Example: <code>16</code></p>
+<p>The ID of the lesson plan. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -48732,7 +47086,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-textbook">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -48744,38 +47098,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/textbook?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/textbook?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/textbook?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/textbook&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -49006,14 +47329,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/textbook/16" \
+    --get "http://localhost/api/textbook/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/textbook/16"
+    "http://localhost/api/textbook/1"
 );
 
 const headers = {
@@ -49030,7 +47353,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/textbook/16';
+$url = 'http://localhost/api/textbook/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -49048,7 +47371,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/textbook/16'
+url = 'http://localhost/api/textbook/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -49061,7 +47384,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-textbook--textbook_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -49073,7 +47396,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\SubjectManagement\\Models\\Textbook] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -49156,10 +47479,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="textbook_id"                data-endpoint="GETapi-textbook--textbook_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the textbook. Example: <code>16</code></p>
+<p>The ID of the textbook. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -49176,14 +47499,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/textbook/16" \
+    "http://localhost/api/textbook/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/textbook/16"
+    "http://localhost/api/textbook/1"
 );
 
 const headers = {
@@ -49200,7 +47523,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/textbook/16';
+$url = 'http://localhost/api/textbook/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -49218,7 +47541,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/textbook/16'
+url = 'http://localhost/api/textbook/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -49314,10 +47637,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="textbook_id"                data-endpoint="PUTapi-textbook--textbook_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the textbook. Example: <code>16</code></p>
+<p>The ID of the textbook. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -49334,14 +47657,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/textbook/16" \
+    "http://localhost/api/textbook/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/textbook/16"
+    "http://localhost/api/textbook/1"
 );
 
 const headers = {
@@ -49358,7 +47681,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/textbook/16';
+$url = 'http://localhost/api/textbook/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -49376,7 +47699,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/textbook/16'
+url = 'http://localhost/api/textbook/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -49468,10 +47791,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="textbook_id"                data-endpoint="DELETEapi-textbook--textbook_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the textbook. Example: <code>16</code></p>
+<p>The ID of the textbook. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -49543,7 +47866,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherSubjectMapping">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -49555,38 +47878,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/teacherSubjectMapping?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/teacherSubjectMapping?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/teacherSubjectMapping?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/teacherSubjectMapping&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -49817,14 +48109,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/teacherSubjectMapping/16" \
+    --get "http://localhost/api/teacherSubjectMapping/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherSubjectMapping/16"
+    "http://localhost/api/teacherSubjectMapping/1"
 );
 
 const headers = {
@@ -49841,7 +48133,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherSubjectMapping/16';
+$url = 'http://localhost/api/teacherSubjectMapping/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -49859,7 +48151,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherSubjectMapping/16'
+url = 'http://localhost/api/teacherSubjectMapping/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -49872,7 +48164,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-teacherSubjectMapping--mapping_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -49884,7 +48176,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\SubjectManagement\\Models\\TeacherSubjectMapping] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -49967,10 +48259,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mapping_id"                data-endpoint="GETapi-teacherSubjectMapping--mapping_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mapping. Example: <code>16</code></p>
+<p>The ID of the mapping. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -49987,14 +48279,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/teacherSubjectMapping/16" \
+    "http://localhost/api/teacherSubjectMapping/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherSubjectMapping/16"
+    "http://localhost/api/teacherSubjectMapping/1"
 );
 
 const headers = {
@@ -50011,7 +48303,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherSubjectMapping/16';
+$url = 'http://localhost/api/teacherSubjectMapping/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -50029,7 +48321,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherSubjectMapping/16'
+url = 'http://localhost/api/teacherSubjectMapping/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -50125,10 +48417,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mapping_id"                data-endpoint="PUTapi-teacherSubjectMapping--mapping_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mapping. Example: <code>16</code></p>
+<p>The ID of the mapping. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -50145,14 +48437,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/teacherSubjectMapping/16" \
+    "http://localhost/api/teacherSubjectMapping/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/teacherSubjectMapping/16"
+    "http://localhost/api/teacherSubjectMapping/1"
 );
 
 const headers = {
@@ -50169,7 +48461,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/teacherSubjectMapping/16';
+$url = 'http://localhost/api/teacherSubjectMapping/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -50187,7 +48479,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/teacherSubjectMapping/16'
+url = 'http://localhost/api/teacherSubjectMapping/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -50279,10 +48571,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="mapping_id"                data-endpoint="DELETEapi-teacherSubjectMapping--mapping_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the mapping. Example: <code>16</code></p>
+<p>The ID of the mapping. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -50358,7 +48650,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-room">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -50369,7 +48661,9 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-room" hidden>
@@ -50463,7 +48757,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"room_name\": \"b\",
-    \"room_type\": \"Lab\",
+    \"room_type\": \"Auditorium\",
     \"capacity\": 22,
     \"description\": \"Eius et animi quos velit et.\"
 }"
@@ -50482,7 +48776,7 @@ const headers = {
 
 let body = {
     "room_name": "b",
-    "room_type": "Lab",
+    "room_type": "Auditorium",
     "capacity": 22,
     "description": "Eius et animi quos velit et."
 };
@@ -50506,7 +48800,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'room_name' =&gt; 'b',
-            'room_type' =&gt; 'Lab',
+            'room_type' =&gt; 'Auditorium',
             'capacity' =&gt; 22,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
@@ -50523,7 +48817,7 @@ import json
 url = 'http://localhost/api/room'
 payload = {
     "room_name": "b",
-    "room_type": "Lab",
+    "room_type": "Auditorium",
     "capacity": 22,
     "description": "Eius et animi quos velit et."
 }
@@ -50630,10 +48924,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="room_type"                data-endpoint="POSTapi-room"
-               value="Lab"
+               value="Auditorium"
                data-component="body">
     <br>
-<p>Example: <code>Lab</code></p>
+<p>Example: <code>Auditorium</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Classroom</code></li> <li><code>Lab</code></li> <li><code>Auditorium</code></li> <li><code>Office</code></li></ul>
         </div>
@@ -50676,14 +48970,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/room/16" \
+    --get "http://localhost/api/room/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/room/16"
+    "http://localhost/api/room/1"
 );
 
 const headers = {
@@ -50700,7 +48994,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/room/16';
+$url = 'http://localhost/api/room/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -50718,7 +49012,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/room/16'
+url = 'http://localhost/api/room/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -50731,7 +49025,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-room--room_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -50743,7 +49037,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\Room] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -50826,10 +49120,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_id"                data-endpoint="GETapi-room--room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room. Example: <code>16</code></p>
+<p>The ID of the room. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -50846,11 +49140,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/room/16" \
+    "http://localhost/api/room/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"room_type\": \"Classroom\",
+    \"room_type\": \"Auditorium\",
     \"capacity\": 16,
     \"description\": \"Eius et animi quos velit et.\"
 }"
@@ -50859,7 +49153,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/room/16"
+    "http://localhost/api/room/1"
 );
 
 const headers = {
@@ -50868,7 +49162,7 @@ const headers = {
 };
 
 let body = {
-    "room_type": "Classroom",
+    "room_type": "Auditorium",
     "capacity": 16,
     "description": "Eius et animi quos velit et."
 };
@@ -50882,7 +49176,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/room/16';
+$url = 'http://localhost/api/room/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -50891,7 +49185,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'room_type' =&gt; 'Classroom',
+            'room_type' =&gt; 'Auditorium',
             'capacity' =&gt; 16,
             'description' =&gt; 'Eius et animi quos velit et.',
         ],
@@ -50905,9 +49199,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/room/16'
+url = 'http://localhost/api/room/1'
 payload = {
-    "room_type": "Classroom",
+    "room_type": "Auditorium",
     "capacity": 16,
     "description": "Eius et animi quos velit et."
 }
@@ -51006,10 +49300,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_id"                data-endpoint="PUTapi-room--room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room. Example: <code>16</code></p>
+<p>The ID of the room. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -51031,10 +49325,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="room_type"                data-endpoint="PUTapi-room--room_id-"
-               value="Classroom"
+               value="Auditorium"
                data-component="body">
     <br>
-<p>Example: <code>Classroom</code></p>
+<p>Example: <code>Auditorium</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Classroom</code></li> <li><code>Lab</code></li> <li><code>Auditorium</code></li> <li><code>Office</code></li></ul>
         </div>
@@ -51077,14 +49371,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/room/16" \
+    "http://localhost/api/room/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/room/16"
+    "http://localhost/api/room/1"
 );
 
 const headers = {
@@ -51101,7 +49395,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/room/16';
+$url = 'http://localhost/api/room/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -51119,7 +49413,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/room/16'
+url = 'http://localhost/api/room/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -51211,10 +49505,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="room_id"                data-endpoint="DELETEapi-room--room_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the room. Example: <code>16</code></p>
+<p>The ID of the room. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -51286,7 +49580,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-day">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -51297,7 +49591,9 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-day" hidden>
@@ -51554,14 +49850,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/day/16" \
+    --get "http://localhost/api/day/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/day/16"
+    "http://localhost/api/day/1"
 );
 
 const headers = {
@@ -51578,7 +49874,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/day/16';
+$url = 'http://localhost/api/day/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -51596,7 +49892,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/day/16'
+url = 'http://localhost/api/day/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -51609,7 +49905,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-day--day_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -51621,7 +49917,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\Day] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -51704,10 +50000,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="day_id"                data-endpoint="GETapi-day--day_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the day. Example: <code>16</code></p>
+<p>The ID of the day. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -51724,7 +50020,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/day/16" \
+    "http://localhost/api/day/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
 </code></pre></div>
@@ -51732,7 +50028,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/day/16"
+    "http://localhost/api/day/1"
 );
 
 const headers = {
@@ -51749,7 +50045,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/day/16';
+$url = 'http://localhost/api/day/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -51767,7 +50063,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/day/16'
+url = 'http://localhost/api/day/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -51863,10 +50159,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="day_id"                data-endpoint="PUTapi-day--day_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the day. Example: <code>16</code></p>
+<p>The ID of the day. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -51896,14 +50192,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/day/16" \
+    "http://localhost/api/day/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/day/16"
+    "http://localhost/api/day/1"
 );
 
 const headers = {
@@ -51920,7 +50216,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/day/16';
+$url = 'http://localhost/api/day/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -51938,7 +50234,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/day/16'
+url = 'http://localhost/api/day/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -52030,10 +50326,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="day_id"                data-endpoint="DELETEapi-day--day_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the day. Example: <code>16</code></p>
+<p>The ID of the day. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -52105,7 +50401,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-period">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -52116,7 +50412,9 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-period" hidden>
@@ -52209,8 +50507,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\"
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\"
 }"
 </code></pre></div>
 
@@ -52226,8 +50524,8 @@ const headers = {
 };
 
 let body = {
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 };
 
 fetch(url, {
@@ -52248,8 +50546,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
         ],
     ]
 );
@@ -52263,8 +50561,8 @@ import json
 
 url = 'http://localhost/api/period'
 payload = {
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -52357,10 +50655,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="POSTapi-period"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -52369,10 +50667,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="POSTapi-period"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
         </form>
 
@@ -52389,14 +50687,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/period/16" \
+    --get "http://localhost/api/period/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/period/16"
+    "http://localhost/api/period/1"
 );
 
 const headers = {
@@ -52413,7 +50711,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/period/16';
+$url = 'http://localhost/api/period/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -52431,7 +50729,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/period/16'
+url = 'http://localhost/api/period/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -52444,7 +50742,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-period--period_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -52456,7 +50754,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\Period] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -52539,10 +50837,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="period_id"                data-endpoint="GETapi-period--period_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the period. Example: <code>16</code></p>
+<p>The ID of the period. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -52559,19 +50857,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/period/16" \
+    "http://localhost/api/period/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\"
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/period/16"
+    "http://localhost/api/period/1"
 );
 
 const headers = {
@@ -52580,8 +50878,8 @@ const headers = {
 };
 
 let body = {
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 };
 
 fetch(url, {
@@ -52593,7 +50891,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/period/16';
+$url = 'http://localhost/api/period/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -52602,8 +50900,8 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
         ],
     ]
 );
@@ -52615,10 +50913,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/period/16'
+url = 'http://localhost/api/period/1'
 payload = {
-    "start_time": "14:56",
-    "end_time": "2052-05-21"
+    "start_time": "17:21",
+    "end_time": "2052-05-26"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -52715,10 +51013,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="period_id"                data-endpoint="PUTapi-period--period_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the period. Example: <code>16</code></p>
+<p>The ID of the period. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -52728,10 +51026,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="PUTapi-period--period_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -52740,10 +51038,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="PUTapi-period--period_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
         </form>
 
@@ -52760,14 +51058,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/period/16" \
+    "http://localhost/api/period/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/period/16"
+    "http://localhost/api/period/1"
 );
 
 const headers = {
@@ -52784,7 +51082,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/period/16';
+$url = 'http://localhost/api/period/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -52802,7 +51100,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/period/16'
+url = 'http://localhost/api/period/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -52894,10 +51192,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="period_id"                data-endpoint="DELETEapi-period--period_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the period. Example: <code>16</code></p>
+<p>The ID of the period. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -52969,7 +51267,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-timetable">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -52981,38 +51279,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/timetable?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/timetable?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/timetable?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/timetable&quot;,
-    &quot;per_page&quot;: 50,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -53382,14 +51649,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/timetable/16" \
+    --get "http://localhost/api/timetable/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/timetable/16"
+    "http://localhost/api/timetable/1"
 );
 
 const headers = {
@@ -53406,7 +51673,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/timetable/16';
+$url = 'http://localhost/api/timetable/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -53424,7 +51691,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/timetable/16'
+url = 'http://localhost/api/timetable/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -53437,7 +51704,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-timetable--timetable_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -53449,7 +51716,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\Timetable] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -53532,10 +51799,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="timetable_id"                data-endpoint="GETapi-timetable--timetable_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the timetable. Example: <code>16</code></p>
+<p>The ID of the timetable. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -53552,7 +51819,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/timetable/16" \
+    "http://localhost/api/timetable/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -53570,7 +51837,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/timetable/16"
+    "http://localhost/api/timetable/1"
 );
 
 const headers = {
@@ -53598,7 +51865,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/timetable/16';
+$url = 'http://localhost/api/timetable/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -53626,7 +51893,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/timetable/16'
+url = 'http://localhost/api/timetable/1'
 payload = {
     "class_id": 16,
     "section_id": 16,
@@ -53732,10 +51999,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="timetable_id"                data-endpoint="PUTapi-timetable--timetable_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the timetable. Example: <code>16</code></p>
+<p>The ID of the timetable. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -53849,14 +52116,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/timetable/16" \
+    "http://localhost/api/timetable/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/timetable/16"
+    "http://localhost/api/timetable/1"
 );
 
 const headers = {
@@ -53873,7 +52140,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/timetable/16';
+$url = 'http://localhost/api/timetable/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -53891,7 +52158,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/timetable/16'
+url = 'http://localhost/api/timetable/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -53983,10 +52250,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="timetable_id"                data-endpoint="DELETEapi-timetable--timetable_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the timetable. Example: <code>16</code></p>
+<p>The ID of the timetable. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -54058,7 +52325,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-substituteAssignment">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -54070,38 +52337,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/substituteAssignment?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/substituteAssignment?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/substituteAssignment?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/substituteAssignment&quot;,
-    &quot;per_page&quot;: 50,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -54198,7 +52434,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"timetable_id\": 16,
     \"original_teacher_id\": 16,
     \"substitute_teacher_id\": 16,
-    \"date_of_substitution\": \"2026-04-28T14:56:26\"
+    \"date_of_substitution\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
@@ -54217,7 +52453,7 @@ let body = {
     "timetable_id": 16,
     "original_teacher_id": 16,
     "substitute_teacher_id": 16,
-    "date_of_substitution": "2026-04-28T14:56:26"
+    "date_of_substitution": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -54241,7 +52477,7 @@ $response = $client-&gt;post(
             'timetable_id' =&gt; 16,
             'original_teacher_id' =&gt; 16,
             'substitute_teacher_id' =&gt; 16,
-            'date_of_substitution' =&gt; '2026-04-28T14:56:26',
+            'date_of_substitution' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -54258,7 +52494,7 @@ payload = {
     "timetable_id": 16,
     "original_teacher_id": 16,
     "substitute_teacher_id": 16,
-    "date_of_substitution": "2026-04-28T14:56:26"
+    "date_of_substitution": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -54387,10 +52623,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_substitution"                data-endpoint="POSTapi-substituteAssignment"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -54407,14 +52643,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/substituteAssignment/16" \
+    --get "http://localhost/api/substituteAssignment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/substituteAssignment/16"
+    "http://localhost/api/substituteAssignment/1"
 );
 
 const headers = {
@@ -54431,7 +52667,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/substituteAssignment/16';
+$url = 'http://localhost/api/substituteAssignment/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -54449,7 +52685,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/substituteAssignment/16'
+url = 'http://localhost/api/substituteAssignment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -54462,7 +52698,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-substituteAssignment--substitute_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -54474,7 +52710,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\SubstituteAssignment] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -54557,10 +52793,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="substitute_id"                data-endpoint="GETapi-substituteAssignment--substitute_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the substitute. Example: <code>16</code></p>
+<p>The ID of the substitute. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -54577,21 +52813,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/substituteAssignment/16" \
+    "http://localhost/api/substituteAssignment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"timetable_id\": 16,
     \"original_teacher_id\": 16,
     \"substitute_teacher_id\": 16,
-    \"date_of_substitution\": \"2026-04-28T14:56:26\"
+    \"date_of_substitution\": \"2026-05-03T17:21:19\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/substituteAssignment/16"
+    "http://localhost/api/substituteAssignment/1"
 );
 
 const headers = {
@@ -54603,7 +52839,7 @@ let body = {
     "timetable_id": 16,
     "original_teacher_id": 16,
     "substitute_teacher_id": 16,
-    "date_of_substitution": "2026-04-28T14:56:26"
+    "date_of_substitution": "2026-05-03T17:21:19"
 };
 
 fetch(url, {
@@ -54615,7 +52851,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/substituteAssignment/16';
+$url = 'http://localhost/api/substituteAssignment/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -54627,7 +52863,7 @@ $response = $client-&gt;put(
             'timetable_id' =&gt; 16,
             'original_teacher_id' =&gt; 16,
             'substitute_teacher_id' =&gt; 16,
-            'date_of_substitution' =&gt; '2026-04-28T14:56:26',
+            'date_of_substitution' =&gt; '2026-05-03T17:21:19',
         ],
     ]
 );
@@ -54639,12 +52875,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/substituteAssignment/16'
+url = 'http://localhost/api/substituteAssignment/1'
 payload = {
     "timetable_id": 16,
     "original_teacher_id": 16,
     "substitute_teacher_id": 16,
-    "date_of_substitution": "2026-04-28T14:56:26"
+    "date_of_substitution": "2026-05-03T17:21:19"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -54741,10 +52977,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="substitute_id"                data-endpoint="PUTapi-substituteAssignment--substitute_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the substitute. Example: <code>16</code></p>
+<p>The ID of the substitute. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -54790,10 +53026,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_of_substitution"                data-endpoint="PUTapi-substituteAssignment--substitute_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
         </form>
 
@@ -54810,14 +53046,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/substituteAssignment/16" \
+    "http://localhost/api/substituteAssignment/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/substituteAssignment/16"
+    "http://localhost/api/substituteAssignment/1"
 );
 
 const headers = {
@@ -54834,7 +53070,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/substituteAssignment/16';
+$url = 'http://localhost/api/substituteAssignment/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -54852,7 +53088,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/substituteAssignment/16'
+url = 'http://localhost/api/substituteAssignment/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -54944,10 +53180,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="substitute_id"                data-endpoint="DELETEapi-substituteAssignment--substitute_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the substitute. Example: <code>16</code></p>
+<p>The ID of the substitute. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -55019,7 +53255,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-specialEvent">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -55031,38 +53267,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
-    &quot;first_page_url&quot;: &quot;http://localhost/api/specialEvent?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/specialEvent?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://localhost/api/specialEvent?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;page&quot;: 1,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;page&quot;: null,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://localhost/api/specialEvent&quot;,
-    &quot;per_page&quot;: 50,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -55157,9 +53362,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"event_name\": \"b\",
-    \"event_date\": \"2026-04-28T14:56:26\",
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\",
+    \"event_date\": \"2026-05-03T17:21:19\",
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\",
     \"description\": \"Eius et animi quos velit et.\",
     \"room_id\": 16
 }"
@@ -55178,9 +53383,9 @@ const headers = {
 
 let body = {
     "event_name": "b",
-    "event_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
+    "event_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
     "description": "Eius et animi quos velit et.",
     "room_id": 16
 };
@@ -55204,9 +53409,9 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'event_name' =&gt; 'b',
-            'event_date' =&gt; '2026-04-28T14:56:26',
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
+            'event_date' =&gt; '2026-05-03T17:21:19',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
             'description' =&gt; 'Eius et animi quos velit et.',
             'room_id' =&gt; 16,
         ],
@@ -55223,9 +53428,9 @@ import json
 url = 'http://localhost/api/specialEvent'
 payload = {
     "event_name": "b",
-    "event_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
+    "event_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
     "description": "Eius et animi quos velit et.",
     "room_id": 16
 }
@@ -55332,10 +53537,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="event_date"                data-endpoint="POSTapi-specialEvent"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -55344,10 +53549,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="POSTapi-specialEvent"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -55356,10 +53561,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="POSTapi-specialEvent"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -55400,14 +53605,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/specialEvent/16" \
+    --get "http://localhost/api/specialEvent/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/specialEvent/16"
+    "http://localhost/api/specialEvent/1"
 );
 
 const headers = {
@@ -55424,7 +53629,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/specialEvent/16';
+$url = 'http://localhost/api/specialEvent/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -55442,7 +53647,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/specialEvent/16'
+url = 'http://localhost/api/specialEvent/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -55455,7 +53660,7 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-specialEvent--event_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -55467,7 +53672,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Packages\\TimetableManagement\\Models\\SpecialEvent] 16&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -55550,10 +53755,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="event_id"                data-endpoint="GETapi-specialEvent--event_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>16</code></p>
+<p>The ID of the event. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -55570,14 +53775,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/specialEvent/16" \
+    "http://localhost/api/specialEvent/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"event_name\": \"b\",
-    \"event_date\": \"2026-04-28T14:56:26\",
-    \"start_time\": \"14:56\",
-    \"end_time\": \"2052-05-21\",
+    \"event_date\": \"2026-05-03T17:21:19\",
+    \"start_time\": \"17:21\",
+    \"end_time\": \"2052-05-26\",
     \"description\": \"Eius et animi quos velit et.\",
     \"room_id\": 16
 }"
@@ -55586,7 +53791,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/specialEvent/16"
+    "http://localhost/api/specialEvent/1"
 );
 
 const headers = {
@@ -55596,9 +53801,9 @@ const headers = {
 
 let body = {
     "event_name": "b",
-    "event_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
+    "event_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
     "description": "Eius et animi quos velit et.",
     "room_id": 16
 };
@@ -55612,7 +53817,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/specialEvent/16';
+$url = 'http://localhost/api/specialEvent/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -55622,9 +53827,9 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'event_name' =&gt; 'b',
-            'event_date' =&gt; '2026-04-28T14:56:26',
-            'start_time' =&gt; '14:56',
-            'end_time' =&gt; '2052-05-21',
+            'event_date' =&gt; '2026-05-03T17:21:19',
+            'start_time' =&gt; '17:21',
+            'end_time' =&gt; '2052-05-26',
             'description' =&gt; 'Eius et animi quos velit et.',
             'room_id' =&gt; 16,
         ],
@@ -55638,12 +53843,12 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/specialEvent/16'
+url = 'http://localhost/api/specialEvent/1'
 payload = {
     "event_name": "b",
-    "event_date": "2026-04-28T14:56:26",
-    "start_time": "14:56",
-    "end_time": "2052-05-21",
+    "event_date": "2026-05-03T17:21:19",
+    "start_time": "17:21",
+    "end_time": "2052-05-26",
     "description": "Eius et animi quos velit et.",
     "room_id": 16
 }
@@ -55742,10 +53947,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="event_id"                data-endpoint="PUTapi-specialEvent--event_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>16</code></p>
+<p>The ID of the event. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -55767,10 +53972,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="event_date"                data-endpoint="PUTapi-specialEvent--event_id-"
-               value="2026-04-28T14:56:26"
+               value="2026-05-03T17:21:19"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2026-04-28T14:56:26</code></p>
+<p>Must be a valid date. Example: <code>2026-05-03T17:21:19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -55779,10 +53984,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_time"                data-endpoint="PUTapi-specialEvent--event_id-"
-               value="14:56"
+               value="17:21"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Example: <code>14:56</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>17:21</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end_time</code></b>&nbsp;&nbsp;
@@ -55791,10 +53996,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="end_time"                data-endpoint="PUTapi-specialEvent--event_id-"
-               value="2052-05-21"
+               value="2052-05-26"
                data-component="body">
     <br>
-<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-21</code></p>
+<p>Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>. Example: <code>2052-05-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -55835,14 +54040,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/specialEvent/16" \
+    "http://localhost/api/specialEvent/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/specialEvent/16"
+    "http://localhost/api/specialEvent/1"
 );
 
 const headers = {
@@ -55859,7 +54064,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/specialEvent/16';
+$url = 'http://localhost/api/specialEvent/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -55877,7 +54082,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/specialEvent/16'
+url = 'http://localhost/api/specialEvent/1'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -55969,10 +54174,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="event_id"                data-endpoint="DELETEapi-specialEvent--event_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>16</code></p>
+<p>The ID of the event. Example: <code>1</code></p>
             </div>
                     </form>
 

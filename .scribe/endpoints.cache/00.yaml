@@ -31,8 +31,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/students?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/students?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/students?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/students","per_page":10,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -93,7 +93,7 @@ endpoints:
         name: date_of_birth
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -104,7 +104,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: Male
+        example: Other
         type: string
         enumValues:
           - Male
@@ -206,7 +206,7 @@ endpoints:
         name: date_of_admission
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -228,7 +228,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: Active
+        example: Graduated
         type: string
         enumValues:
           - Active
@@ -494,8 +494,8 @@ endpoints:
     cleanBodyParameters:
       first_name: b
       last_name: 'n'
-      date_of_birth: '2026-04-28T14:56:25'
-      gender: Male
+      date_of_birth: '2026-05-03T17:21:17'
+      gender: Other
       blood_group: g
       nationality: z
       religion: m
@@ -504,9 +504,9 @@ endpoints:
       phone_number: ngzmiyvdljnikhwa
       email: breitenberg.gilbert@example.com
       profile_photo: u
-      date_of_admission: '2026-04-28T14:56:25'
+      date_of_admission: '2026-05-03T17:21:17'
       admission_number: w
-      status: Active
+      status: Graduated
       father_name: p
       father_phone: wlvqwrsitcpscqld
       father_email: nstokes@example.org
@@ -562,14 +562,14 @@ endpoints:
         name: student_id
         description: 'The ID of the student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_id: 16
+      student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -578,11 +578,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -618,14 +615,14 @@ endpoints:
         name: student_id
         description: 'The ID of the student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_id: 16
+      student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -656,7 +653,7 @@ endpoints:
         name: date_of_birth
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -667,7 +664,7 @@ endpoints:
         name: gender
         description: ''
         required: false
-        example: Male
+        example: Other
         type: string
         enumValues:
           - Male
@@ -769,7 +766,7 @@ endpoints:
         name: date_of_admission
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1070,7 +1067,7 @@ endpoints:
         name: 'contacts[].contact_type'
         description: ''
         required: false
-        example: emergency
+        example: phone
         type: string
         enumValues:
           - phone
@@ -1118,8 +1115,8 @@ endpoints:
     cleanBodyParameters:
       first_name: b
       last_name: 'n'
-      date_of_birth: '2026-04-28T14:56:25'
-      gender: Male
+      date_of_birth: '2026-05-03T17:21:17'
+      gender: Other
       blood_group: g
       nationality: z
       religion: m
@@ -1128,7 +1125,7 @@ endpoints:
       phone_number: ngzmiyvdljnikhwa
       email: breitenberg.gilbert@example.com
       profile_photo: u
-      date_of_admission: '2026-04-28T14:56:25'
+      date_of_admission: '2026-05-03T17:21:17'
       status: Inactive
       father_name: w
       father_phone: pwlvqwrsitcpscql
@@ -1156,7 +1153,7 @@ endpoints:
           year_of_passing: '9775'
       contacts:
         -
-          contact_type: emergency
+          contact_type: phone
           contact_value: 'n'
           is_primary: false
           label: g
@@ -1191,14 +1188,14 @@ endpoints:
         name: student_id
         description: 'The ID of the student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_id: 16
+      student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1234,14 +1231,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1421,14 +1418,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1608,14 +1605,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1711,7 +1708,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1722,15 +1719,15 @@ endpoints:
         name: education_education_id
         description: 'The ID of the education education.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      education_education_id: 16
+      student_student_id: 1
+      education_education_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1826,7 +1823,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1837,15 +1834,15 @@ endpoints:
         name: education_education_id
         description: 'The ID of the education education.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      education_education_id: 16
+      student_student_id: 1
+      education_education_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1881,14 +1878,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1897,11 +1894,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1936,14 +1930,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2051,7 +2045,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2062,15 +2056,15 @@ endpoints:
         name: healthRecord_health_id
         description: 'The ID of the healthRecord health.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      healthRecord_health_id: 16
+      student_student_id: 1
+      healthRecord_health_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2178,7 +2172,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2189,15 +2183,15 @@ endpoints:
         name: healthRecord_health_id
         description: 'The ID of the healthRecord health.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      healthRecord_health_id: 16
+      student_student_id: 1
+      healthRecord_health_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2233,14 +2227,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2271,7 +2265,7 @@ endpoints:
         name: enrollment_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2282,7 +2276,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: Graduated
+        example: Active
         type: string
         enumValues:
           - Active
@@ -2306,8 +2300,8 @@ endpoints:
     cleanBodyParameters:
       batch_id: 16
       academic_year_id: 16
-      enrollment_date: '2026-04-28T14:56:25'
-      status: Graduated
+      enrollment_date: '2026-05-03T17:21:17'
+      status: Active
       remarks: architecto
     fileParameters: []
     responses: []
@@ -2340,7 +2334,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2351,15 +2345,15 @@ endpoints:
         name: enrollment_enrollment_id
         description: 'The ID of the enrollment enrollment.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      enrollment_enrollment_id: 16
+      student_student_id: 1
+      enrollment_enrollment_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2368,7 +2362,7 @@ endpoints:
         name: enrollment_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2379,7 +2373,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: Transferred
+        example: Graduated
         type: string
         enumValues:
           - Active
@@ -2401,8 +2395,8 @@ endpoints:
         nullable: true
         deprecated: false
     cleanBodyParameters:
-      enrollment_date: '2026-04-28T14:56:25'
-      status: Transferred
+      enrollment_date: '2026-05-03T17:21:17'
+      status: Graduated
       remarks: architecto
     fileParameters: []
     responses: []
@@ -2435,7 +2429,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2446,15 +2440,15 @@ endpoints:
         name: enrollment_enrollment_id
         description: 'The ID of the enrollment enrollment.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      enrollment_enrollment_id: 16
+      student_student_id: 1
+      enrollment_enrollment_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2490,14 +2484,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2506,11 +2500,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2545,14 +2536,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2605,7 +2596,7 @@ endpoints:
         name: promotion_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2627,7 +2618,7 @@ endpoints:
       to_batch_id: 16
       from_academic_year_id: 16
       to_academic_year_id: 16
-      promotion_date: '2026-04-28T14:56:25'
+      promotion_date: '2026-05-03T17:21:17'
       remarks: architecto
     fileParameters: []
     responses: []
@@ -2660,14 +2651,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2676,11 +2667,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2715,7 +2703,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2733,7 +2721,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
       promotion_promotion_id: 16
     queryParameters: []
     cleanQueryParameters: []
@@ -2770,14 +2758,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2786,11 +2774,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2825,14 +2810,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2841,7 +2826,7 @@ endpoints:
         name: document_type
         description: ''
         required: true
-        example: other
+        example: transfer_certificate
         type: string
         enumValues:
           - birth_certificate
@@ -2928,21 +2913,21 @@ endpoints:
         name: expiry_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         deprecated: false
     cleanBodyParameters:
-      document_type: other
+      document_type: transfer_certificate
       document_name: b
       file_path: 'n'
       file_size: 16
       mime_type: 'n'
       uploaded_by: 16
       notes: architecto
-      expiry_date: '2026-04-28T14:56:25'
+      expiry_date: '2026-05-03T17:21:17'
     fileParameters: []
     responses: []
     responseFields: []
@@ -2974,7 +2959,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2985,15 +2970,15 @@ endpoints:
         name: document_document_id
         description: 'The ID of the document document.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      document_document_id: 16
+      student_student_id: 1
+      document_document_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -3002,7 +2987,7 @@ endpoints:
         name: document_type
         description: ''
         required: false
-        example: other
+        example: birth_certificate
         type: string
         enumValues:
           - birth_certificate
@@ -3078,20 +3063,20 @@ endpoints:
         name: expiry_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         deprecated: false
     cleanBodyParameters:
-      document_type: other
+      document_type: birth_certificate
       document_name: b
       file_path: 'n'
       file_size: 16
       mime_type: 'n'
       notes: architecto
-      expiry_date: '2026-04-28T14:56:25'
+      expiry_date: '2026-05-03T17:21:17'
     fileParameters: []
     responses: []
     responseFields: []
@@ -3123,7 +3108,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -3134,15 +3119,15 @@ endpoints:
         name: document_document_id
         description: 'The ID of the document document.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      document_document_id: 16
+      student_student_id: 1
+      document_document_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -3178,14 +3163,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -3194,11 +3179,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3233,14 +3215,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -3249,11 +3231,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StudentManagement\\Models\\Student] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3288,14 +3267,14 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
+      student_student_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -3304,115 +3283,6 @@ endpoints:
         name: contact_type
         description: ''
         required: true
-        example: other
-        type: string
-        enumValues:
-          - phone
-          - mobile
-          - emergency
-          - work
-          - fax
-          - other
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      contact_value:
-        custom: []
-        name: contact_value
-        description: 'Must not be greater than 100 characters.'
-        required: true
-        example: b
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      is_primary:
-        custom: []
-        name: is_primary
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      label:
-        custom: []
-        name: label
-        description: 'Must not be greater than 50 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-    cleanBodyParameters:
-      contact_type: other
-      contact_value: b
-      is_primary: false
-      label: 'n'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PUT
-    uri: 'api/students/{student_student_id}/contact/{contact_contact_id}'
-    metadata:
-      custom: []
-      groupName: 'Student Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      student_student_id:
-        custom: []
-        name: student_student_id
-        description: 'The ID of the student student.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      contact_contact_id:
-        custom: []
-        name: contact_contact_id
-        description: 'The ID of the contact contact.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      student_student_id: 16
-      contact_contact_id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      contact_type:
-        custom: []
-        name: contact_type
-        description: ''
-        required: false
         example: phone
         type: string
         enumValues:
@@ -3423,18 +3293,18 @@ endpoints:
           - fax
           - other
         exampleWasSpecified: false
-        nullable: true
+        nullable: false
         deprecated: false
       contact_value:
         custom: []
         name: contact_value
         description: 'Must not be greater than 100 characters.'
-        required: false
+        required: true
         example: b
         type: string
         enumValues: []
         exampleWasSpecified: false
-        nullable: true
+        nullable: false
         deprecated: false
       is_primary:
         custom: []
@@ -3473,6 +3343,115 @@ endpoints:
   -
     custom: []
     httpMethods:
+      - PUT
+    uri: 'api/students/{student_student_id}/contact/{contact_contact_id}'
+    metadata:
+      custom: []
+      groupName: 'Student Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      student_student_id:
+        custom: []
+        name: student_student_id
+        description: 'The ID of the student student.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      contact_contact_id:
+        custom: []
+        name: contact_contact_id
+        description: 'The ID of the contact contact.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      student_student_id: 1
+      contact_contact_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      contact_type:
+        custom: []
+        name: contact_type
+        description: ''
+        required: false
+        example: fax
+        type: string
+        enumValues:
+          - phone
+          - mobile
+          - emergency
+          - work
+          - fax
+          - other
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      contact_value:
+        custom: []
+        name: contact_value
+        description: 'Must not be greater than 100 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_primary:
+        custom: []
+        name: is_primary
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      contact_type: fax
+      contact_value: b
+      is_primary: false
+      label: 'n'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
       - DELETE
     uri: 'api/students/{student_student_id}/contact/{contact_contact_id}'
     metadata:
@@ -3494,7 +3473,7 @@ endpoints:
         name: student_student_id
         description: 'The ID of the student student.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -3505,15 +3484,15 @@ endpoints:
         name: contact_contact_id
         description: 'The ID of the contact contact.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      student_student_id: 16
-      contact_contact_id: 16
+      student_student_id: 1
+      contact_contact_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

@@ -29,8 +29,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/hostels?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/hostels?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/hostels?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/hostels","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -159,14 +159,14 @@ endpoints:
         name: hostel_id
         description: 'The ID of the hostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      hostel_id: 16
+      hostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -175,11 +175,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Hostel] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -215,14 +212,14 @@ endpoints:
         name: hostel_id
         description: 'The ID of the hostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      hostel_id: 16
+      hostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -242,7 +239,7 @@ endpoints:
         name: hostel_type
         description: ''
         required: false
-        example: Co-ed
+        example: Girls
         type: string
         enumValues:
           - Boys
@@ -286,7 +283,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       hostel_name: b
-      hostel_type: Co-ed
+      hostel_type: Girls
       total_capacity: 22
       available_capacity: 84
       location: z
@@ -321,14 +318,14 @@ endpoints:
         name: hostel_id
         description: 'The ID of the hostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      hostel_id: 16
+      hostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -368,8 +365,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/hostel-rooms?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/hostel-rooms?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/hostel-rooms?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/hostel-rooms","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -499,14 +496,14 @@ endpoints:
         name: room_room_id
         description: 'The ID of the room room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_room_id: 16
+      room_room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -515,11 +512,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Room] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -555,14 +549,14 @@ endpoints:
         name: room_room_id
         description: 'The ID of the room room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_room_id: 16
+      room_room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -593,7 +587,7 @@ endpoints:
         name: room_type
         description: ''
         required: false
-        example: Triple
+        example: Quad
         type: string
         enumValues:
           - Single
@@ -628,7 +622,7 @@ endpoints:
     cleanBodyParameters:
       hostel_id: 16
       room_number: ngzmiy
-      room_type: Triple
+      room_type: Quad
       capacity: 16
       occupied: 42
     fileParameters: []
@@ -662,14 +656,14 @@ endpoints:
         name: room_room_id
         description: 'The ID of the room room.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      room_room_id: 16
+      room_room_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -709,8 +703,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/student-hostels?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/student-hostels?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/student-hostels?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/student-hostels","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -782,7 +776,7 @@ endpoints:
         name: assigned_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -793,7 +787,7 @@ endpoints:
         name: checkout_date
         description: 'Must be a valid date. Must be a date after or equal to <code>assigned_date</code>.'
         required: false
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -803,8 +797,8 @@ endpoints:
       student_id: 16
       hostel_id: 16
       room_id: 16
-      assigned_date: '2026-04-28T14:56:26'
-      checkout_date: '2052-05-21'
+      assigned_date: '2026-05-03T17:21:19'
+      checkout_date: '2052-05-26'
     fileParameters: []
     responses: []
     responseFields: []
@@ -836,14 +830,14 @@ endpoints:
         name: studentHostel_id
         description: 'The ID of the studentHostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentHostel_id: 16
+      studentHostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -852,11 +846,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\StudentHostel] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -892,14 +883,14 @@ endpoints:
         name: studentHostel_id
         description: 'The ID of the studentHostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentHostel_id: 16
+      studentHostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -941,7 +932,7 @@ endpoints:
         name: assigned_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -952,7 +943,7 @@ endpoints:
         name: checkout_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -962,8 +953,8 @@ endpoints:
       student_id: 16
       hostel_id: 16
       room_id: 16
-      assigned_date: '2026-04-28T14:56:26'
-      checkout_date: '2026-04-28T14:56:26'
+      assigned_date: '2026-05-03T17:21:19'
+      checkout_date: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -995,14 +986,14 @@ endpoints:
         name: studentHostel_id
         description: 'The ID of the studentHostel.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentHostel_id: 16
+      studentHostel_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1042,8 +1033,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/transportation?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/transportation?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/transportation?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/transportation","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1129,7 +1120,7 @@ endpoints:
         name: departure_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: false
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1140,7 +1131,7 @@ endpoints:
       transport_type: Shuttle
       capacity: 22
       route: g
-      departure_time: '14:56'
+      departure_time: '17:21'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1172,14 +1163,14 @@ endpoints:
         name: transport_id
         description: 'The ID of the transport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      transport_id: 16
+      transport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1188,11 +1179,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\Transportation] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1228,14 +1216,14 @@ endpoints:
         name: transport_id
         description: 'The ID of the transport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      transport_id: 16
+      transport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1255,7 +1243,7 @@ endpoints:
         name: transport_type
         description: ''
         required: false
-        example: Shuttle
+        example: Van
         type: string
         enumValues:
           - Bus
@@ -1291,7 +1279,7 @@ endpoints:
         name: departure_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: false
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1299,10 +1287,10 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       transport_name: b
-      transport_type: Shuttle
+      transport_type: Van
       capacity: 22
       route: g
-      departure_time: '14:56'
+      departure_time: '17:21'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1334,14 +1322,14 @@ endpoints:
         name: transport_id
         description: 'The ID of the transport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      transport_id: 16
+      transport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1381,8 +1369,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/student-transport?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/student-transport?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/student-transport?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/student-transport","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1465,7 +1453,7 @@ endpoints:
         name: assigned_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1476,7 +1464,7 @@ endpoints:
         name: leave_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1487,8 +1475,8 @@ endpoints:
       transport_id: 16
       pickup_location: 'n'
       drop_location: g
-      assigned_date: '2026-04-28T14:56:26'
-      leave_date: '2026-04-28T14:56:26'
+      assigned_date: '2026-05-03T17:21:19'
+      leave_date: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1520,14 +1508,14 @@ endpoints:
         name: studentTransport_id
         description: 'The ID of the studentTransport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentTransport_id: 16
+      studentTransport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1536,11 +1524,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\StudentTransport] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1576,14 +1561,14 @@ endpoints:
         name: studentTransport_id
         description: 'The ID of the studentTransport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentTransport_id: 16
+      studentTransport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1636,7 +1621,7 @@ endpoints:
         name: assigned_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1647,7 +1632,7 @@ endpoints:
         name: leave_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1658,8 +1643,8 @@ endpoints:
       transport_id: 16
       pickup_location: 'n'
       drop_location: g
-      assigned_date: '2026-04-28T14:56:26'
-      leave_date: '2026-04-28T14:56:26'
+      assigned_date: '2026-05-03T17:21:19'
+      leave_date: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -1691,14 +1676,14 @@ endpoints:
         name: studentTransport_id
         description: 'The ID of the studentTransport.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      studentTransport_id: 16
+      studentTransport_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1738,8 +1723,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/facilities?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/facilities?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/facilities?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/facilities","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1869,14 +1854,14 @@ endpoints:
         name: facility_id
         description: 'The ID of the facility.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facility_id: 16
+      facility_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1885,11 +1870,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\FacilityManagement] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1925,14 +1907,14 @@ endpoints:
         name: facility_id
         description: 'The ID of the facility.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facility_id: 16
+      facility_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1952,7 +1934,7 @@ endpoints:
         name: facility_type
         description: ''
         required: false
-        example: Lab
+        example: Library
         type: string
         enumValues:
           - Sports
@@ -1997,7 +1979,7 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       facility_name: b
-      facility_type: Lab
+      facility_type: Library
       location: 'n'
       capacity: 67
       available_capacity: 12
@@ -2032,14 +2014,14 @@ endpoints:
         name: facility_id
         description: 'The ID of the facility.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facility_id: 16
+      facility_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2079,8 +2061,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/facility-bookings?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/facility-bookings?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/facility-bookings?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/facility-bookings","per_page":15,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2141,7 +2123,7 @@ endpoints:
         name: booking_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2152,7 +2134,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: true
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2163,7 +2145,7 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2172,9 +2154,9 @@ endpoints:
     cleanBodyParameters:
       student_id: 16
       facility_id: 16
-      booking_date: '2026-04-28T14:56:26'
-      start_time: '14:56'
-      end_time: '2052-05-21'
+      booking_date: '2026-05-03T17:21:19'
+      start_time: '17:21'
+      end_time: '2052-05-26'
     fileParameters: []
     responses: []
     responseFields: []
@@ -2206,14 +2188,14 @@ endpoints:
         name: facilityBooking_booking_id
         description: 'The ID of the facilityBooking booking.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facilityBooking_booking_id: 16
+      facilityBooking_booking_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2222,11 +2204,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\HostelTransportManagement\\Models\\FacilityBooking] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2262,14 +2241,14 @@ endpoints:
         name: facilityBooking_booking_id
         description: 'The ID of the facilityBooking booking.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facilityBooking_booking_id: 16
+      facilityBooking_booking_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -2300,7 +2279,7 @@ endpoints:
         name: booking_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:27'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2311,7 +2290,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: false
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2322,7 +2301,7 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: false
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2331,9 +2310,9 @@ endpoints:
     cleanBodyParameters:
       student_id: 16
       facility_id: 16
-      booking_date: '2026-04-28T14:56:27'
-      start_time: '14:56'
-      end_time: '14:56'
+      booking_date: '2026-05-03T17:21:19'
+      start_time: '17:21'
+      end_time: '17:21'
     fileParameters: []
     responses: []
     responseFields: []
@@ -2365,14 +2344,14 @@ endpoints:
         name: facilityBooking_booking_id
         description: 'The ID of the facilityBooking booking.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      facilityBooking_booking_id: 16
+      facilityBooking_booking_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

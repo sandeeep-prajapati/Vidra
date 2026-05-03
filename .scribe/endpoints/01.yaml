@@ -29,8 +29,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '[]'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -100,8 +100,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/staff?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/staff?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/staff?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/staff","per_page":10,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -167,14 +167,14 @@ endpoints:
         name: staff_id
         description: 'The ID of the staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_id: 16
+      staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -183,11 +183,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\StaffManagement\\Models\\Staff] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -223,14 +220,14 @@ endpoints:
         name: staff_id
         description: 'The ID of the staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_id: 16
+      staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -266,14 +263,14 @@ endpoints:
         name: staff_id
         description: 'The ID of the staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_id: 16
+      staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -309,14 +306,14 @@ endpoints:
         name: staff_staff_id
         description: 'The ID of the staff staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_staff_id: 16
+      staff_staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -352,14 +349,14 @@ endpoints:
         name: staff_staff_id
         description: 'The ID of the staff staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_staff_id: 16
+      staff_staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -412,7 +409,7 @@ endpoints:
         name: payment_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -423,7 +420,7 @@ endpoints:
       allowances: 1
       deductions: 0
       net_salary: 1
-      payment_date: '2026-04-28T14:56:25'
+      payment_date: '2026-05-03T17:21:17'
     fileParameters: []
     responses: []
     responseFields: []
@@ -455,14 +452,14 @@ endpoints:
         name: staff_staff_id
         description: 'The ID of the staff staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_staff_id: 16
+      staff_staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -498,14 +495,14 @@ endpoints:
         name: staff_staff_id
         description: 'The ID of the staff staff.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      staff_staff_id: 16
+      staff_staff_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

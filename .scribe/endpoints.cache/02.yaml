@@ -31,8 +31,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z","academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"sections":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}],"first_page_url":"http:\/\/localhost\/api\/classes?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/classes?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/classes?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/classes","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -174,8 +174,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z","academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"sections":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -360,8 +360,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}}],"first_page_url":"http:\/\/localhost\/api\/sections?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/sections?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/sections?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/sections","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -455,7 +455,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -467,7 +467,7 @@ endpoints:
       class_teacher_id: 16
       capacity: 39
       description: 'Eius et animi quos velit et.'
-      is_active: false
+      is_active: true
     fileParameters: []
     responses: []
     responseFields: []
@@ -515,8 +515,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -612,7 +612,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -623,7 +623,7 @@ endpoints:
       class_id: 16
       capacity: 39
       description: 'Eius et animi quos velit et.'
-      is_active: true
+      is_active: false
     fileParameters: []
     responses: []
     responseFields: []
@@ -702,8 +702,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"section":{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"},"academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"enrollments":[]}],"first_page_url":"http:\/\/localhost\/api\/batches?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/batches?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/batches?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/batches","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -797,7 +797,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -808,7 +808,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: false
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -842,8 +842,8 @@ endpoints:
       academic_year_id: 16
       batch_name: 'n'
       batch_code: gzmiyvdljnikhway
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
       is_active: true
       description: 'Eius et animi quos velit et.'
     fileParameters: []
@@ -893,8 +893,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z","school_class":{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"},"section":{"section_id":1,"class_id":1,"section_name":"A","capacity":100,"class_teacher_id":null,"description":"xcxcxc","is_active":true,"created_at":"2026-04-27T15:23:08.000000Z","updated_at":"2026-04-27T15:23:08.000000Z"},"academic_year":{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z"},"enrollments":[]}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1001,7 +1001,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1012,7 +1012,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: false
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1023,7 +1023,7 @@ endpoints:
         name: start_time
         description: 'Must be a valid date in the format <code>H:i</code>.'
         required: false
-        example: '14:56'
+        example: '17:21'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1034,7 +1034,7 @@ endpoints:
         name: end_time
         description: 'Must be a valid date in the format <code>H:i</code>. Must be a date after <code>start_time</code>.'
         required: false
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1045,7 +1045,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1067,11 +1067,11 @@ endpoints:
       section_id: 16
       academic_year_id: 16
       batch_name: 'n'
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
-      start_time: '14:56'
-      end_time: '2052-05-21'
-      is_active: false
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
+      start_time: '17:21'
+      end_time: '2052-05-26'
+      is_active: true
       description: 'Eius et animi quos velit et.'
     fileParameters: []
     responses: []
@@ -1151,8 +1151,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z","classes":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}],"first_page_url":"http:\/\/localhost\/api\/academic-years?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/academic-years?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/academic-years?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/academic-years","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1202,7 +1202,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1213,7 +1213,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: true
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1224,7 +1224,7 @@ endpoints:
         name: is_current
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1243,9 +1243,9 @@ endpoints:
         deprecated: false
     cleanBodyParameters:
       year_range: bngzmiyvdljnikhw
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
-      is_current: true
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
+      is_current: false
       description: 'Eius et animi quos velit et.'
     fileParameters: []
     responses: []
@@ -1294,8 +1294,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"academic_year_id":1,"year_range":"2025-2026","start_date":"2025-10-10T00:00:00.000000Z","end_date":"2026-10-10T00:00:00.000000Z","is_current":false,"description":"sdhfksdhkhksdhk","created_at":"2026-04-26T09:30:51.000000Z","updated_at":"2026-04-26T09:30:51.000000Z","classes":[{"class_id":1,"class_name":"Class 10","class_code":"0011","academic_year_id":1,"description":"d,jjfdk","is_active":true,"created_at":"2026-04-27T01:41:47.000000Z","updated_at":"2026-04-27T01:41:47.000000Z"}],"batches":[{"batch_id":1,"class_id":1,"section_id":1,"academic_year_id":1,"batch_name":"math","batch_code":"1001","start_date":"2025-10-20T00:00:00.000000Z","end_date":"2026-10-20T00:00:00.000000Z","start_time":"12:54","end_time":"01:54","is_active":true,"description":"cvcv","created_at":"2026-04-27T15:24:26.000000Z","updated_at":"2026-04-27T15:24:26.000000Z"}]}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1358,7 +1358,7 @@ endpoints:
         name: start_date
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:25'
+        example: '2026-05-03T17:21:18'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1369,7 +1369,7 @@ endpoints:
         name: end_date
         description: 'Must be a valid date. Must be a date after <code>start_date</code>.'
         required: false
-        example: '2052-05-21'
+        example: '2052-05-26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1398,8 +1398,8 @@ endpoints:
         nullable: true
         deprecated: false
     cleanBodyParameters:
-      start_date: '2026-04-28T14:56:25'
-      end_date: '2052-05-21'
+      start_date: '2026-05-03T17:21:18'
+      end_date: '2052-05-26'
       is_current: true
       description: 'Eius et animi quos velit et.'
     fileParameters: []

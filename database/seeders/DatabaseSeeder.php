@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,8 +14,11 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        // Default admin user
-        User::firstOrCreate(
+        // RBAC — roles and permissions first (no dependencies)
+        $this->call(\App\Packages\RbacManagement\Database\Seeders\RbacManagementSeeder::class);
+
+        // Default admin user with super-admin role
+        $superAdminUser = User::firstOrCreate(
             ['email' => 'admin@school.com'],
             [
                 'name'     => 'Super Admin',
@@ -22,10 +26,10 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $this->call([
-            // 1. RBAC — roles and permissions (no dependencies)
-            \App\Packages\RbacManagement\Database\Seeders\RbacManagementSeeder::class,
+        // Assign super-admin role
+        $superAdminUser->assignRole('super-admin');
 
+        $this->call([
             // 2. Staff — departments first, then staff and related records
             \App\Packages\StaffManagement\Database\Seeders\StaffManagementSeeder::class,
 

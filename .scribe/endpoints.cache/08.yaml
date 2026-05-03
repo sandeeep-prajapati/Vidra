@@ -31,8 +31,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/message?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/message?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/message?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/message","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -120,7 +120,7 @@ endpoints:
         name: scheduled_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -131,7 +131,7 @@ endpoints:
         name: priority
         description: ''
         required: true
-        example: Normal
+        example: High
         type: string
         enumValues:
           - Low
@@ -156,8 +156,8 @@ endpoints:
       title: b
       content: architecto
       message_type: Email
-      scheduled_at: '2026-04-28T14:56:26'
-      priority: Normal
+      scheduled_at: '2026-05-03T17:21:19'
+      priority: High
       is_sent: true
     fileParameters: []
     responses: []
@@ -190,14 +190,14 @@ endpoints:
         name: message_id
         description: 'The ID of the message.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      message_id: 16
+      message_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -206,11 +206,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\CommunicationManagement\\Models\\Message] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -246,14 +243,14 @@ endpoints:
         name: message_id
         description: 'The ID of the message.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      message_id: 16
+      message_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -311,7 +308,7 @@ endpoints:
         name: scheduled_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -322,7 +319,7 @@ endpoints:
         name: priority
         description: ''
         required: true
-        example: Low
+        example: Normal
         type: string
         enumValues:
           - Low
@@ -337,7 +334,7 @@ endpoints:
         name: is_sent
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -347,9 +344,9 @@ endpoints:
       title: b
       content: architecto
       message_type: SMS
-      scheduled_at: '2026-04-28T14:56:26'
-      priority: Low
-      is_sent: true
+      scheduled_at: '2026-05-03T17:21:19'
+      priority: Normal
+      is_sent: false
     fileParameters: []
     responses: []
     responseFields: []
@@ -381,14 +378,14 @@ endpoints:
         name: message_id
         description: 'The ID of the message.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      message_id: 16
+      message_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -428,8 +425,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/messageRecipient?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/messageRecipient?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/messageRecipient?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/messageRecipient","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -505,7 +502,7 @@ endpoints:
         name: delivered_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -516,7 +513,7 @@ endpoints:
         name: read_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -526,8 +523,8 @@ endpoints:
       message_id: architecto
       user_id: architecto
       status: Failed
-      delivered_at: '2026-04-28T14:56:26'
-      read_at: '2026-04-28T14:56:26'
+      delivered_at: '2026-05-03T17:21:19'
+      read_at: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -559,14 +556,14 @@ endpoints:
         name: recipient_id
         description: 'The ID of the recipient.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      recipient_id: 16
+      recipient_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -575,11 +572,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\CommunicationManagement\\Models\\MessageRecipient] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -615,14 +609,14 @@ endpoints:
         name: recipient_id
         description: 'The ID of the recipient.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      recipient_id: 16
+      recipient_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -653,7 +647,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: Read
+        example: Sent
         type: string
         enumValues:
           - Pending
@@ -668,7 +662,7 @@ endpoints:
         name: delivered_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -679,7 +673,7 @@ endpoints:
         name: read_at
         description: 'Must be a valid date.'
         required: false
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -688,9 +682,9 @@ endpoints:
     cleanBodyParameters:
       message_id: architecto
       user_id: architecto
-      status: Read
-      delivered_at: '2026-04-28T14:56:26'
-      read_at: '2026-04-28T14:56:26'
+      status: Sent
+      delivered_at: '2026-05-03T17:21:19'
+      read_at: '2026-05-03T17:21:19'
     fileParameters: []
     responses: []
     responseFields: []
@@ -722,14 +716,14 @@ endpoints:
         name: recipient_id
         description: 'The ID of the recipient.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      recipient_id: 16
+      recipient_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -769,8 +763,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/circular?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/circular?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/circular?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/circular","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -842,7 +836,7 @@ endpoints:
         name: issued_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -853,7 +847,7 @@ endpoints:
         name: target_audience
         description: ''
         required: true
-        example: Students
+        example: Staff
         type: string
         enumValues:
           - All
@@ -878,8 +872,8 @@ endpoints:
     cleanBodyParameters:
       title: b
       content: architecto
-      issued_date: '2026-04-28T14:56:26'
-      target_audience: Students
+      issued_date: '2026-05-03T17:21:19'
+      target_audience: Staff
       attachment_url: 'http://bailey.com/'
     fileParameters: []
     responses: []
@@ -912,14 +906,14 @@ endpoints:
         name: circular_id
         description: 'The ID of the circular.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      circular_id: 16
+      circular_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -928,11 +922,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\CommunicationManagement\\Models\\Circular] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -968,14 +959,14 @@ endpoints:
         name: circular_id
         description: 'The ID of the circular.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      circular_id: 16
+      circular_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1017,7 +1008,7 @@ endpoints:
         name: issued_date
         description: 'Must be a valid date.'
         required: true
-        example: '2026-04-28T14:56:26'
+        example: '2026-05-03T17:21:19'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1028,7 +1019,7 @@ endpoints:
         name: target_audience
         description: ''
         required: true
-        example: Teachers
+        example: Parents
         type: string
         enumValues:
           - All
@@ -1053,8 +1044,8 @@ endpoints:
     cleanBodyParameters:
       title: b
       content: architecto
-      issued_date: '2026-04-28T14:56:26'
-      target_audience: Teachers
+      issued_date: '2026-05-03T17:21:19'
+      target_audience: Parents
       attachment_url: 'http://bailey.com/'
     fileParameters: []
     responses: []
@@ -1087,14 +1078,14 @@ endpoints:
         name: circular_id
         description: 'The ID of the circular.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      circular_id: 16
+      circular_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1134,8 +1125,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/notificationSetting?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/notificationSetting?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/notificationSetting?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/notificationSetting","per_page":20,"prev_page_url":null,"to":null,"total":0}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1196,7 +1187,7 @@ endpoints:
         name: allow_email
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1218,7 +1209,7 @@ endpoints:
         name: allow_announcements
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1229,7 +1220,7 @@ endpoints:
         name: allow_circulars
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1238,10 +1229,10 @@ endpoints:
     cleanBodyParameters:
       user_id: architecto
       allow_sms: false
-      allow_email: true
+      allow_email: false
       allow_app: true
-      allow_announcements: false
-      allow_circulars: true
+      allow_announcements: true
+      allow_circulars: false
     fileParameters: []
     responses: []
     responseFields: []
@@ -1273,14 +1264,14 @@ endpoints:
         name: setting_id
         description: 'The ID of the setting.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      setting_id: 16
+      setting_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1289,11 +1280,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Packages\\CommunicationManagement\\Models\\NotificationSetting] 16"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1329,14 +1317,14 @@ endpoints:
         name: setting_id
         description: 'The ID of the setting.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      setting_id: 16
+      setting_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1389,7 +1377,7 @@ endpoints:
         name: allow_circulars
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1400,7 +1388,7 @@ endpoints:
       allow_email: true
       allow_app: true
       allow_announcements: true
-      allow_circulars: false
+      allow_circulars: true
     fileParameters: []
     responses: []
     responseFields: []
@@ -1432,14 +1420,14 @@ endpoints:
         name: setting_id
         description: 'The ID of the setting.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      setting_id: 16
+      setting_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
