@@ -169,7 +169,7 @@
                                 target="_blank"
                                 class="inline-flex items-center justify-center lg:justify-start gap-2 px-4 py-2 border border-[#19140035] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] text-[#1b1b18] dark:text-[#EDEDEC] rounded-sm text-xs font-medium transition"
                             >
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                                 GitHub Profile
                             </a>
                             <a
@@ -177,7 +177,7 @@
                                 target="_blank"
                                 class="inline-flex items-center justify-center lg:justify-start gap-2 px-4 py-2 border border-[#19140035] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] text-[#1b1b18] dark:text-[#EDEDEC] rounded-sm text-xs font-medium transition"
                             >
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 6L9 9"/></svg>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 6L9 9"/></svg>
                                 Open Source Repo
                             </a>
                         </div>
@@ -188,8 +188,8 @@
                         <p class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider">Why contact us?</p>
                         <div class="space-y-3">
                             <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
+                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Premium Packages</p>
@@ -197,8 +197,8 @@
                                 </div>
                             </div>
                             <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
+                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Custom Development</p>
@@ -206,8 +206,8 @@
                                 </div>
                             </div>
                             <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
+                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Support & Deployment</p>
@@ -215,8 +215,8 @@
                                 </div>
                             </div>
                             <div class="flex gap-3">
-                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
-                                    <svg class="w-3 h-3 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <div class="flex-shrink-0 w-4 h-4 rounded-full bg-[#4f46e5]/10 dark:bg-[#6366f1]/10 flex items-center justify-center mt-0.5">
+                                    <svg class="w-2 h-2 text-[#4f46e5] dark:text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Report Issues</p>
@@ -238,7 +238,7 @@
                     <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
                         <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Is the free version really free forever?</span>
-                            <svg class="w-4 h-4 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
                             Yes! The free version includes all core features and will remain free forever. It's 100% open source and can be self-hosted on your own infrastructure.
@@ -248,7 +248,7 @@
                     <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
                         <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">When will premium packages be available?</span>
-                            <svg class="w-4 h-4 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
                             Premium packages are currently in development. We're aiming for Q3 2026 launch. Sign up with your email to be notified when they become available.
@@ -258,7 +258,7 @@
                     <div class="text-[13px] leading-[20px] p-5 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-sm overflow-hidden">
                         <button class="faq-toggle w-full text-left flex justify-between items-center hover:opacity-70 transition" onclick="toggleFaq(this)">
                             <span class="font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Do you offer support for the open source version?</span>
-                            <svg class="w-4 h-4 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-3 h-3 text-[#706f6c] dark:text-[#A1A09A] transform transition" style="transform: rotate(0deg);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </button>
                         <div class="faq-content hidden pt-4 border-t border-[#e3e3e0] dark:border-[#3E3E3A] mt-4 text-[#706f6c] dark:text-[#A1A09A]">
                             Yes! Community support is available through GitHub issues and discussions. For priority support and guaranteed response times, check out our premium packages.
