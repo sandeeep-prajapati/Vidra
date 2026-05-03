@@ -29,13 +29,31 @@
                         <p class="text-xs text-[#706f6c] dark:text-[#A1A09A]">Get in touch</p>
                     </div>
                 </a>
-                <div class="flex items-center gap-3">
-                    <a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-xs text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">
-                        GitHub
-                    </a>
-                    <a href="{{ route('login') }}" class="inline-block px-4 py-1.5 border border-[#19140035] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] text-[#1b1b18] dark:text-[#EDEDEC] rounded-sm text-xs leading-normal transition">
-                        Login
-                    </a>
+                <div class="flex items-center gap-4">
+                    <nav class="hidden sm:flex items-center gap-6">
+                        <a href="{{ url('/') }}" class="text-xs text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">
+                            Home
+                        </a>
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-xs text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">
+                                Dashboard
+                            </a>
+                        @endauth
+                        <a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-xs text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">
+                            GitHub
+                        </a>
+                    </nav>
+                    <div class="flex items-center gap-3">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="inline-block px-4 py-1.5 border border-[#19140035] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] text-[#1b1b18] dark:text-[#EDEDEC] rounded-sm text-xs leading-normal transition">
+                                Dashboard
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="inline-block px-4 py-1.5 border border-[#19140035] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] text-[#1b1b18] dark:text-[#EDEDEC] rounded-sm text-xs leading-normal transition">
+                                Login
+                            </a>
+                        @endauth
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,10 +281,15 @@
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-4">Quick Links</h3>
+                    <h3 class="text-xs font-semibold text-[#1b1b18] dark:text-[#EDEDEC] uppercase tracking-wider mb-4">Navigation</h3>
                     <ul class="space-y-2 text-xs">
+                        <li><a href="{{ url('/') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Home</a></li>
+                        @auth
+                            <li><a href="{{ url('/dashboard') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Dashboard</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Login</a></li>
+                        @endauth
                         <li><a href="https://github.com/sandeeep-prajapati/Vidra" target="_blank" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Open Source Repo</a></li>
-                        <li><a href="{{ route('login') }}" class="text-[#706f6c] dark:text-[#A1A09A] hover:text-[#1b1b18] dark:hover:text-[#EDEDEC] transition">Dashboard</a></li>
                     </ul>
                 </div>
                 <div>
