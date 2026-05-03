@@ -137,7 +137,7 @@
             <a href="#modules" style="padding:.4rem .875rem;font-size:.8125rem;color:#94a3b8;text-decoration:none;border-radius:.5rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#94a3b8'">Modules</a>
             <a href="#roadmap" style="padding:.4rem .875rem;font-size:.8125rem;color:#94a3b8;text-decoration:none;border-radius:.5rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#94a3b8'">Roadmap</a>
             <a href="/docs" style="padding:.4rem .875rem;font-size:.8125rem;color:#94a3b8;text-decoration:none;border-radius:.5rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#94a3b8'">API Docs</a>
-            <a href="{{ route('students.index') }}" style="padding:.5rem 1.125rem;font-size:.8125rem;font-weight:600;color:#fff;text-decoration:none;border-radius:.5rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <a href="{{ route('dashboard') }}" style="padding:.5rem 1.125rem;font-size:.8125rem;font-weight:600;color:#fff;text-decoration:none;border-radius:.5rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
                 Open App →
             </a>
         </div>
@@ -173,7 +173,7 @@
             </p>
 
             <div class="animate-fade-up d-300" style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem;">
-                <a href="{{ route('students.index') }}" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:.75rem;font-weight:700;font-size:.9375rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(79,70,229,.35);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 24px rgba(79,70,229,.35)'">
+                <a href="{{ route('dashboard') }}" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:.75rem;font-weight:700;font-size:.9375rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(79,70,229,.35);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 24px rgba(79,70,229,.35)'">
                     Launch App
                     <svg style="width:1rem;height:1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                 </a>
@@ -620,7 +620,7 @@
             22+ modules, 200+ API endpoints, and a roadmap powered by AI, Blockchain, and IoT — all in one platform.
         </p>
         <div class="animate-fade-up d-300" style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2.5rem;">
-            <a href="{{ route('students.index') }}" style="display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.25rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:.875rem;font-weight:700;font-size:1rem;color:#fff;text-decoration:none;box-shadow:0 8px 32px rgba(79,70,229,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px rgba(79,70,229,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(79,70,229,.4)'">
+            <a href="{{ route('dashboard') }}" style="display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.25rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:.875rem;font-weight:700;font-size:1rem;color:#fff;text-decoration:none;box-shadow:0 8px 32px rgba(79,70,229,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 40px rgba(79,70,229,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(79,70,229,.4)'">
                 Launch Dashboard
                 <svg style="width:1rem;height:1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </a>
@@ -644,7 +644,7 @@
         <div style="display:flex;gap:1rem;">
             <a href="/docs" style="font-size:.75rem;color:#475569;text-decoration:none;">API Docs</a>
             <a href="/docs.openapi" style="font-size:.75rem;color:#475569;text-decoration:none;">OpenAPI</a>
-            <a href="{{ route('students.index') }}" style="font-size:.75rem;color:#475569;text-decoration:none;">Dashboard</a>
+            <a href="{{ route('dashboard') }}" style="font-size:.75rem;color:#475569;text-decoration:none;">Dashboard</a>
         </div>
     </div>
 </footer>
