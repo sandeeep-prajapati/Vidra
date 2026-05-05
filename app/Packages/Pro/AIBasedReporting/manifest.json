@@ -1,9 +1,0 @@
-{
-    "name": "AIBasedReporting",
-    "version": "1.0.0",
-    "description": "A premium bundle",
-    "author": "Your Company",
-    "license": "MIT",
-    "package_path": "Pro/AIBasedReporting",
-    "provider_class": "App\\Packages\\Pro\\AIBasedReporting\\Providers\\AIBasedReportingServiceProvider"
-}

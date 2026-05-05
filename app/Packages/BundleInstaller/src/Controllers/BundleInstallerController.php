@@ -183,16 +183,13 @@ class BundleInstallerController extends BaseController
             $providerClass = $manifest['provider_class'] ?? '';
         }
 
-        // Step 2: Remove PSR-4 namespace FIRST (before deleting files)
-        $this->registrar->unregisterPsr4Namespace($bundle);
-
-        // Step 3: Remove from bootstrap/providers.php
+        // Step 2: Remove from bootstrap/providers.php (with flexible formatting)
         if ($providerClass) {
-            $providersFile = base_path('bootstrap/providers.php');
-            $content = file_get_contents($providersFile);
-            $content = str_replace("    {$providerClass}::class,\n", '', $content);
-            file_put_contents($providersFile, $content);
+            $this->removeFromProviders($providerClass);
         }
+
+        // Step 3: Remove PSR-4 namespace FIRST (before deleting files)
+        $this->registrar->unregisterPsr4Namespace($bundle);
 
         // Step 4: Clear view and route cache BEFORE deleting directory
         \Illuminate\Support\Facades\Artisan::call('view:clear');
@@ -206,6 +203,54 @@ class BundleInstallerController extends BaseController
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
         return back()->with('success', 'Bundle removed successfully');
+    }
+
+    private function removeFromProviders(string $providerClass): void
+    {
+        $providersFile = base_path('bootstrap/providers.php');
+        if (!file_exists($providersFile)) {
+            return;
+        }
+
+        $content = file_get_contents($providersFile);
+        $originalContent = $content;
+
+        // Extract just the class name from the full namespace
+        $parts = explode('\\', $providerClass);
+        $className = end($parts);
+
+        // Try to remove the use statement
+        $usePatterns = [
+            "use {$providerClass};\n",
+            "use {$providerClass};",
+        ];
+
+        foreach ($usePatterns as $pattern) {
+            if (strpos($content, $pattern) !== false) {
+                $content = str_replace($pattern, '', $content);
+                break;
+            }
+        }
+
+        // Try to remove from the return array - use class name patterns
+        $returnPatterns = [
+            "    {$className}::class,\n",
+            "    {$className}::class,",
+            "{$className}::class,\n",
+            "{$className}::class,",
+        ];
+
+        foreach ($returnPatterns as $pattern) {
+            if (strpos($content, $pattern) !== false) {
+                $content = str_replace($pattern, '', $content);
+                break;
+            }
+        }
+
+        // Only write if changes were made
+        if ($content !== $originalContent) {
+            file_put_contents($providersFile, $content);
+        }
     }
 
     private function removeDir(string $path): void
