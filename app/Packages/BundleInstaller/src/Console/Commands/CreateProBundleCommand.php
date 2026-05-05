@@ -12,7 +12,7 @@ class CreateProBundleCommand extends Command
         {name : Bundle name (e.g., StudentPremium)}
         {--author=Your Company : Bundle author}
         {--description=A premium bundle : Bundle description}
-        {--version=1.0.0 : Bundle version}
+        {--bundle-version=1.0.0 : Bundle version}
         {--with-permissions : Create permissions}
         {--with-menu : Create menu provider}
         {--with-models : Create sample model}';
@@ -32,7 +32,7 @@ class CreateProBundleCommand extends Command
         $bundleName = $this->argument('name');
         $author = $this->option('author');
         $description = $this->option('description');
-        $version = $this->option('version');
+        $version = $this->option('bundle-version');
         $withPermissions = $this->option('with-permissions') ?: true;
         $withMenu = $this->option('with-menu') ?: true;
         $withModels = $this->option('with-models') ?: false;
