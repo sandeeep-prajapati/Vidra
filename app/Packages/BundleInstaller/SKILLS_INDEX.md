@@ -7,6 +7,7 @@ Complete reference for all bundle creation and management skills.
 | Skill | Command | Purpose | Time |
 |-------|---------|---------|------|
 | **Create Pro Bundle** | `php artisan bundle:create-pro MyBundle` | Create complete bundle with permissions & menu | 1 min |
+| **Destroy Bundle** | `php artisan bundle:destroy-pro MyBundle --force` | Remove bundle and clean up all registrations | 30 sec |
 | **Upload Bundle** | Go to `/bundle-installer` | Upload ZIP for auto-registration | 2 min |
 | **Test Routes** | `php artisan route:list \| grep bundle` | Verify bundle routes loaded | 30 sec |
 | **Test Permissions** | `php artisan tinker` | Check permission setup | 1 min |
@@ -167,6 +168,37 @@ nano resources/views/layouts/app.blade.php
 @endforeach
 
 # 5. Create ZIP and upload
+```
+
+### Workflow 5: Destroy Bundle and Clean Up Everything
+
+**Time: 1 minute**
+
+```bash
+# 1. List bundles (optional, see what you have)
+ls -la app/Packages/Pro/
+
+# 2. Destroy bundle (asks for confirmation)
+php artisan bundle:destroy-pro MyBundle
+
+# 3. Or force without confirmation
+php artisan bundle:destroy-pro MyBundle --force
+
+# Result: Automatically removes
+# - Bundle directory (app/Packages/Pro/MyBundle/)
+# - Service provider registration (bootstrap/providers.php)
+# - PSR-4 namespace (composer.json)
+
+# 4. Final cleanup (recommended)
+php artisan cache:clear
+composer dump-autoload
+```
+
+**What Gets Cleaned Up:**
+- ✅ Bundle directory completely deleted
+- ✅ Service provider removed from bootstrap/providers.php
+- ✅ PSR-4 namespace removed from composer.json
+- ✅ No leftover provider registrations
 ```
 
 ## 🛠️ Common Tasks

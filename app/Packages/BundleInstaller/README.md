@@ -30,7 +30,8 @@ See QUICK_START.md for examples.
 - Consistent naming across all components
 
 🚀 **Developer Tools**
-- `php artisan bundle:create` command for scaffolding
+- `php artisan bundle:create-pro` command with interactive prompts for author/description
+- `php artisan bundle:destroy-pro` command for complete bundle removal with cleanup
 - Sample Pro/DemoBundle as template
 - Comprehensive documentation
 
@@ -48,11 +49,43 @@ See QUICK_START.md for examples.
 
 ### For Developers
 
-#### Create Bundle Using CLI
+#### Create Bundle Using CLI (Recommended)
 
 ```bash
-php artisan bundle:create MyBundle --pro
+# Interactive: will prompt for author and description
+php artisan bundle:create-pro StudentManagement
+
+# Or with options (skips prompts)
+php artisan bundle:create-pro StudentManagement \
+  --author="Your Company" \
+  --description="Complete student management system" \
+  --with-models
 ```
+
+**What Gets Created:**
+- ✅ Complete directory structure
+- ✅ Service provider with permissions
+- ✅ MenuProvider for self-contained menu items
+- ✅ CRUD controller with auth checks
+- ✅ Sample views (index, edit)
+- ✅ Routes with permission middleware
+- ✅ Database migration
+- ✅ manifest.json ready for upload
+
+#### Remove Bundle Using CLI
+
+```bash
+# With confirmation
+php artisan bundle:destroy-pro StudentManagement
+
+# Force without confirmation
+php artisan bundle:destroy-pro StudentManagement --force
+```
+
+**What Gets Cleaned Up:**
+- ✅ Bundle directory completely deleted
+- ✅ Service provider removed from `bootstrap/providers.php`
+- ✅ PSR-4 namespace removed from `composer.json`
 
 #### Create Bundle From Template
 

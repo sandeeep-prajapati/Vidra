@@ -474,6 +474,46 @@ zip -r ../StudentManagement.zip .
 # ✅ Clears caches
 ```
 
+## Destroying/Removing Bundles
+
+To completely remove a bundle and clean up all registrations:
+
+```bash
+# With confirmation prompt
+php artisan bundle:destroy-pro StudentManagement
+
+# Without confirmation (force)
+php artisan bundle:destroy-pro StudentManagement --force
+```
+
+**What Gets Cleaned Up:**
+- ✅ Bundle directory removed completely
+- ✅ Service provider removed from `bootstrap/providers.php`
+- ✅ PSR-4 namespace removed from `composer.json`
+- ✅ Instructions provided for final cleanup steps
+
+**After Destruction (Recommended):**
+```bash
+php artisan cache:clear
+composer dump-autoload
+```
+
+**Example Output:**
+```
+Removing premium bundle: StudentManagement...
+
+✓ Bundle directory removed
+✓ Service provider removed from bootstrap/providers.php
+✓ PSR-4 namespace removed from composer.json
+
+✨ Bundle 'StudentManagement' removed successfully!
+
+📋 Next Steps:
+1. Run: php artisan cache:clear
+2. Run: composer dump-autoload
+3. Delete any database records or migrations if needed
+```
+
 ## Support
 
 See related documentation:

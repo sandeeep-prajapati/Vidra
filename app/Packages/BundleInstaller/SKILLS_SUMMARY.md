@@ -276,14 +276,17 @@ Automatically:
 ## Quick Reference Commands
 
 ```bash
-# Create bundle
-php artisan bundle:create MyBundle --pro
+# Create bundle (will prompt for author/description)
+php artisan bundle:create-pro StudentManagement
 
-# Create with custom details
-php artisan bundle:create MyBundle --pro \
+# Create with custom details (skips prompts)
+php artisan bundle:create-pro StudentManagement \
   --author="Your Company" \
   --description="My bundle description" \
-  --with-menu
+  --with-models
+
+# Destroy bundle and clean up everything
+php artisan bundle:destroy-pro StudentManagement --force
 
 # Check routes
 php artisan route:list | grep students
