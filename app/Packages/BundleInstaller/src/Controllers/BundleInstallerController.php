@@ -164,6 +164,12 @@ class BundleInstallerController extends BaseController
         // Clear cache
         $this->registrar->clearCache();
 
+        // Check if bundle has a setup_route defined in manifest
+        if (isset($manifest['setup_route']) && !empty($manifest['setup_route'])) {
+            return redirect($manifest['setup_route'])
+                ->with('success', "{$manifest['name']} v{$manifest['version']} installed successfully! Complete the setup below.");
+        }
+
         return back()->with('success', "{$manifest['name']} v{$manifest['version']} installed successfully!");
     }
 
