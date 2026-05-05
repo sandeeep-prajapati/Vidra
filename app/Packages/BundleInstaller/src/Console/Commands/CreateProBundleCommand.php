@@ -30,8 +30,19 @@ class CreateProBundleCommand extends Command
     public function handle(): int
     {
         $bundleName = $this->argument('name');
+
+        // Prompt for author if not provided
         $author = $this->option('author');
+        if ($author === 'Your Company') {
+            $author = $this->ask('What is the bundle author/company name?', 'Your Company');
+        }
+
+        // Prompt for description if not provided
         $description = $this->option('description');
+        if ($description === 'A premium bundle') {
+            $description = $this->ask('What is the bundle description?', 'A premium bundle');
+        }
+
         $version = $this->option('bundle-version');
         $withPermissions = $this->option('with-permissions') ?: true;
         $withMenu = $this->option('with-menu') ?: true;

@@ -37,6 +37,7 @@
             "App\\Packages\\FeeManagement\\": "app/Packages/FeeManagement/src/",
             "App\\Packages\\HostelTransportManagement\\": "app/Packages/HostelTransportManagement/src/",
             "App\\Packages\\Installer\\": "app/Packages/Installer/src/",
+            "App\\Packages\\Pro\\DemoBundle\\": "app/Packages/Pro/DemoBundle/src",
             "App\\Packages\\RbacManagement\\": "app/Packages/RbacManagement/src/",
             "App\\Packages\\StaffManagement\\": "app/Packages/StaffManagement/src/",
             "App\\Packages\\StudentManagement\\": "app/Packages/StudentManagement/src/",

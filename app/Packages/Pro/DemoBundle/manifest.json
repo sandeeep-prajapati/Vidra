@@ -1,0 +1,9 @@
+{
+    "name": "Demo Bundle",
+    "version": "1.0.0",
+    "description": "A sample premium bundle demonstrating the bundle installation system",
+    "author": "Your Company",
+    "license": "MIT",
+    "package_path": "Pro/DemoBundle",
+    "provider_class": "App\\Packages\\Pro\\DemoBundle\\Providers\\DemoBundleServiceProvider"
+}

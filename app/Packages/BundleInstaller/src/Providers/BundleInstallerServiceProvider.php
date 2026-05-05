@@ -4,6 +4,7 @@ namespace App\Packages\BundleInstaller\Providers;
 
 use App\Packages\BundleInstaller\Console\Commands\CreateBundleCommand;
 use App\Packages\BundleInstaller\Console\Commands\CreateProBundleCommand;
+use App\Packages\BundleInstaller\Console\Commands\DestroyProBundleCommand;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +31,7 @@ class BundleInstallerServiceProvider extends ServiceProvider
             $this->commands([
                 CreateBundleCommand::class,
                 CreateProBundleCommand::class,
+                DestroyProBundleCommand::class,
             ]);
         }
     }
