@@ -4,6 +4,16 @@
     "description": "Library management system for book catalog, member registration, issue/return workflow, and fine collection",
     "author": "Vidra",
     "license": "MIT",
-    "package_path": "Pro/LibraryManagement",
-    "provider_class": "App\\Packages\\Pro\\LibraryManagement\\Providers\\LibraryManagementServiceProvider"
+    "package_path": "app/Packages/Pro/LibraryManagement",
+    "namespace": "App\\Packages\\Pro\\LibraryManagement",
+    "provider_class": "App\\Packages\\Pro\\LibraryManagement\\Providers\\LibraryManagementServiceProvider",
+    "setup_route": "/library/setup",
+    "main_route": "/library/books",
+    "features": [
+        "book_management",
+        "member_registration",
+        "issue_return_workflow",
+        "fine_calculation",
+        "book_reservations"
+    ]
 }

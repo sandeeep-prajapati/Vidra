@@ -4,7 +4,14 @@ use App\Packages\Pro\LibraryManagement\Controllers\BookController;
 use App\Packages\Pro\LibraryManagement\Controllers\IssueController;
 use App\Packages\Pro\LibraryManagement\Controllers\FineController;
 use App\Packages\Pro\LibraryManagement\Controllers\MemberController;
+use App\Packages\Pro\LibraryManagement\Controllers\SetupController;
 use Illuminate\Support\Facades\Route;
+
+// Setup routes (no auth required for initial setup)
+Route::prefix('library')->name('library-management.')->group(function () {
+    Route::get('setup', [SetupController::class, 'showSetup'])->name('setup.show');
+    Route::post('setup/run', [SetupController::class, 'runSetup'])->name('setup.run');
+});
 
 Route::middleware(['web', 'auth'])->group(function () {
     Route::prefix('library')->name('library-management.')->group(function () {
