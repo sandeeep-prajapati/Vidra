@@ -1,0 +1,9 @@
+{
+    "name": "LibraryManagement",
+    "version": "1.0.0",
+    "description": "Library management system for book catalog, member registration, issue/return workflow, and fine collection",
+    "author": "Vidra",
+    "license": "MIT",
+    "package_path": "Pro/LibraryManagement",
+    "provider_class": "App\\Packages\\Pro\\LibraryManagement\\Providers\\LibraryManagementServiceProvider"
+}
