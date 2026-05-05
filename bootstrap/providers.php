@@ -17,14 +17,12 @@ use App\Packages\DataTransfer\Providers\DataTransferServiceProvider;
 use App\Packages\Installer\Providers\InstallerServiceProvider;
 use App\Packages\BundleInstaller\Providers\BundleInstallerServiceProvider;
 use App\Packages\Webhook\Providers\WebhookServiceProvider;
-use App\Packages\Pro\DemoBundle\Providers\DemoBundleServiceProvider;
 // intalled apps are here
 
 
 use App\Providers\AppServiceProvider;
 
 return [
-    DemoBundleServiceProvider::class,
     AppServiceProvider::class,
     InstallerServiceProvider::class,
     BundleInstallerServiceProvider::class,
