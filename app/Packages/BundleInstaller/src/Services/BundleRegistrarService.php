@@ -37,9 +37,14 @@ class BundleRegistrarService
             $composer['autoload']['psr-4'] = [];
         }
 
-        // Get namespace from package_path in manifest
+        // Build namespace from package_path using naming convention
+        // Naming convention: package_path like "Pro/DemoBundle" becomes "App\Packages\Pro\DemoBundle\"
         $packagePath = $manifest['package_path'];
-        $namespace = 'App\\Packages\\' . str_replace('/', '\\', $packagePath) . '\\';
+        $pathParts = explode('/', $packagePath);
+
+        // Convert path parts to PascalCase for namespace
+        $namespaceParts = array_map(fn($part) => ucfirst($part), $pathParts);
+        $namespace = 'App\\Packages\\' . implode('\\', $namespaceParts) . '\\';
         $path = 'app/Packages/' . $packagePath . '/src';
 
         // Check if already exists
@@ -47,24 +52,11 @@ class BundleRegistrarService
             return ['success' => false, 'error' => 'PSR-4 namespace already registered'];
         }
 
-        // Add PSR-4 mapping after Webhook entry (if exists) or at the end
-        $psr4 = &$composer['autoload']['psr-4'];
-
-        // Try to add after Webhook if it exists
-        $newPsr4 = [];
-        foreach ($psr4 as $key => $value) {
-            $newPsr4[$key] = $value;
-            if (strpos($key, 'Webhook') !== false) {
-                $newPsr4[$namespace] = $path;
-            }
-        }
-
-        // If Webhook wasn't found, just add at the end (before Database)
-        if (!isset($newPsr4[$namespace])) {
-            $newPsr4[$namespace] = $path;
-        }
-
-        $composer['autoload']['psr-4'] = $newPsr4;
+        // Add PSR-4 mapping in alphabetical order
+        $psr4 = $composer['autoload']['psr-4'];
+        $psr4[$namespace] = $path;
+        ksort($psr4);
+        $composer['autoload']['psr-4'] = $psr4;
 
         // Write back to composer.json
         $jsonContent = json_encode($composer, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
@@ -105,35 +97,77 @@ class BundleRegistrarService
         $className = end($parts);
         $useStatement = "use {$providerClass};";
 
-        // STEP 1: Add use statement after WebhookServiceProvider or before AppServiceProvider
-        if (strpos($content, 'use App\Packages\Webhook\Providers\WebhookServiceProvider;') !== false) {
-            $content = str_replace(
-                'use App\Packages\Webhook\Providers\WebhookServiceProvider;',
-                "use App\Packages\Webhook\Providers\WebhookServiceProvider;\n{$useStatement}",
-                $content
-            );
-        } else {
-            $content = str_replace(
-                'use App\Providers\AppServiceProvider;',
-                "{$useStatement}\nuse App\Providers\AppServiceProvider;",
-                $content
-            );
-        }
-
-        // STEP 2: Add provider entry after WebhookServiceProvider in return array
+        // STEP 1: Add use statement in alphabetical order among package imports
+        // Find the last "use App\Packages\" import and add after it
         $lines = explode("\n", $content);
         $output = [];
-        $added = false;
+        $useAdded = false;
 
         for ($i = 0; $i < count($lines); $i++) {
             $line = $lines[$i];
-            $output[] = $line;
 
-            // Add after WebhookServiceProvider if found
-            if (!$added && strpos($line, 'WebhookServiceProvider::class,') !== false) {
-                $output[] = "    {$className}::class,";
-                $added = true;
+            if (!$useAdded && strpos($line, 'use App\Packages\\') !== false) {
+                $nextLine = $lines[$i + 1] ?? '';
+
+                // Check if next line is also a package import
+                if (strpos($nextLine, 'use App\Packages\\') === false && strpos($nextLine, 'use App\\Providers\\') !== false) {
+                    // We've found the last package import, add here
+                    $output[] = $line;
+                    $output[] = $useStatement;
+                    $useAdded = true;
+                    $i++;
+                    continue;
+                } elseif (strpos($nextLine, 'use App\Packages\\') === false) {
+                    // Next line is not a package import, add the use statement
+                    $output[] = $line;
+                    $output[] = $useStatement;
+                    $useAdded = true;
+                    continue;
+                }
             }
+
+            $output[] = $line;
+        }
+
+        // Fallback: if not added yet, add before AppServiceProvider
+        if (!$useAdded) {
+            $finalOutput = [];
+            foreach ($output as $line) {
+                if (strpos($line, 'use App\Providers\AppServiceProvider;') !== false) {
+                    $finalOutput[] = $useStatement;
+                }
+                $finalOutput[] = $line;
+            }
+            $output = $finalOutput;
+        }
+
+        // STEP 2: Add provider to return array in alphabetical order
+        $content = implode("\n", $output);
+        $lines = explode("\n", $content);
+        $output = [];
+        $inProviderArray = false;
+        $providerAdded = false;
+
+        for ($i = 0; $i < count($lines); $i++) {
+            $line = $lines[$i];
+
+            // Detect if we're in the provider array
+            if (strpos($line, 'return [') !== false) {
+                $inProviderArray = true;
+            }
+
+            // Add provider in correct position (before AppServiceProvider, but after other packages)
+            if (!$providerAdded && $inProviderArray && strpos($line, 'AppServiceProvider::class,') !== false) {
+                $output[] = "    {$className}::class,";
+                $providerAdded = true;
+            }
+
+            $output[] = $line;
+        }
+
+        // Fallback: add at the end if not found
+        if (!$providerAdded) {
+            array_splice($output, -2, 0, ["    {$className}::class,"]);
         }
 
         $content = implode("\n", $output);

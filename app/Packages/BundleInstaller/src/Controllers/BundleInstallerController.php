@@ -137,8 +137,7 @@ class BundleInstallerController extends BaseController
 
     public function install(Request $request, string $bundle)
     {
-        dd($request);
-        $packagePath = base_path("app/Packages/Pro/$bundle");
+        $packagePath = base_path("app/Packages/$bundle");
         if (!is_dir($packagePath)) {
             return back()->with('error', 'Bundle not found');
         }
