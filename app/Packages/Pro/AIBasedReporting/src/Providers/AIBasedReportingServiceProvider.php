@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Packages\Pro\TestBundle\Providers;
+namespace App\Packages\Pro\AIBasedReporting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class TestBundleServiceProvider extends ServiceProvider
+class AIBasedReportingServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
@@ -15,7 +15,7 @@ class TestBundleServiceProvider extends ServiceProvider
 
         // Load assets
         $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
-        $this->loadViewsFrom(__DIR__.'/../Views', 'test-bundle');
+        $this->loadViewsFrom(__DIR__.'/../Views', 'a-i-based-reporting');
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 
@@ -27,10 +27,10 @@ class TestBundleServiceProvider extends ServiceProvider
     private function registerPermissions(): void
     {
         $permissions = [
-            'view_test-bundle',
-            'create_test-bundle_item',
-            'edit_test-bundle_item',
-            'delete_test-bundle_item',
+            'view_a-i-based-reporting',
+            'create_a-i-based-reporting_item',
+            'edit_a-i-based-reporting_item',
+            'delete_a-i-based-reporting_item',
         ];
 
         foreach ($permissions as $permission) {
@@ -47,6 +47,6 @@ class TestBundleServiceProvider extends ServiceProvider
         $teacher = Role::firstOrCreate(['name' => 'teacher']);
 
         $admin->syncPermissions($permissions);
-        $teacher->syncPermissions(['view_test-bundle', 'edit_test-bundle_item']);
+        $teacher->syncPermissions(['view_a-i-based-reporting', 'edit_a-i-based-reporting_item']);
     }
 }

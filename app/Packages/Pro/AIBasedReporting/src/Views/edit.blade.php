@@ -2,7 +2,7 @@
     <div class="max-w-2xl">
         <h1 class="text-3xl font-bold mb-6">Edit Item</h1>
 
-        <form method="POST" action="{{ route('test-bundle.update', $id) }}" class="bg-white rounded-lg shadow p-6">
+        <form method="POST" action="{{ route('a-i-based-reporting.update', $id) }}" class="bg-white rounded-lg shadow p-6">
             @csrf
             @method('PUT')
 
@@ -20,7 +20,7 @@
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Save Changes
                 </button>
-                <a href="{{ route('test-bundle.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
+                <a href="{{ route('a-i-based-reporting.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
                     Cancel
                 </a>
             </div>

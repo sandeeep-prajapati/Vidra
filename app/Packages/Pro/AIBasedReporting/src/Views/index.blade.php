@@ -6,8 +6,8 @@
         <div class="bg-white rounded-lg shadow p-6">
             <h2 class="text-xl font-semibold mb-4">Items</h2>
 
-            @if(auth()->user()->can('create_test-bundle_item'))
-                <form method="POST" action="{{ route('test-bundle.store') }}" class="mb-6">
+            @if(auth()->user()->can('create_a-i-based-reporting_item'))
+                <form method="POST" action="{{ route('a-i-based-reporting.store') }}" class="mb-6">
                     @csrf
                     <div class="flex gap-2">
                         <input type="text" name="name" placeholder="Item name"

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('test_bundles', function (Blueprint $table) {
+        Schema::create('a_i_based_reportings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
@@ -17,6 +17,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('test_bundles');
+        Schema::dropIfExists('a_i_based_reportings');
     }
 };

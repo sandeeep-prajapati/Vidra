@@ -1,9 +1,0 @@
-{
-    "name": "TestBundle",
-    "version": "1.0.0",
-    "description": "Test bundle",
-    "author": "Test Company",
-    "license": "MIT",
-    "package_path": "Pro/TestBundle",
-    "provider_class": "App\\Packages\\Pro\\TestBundle\\Providers\\TestBundleServiceProvider"
-}
