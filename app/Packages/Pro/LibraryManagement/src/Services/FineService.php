@@ -4,76 +4,82 @@ namespace App\Packages\Pro\LibraryManagement\Services;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryFine;
 use App\Packages\Pro\LibraryManagement\Models\LibraryIssue;
-use App\Packages\Pro\LibraryManagement\Models\LibraryMember;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Carbon\Carbon;
 
 class FineService
 {
-    private float $finePerDay = 10.0; // Default fine per day in rupees
+    private $finePerDay = 10.0;
 
-    public function __construct()
+    public function createFine($issueId, $overdueDays): ?LibraryFine
     {
-        $this->finePerDay = config('library.fine_per_day', 10.0);
-    }
+        $issue = LibraryIssue::find($issueId);
+        if (!$issue) {
+            return null;
+        }
 
-    public function createFine(LibraryIssue $issue, int $overdueDays): LibraryFine
-    {
         $fineAmount = $overdueDays * $this->finePerDay;
 
         return LibraryFine::create([
-            'issue_id' => $issue->id,
+            'issue_id' => $issueId,
             'member_id' => $issue->member_id,
             'fine_amount' => $fineAmount,
-            'fine_per_day' => $this->finePerDay,
-            'overdue_days' => $overdueDays,
             'paid_amount' => 0,
             'balance_amount' => $fineAmount,
-            'status' => 'pending',
+            'status' => 'pending'
         ]);
     }
 
-    public function recordPayment(LibraryFine $fine, float $amount): bool
+    public function recordPayment($fineId, $amount): bool
     {
-        return $fine->recordPayment($amount);
+        $fine = LibraryFine::find($fineId);
+        return $fine ? $fine->recordPayment($amount) : false;
     }
 
-    public function waiveFine(LibraryFine $fine, int $userId, string $reason): void
+    public function waiveFine($fineId, $reason = '', $waivedBy = null): bool
     {
-        $fine->waiveFine($userId, $reason);
+        $fine = LibraryFine::find($fineId);
+        return $fine ? $fine->waiveFine($reason, $waivedBy) : false;
     }
 
-    public function getMemberPendingFines(LibraryMember $member): Collection
+    public function getUnpaidFines($perPage = 15): LengthAwarePaginator
     {
-        return $member->fines()
-            ->where('status', '!=', 'paid')
-            ->with('issue.book')
-            ->get();
+        return LibraryFine::where('status', 'pending')
+            ->with(['member', 'issue.book'])
+            ->paginate($perPage);
     }
 
-    public function getTotalPendingAmount(LibraryMember $member): float
+    public function getPendingFines(): LengthAwarePaginator
     {
-        return (float) $member->fines()
-            ->where('status', '!=', 'paid')
-            ->sum('balance_amount');
-    }
-
-    public function getUnpaidFines(): Collection
-    {
-        return LibraryFine::where('status', '!=', 'paid')
-            ->with('member', 'issue.book')
-            ->orderBy('created_at', 'asc')
-            ->get();
+        return LibraryFine::whereIn('status', ['pending'])
+            ->with(['member', 'issue.book'])
+            ->paginate(15);
     }
 
     public function getCollectionReport(): array
     {
-        $fines = LibraryFine::all();
-
         return [
-            'total_fines' => $fines->sum('fine_amount'),
-            'collected' => $fines->where('status', 'paid')->sum('paid_amount'),
-            'pending' => $fines->whereIn('status', ['pending', 'partial'])->sum('balance_amount'),
-            'waived' => $fines->where('status', 'waived')->sum('fine_amount'),
+            'total_fines' => LibraryFine::sum('fine_amount'),
+            'collected' => LibraryFine::where('status', 'paid')->sum('paid_amount'),
+            'pending' => LibraryFine::where('status', 'pending')->sum('balance_amount'),
+            'waived' => LibraryFine::where('status', 'waived')->count(),
         ];
+    }
+
+    public function getMemberFines($memberId): LengthAwarePaginator
+    {
+        return LibraryFine::where('member_id', $memberId)
+            ->with('issue.book')
+            ->paginate(15);
+    }
+
+    public function calculateFineForIssue($issueId): float
+    {
+        $issue = LibraryIssue::find($issueId);
+        if (!$issue || !$issue->isOverdue()) {
+            return 0;
+        }
+
+        return $issue->getOverdueDays() * $this->finePerDay;
     }
 }

@@ -31,7 +31,6 @@ class LibraryManagementServiceProvider extends ServiceProvider
             'create_library-management_item',
             'edit_library-management_item',
             'delete_library-management_item',
-            'manage_library_fines',
         ];
 
         foreach ($permissions as $permission) {
@@ -46,10 +45,8 @@ class LibraryManagementServiceProvider extends ServiceProvider
         // Assign to roles
         $admin = Role::firstOrCreate(['name' => 'admin']);
         $teacher = Role::firstOrCreate(['name' => 'teacher']);
-        $librarian = Role::firstOrCreate(['name' => 'librarian']);
 
         $admin->syncPermissions($permissions);
-        $teacher->syncPermissions(['view_library-management']);
-        $librarian->syncPermissions($permissions);
+        $teacher->syncPermissions(['view_library-management', 'edit_library-management_item']);
     }
 }

@@ -3,56 +3,56 @@
 namespace App\Packages\Pro\LibraryManagement\Repositories;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryFine;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class FineRepository
 {
-    public function all(int $perPage = 15): LengthAwarePaginator
+    public function getPending($perPage = 15): LengthAwarePaginator
     {
-        return LibraryFine::with('member', 'issue.book')
-            ->orderBy('created_at', 'desc')
+        return LibraryFine::where('status', 'pending')
+            ->with(['member', 'issue.book'])
             ->paginate($perPage);
     }
 
-    public function findById(int $id): ?LibraryFine
+    public function getAll($perPage = 15): LengthAwarePaginator
     {
-        return LibraryFine::with('member', 'issue.book')->find($id);
-    }
-
-    public function getPending(int $perPage = 15): LengthAwarePaginator
-    {
-        return LibraryFine::whereIn('status', ['pending', 'partial'])
-            ->with('member', 'issue.book')
-            ->orderBy('created_at', 'asc')
+        return LibraryFine::with(['member', 'issue.book'])
             ->paginate($perPage);
     }
 
-    public function getMemberFines(int $memberId, int $perPage = 15): LengthAwarePaginator
+    public function getById($id): ?LibraryFine
+    {
+        return LibraryFine::with(['member', 'issue.book'])->find($id);
+    }
+
+    public function getByMember($memberId, $perPage = 15): LengthAwarePaginator
     {
         return LibraryFine::where('member_id', $memberId)
             ->with('issue.book')
-            ->orderBy('created_at', 'desc')
             ->paginate($perPage);
     }
 
-    public function getUnpaid(): Collection
+    public function create(array $data): LibraryFine
     {
-        return LibraryFine::where('status', '!=', 'paid')
-            ->with('member', 'issue.book')
-            ->orderBy('created_at', 'asc')
-            ->get();
+        return LibraryFine::create($data);
     }
 
-    public function getTotalCollected(): float
+    public function update($id, array $data): bool
     {
-        return (float) LibraryFine::where('status', 'paid')
-            ->sum('paid_amount');
+        return LibraryFine::find($id)->update($data) ?? false;
     }
 
-    public function getTotalPending(): float
+    public function getPaid($perPage = 15): LengthAwarePaginator
     {
-        return (float) LibraryFine::whereIn('status', ['pending', 'partial'])
-            ->sum('balance_amount');
+        return LibraryFine::where('status', 'paid')
+            ->with(['member', 'issue.book'])
+            ->paginate($perPage);
+    }
+
+    public function getWaived($perPage = 15): LengthAwarePaginator
+    {
+        return LibraryFine::where('status', 'waived')
+            ->with(['member', 'issue.book'])
+            ->paginate($perPage);
     }
 }

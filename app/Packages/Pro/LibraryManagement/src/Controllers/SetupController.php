@@ -2,287 +2,168 @@
 
 namespace App\Packages\Pro\LibraryManagement\Controllers;
 
-use Illuminate\Routing\Controller as BaseController;
+use App\Packages\Pro\LibraryManagement\Models\LibraryCategory;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class SetupController extends BaseController
 {
-    /**
-     * Show setup page
-     */
     public function showSetup(): View
     {
-        $status = $this->getSetupStatus();
-        return view('library-management::setup.index', $status);
-    }
-
-    /**
-     * Run setup/installation commands
-     */
-    public function runSetup(Request $request): JsonResponse
-    {
-        try {
-            $command = $request->input('command');
-
-            $result = match ($command) {
-                'migrate' => $this->runMigrations(),
-                'permissions' => $this->setupPermissions(),
-                'roles' => $this->setupRoles(),
-                'seed-data' => $this->seedInitialData(),
-                'all' => $this->runAllSetup(),
-                default => ['success' => false, 'message' => 'Unknown command']
-            };
-
-            return response()->json($result);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error: ' . $e->getMessage(),
-            ], 500);
-        }
-    }
-
-    /**
-     * Run all migrations
-     */
-    private function runMigrations(): array
-    {
-        try {
-            Artisan::call('migrate', [
-                '--path' => 'app/Packages/Pro/LibraryManagement/src/Database/migrations',
-            ]);
-
-            return [
-                'success' => true,
-                'message' => 'Migrations completed successfully',
-                'step' => 'migrate',
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'message' => 'Migration failed: ' . $e->getMessage(),
-            ];
-        }
-    }
-
-    /**
-     * Setup permissions
-     */
-    private function setupPermissions(): array
-    {
-        try {
-            $permissions = [
-                'view_library-management',
-                'create_library-management_item',
-                'edit_library-management_item',
-                'delete_library-management_item',
-                'manage_library_fines',
-            ];
-
-            foreach ($permissions as $permission) {
-                if (!Permission::where('name', $permission)->exists()) {
-                    Permission::create([
-                        'name' => $permission,
-                        'guard_name' => 'web',
-                    ]);
-                }
-            }
-
-            return [
-                'success' => true,
-                'message' => count($permissions) . ' permissions created/updated',
-                'step' => 'permissions',
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'message' => 'Permission setup failed: ' . $e->getMessage(),
-            ];
-        }
-    }
-
-    /**
-     * Setup roles
-     */
-    private function setupRoles(): array
-    {
-        try {
-            $admin = Role::firstOrCreate(['name' => 'admin']);
-            $librarian = Role::firstOrCreate(['name' => 'librarian']);
-            $teacher = Role::firstOrCreate(['name' => 'teacher']);
-
-            $adminPermissions = [
-                'view_library-management',
-                'create_library-management_item',
-                'edit_library-management_item',
-                'delete_library-management_item',
-                'manage_library_fines',
-            ];
-
-            $librarianPermissions = [
-                'view_library-management',
-                'create_library-management_item',
-                'edit_library-management_item',
-                'delete_library-management_item',
-                'manage_library_fines',
-            ];
-
-            $teacherPermissions = [
-                'view_library-management',
-            ];
-
-            $admin->syncPermissions($adminPermissions);
-            $librarian->syncPermissions($librarianPermissions);
-            $teacher->syncPermissions($teacherPermissions);
-
-            return [
-                'success' => true,
-                'message' => 'Roles and permissions assigned',
-                'step' => 'roles',
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'message' => 'Role setup failed: ' . $e->getMessage(),
-            ];
-        }
-    }
-
-    /**
-     * Seed initial library data
-     */
-    private function seedInitialData(): array
-    {
-        try {
-            // Create default categories
-            $categories = [
-                ['name' => 'Fiction', 'description' => 'Fictional stories and novels'],
-                ['name' => 'Science', 'description' => 'Science and technology books'],
-                ['name' => 'Mathematics', 'description' => 'Math textbooks and resources'],
-                ['name' => 'History', 'description' => 'History and social studies'],
-                ['name' => 'Reference', 'description' => 'Dictionaries and reference materials'],
-                ['name' => 'Children', 'description' => 'Children and young adult books'],
-            ];
-
-            $categoryModel = 'App\Packages\Pro\LibraryManagement\Models\LibraryCategory';
-
-            foreach ($categories as $category) {
-                if (!class_exists($categoryModel)) {
-                    throw new \Exception('LibraryCategory model not found');
-                }
-
-                $model = app($categoryModel);
-                $model::firstOrCreate(
-                    ['name' => $category['name']],
-                    ['description' => $category['description']]
-                );
-            }
-
-            return [
-                'success' => true,
-                'message' => count($categories) . ' categories seeded',
-                'step' => 'seed-data',
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'message' => 'Data seeding failed: ' . $e->getMessage(),
-            ];
-        }
-    }
-
-    /**
-     * Run all setup steps
-     */
-    private function runAllSetup(): array
-    {
-        $results = [];
-
-        // Run migrations
-        $result = $this->runMigrations();
-        $results[] = $result;
-        if (!$result['success']) {
-            return ['success' => false, 'steps' => $results];
-        }
-
-        // Setup permissions
-        $result = $this->setupPermissions();
-        $results[] = $result;
-
-        // Setup roles
-        $result = $this->setupRoles();
-        $results[] = $result;
-
-        // Seed data
-        $result = $this->seedInitialData();
-        $results[] = $result;
-
-        return [
-            'success' => true,
-            'message' => 'All setup steps completed',
-            'steps' => $results,
-        ];
-    }
-
-    /**
-     * Get current setup status
-     */
-    private function getSetupStatus(): array
-    {
-        return [
+        $status = [
             'migrations' => $this->checkMigrationsRun(),
             'permissions' => $this->checkPermissionsExist(),
             'roles' => $this->checkRolesExist(),
             'categories' => $this->checkCategoriesExist(),
         ];
+
+        return view('library-management::setup.index', compact('status'));
     }
 
-    /**
-     * Check if migrations have run
-     */
-    private function checkMigrationsRun(): bool
+    public function runSetup(Request $request): array
     {
-        return DB::table('information_schema.tables')
-            ->where('table_schema', env('DB_DATABASE'))
-            ->where('table_name', 'library_books')
-            ->exists();
+        $command = $request->input('command', 'all');
+
+        return match ($command) {
+            'migrate' => $this->runMigrations(),
+            'permissions' => $this->setupPermissions(),
+            'roles' => $this->setupRoles(),
+            'seed-data' => $this->seedInitialData(),
+            'all' => $this->runAllSetup(),
+            default => ['success' => false, 'message' => 'Unknown command'],
+        };
     }
 
-    /**
-     * Check if permissions exist
-     */
-    private function checkPermissionsExist(): bool
-    {
-        return Permission::where('name', 'view_library-management')->exists();
-    }
-
-    /**
-     * Check if roles exist
-     */
-    private function checkRolesExist(): bool
-    {
-        return Role::where('name', 'librarian')->exists();
-    }
-
-    /**
-     * Check if categories have been seeded
-     */
-    private function checkCategoriesExist(): bool
+    private function runMigrations(): array
     {
         try {
-            $categoryModel = 'App\Packages\Pro\LibraryManagement\Models\LibraryCategory';
-            if (class_exists($categoryModel)) {
-                return app($categoryModel)::count() > 0;
-            }
-            return false;
+            Artisan::call('migrate', ['--force' => true]);
+            return ['success' => true, 'message' => 'Migrations completed successfully'];
         } catch (\Exception $e) {
-            return false;
+            return ['success' => false, 'message' => 'Migration failed: ' . $e->getMessage()];
         }
+    }
+
+    private function setupPermissions(): array
+    {
+        try {
+            $permissions = [
+                'view_library-management' => 'View library pages',
+                'create_library-management_item' => 'Add books and members',
+                'edit_library-management_item' => 'Edit items and process returns',
+                'delete_library-management_item' => 'Delete books and members',
+                'manage_library_fines' => 'Manage fine payments and waivers',
+            ];
+
+            foreach ($permissions as $name => $description) {
+                Permission::firstOrCreate(
+                    ['name' => $name, 'guard_name' => 'web'],
+                    ['description' => $description]
+                );
+            }
+
+            return ['success' => true, 'message' => 'Permissions created successfully'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'message' => 'Permission setup failed: ' . $e->getMessage()];
+        }
+    }
+
+    private function setupRoles(): array
+    {
+        try {
+            $permissionNames = [
+                'view_library-management',
+                'create_library-management_item',
+                'edit_library-management_item',
+                'delete_library-management_item',
+                'manage_library_fines',
+            ];
+
+            $permissions = Permission::whereIn('name', $permissionNames)->get();
+
+            $admin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+            $admin->syncPermissions($permissions);
+
+            $librarian = Role::firstOrCreate(['name' => 'librarian', 'guard_name' => 'web']);
+            $librarian->syncPermissions($permissions);
+
+            $teacher = Role::firstOrCreate(['name' => 'teacher', 'guard_name' => 'web']);
+            $teacher->syncPermissions(
+                Permission::whereIn('name', ['view_library-management'])->get()
+            );
+
+            return ['success' => true, 'message' => 'Roles configured successfully'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'message' => 'Role setup failed: ' . $e->getMessage()];
+        }
+    }
+
+    private function seedInitialData(): array
+    {
+        try {
+            $categories = [
+                ['name' => 'Science', 'description' => 'Science and Physics books'],
+                ['name' => 'Mathematics', 'description' => 'Mathematics and Geometry books'],
+                ['name' => 'Literature', 'description' => 'Literature and Languages books'],
+                ['name' => 'History', 'description' => 'History and Geography books'],
+                ['name' => 'Technology', 'description' => 'Computer and Technology books'],
+                ['name' => 'General', 'description' => 'General knowledge books'],
+            ];
+
+            foreach ($categories as $category) {
+                LibraryCategory::firstOrCreate(
+                    ['name' => $category['name']],
+                    ['description' => $category['description']]
+                );
+            }
+
+            return ['success' => true, 'message' => 'Initial data seeded successfully'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'message' => 'Data seeding failed: ' . $e->getMessage()];
+        }
+    }
+
+    private function runAllSetup(): array
+    {
+        $results = [];
+
+        $results['migrations'] = $this->runMigrations();
+        if (!$results['migrations']['success']) {
+            return ['success' => false, 'message' => 'Setup halted: ' . $results['migrations']['message']];
+        }
+
+        $results['permissions'] = $this->setupPermissions();
+        $results['roles'] = $this->setupRoles();
+        $results['categories'] = $this->seedInitialData();
+
+        return [
+            'success' => true,
+            'message' => 'All setup completed successfully!',
+            'results' => $results
+        ];
+    }
+
+    private function checkMigrationsRun(): bool
+    {
+        return \Schema::hasTable('library_books');
+    }
+
+    private function checkPermissionsExist(): bool
+    {
+        return Permission::where('name', 'like', '%library%')->count() >= 5;
+    }
+
+    private function checkRolesExist(): bool
+    {
+        return Role::whereIn('name', ['librarian'])->exists();
+    }
+
+    private function checkCategoriesExist(): bool
+    {
+        return LibraryCategory::count() > 0;
     }
 }

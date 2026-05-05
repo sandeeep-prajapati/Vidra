@@ -1,67 +1,28 @@
 <?php
 
-use App\Packages\Pro\LibraryManagement\Controllers\BookController;
-use App\Packages\Pro\LibraryManagement\Controllers\IssueController;
-use App\Packages\Pro\LibraryManagement\Controllers\FineController;
-use App\Packages\Pro\LibraryManagement\Controllers\MemberController;
-use App\Packages\Pro\LibraryManagement\Controllers\SetupController;
+use App\Packages\Pro\LibraryManagement\Controllers\Controllers\LibraryManagementController;
 use Illuminate\Support\Facades\Route;
 
-// Setup routes (no auth required for initial setup)
-Route::prefix('library')->name('library-management.')->group(function () {
-    Route::get('setup', [SetupController::class, 'showSetup'])->name('setup.show');
-    Route::post('setup/run', [SetupController::class, 'runSetup'])->name('setup.run');
-});
-
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::prefix('library')->name('library-management.')->group(function () {
-        // Books
-        Route::resource('books', BookController::class)
-            ->middleware('permission:view_library-management');
+    Route::prefix('library-management')->group(function () {
+        Route::get('/', [LibraryManagementController::class, 'index'])
+            ->middleware('permission:view_library-management')
+            ->name('library-management.index');
 
-        Route::get('books/search', [BookController::class, 'search'])
-            ->name('books.search')
-            ->middleware('permission:view_library-management');
+        Route::post('/', [LibraryManagementController::class, 'store'])
+            ->middleware('permission:create_library-management_item')
+            ->name('library-management.store');
 
-        // Members
-        Route::resource('members', MemberController::class)
-            ->middleware('permission:view_library-management');
+        Route::get('/{id}/edit', [LibraryManagementController::class, 'edit'])
+            ->middleware('permission:edit_library-management_item')
+            ->name('library-management.edit');
 
-        // Issues
-        Route::resource('issues', IssueController::class)
-            ->middleware('permission:view_library-management');
+        Route::put('/{id}', [LibraryManagementController::class, 'update'])
+            ->middleware('permission:edit_library-management_item')
+            ->name('library-management.update');
 
-        Route::post('issues/{issue}/return', [IssueController::class, 'return'])
-            ->name('issues.return')
-            ->middleware('permission:edit_library-management_item');
-
-        Route::get('issues/overdue', [IssueController::class, 'overdue'])
-            ->name('issues.overdue')
-            ->middleware('permission:view_library-management');
-
-        Route::post('issues/mark-overdue', [IssueController::class, 'markOverdue'])
-            ->name('issues.mark-overdue')
-            ->middleware('permission:edit_library-management_item');
-
-        // Fines
-        Route::resource('fines', FineController::class)
-            ->only(['index', 'show'])
-            ->middleware('permission:view_library-management');
-
-        Route::get('fines/pending', [FineController::class, 'pending'])
-            ->name('fines.pending')
-            ->middleware('permission:view_library-management');
-
-        Route::post('fines/{fine}/payment', [FineController::class, 'recordPayment'])
-            ->name('fines.payment')
-            ->middleware('permission:edit_library-management_item');
-
-        Route::post('fines/{fine}/waive', [FineController::class, 'waive'])
-            ->name('fines.waive')
-            ->middleware('permission:edit_library-management_item');
-
-        Route::get('fines/report', [FineController::class, 'report'])
-            ->name('fines.report')
-            ->middleware('permission:view_library-management');
+        Route::delete('/{id}', [LibraryManagementController::class, 'destroy'])
+            ->middleware('permission:delete_library-management_item')
+            ->name('library-management.destroy');
     });
 });

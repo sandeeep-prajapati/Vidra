@@ -1,19 +1,20 @@
 {
     "name": "LibraryManagement",
     "version": "1.0.0",
-    "description": "Library management system for book catalog, member registration, issue/return workflow, and fine collection",
+    "description": "Complete school library management system with book catalog, member management, issue tracking, and fine management",
     "author": "Vidra",
     "license": "MIT",
-    "package_path": "app/Packages/Pro/LibraryManagement",
-    "namespace": "App\\Packages\\Pro\\LibraryManagement",
+    "package_path": "Pro/LibraryManagement",
     "provider_class": "App\\Packages\\Pro\\LibraryManagement\\Providers\\LibraryManagementServiceProvider",
     "setup_route": "/library/setup",
     "main_route": "/library/books",
+    "namespace": "App\\Packages\\Pro\\LibraryManagement",
     "features": [
-        "book_management",
-        "member_registration",
-        "issue_return_workflow",
-        "fine_calculation",
-        "book_reservations"
+        "Book Management",
+        "Member Management",
+        "Issue Tracking",
+        "Fine Management",
+        "Reservations",
+        "Interactive Setup Wizard"
     ]
 }

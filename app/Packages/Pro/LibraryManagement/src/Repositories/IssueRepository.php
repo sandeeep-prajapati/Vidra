@@ -3,52 +3,52 @@
 namespace App\Packages\Pro\LibraryManagement\Repositories;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryIssue;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Carbon\Carbon;
 
 class IssueRepository
 {
-    public function all(int $perPage = 15): LengthAwarePaginator
+    public function getActive($perPage = 15): LengthAwarePaginator
     {
-        return LibraryIssue::with('book', 'member')
-            ->orderBy('issue_date', 'desc')
+        return LibraryIssue::where('status', 'active')
+            ->with(['book', 'member'])
             ->paginate($perPage);
     }
 
-    public function findById(int $id): ?LibraryIssue
+    public function getOverdue($perPage = 15): LengthAwarePaginator
     {
-        return LibraryIssue::with('book', 'member', 'fine')->find($id);
-    }
-
-    public function getActive(int $perPage = 15): LengthAwarePaginator
-    {
-        return LibraryIssue::whereIn('status', ['issued', 'overdue'])
-            ->with('book', 'member')
-            ->orderBy('due_date', 'asc')
+        return LibraryIssue::where('status', 'active')
+            ->where('due_date', '<', Carbon::now()->toDateString())
+            ->with(['book', 'member'])
             ->paginate($perPage);
     }
 
-    public function getOverdue(int $perPage = 15): LengthAwarePaginator
-    {
-        return LibraryIssue::where('status', 'overdue')
-            ->with('book', 'member')
-            ->orderBy('due_date', 'asc')
-            ->paginate($perPage);
-    }
-
-    public function getMemberIssues(int $memberId, int $perPage = 15): LengthAwarePaginator
+    public function getByMember($memberId, $perPage = 15): LengthAwarePaginator
     {
         return LibraryIssue::where('member_id', $memberId)
-            ->with('book')
-            ->orderBy('issue_date', 'desc')
+            ->with(['book', 'member'])
             ->paginate($perPage);
     }
 
-    public function getByBookId(int $bookId): Collection
+    public function getById($id): ?LibraryIssue
     {
-        return LibraryIssue::where('book_id', $bookId)
-            ->where('status', '!=', 'returned')
-            ->with('member')
-            ->get();
+        return LibraryIssue::with(['book', 'member'])->find($id);
+    }
+
+    public function create(array $data): LibraryIssue
+    {
+        return LibraryIssue::create($data);
+    }
+
+    public function update($id, array $data): bool
+    {
+        return LibraryIssue::find($id)->update($data) ?? false;
+    }
+
+    public function getReturned($perPage = 15): LengthAwarePaginator
+    {
+        return LibraryIssue::where('status', 'returned')
+            ->with(['book', 'member'])
+            ->paginate($perPage);
     }
 }

@@ -9,30 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class LibraryBook extends Model
 {
     protected $table = 'library_books';
-
     protected $fillable = [
-        'category_id',
-        'title',
-        'author',
-        'publisher',
-        'isbn',
-        'edition',
-        'total_copies',
-        'available_copies',
-        'rack_number',
-        'published_year',
-        'description',
-        'cover_image',
-        'status',
+        'category_id', 'title', 'author', 'isbn', 'edition',
+        'total_copies', 'available_copies', 'rack_number', 'status'
     ];
-
-    protected $casts = [
-        'published_year' => 'integer',
-        'total_copies' => 'integer',
-        'available_copies' => 'integer',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected $casts = ['status' => 'string'];
+    public $timestamps = true;
 
     public function category(): BelongsTo
     {

@@ -8,30 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class LibraryFine extends Model
 {
     protected $table = 'library_fines';
-
     protected $fillable = [
-        'issue_id',
-        'member_id',
-        'fine_amount',
-        'fine_per_day',
-        'overdue_days',
-        'paid_amount',
-        'balance_amount',
-        'paid_at',
-        'status',
-        'waived_by',
-        'waive_reason',
+        'issue_id', 'member_id', 'fine_amount', 'paid_amount',
+        'balance_amount', 'status', 'waived_by', 'waived_reason'
     ];
-
-    protected $casts = [
-        'fine_amount' => 'decimal:2',
-        'fine_per_day' => 'decimal:2',
-        'paid_amount' => 'decimal:2',
-        'balance_amount' => 'decimal:2',
-        'paid_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected $casts = ['status' => 'string'];
+    public $timestamps = true;
 
     public function issue(): BelongsTo
     {
@@ -43,38 +25,30 @@ class LibraryFine extends Model
         return $this->belongsTo(LibraryMember::class, 'member_id');
     }
 
-    public function waivedBy(): BelongsTo
-    {
-        return $this->belongsTo(\App\Models\User::class, 'waived_by');
-    }
-
     public function recordPayment(float $amount): bool
     {
         if ($amount <= 0 || $amount > $this->balance_amount) {
             return false;
         }
 
-        $this->paid_amount += $amount;
-        $this->balance_amount -= $amount;
+        $this->update([
+            'paid_amount' => $this->paid_amount + $amount,
+            'balance_amount' => $this->balance_amount - $amount,
+            'status' => $this->balance_amount - $amount == 0 ? 'paid' : 'pending'
+        ]);
 
-        if ($this->balance_amount <= 0) {
-            $this->status = 'paid';
-            $this->paid_at = now();
-            $this->balance_amount = 0;
-        } else {
-            $this->status = 'partial';
-        }
-
-        $this->save();
         return true;
     }
 
-    public function waiveFine(int $userId, string $reason): void
+    public function waiveFine(string $reason = '', ?int $waived_by = null): bool
     {
-        $this->status = 'waived';
-        $this->waived_by = $userId;
-        $this->waive_reason = $reason;
-        $this->balance_amount = 0;
-        $this->save();
+        $this->update([
+            'balance_amount' => 0,
+            'status' => 'waived',
+            'waived_by' => $waived_by,
+            'waived_reason' => $reason
+        ]);
+
+        return true;
     }
 }

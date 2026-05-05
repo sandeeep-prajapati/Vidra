@@ -5,98 +5,79 @@ namespace App\Packages\Pro\LibraryManagement\Controllers;
 use App\Packages\Pro\LibraryManagement\Models\LibraryBook;
 use App\Packages\Pro\LibraryManagement\Models\LibraryCategory;
 use App\Packages\Pro\LibraryManagement\Services\BookService;
-use App\Packages\Pro\LibraryManagement\Repositories\BookRepository;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class BookController extends BaseController
 {
-    public function __construct(
-        private BookService $bookService,
-        private BookRepository $bookRepository
-    ) {}
+    public function __construct(private BookService $bookService) {}
 
     public function index(): View
     {
-        $this->authorize('view_library-management');
-        $books = $this->bookRepository->all();
-        return view('library-management::books.index', compact('books'));
+        $books = $this->bookService->getAllBooks();
+        $stats = $this->bookService->getBookStatistics();
+        return view('library-management::books.index', compact('books', 'stats'));
     }
 
     public function create(): View
     {
-        $this->authorize('create_library-management_item');
         $categories = LibraryCategory::all();
         return view('library-management::books.create', compact('categories'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $this->authorize('create_library-management_item');
         $validated = $request->validate([
-            'category_id' => 'required|exists:library_categories,id',
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'publisher' => 'nullable|string|max:255',
-            'isbn' => 'nullable|string|unique:library_books',
-            'edition' => 'nullable|string|max:50',
+            'isbn' => 'nullable|unique:library_books',
+            'edition' => 'nullable|string',
+            'category_id' => 'required|exists:library_categories,id',
             'total_copies' => 'required|integer|min:1',
-            'published_year' => 'nullable|integer|min:1900',
-            'rack_number' => 'nullable|string|max:50',
-            'description' => 'nullable|string',
+            'rack_number' => 'nullable|string',
+            'status' => 'required|in:active,inactive',
         ]);
 
         $validated['available_copies'] = $validated['total_copies'];
         $this->bookService->createBook($validated);
 
-        return redirect()->route('library-management.books.index')
-            ->with('success', 'Book added successfully');
+        return redirect()->route('library.books.index')->with('success', 'Book added successfully');
     }
 
     public function edit(LibraryBook $book): View
     {
-        $this->authorize('edit_library-management_item');
         $categories = LibraryCategory::all();
         return view('library-management::books.edit', compact('book', 'categories'));
     }
 
-    public function update(Request $request, LibraryBook $book): RedirectResponse
+    public function update(Request $request, LibraryBook $book)
     {
-        $this->authorize('edit_library-management_item');
         $validated = $request->validate([
-            'category_id' => 'required|exists:library_categories,id',
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'publisher' => 'nullable|string|max:255',
-            'isbn' => 'nullable|string|unique:library_books,isbn,' . $book->id,
-            'edition' => 'nullable|string|max:50',
-            'total_copies' => 'required|integer|min:1',
-            'published_year' => 'nullable|integer',
-            'rack_number' => 'nullable|string|max:50',
-            'description' => 'nullable|string',
+            'isbn' => "nullable|unique:library_books,isbn,{$book->id}",
+            'edition' => 'nullable|string',
+            'category_id' => 'required|exists:library_categories,id',
+            'rack_number' => 'nullable|string',
             'status' => 'required|in:active,inactive',
         ]);
 
-        $this->bookService->updateBook($book, $validated);
-        return redirect()->route('library-management.books.index')
-            ->with('success', 'Book updated successfully');
+        $this->bookService->updateBook($book->id, $validated);
+
+        return redirect()->route('library.books.index')->with('success', 'Book updated successfully');
     }
 
-    public function destroy(LibraryBook $book): RedirectResponse
+    public function destroy(LibraryBook $book)
     {
-        $this->authorize('delete_library-management_item');
-        $this->bookService->deleteBook($book);
-        return redirect()->route('library-management.books.index')
-            ->with('success', 'Book deleted successfully');
+        $this->bookService->deleteBook($book->id);
+        return redirect()->route('library.books.index')->with('success', 'Book deleted successfully');
     }
 
     public function search(Request $request): View
     {
-        $this->authorize('view_library-management');
-        $query = $request->input('q');
-        $books = $query ? $this->bookRepository->search($query) : collect();
+        $query = $request->input('query');
+        $books = $this->bookService->searchBooks($query);
         return view('library-management::books.search', compact('books', 'query'));
     }
 }

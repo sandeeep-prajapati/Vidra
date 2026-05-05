@@ -3,89 +3,75 @@
 namespace App\Packages\Pro\LibraryManagement\Controllers;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryBook;
-use App\Packages\Pro\LibraryManagement\Models\LibraryIssue;
 use App\Packages\Pro\LibraryManagement\Models\LibraryMember;
+use App\Packages\Pro\LibraryManagement\Models\LibraryIssue;
 use App\Packages\Pro\LibraryManagement\Services\IssueService;
-use App\Packages\Pro\LibraryManagement\Repositories\IssueRepository;
-use Illuminate\Routing\Controller as BaseController;
+use App\Packages\Pro\LibraryManagement\Services\FineService;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Exception;
 
 class IssueController extends BaseController
 {
     public function __construct(
         private IssueService $issueService,
-        private IssueRepository $issueRepository
+        private FineService $fineService
     ) {}
 
     public function index(): View
     {
-        $this->authorize('view_library-management');
-        $issues = $this->issueRepository->all();
+        $issues = $this->issueService->getActiveIssues();
         return view('library-management::issues.index', compact('issues'));
     }
 
     public function create(): View
     {
-        $this->authorize('create_library-management_item');
-        $books = LibraryBook::where('status', 'active')->where('available_copies', '>', 0)->get();
+        $books = LibraryBook::where('available_copies', '>', 0)->get();
         $members = LibraryMember::where('status', 'active')->get();
         return view('library-management::issues.create', compact('books', 'members'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $this->authorize('create_library-management_item');
         $validated = $request->validate([
             'book_id' => 'required|exists:library_books,id',
             'member_id' => 'required|exists:library_members,id',
-            'issue_days' => 'required|integer|min:1|max:90',
         ]);
 
-        try {
-            $book = LibraryBook::find($validated['book_id']);
-            $member = LibraryMember::find($validated['member_id']);
+        $issue = $this->issueService->issueBook(
+            $validated['book_id'],
+            $validated['member_id'],
+            auth()->id() ?? 1
+        );
 
-            $this->issueService->issueBook(
-                $book,
-                $member,
-                auth()->id(),
-                $validated['issue_days']
-            );
-
-            return redirect()->route('library-management.issues.index')
-                ->with('success', 'Book issued successfully');
-        } catch (Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
+        if (!$issue) {
+            return back()->with('error', 'Cannot issue book. Check availability and member borrowing limits.');
         }
+
+        return redirect()->route('library.issues.index')->with('success', 'Book issued successfully');
     }
 
-    public function return(LibraryIssue $issue): RedirectResponse
+    public function returnBook(Request $request, LibraryIssue $issue)
     {
-        $this->authorize('edit_library-management_item');
+        $this->issueService->returnBook($issue->id);
 
-        try {
-            $this->issueService->returnBook($issue);
-            return redirect()->back()
-                ->with('success', 'Book returned successfully');
-        } catch (Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
+        $fineAmount = $this->fineService->calculateFineForIssue($issue->id);
+        if ($fineAmount > 0) {
+            $this->fineService->createFine($issue->id, $issue->getOverdueDays());
         }
+
+        return redirect()->route('library.issues.index')->with('success', 'Book returned successfully');
     }
 
     public function overdue(): View
     {
-        $this->authorize('view_library-management');
-        $issues = $this->issueRepository->getOverdue();
+        $issues = $this->issueService->getOverdueIssues();
         return view('library-management::issues.overdue', compact('issues'));
     }
 
-    public function markOverdue(): RedirectResponse
+    public function memberIssues(LibraryMember $member): View
     {
-        $this->authorize('edit_library-management_item');
-        $count = $this->issueService->markOverdueBooks();
-        return back()->with('success', "Marked $count books as overdue");
+        $issues = $this->issueService->getMemberIssues($member->id);
+        return view('library-management::issues.member', compact('issues', 'member'));
     }
 }

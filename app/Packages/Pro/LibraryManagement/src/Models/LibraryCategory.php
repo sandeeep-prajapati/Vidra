@@ -8,16 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class LibraryCategory extends Model
 {
     protected $table = 'library_categories';
-
-    protected $fillable = [
-        'name',
-        'description',
-    ];
-
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected $fillable = ['name', 'description'];
+    public $timestamps = true;
 
     public function books(): HasMany
     {

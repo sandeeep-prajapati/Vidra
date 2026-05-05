@@ -3,75 +3,70 @@
 namespace App\Packages\Pro\LibraryManagement\Controllers;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryMember;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class MemberController extends BaseController
 {
     public function index(): View
     {
-        $this->authorize('view_library-management');
         $members = LibraryMember::paginate(15);
         return view('library-management::members.index', compact('members'));
     }
 
     public function create(): View
     {
-        $this->authorize('create_library-management_item');
         return view('library-management::members.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $this->authorize('create_library-management_item');
         $validated = $request->validate([
-            'member_type' => 'required|in:student,staff',
-            'member_id' => 'required|integer',
-            'membership_number' => 'required|unique:library_members',
+            'member_type' => 'required|in:student,teacher,staff',
+            'member_id' => 'required|unique:library_members',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:library_members',
+            'phone' => 'nullable|string',
             'max_books_allowed' => 'required|integer|min:1',
-            'membership_start' => 'required|date',
-            'membership_end' => 'nullable|date|after:membership_start',
+            'status' => 'required|in:active,inactive,suspended',
         ]);
 
+        $validated['membership_number'] = 'LM-' . strtoupper(uniqid());
         LibraryMember::create($validated);
-        return redirect()->route('library-management.members.index')
-            ->with('success', 'Member registered successfully');
-    }
 
-    public function edit(LibraryMember $member): View
-    {
-        $this->authorize('edit_library-management_item');
-        return view('library-management::members.edit', compact('member'));
-    }
-
-    public function update(Request $request, LibraryMember $member): RedirectResponse
-    {
-        $this->authorize('edit_library-management_item');
-        $validated = $request->validate([
-            'max_books_allowed' => 'required|integer|min:1',
-            'membership_end' => 'nullable|date',
-            'status' => 'required|in:active,suspended,expired',
-        ]);
-
-        $member->update($validated);
-        return redirect()->route('library-management.members.index')
-            ->with('success', 'Member updated successfully');
+        return redirect()->route('library.members.index')->with('success', 'Member registered successfully');
     }
 
     public function show(LibraryMember $member): View
     {
-        $this->authorize('view_library-management');
-        $activeIssues = $member->issues()
-            ->whereIn('status', ['issued', 'overdue'])
-            ->with('book')
-            ->get();
-        $fines = $member->fines()
-            ->where('status', '!=', 'paid')
-            ->with('issue.book')
-            ->get();
+        $member->load('issues', 'fines');
+        return view('library-management::members.show', compact('member'));
+    }
 
-        return view('library-management::members.show', compact('member', 'activeIssues', 'fines'));
+    public function edit(LibraryMember $member): View
+    {
+        return view('library-management::members.edit', compact('member'));
+    }
+
+    public function update(Request $request, LibraryMember $member)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => "nullable|email|unique:library_members,email,{$member->id}",
+            'phone' => 'nullable|string',
+            'max_books_allowed' => 'required|integer|min:1',
+            'status' => 'required|in:active,inactive,suspended',
+        ]);
+
+        $member->update($validated);
+
+        return redirect()->route('library.members.show', $member)->with('success', 'Member updated successfully');
+    }
+
+    public function destroy(LibraryMember $member)
+    {
+        $member->delete();
+        return redirect()->route('library.members.index')->with('success', 'Member deleted successfully');
     }
 }

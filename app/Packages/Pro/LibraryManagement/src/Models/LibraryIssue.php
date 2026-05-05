@@ -4,31 +4,23 @@ namespace App\Packages\Pro\LibraryManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Carbon\Carbon;
 
 class LibraryIssue extends Model
 {
     protected $table = 'library_issues';
-
     protected $fillable = [
-        'book_id',
-        'member_id',
-        'issued_by',
-        'issue_date',
-        'due_date',
-        'return_date',
-        'status',
-        'remarks',
+        'book_id', 'member_id', 'issued_by', 'issue_date', 'due_date',
+        'return_date', 'status'
     ];
-
     protected $casts = [
         'issue_date' => 'date',
         'due_date' => 'date',
         'return_date' => 'date',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'status' => 'string'
     ];
+    public $timestamps = true;
 
     public function book(): BelongsTo
     {
@@ -40,33 +32,26 @@ class LibraryIssue extends Model
         return $this->belongsTo(LibraryMember::class, 'member_id');
     }
 
-    public function issuedBy(): BelongsTo
+    public function fines(): HasMany
     {
-        return $this->belongsTo(\App\Models\User::class, 'issued_by');
-    }
-
-    public function fine(): HasOne
-    {
-        return $this->hasOne(LibraryFine::class, 'issue_id');
+        return $this->hasMany(LibraryFine::class, 'issue_id');
     }
 
     public function isOverdue(): bool
     {
-        return $this->status !== 'returned' && Carbon::now()->gt($this->due_date);
+        return $this->status === 'active' && Carbon::now()->isAfter($this->due_date);
     }
 
     public function getOverdueDays(): int
     {
-        if ($this->status === 'returned') {
-            return max(0, $this->return_date->diffInDays($this->due_date));
+        if (!$this->isOverdue()) {
+            return 0;
         }
-        return max(0, Carbon::now()->diffInDays($this->due_date));
+        return Carbon::now()->diffInDays($this->due_date);
     }
 
     public function markAsOverdue(): void
     {
-        if ($this->isOverdue()) {
-            $this->update(['status' => 'overdue']);
-        }
+        $this->update(['status' => 'overdue']);
     }
 }

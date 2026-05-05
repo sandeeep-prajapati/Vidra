@@ -2,40 +2,30 @@
 
 namespace App\Packages\Pro\LibraryManagement\Services;
 
-use App\Packages\Pro\LibraryManagement\Models\LibraryBook;
 use App\Packages\Pro\LibraryManagement\Models\LibraryIssue;
+use App\Packages\Pro\LibraryManagement\Models\LibraryBook;
 use App\Packages\Pro\LibraryManagement\Models\LibraryMember;
-use App\Packages\Pro\LibraryManagement\Models\LibraryFine;
-use Illuminate\Database\Eloquent\Collection;
-use Exception;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Carbon\Carbon;
 
 class IssueService
 {
-    public function __construct(
-        private FineService $fineService
-    ) {}
+    public function issueBook($bookId, $memberId, $issuedBy, $daysToIssue = 14): ?LibraryIssue
+    {
+        $book = LibraryBook::find($bookId);
+        $member = LibraryMember::find($memberId);
 
-    public function issueBook(
-        LibraryBook $book,
-        LibraryMember $member,
-        int $userId,
-        int $issueDays = 14
-    ): LibraryIssue {
-        if (!$member->canBorrowMore()) {
-            throw new Exception('Member has reached maximum book limit or account is inactive');
-        }
-
-        if (!$book->isAvailable()) {
-            throw new Exception('Book is not available');
+        if (!$book || !$member || !$book->isAvailable() || !$member->canBorrowMore()) {
+            return null;
         }
 
         $issue = LibraryIssue::create([
-            'book_id' => $book->id,
-            'member_id' => $member->id,
-            'issued_by' => $userId,
-            'issue_date' => now()->toDateString(),
-            'due_date' => now()->addDays($issueDays)->toDateString(),
-            'status' => 'issued',
+            'book_id' => $bookId,
+            'member_id' => $memberId,
+            'issued_by' => $issuedBy,
+            'issue_date' => Carbon::now()->toDateString(),
+            'due_date' => Carbon::now()->addDays($daysToIssue)->toDateString(),
+            'status' => 'active'
         ]);
 
         $book->decrement('available_copies');
@@ -43,56 +33,50 @@ class IssueService
         return $issue;
     }
 
-    public function returnBook(LibraryIssue $issue): LibraryIssue
+    public function returnBook($issueId, $fineAmount = 0): bool
     {
-        $issue->update([
-            'return_date' => now()->toDateString(),
-            'status' => 'returned',
-        ]);
-
-        $issue->book->increment('available_copies');
-
-        // Calculate and create fine if overdue
-        if ($issue->isOverdue()) {
-            $overdueDays = $issue->getOverdueDays();
-            $this->fineService->createFine($issue, $overdueDays);
+        $issue = LibraryIssue::find($issueId);
+        if (!$issue || $issue->status !== 'active') {
+            return false;
         }
 
-        return $issue->fresh();
+        $issue->update([
+            'return_date' => Carbon::now()->toDateString(),
+            'status' => 'returned'
+        ]);
+
+        $book = $issue->book;
+        $book->increment('available_copies');
+
+        return true;
+    }
+
+    public function getActiveIssues($perPage = 15): LengthAwarePaginator
+    {
+        return LibraryIssue::where('status', 'active')
+            ->with(['book', 'member'])
+            ->paginate($perPage);
+    }
+
+    public function getOverdueIssues(): LengthAwarePaginator
+    {
+        return LibraryIssue::where('status', 'active')
+            ->where('due_date', '<', Carbon::now()->toDateString())
+            ->with(['book', 'member'])
+            ->paginate(15);
+    }
+
+    public function getMemberIssues($memberId, $perPage = 15): LengthAwarePaginator
+    {
+        return LibraryIssue::where('member_id', $memberId)
+            ->with(['book', 'member'])
+            ->paginate($perPage);
     }
 
     public function markOverdueBooks(): int
     {
-        $count = 0;
-        LibraryIssue::where('status', '!=', 'returned')
-            ->where('due_date', '<', now()->toDateString())
-            ->each(function (LibraryIssue $issue) use (&$count) {
-                $issue->markAsOverdue();
-                $count++;
-            });
-
-        return $count;
-    }
-
-    public function getOverdueIssues(): Collection
-    {
-        return LibraryIssue::where('status', 'overdue')
-            ->with('book', 'member')
-            ->get();
-    }
-
-    public function getActiveIssues(): Collection
-    {
-        return LibraryIssue::whereIn('status', ['issued', 'overdue'])
-            ->with('book', 'member')
-            ->get();
-    }
-
-    public function getMemberIssueHistory(LibraryMember $member): Collection
-    {
-        return $member->issues()
-            ->with('book')
-            ->orderBy('issue_date', 'desc')
-            ->get();
+        return LibraryIssue::where('status', 'active')
+            ->where('due_date', '<', Carbon::now()->toDateString())
+            ->update(['status' => 'overdue']);
     }
 }

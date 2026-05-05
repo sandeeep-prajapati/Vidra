@@ -8,23 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class LibraryMember extends Model
 {
     protected $table = 'library_members';
-
     protected $fillable = [
-        'member_type',
-        'member_id',
-        'membership_number',
-        'max_books_allowed',
-        'membership_start',
-        'membership_end',
-        'status',
+        'member_type', 'member_id', 'membership_number',
+        'name', 'email', 'phone', 'max_books_allowed', 'status'
     ];
-
-    protected $casts = [
-        'membership_start' => 'date',
-        'membership_end' => 'date',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected $casts = ['status' => 'string'];
+    public $timestamps = true;
 
     public function issues(): HasMany
     {
@@ -43,20 +32,16 @@ class LibraryMember extends Model
 
     public function getActiveIssuesCount(): int
     {
-        return $this->issues()
-            ->whereIn('status', ['issued', 'overdue'])
-            ->count();
+        return $this->issues()->where('status', 'active')->count();
     }
 
     public function canBorrowMore(): bool
     {
-        return $this->getActiveIssuesCount() < $this->max_books_allowed && $this->status === 'active';
+        return $this->getActiveIssuesCount() < $this->max_books_allowed;
     }
 
     public function getTotalFinesAmount(): float
     {
-        return (float) $this->fines()
-            ->where('status', '!=', 'paid')
-            ->sum('balance_amount');
+        return (float) $this->fines()->where('status', 'pending')->sum('balance_amount');
     }
 }

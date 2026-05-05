@@ -4,84 +4,61 @@ namespace App\Packages\Pro\LibraryManagement\Services;
 
 use App\Packages\Pro\LibraryManagement\Models\LibraryBook;
 use App\Packages\Pro\LibraryManagement\Models\LibraryCategory;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BookService
 {
+    public function getAllBooks($perPage = 15): LengthAwarePaginator
+    {
+        return LibraryBook::with('category')->paginate($perPage);
+    }
+
+    public function getBooksByCategory($categoryId, $perPage = 15): LengthAwarePaginator
+    {
+        return LibraryBook::where('category_id', $categoryId)
+            ->with('category')
+            ->paginate($perPage);
+    }
+
+    public function searchBooks($query): LengthAwarePaginator
+    {
+        return LibraryBook::where('title', 'like', "%{$query}%")
+            ->orWhere('author', 'like', "%{$query}%")
+            ->orWhere('isbn', 'like', "%{$query}%")
+            ->with('category')
+            ->paginate(15);
+    }
+
     public function createBook(array $data): LibraryBook
     {
         return LibraryBook::create($data);
     }
 
-    public function updateBook(LibraryBook $book, array $data): LibraryBook
+    public function updateBook($bookId, array $data): bool
     {
-        $book->update($data);
-        return $book->fresh();
+        return LibraryBook::find($bookId)->update($data);
     }
 
-    public function deleteBook(LibraryBook $book): bool
+    public function deleteBook($bookId): bool
     {
-        return $book->delete();
+        return LibraryBook::find($bookId)->delete();
     }
 
-    public function getActiveBooks(): Collection
+    public function getAvailableBooks(): LengthAwarePaginator
     {
-        return LibraryBook::where('status', 'active')
-            ->with('category')
-            ->get();
-    }
-
-    public function getAvailableBooks(): Collection
-    {
-        return LibraryBook::where('status', 'active')
-            ->where('available_copies', '>', 0)
-            ->with('category')
-            ->get();
-    }
-
-    public function getBooksByCategory(LibraryCategory $category): Collection
-    {
-        return $category->books()
+        return LibraryBook::where('available_copies', '>', 0)
             ->where('status', 'active')
-            ->get();
-    }
-
-    public function searchBooks(string $query): Collection
-    {
-        return LibraryBook::where('status', 'active')
-            ->where(function ($q) use ($query) {
-                $q->where('title', 'like', "%{$query}%")
-                    ->orWhere('author', 'like', "%{$query}%")
-                    ->orWhere('isbn', 'like', "%{$query}%");
-            })
             ->with('category')
-            ->get();
+            ->paginate(15);
     }
 
-    public function getMostIssuedBooks(int $limit = 10): Collection
-    {
-        return LibraryBook::withCount('issues')
-            ->orderBy('issues_count', 'desc')
-            ->limit($limit)
-            ->get();
-    }
-
-    public function getLowStockBooks(int $threshold = 2): Collection
-    {
-        return LibraryBook::where('status', 'active')
-            ->where('available_copies', '<=', $threshold)
-            ->with('category')
-            ->get();
-    }
-
-    public function getBookStats(): array
+    public function getBookStatistics(): array
     {
         return [
             'total_books' => LibraryBook::count(),
-            'active_books' => LibraryBook::where('status', 'active')->count(),
-            'total_copies' => LibraryBook::sum('total_copies'),
             'available_copies' => LibraryBook::sum('available_copies'),
-            'issued_copies' => LibraryBook::sum('total_copies') - LibraryBook::sum('available_copies'),
+            'total_copies' => LibraryBook::sum('total_copies'),
+            'categories' => LibraryCategory::count(),
         ];
     }
 }
