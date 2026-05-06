@@ -26,7 +26,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "App\\Packages\\App\\Packages\\Pro\\LibraryManagement\\": "app/Packages/app/Packages/Pro/LibraryManagement/src",
             "App\\Packages\\AttendanceManagement\\": "app/Packages/AttendanceManagement/src/",
             "App\\Packages\\BundleInstaller\\": "app/Packages/BundleInstaller/src/",
             "App\\Packages\\ClassManagement\\": "app/Packages/ClassManagement/src/",
@@ -38,6 +37,7 @@
             "App\\Packages\\FeeManagement\\": "app/Packages/FeeManagement/src/",
             "App\\Packages\\HostelTransportManagement\\": "app/Packages/HostelTransportManagement/src/",
             "App\\Packages\\Installer\\": "app/Packages/Installer/src/",
+            "App\\Packages\\Pro\\AlumniManagement\\": "app/Packages/Pro/AlumniManagement/src",
             "App\\Packages\\Pro\\LibraryManagement\\": "app/Packages/Pro/LibraryManagement/src",
             "App\\Packages\\RbacManagement\\": "app/Packages/RbacManagement/src/",
             "App\\Packages\\StaffManagement\\": "app/Packages/StaffManagement/src/",

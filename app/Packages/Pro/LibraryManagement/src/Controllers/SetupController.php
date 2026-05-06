@@ -5,8 +5,9 @@ namespace App\Packages\Pro\LibraryManagement\Controllers;
 use App\Packages\Pro\LibraryManagement\Models\LibraryCategory;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -24,18 +25,20 @@ class SetupController extends BaseController
         return view('library-management::setup.index', compact('status'));
     }
 
-    public function runSetup(Request $request): array
+    public function runSetup(Request $request): \Illuminate\Http\JsonResponse
     {
         $command = $request->input('command', 'all');
 
-        return match ($command) {
-            'migrate' => $this->runMigrations(),
+        $result = match ($command) {
+            'migrate'     => $this->runMigrations(),
             'permissions' => $this->setupPermissions(),
-            'roles' => $this->setupRoles(),
-            'seed-data' => $this->seedInitialData(),
-            'all' => $this->runAllSetup(),
-            default => ['success' => false, 'message' => 'Unknown command'],
+            'roles'       => $this->setupRoles(),
+            'seed-data'   => $this->seedInitialData(),
+            'all'         => $this->runAllSetup(),
+            default       => ['success' => false, 'message' => 'Unknown command'],
         };
+
+        return response()->json($result);
     }
 
     private function runMigrations(): array
@@ -83,18 +86,33 @@ class SetupController extends BaseController
                 'manage_library_fines',
             ];
 
+            app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
             $permissions = Permission::whereIn('name', $permissionNames)->get();
 
             $admin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
-            $admin->syncPermissions($permissions);
+            $admin->givePermissionTo($permissions->filter(fn ($p) => !$admin->hasPermissionTo($p->name)));
 
             $librarian = Role::firstOrCreate(['name' => 'librarian', 'guard_name' => 'web']);
-            $librarian->syncPermissions($permissions);
+            $librarian->givePermissionTo($permissions->filter(fn ($p) => !$librarian->hasPermissionTo($p->name)));
 
             $teacher = Role::firstOrCreate(['name' => 'teacher', 'guard_name' => 'web']);
-            $teacher->syncPermissions(
-                Permission::whereIn('name', ['view_library-management'])->get()
-            );
+            $viewPerm = Permission::where('name', 'view_library-management')->first();
+            if ($viewPerm && !$teacher->hasPermissionTo('view_library-management')) {
+                $teacher->givePermissionTo($viewPerm);
+            }
+
+            // Grant all permissions to the currently logged-in user's roles
+            if (auth()->check()) {
+                $handledRoles = ['admin', 'librarian', 'teacher'];
+                foreach (auth()->user()->roles as $role) {
+                    if (!in_array($role->name, $handledRoles)) {
+                        $role->givePermissionTo($permissions->filter(fn ($p) => !$role->hasPermissionTo($p->name)));
+                    }
+                }
+            }
+
+            app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
             return ['success' => true, 'message' => 'Roles configured successfully'];
         } catch (\Exception $e) {
@@ -149,7 +167,7 @@ class SetupController extends BaseController
 
     private function checkMigrationsRun(): bool
     {
-        return \Schema::hasTable('library_books');
+        return Schema::hasTable('library_books');
     }
 
     private function checkPermissionsExist(): bool
@@ -164,6 +182,6 @@ class SetupController extends BaseController
 
     private function checkCategoriesExist(): bool
     {
-        return LibraryCategory::count() > 0;
+        return Schema::hasTable('library_categories') && LibraryCategory::count() > 0;
     }
 }

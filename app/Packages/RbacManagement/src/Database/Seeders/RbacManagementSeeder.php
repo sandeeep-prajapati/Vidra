@@ -2,6 +2,7 @@
 
 namespace App\Packages\RbacManagement\Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -86,5 +87,20 @@ class RbacManagementSeeder extends Seeder
             );
             $role->syncPermissions($roleData['permissions']);
         }
+
+        // Auto-assign super-admin role to the first user (the logged-in / primary user)
+        $user = User::first();
+        if ($user) {
+            if (!$user->hasRole('super-admin')) {
+                $user->assignRole('super-admin');
+                $this->command->info("Assigned 'super-admin' role to user: {$user->email}");
+            } else {
+                $this->command->info("User {$user->email} already has 'super-admin' role.");
+            }
+        } else {
+            $this->command->warn('No users found — create a user first, then re-run this seeder.');
+        }
+
+        $this->command->info('RBAC permissions and roles seeded successfully.');
     }
 }

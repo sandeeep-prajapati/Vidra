@@ -1,0 +1,20 @@
+{
+    "name": "AlumniManagement",
+    "version": "1.0.0",
+    "description": "Complete alumni management system — profiles, directory, events, donations, and mentorship",
+    "author": "Vidra",
+    "license": "MIT",
+    "package_path": "Pro/AlumniManagement",
+    "provider_class": "App\\Packages\\Pro\\AlumniManagement\\Providers\\AlumniManagementServiceProvider",
+    "setup_route": "/alumni/setup",
+    "main_route": "/alumni/directory",
+    "namespace": "App\\Packages\\Pro\\AlumniManagement",
+    "features": [
+        "Alumni Directory",
+        "Profile Management",
+        "Alumni Events & RSVP",
+        "Donation Tracking",
+        "Mentorship Pairing",
+        "Interactive Setup Wizard"
+    ]
+}

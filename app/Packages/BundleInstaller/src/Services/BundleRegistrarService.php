@@ -47,9 +47,9 @@ class BundleRegistrarService
         $namespace = 'App\\Packages\\' . implode('\\', $namespaceParts) . '\\';
         $path = 'app/Packages/' . $packagePath . '/src';
 
-        // Check if already exists
+        // Already registered — nothing to do
         if (isset($composer['autoload']['psr-4'][$namespace])) {
-            return ['success' => false, 'error' => 'PSR-4 namespace already registered'];
+            return ['success' => true];
         }
 
         // Add PSR-4 mapping in alphabetical order
@@ -87,9 +87,9 @@ class BundleRegistrarService
 
         $content = file_get_contents($providersFile);
 
-        // Check if already registered
+        // Already registered — nothing to do
         if (strpos($content, $providerClass) !== false) {
-            return ['success' => false, 'error' => 'Provider already registered'];
+            return ['success' => true];
         }
 
         // Extract class name

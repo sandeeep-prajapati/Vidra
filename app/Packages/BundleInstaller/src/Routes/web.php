@@ -7,5 +7,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('/bundle-installer', [BundleInstallerController::class, 'index'])->name('bundle-installer.index');
     Route::post('/bundle-installer/upload', [BundleInstallerController::class, 'upload'])->name('bundle-installer.upload');
     Route::post('/bundle-installer/install/{bundle}', [BundleInstallerController::class, 'install'])->name('bundle-installer.install')->where('bundle', '.*');
+    Route::delete('/bundle-installer/{bundle}/files', [BundleInstallerController::class, 'removeFiles'])->name('bundle-installer.remove-files')->where('bundle', '.*');
     Route::delete('/bundle-installer/{bundle}', [BundleInstallerController::class, 'destroy'])->name('bundle-installer.destroy')->where('bundle', '.*');
 });

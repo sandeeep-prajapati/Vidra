@@ -1,43 +1,45 @@
 <?php
 
-namespace App\Packages\Pro\LibraryManagement\Providers\Providers;
+namespace App\Packages\Pro\LibraryManagement\Providers;
+
+use Illuminate\Support\Facades\Auth;
 
 class MenuProvider
 {
     public static function getMenuItems(): array
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return [];
         }
 
         $items = [];
 
-        // Main menu item
-        if (auth()->user()->can('view_library-management')) {
+        if (Auth::user()->can('view_library-management')) {
             $items[] = [
-                'label' => 'LibraryManagement',
-                'route' => 'library-management.index',
-                'icon' => '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM15 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM5 13a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5z"/></svg>',
-                'active' => request()->routeIs('library-management.*'),
+                'label' => 'Library',
+                'icon'  => '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>',
+                'active' => request()->is('library*'),
                 'permission' => 'view_library-management',
-            ];
-        }
-
-        // Admin submenu
-        if (auth()->user()->hasRole('admin')) {
-            $items[] = ['type' => 'divider'];
-            $items[] = [
-                'label' => 'LibraryManagement Admin',
                 'submenu' => [
                     [
-                        'label' => 'Settings',
-                        'route' => 'library-management.settings',
-                        'active' => request()->routeIs('library-management.settings'),
+                        'label'  => 'Books',
+                        'route'  => 'library.books.index',
+                        'active' => request()->routeIs('library.books.*'),
                     ],
                     [
-                        'label' => 'Export Data',
-                        'route' => 'library-management.export',
-                        'active' => request()->routeIs('library-management.export'),
+                        'label'  => 'Members',
+                        'route'  => 'library.members.index',
+                        'active' => request()->routeIs('library.members.*'),
+                    ],
+                    [
+                        'label'  => 'Issues',
+                        'route'  => 'library.issues.index',
+                        'active' => request()->routeIs('library.issues.*'),
+                    ],
+                    [
+                        'label'  => 'Fines',
+                        'route'  => 'library.fines.index',
+                        'active' => request()->routeIs('library.fines.*'),
                     ],
                 ],
             ];
