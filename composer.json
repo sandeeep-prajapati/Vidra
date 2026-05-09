@@ -12,6 +12,7 @@
         "php": "^8.3",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
+        "league/commonmark": "^2.8",
         "spatie/laravel-permission": "^7.3"
     },
     "require-dev": {

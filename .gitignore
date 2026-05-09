@@ -31,6 +31,6 @@ text.txt
 /.scribe
 /.claude
 DB_Structure
-docs
+/docs
 mail.txt
 app/Packages/Pro
