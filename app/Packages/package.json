@@ -1,0 +1,25 @@
+{
+  "$schema": "https://www.schemastore.org/package.json",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:fresh": "bash scripts/fresh-migrate.sh",
+    "test": "npm run db:fresh && playwright test",
+    "test:fresh": "npm test",
+    "test:packages": "npm run db:fresh && playwright test tests/remaining-packages-routes.spec.js",
+    "test:packages:docs": "npm run db:fresh && PLAYWRIGHT_DOCS_VIDEO=1 playwright test tests/remaining-packages-routes.spec.js",
+    "test:bundle": "npm run db:fresh && playwright test tests/remaining-packages-routes.spec.js --grep",
+    "test:timetable": "npm run db:fresh && playwright test tests/timetable-management-routes.spec.js",
+    "test:docs:attendance": "npm run db:fresh && PLAYWRIGHT_DOCS_VIDEO=1 playwright test tests/docs/attendance-management-walkthrough.spec.js",
+    "test:docs:timetable": "npm run db:fresh && PLAYWRIGHT_DOCS_VIDEO=1 playwright test tests/docs/timetable-management-walkthrough.spec.js",
+    "test:attendance:docs": "npm run test:docs:attendance",
+    "test:timetable:docs": "npm run test:docs:timetable",
+    "test:headed": "npm run db:fresh && playwright test --headed",
+    "test:ui": "npm run db:fresh && playwright test --ui",
+    "test:debug": "npm run db:fresh && playwright test --debug",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0"
+  }
+}

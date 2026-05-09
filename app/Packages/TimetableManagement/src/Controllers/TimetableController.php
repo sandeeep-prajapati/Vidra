@@ -26,7 +26,7 @@ class TimetableController extends Controller
         $periods      = Period::orderBy('start_time')->get();
 
         $sections = collect();
-        $timetableGrid = collect();
+        $timetableGrid = [];
 
         $selectedClassId      = $request->input('class_id');
         $selectedSectionId    = $request->input('section_id');
