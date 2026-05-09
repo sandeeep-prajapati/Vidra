@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>OpenVidra Docs</title>
 
@@ -16,7 +16,7 @@
         body {
             background: #050816;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Scrollbar */
@@ -33,7 +33,6 @@
             border-radius: 999px;
         }
 
-        /* Sidebar */
         .sidebar-scroll::-webkit-scrollbar {
             width: 4px;
         }
@@ -42,10 +41,11 @@
         .markdown {
             color: #cbd5e1;
             line-height: 1.9;
+            overflow-wrap: break-word;
         }
 
         .markdown h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: 1rem;
             color: white;
@@ -54,17 +54,17 @@
         }
 
         .markdown h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             font-weight: 700;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
             color: #c084fc;
         }
 
         .markdown h3 {
-            font-size: 1.35rem;
+            font-size: clamp(1.1rem, 3vw, 1.35rem);
             font-weight: 600;
-            margin-top: 1.8rem;
+            margin-top: 1.5rem;
             margin-bottom: .8rem;
             color: #67e8f9;
         }
@@ -76,19 +76,20 @@
 
         .markdown strong {
             color: white;
-            font-weight: 700;
+        }
+
+        .markdown ul,
+        .markdown ol {
+            margin-left: 25px;
+            margin-bottom: 1rem;
         }
 
         .markdown ul {
             list-style: disc;
-            margin-left: 25px;
-            margin-bottom: 1rem;
         }
 
         .markdown ol {
             list-style: decimal;
-            margin-left: 25px;
-            margin-bottom: 1rem;
         }
 
         .markdown li {
@@ -97,7 +98,6 @@
 
         .markdown a {
             color: #a855f7;
-            text-decoration: none;
         }
 
         .markdown a:hover {
@@ -110,10 +110,12 @@
         }
 
         .markdown table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
             width: 100%;
-            margin: 2rem 0;
             border-collapse: collapse;
-            overflow: hidden;
+            margin: 2rem 0;
             border-radius: 20px;
         }
 
@@ -127,14 +129,13 @@
         .markdown td {
             padding: 16px;
             border-top: 1px solid rgba(255,255,255,.05);
-            color: #cbd5e1;
         }
 
         .markdown pre {
             background: #020617;
             border: 1px solid rgba(124,58,237,.2);
             border-radius: 24px;
-            padding: 22px;
+            padding: 20px;
             overflow-x: auto;
             margin: 25px 0;
         }
@@ -160,31 +161,56 @@
             box-shadow: 0 15px 50px rgba(0,0,0,.4);
         }
 
-        @media(max-width:1024px){
-            body{
-                overflow:auto;
+        .overlay {
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media(max-width:1024px) {
+            .sidebar-mobile {
+                transform: translateX(-100%);
+            }
+
+            .sidebar-mobile.active {
+                transform: translateX(0);
             }
         }
     </style>
 </head>
+
 <body>
 
-<div class="flex h-screen">
+<div class="flex min-h-screen">
+
+    <!-- Overlay -->
+    <div id="overlay"
+         class="overlay fixed inset-0 bg-black/50 z-40 lg:hidden">
+    </div>
 
     <!-- Sidebar -->
     <aside id="sidebar"
-           class="fixed lg:relative z-50 lg:translate-x-0
-                  -translate-x-full transition duration-300
-                  w-80 bg-[#080d1f]
-                  border-r border-purple-900/20
-                  h-screen flex flex-col">
+        class="fixed lg:relative
+               z-50
+               top-0 left-0
+               h-screen
+               w-[85%] sm:w-72 lg:w-80
+               bg-[#080d1f]
+               border-r border-purple-900/20
+               flex flex-col
+               transition-all duration-300
+               sidebar-mobile
+               lg:translate-x-0">
 
         <!-- Logo -->
-        <div class="p-6 border-b border-purple-900/20">
+        <div class="p-5 border-b border-purple-900/20">
 
             <a href="/" class="block">
-                <h1 class="text-3xl font-black">
-                    🚀 <span class="text-purple-400">
+                <h1 class="text-2xl lg:text-3xl font-black">
+                    🚀
+                    <span class="text-purple-400">
                         OpenVidra
                     </span>
                 </h1>
@@ -257,40 +283,51 @@
     </aside>
 
     <!-- Main -->
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 min-w-0 overflow-y-auto">
 
-        <!-- Topbar -->
-        <header class="sticky top-0 z-40
-                       bg-[#050816]/80
+        <!-- Header -->
+        <header class="sticky top-0 z-30
+                       bg-[#050816]/90
                        backdrop-blur-xl
                        border-b border-white/5">
 
-            <div class="px-8 py-5 flex items-center justify-between">
+            <div class="px-4 sm:px-6 lg:px-8 py-4
+                        flex flex-col sm:flex-row
+                        items-start sm:items-center
+                        justify-between gap-4">
 
                 <div class="flex items-center gap-4">
 
-                    <button onclick="toggleSidebar()"
-                            class="lg:hidden bg-slate-800 p-3 rounded-xl">
+                    <button id="menuBtn"
+                        class="lg:hidden bg-slate-800
+                               hover:bg-slate-700
+                               p-3 rounded-xl transition">
+
                         ☰
                     </button>
 
-                    <h2 class="text-3xl font-bold">
+                    <h2 class="text-2xl sm:text-3xl font-bold">
                         Documentation
                     </h2>
 
                 </div>
 
-                <div class="flex gap-3">
+                <div class="flex flex-wrap gap-3 w-full sm:w-auto">
 
                     <a href="/"
-                       class="bg-slate-800 hover:bg-slate-700
+                       class="w-full sm:w-auto
+                              text-center
+                              bg-slate-800
+                              hover:bg-slate-700
                               px-5 py-3 rounded-xl transition">
 
                         Website
                     </a>
 
                     <a href="/login"
-                       class="bg-gradient-to-r
+                       class="w-full sm:w-auto
+                              text-center
+                              bg-gradient-to-r
                               from-purple-600
                               to-violet-500
                               hover:scale-105
@@ -305,90 +342,114 @@
                 </div>
 
             </div>
+
         </header>
 
         <!-- Hero -->
-        <section class="px-8 pt-10">
+        <section class="px-4 sm:px-6 lg:px-8 pt-6 lg:pt-10">
 
             <div class="bg-gradient-to-r
                         from-purple-700/20
                         to-cyan-600/10
                         border border-white/10
                         rounded-[32px]
-                        p-10">
+                        p-6 sm:p-8 lg:p-10">
 
-                <h1 class="text-5xl font-black leading-tight">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl
+                           font-black leading-tight">
+
                     OpenVidra Documentation
                 </h1>
 
-                <p class="text-slate-400 mt-4 text-lg max-w-3xl">
-                    Explore guides, modules, AI features,
-                    premium bundles, APIs and deployment
-                    instructions for OpenVidra School ERP.
+                <p class="text-slate-400
+                          mt-4
+                          text-base sm:text-lg
+                          max-w-3xl">
+
+                    Explore guides, modules,
+                    AI features, premium bundles,
+                    APIs and deployment instructions
+                    for OpenVidra School ERP.
                 </p>
 
             </div>
 
         </section>
 
-        <!-- Markdown Content -->
-        <section class="px-8 py-10">
+        <!-- Content -->
+        <section class="px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
 
             <div class="max-w-6xl mx-auto
                         bg-[#0b1120]
                         border border-white/5
                         rounded-[32px]
                         shadow-2xl
-                        p-10">
+                        p-5 sm:p-8 lg:p-10">
 
                 @if($video)
 
-                    <div class="mb-10">
+                <div class="mb-10">
 
-                        <div class="flex items-center justify-between mb-4">
-                            <div>
-                                <h2 class="text-2xl font-bold text-white">
-                                    🎥 Demo Walkthrough
-                                </h2>
+                    <div class="flex flex-col sm:flex-row
+                                items-start sm:items-center
+                                justify-between gap-4 mb-5">
 
-                                <p class="text-slate-400">
-                                    Watch how this module works in OpenVidra
-                                </p>
-                            </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-white">
+                                🎥 Demo Walkthrough
+                            </h2>
 
-                            <span class="bg-purple-500/10
-                                        border border-purple-500/20
-                                        text-purple-300
-                                        px-4 py-2 rounded-full text-sm">
-
-                                Interactive Demo
-                            </span>
+                            <p class="text-slate-400 text-sm md:text-base">
+                                Watch how this module works in OpenVidra
+                            </p>
                         </div>
 
-                        <div class="relative overflow-hidden rounded-[28px]
-                                    border border-purple-500/10
-                                    bg-slate-950 shadow-2xl">
+                        <span class="bg-purple-500/10
+                                    border border-purple-500/20
+                                    text-purple-300
+                                    px-4 py-2 rounded-full text-sm">
 
-                            <video controls
-                                preload="metadata"
-                                class="w-full rounded-[28px]"
-                                poster="/demo/video-poster.png">
+                            Interactive Demo
+                        </span>
+                    </div>
 
-                                <source src="{{ $video }}"
-                                        type="video/webm">
+                    <!-- Bigger Video -->
+                    <div class="relative overflow-hidden
+                                rounded-[30px]
+                                border border-purple-500/10
+                                bg-slate-950 shadow-2xl
+                                w-full">
 
-                                Your browser does not support video.
-                            </video>
+                        <video
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            controls
+                            preload="auto"
+                            class="w-full
+                                h-[250px]
+                                sm:h-[350px]
+                                md:h-[450px]
+                                lg:h-[550px]
+                                object-cover">
 
-                        </div>
+                            <source src="{{ $video }}"
+                                    type="video/webm">
+
+                            Your browser does not support video.
+
+                        </video>
 
                     </div>
 
-                    @endif
+                </div>
 
-                    <article class="markdown">
-                        {!! $content !!}
-                    </article>
+                @endif
+
+                <article class="markdown">
+                    {!! $content !!}
+                </article>
 
             </div>
 
@@ -399,12 +460,32 @@
 </div>
 
 <script>
-    function toggleSidebar() {
-        const sidebar =
-            document.getElementById('sidebar');
+    const sidebar =
+        document.getElementById('sidebar');
 
-        sidebar.classList.toggle('-translate-x-full');
+    const overlay =
+        document.getElementById('overlay');
+
+    const menuBtn =
+        document.getElementById('menuBtn');
+
+    function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
     }
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.contains('active')
+            ? closeSidebar()
+            : openSidebar();
+    });
+
+    overlay.addEventListener('click', closeSidebar);
 </script>
 
 </body>
