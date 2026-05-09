@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <title>OpenVidra Docs</title>
 
@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -37,41 +36,42 @@
             width: 4px;
         }
 
-        /* Markdown Styling */
         .markdown {
             color: #cbd5e1;
-            line-height: 1.9;
+            line-height: 1.7;
             overflow-wrap: break-word;
+            font-size: 0.95rem;
         }
 
         .markdown h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.5rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: 1rem;
             color: white;
             border-bottom: 1px solid rgba(255,255,255,.08);
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
 
         .markdown h2 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.25rem, 4vw, 2rem);
             font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
             color: #c084fc;
         }
 
         .markdown h3 {
-            font-size: clamp(1.1rem, 3vw, 1.35rem);
+            font-size: clamp(1rem, 3vw, 1.35rem);
             font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: .8rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
             color: #67e8f9;
         }
 
         .markdown p {
             margin-bottom: 1rem;
             color: #cbd5e1;
+            line-height: 1.7;
         }
 
         .markdown strong {
@@ -80,7 +80,7 @@
 
         .markdown ul,
         .markdown ol {
-            margin-left: 25px;
+            margin-left: 20px;
             margin-bottom: 1rem;
         }
 
@@ -93,11 +93,12 @@
         }
 
         .markdown li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .markdown a {
             color: #a855f7;
+            word-break: break-word;
         }
 
         .markdown a:hover {
@@ -106,7 +107,7 @@
 
         .markdown hr {
             border-color: rgba(255,255,255,.08);
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .markdown table {
@@ -115,50 +116,53 @@
             white-space: nowrap;
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
-            border-radius: 20px;
+            margin: 1.5rem 0;
+            border-radius: 16px;
+            font-size: 0.85rem;
         }
 
         .markdown th {
             background: #111827;
             color: white;
-            padding: 16px;
+            padding: 12px;
             text-align: left;
         }
 
         .markdown td {
-            padding: 16px;
+            padding: 12px;
             border-top: 1px solid rgba(255,255,255,.05);
         }
 
         .markdown pre {
             background: #020617;
             border: 1px solid rgba(124,58,237,.2);
-            border-radius: 24px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 16px;
             overflow-x: auto;
-            margin: 25px 0;
+            margin: 20px 0;
+            font-size: 0.8rem;
         }
 
         .markdown code {
             background: rgba(124,58,237,.12);
             color: #c084fc;
-            padding: 3px 8px;
-            border-radius: 8px;
-            font-size: .9rem;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.85rem;
         }
 
         .markdown pre code {
             background: transparent;
             padding: 0;
+            font-size: 0.8rem;
         }
 
         .markdown img {
             width: 100%;
-            border-radius: 24px;
-            margin: 25px 0;
+            border-radius: 16px;
+            margin: 20px 0;
             border: 1px solid rgba(255,255,255,.06);
-            box-shadow: 0 15px 50px rgba(0,0,0,.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
         }
 
         .overlay {
@@ -196,7 +200,7 @@
                z-50
                top-0 left-0
                h-screen
-               w-[85%] sm:w-72 lg:w-80
+               w-[85%] sm:w-64 lg:w-80
                bg-[#080d1f]
                border-r border-purple-900/20
                flex flex-col
@@ -205,25 +209,32 @@
                lg:translate-x-0">
 
         <!-- Logo -->
-        <div class="p-5 border-b border-purple-900/20">
+        <div class="p-4 border-b border-purple-900/20 flex items-center justify-between">
 
             <a href="/" class="block">
-                <h1 class="text-2xl lg:text-3xl font-black">
+                <h1 class="text-xl sm:text-2xl font-black">
                     🚀
                     <span class="text-purple-400">
                         OpenVidra
                     </span>
                 </h1>
 
-                <p class="text-slate-400 mt-1 text-sm">
+                <p class="text-slate-400 mt-1 text-xs">
                     AI School ERP Docs
                 </p>
             </a>
 
+            <button id="closeSidebarBtn"
+                    class="lg:hidden text-slate-400 hover:text-white p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
         </div>
 
         <!-- Sidebar Menu -->
-        <div class="sidebar-scroll flex-1 overflow-y-auto p-4">
+        <div class="sidebar-scroll flex-1 overflow-y-auto p-3">
 
             @php
                 $colors = [
@@ -243,11 +254,11 @@
                     $colors[$loop->index % count($colors)];
                 @endphp
 
-                <details open class="mb-4">
+                <details open class="mb-3">
 
                     <summary
-                        class="cursor-pointer rounded-2xl
-                               px-5 py-4 font-semibold
+                        class="cursor-pointer rounded-xl
+                               px-4 py-3.5 font-semibold text-sm
                                bg-{{ $color }}-500/10
                                text-{{ $color }}-300
                                hover:bg-{{ $color }}-500/20
@@ -256,13 +267,12 @@
                         {{ Str::headline($section) }}
                     </summary>
 
-                    <div class="mt-3 space-y-2 pl-3">
+                    <div class="mt-2 space-y-1.5 pl-2">
 
                         @foreach($items as $item)
 
                             <a href="{{ $item['url'] }}"
                                class="block px-4 py-3 rounded-xl transition text-sm
-
                                {{ request()->url() == $item['url']
                                ? 'bg-purple-600/20 border border-purple-500/20 text-purple-300'
                                : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
@@ -283,7 +293,7 @@
     </aside>
 
     <!-- Main -->
-    <main class="flex-1 min-w-0 overflow-y-auto">
+    <main class="flex-1 min-w-0 overflow-y-auto lg:pl-0">
 
         <!-- Header -->
         <header class="sticky top-0 z-30
@@ -291,50 +301,50 @@
                        backdrop-blur-xl
                        border-b border-white/5">
 
-            <div class="px-4 sm:px-6 lg:px-8 py-4
+            <div class="px-4 sm:px-6 lg:px-8 py-3 sm:py-4
                         flex flex-col sm:flex-row
                         items-start sm:items-center
-                        justify-between gap-4">
+                        justify-between gap-3">
 
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3">
 
                     <button id="menuBtn"
                         class="lg:hidden bg-slate-800
                                hover:bg-slate-700
-                               p-3 rounded-xl transition">
+                               p-2.5 rounded-xl transition">
 
-                        ☰
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
                     </button>
 
-                    <h2 class="text-2xl sm:text-3xl font-bold">
+                    <h2 class="text-xl sm:text-2xl font-bold">
                         Documentation
                     </h2>
 
                 </div>
 
-                <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
 
                     <a href="/"
-                       class="w-full sm:w-auto
-                              text-center
+                       class="text-center
                               bg-slate-800
                               hover:bg-slate-700
-                              px-5 py-3 rounded-xl transition">
+                              px-4 py-2.5 rounded-xl transition text-sm sm:text-base">
 
                         Website
                     </a>
 
                     <a href="/login"
-                       class="w-full sm:w-auto
-                              text-center
+                       class="text-center
                               bg-gradient-to-r
                               from-purple-600
                               to-violet-500
                               hover:scale-105
                               transition
-                              px-5 py-3
+                              px-4 py-2.5
                               rounded-xl
-                              font-semibold">
+                              font-semibold text-sm sm:text-base">
 
                         Open App →
                     </a>
@@ -346,30 +356,29 @@
         </header>
 
         <!-- Hero -->
-        <section class="px-4 sm:px-6 lg:px-8 pt-6 lg:pt-10">
+        <section class="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-10 pb-4 sm:pb-6">
 
             <div class="bg-gradient-to-r
                         from-purple-700/20
                         to-cyan-600/10
                         border border-white/10
-                        rounded-[32px]
-                        p-6 sm:p-8 lg:p-10">
+                        rounded-[24px] sm:rounded-[32px]
+                        p-5 sm:p-6 lg:p-8">
 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl
                            font-black leading-tight">
 
                     OpenVidra Documentation
                 </h1>
 
                 <p class="text-slate-400
-                          mt-4
-                          text-base sm:text-lg
+                          mt-3 sm:mt-4
+                          text-sm sm:text-base
                           max-w-3xl">
 
-                    Explore guides, modules,
-                    AI features, premium bundles,
-                    APIs and deployment instructions
-                    for OpenVidra School ERP.
+                    Explore guides, modules, AI features,
+                    premium bundles, APIs and deployment
+                    instructions for OpenVidra School ERP.
                 </p>
 
             </div>
@@ -377,29 +386,29 @@
         </section>
 
         <!-- Content -->
-        <section class="px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+        <section class="px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 lg:pb-10">
 
             <div class="max-w-6xl mx-auto
                         bg-[#0b1120]
                         border border-white/5
-                        rounded-[32px]
+                        rounded-[24px] sm:rounded-[32px]
                         shadow-2xl
-                        p-5 sm:p-8 lg:p-10">
+                        p-4 sm:p-6 lg:p-8">
 
                 @if($video)
 
-                <div class="mb-10">
+                <div class="mb-8">
 
                     <div class="flex flex-col sm:flex-row
                                 items-start sm:items-center
-                                justify-between gap-4 mb-5">
+                                justify-between gap-3 mb-4">
 
                         <div>
-                            <h2 class="text-2xl md:text-3xl font-bold text-white">
+                            <h2 class="text-xl sm:text-2xl font-bold text-white">
                                 🎥 Demo Walkthrough
                             </h2>
 
-                            <p class="text-slate-400 text-sm md:text-base">
+                            <p class="text-slate-400 text-xs sm:text-sm">
                                 Watch how this module works in OpenVidra
                             </p>
                         </div>
@@ -407,18 +416,16 @@
                         <span class="bg-purple-500/10
                                     border border-purple-500/20
                                     text-purple-300
-                                    px-4 py-2 rounded-full text-sm">
+                                    px-3 py-1.5 rounded-full text-xs sm:text-sm">
 
                             Interactive Demo
                         </span>
                     </div>
 
-                    <!-- Bigger Video -->
                     <div class="relative overflow-hidden
-                                rounded-[30px]
+                                rounded-[20px] sm:rounded-[30px]
                                 border border-purple-500/10
-                                bg-slate-950 shadow-2xl
-                                w-full">
+                                bg-slate-950 shadow-xl">
 
                         <video
                             autoplay
@@ -426,12 +433,10 @@
                             loop
                             playsinline
                             controls
-                            preload="auto"
+                            preload="metadata"
                             class="w-full
-                                h-[250px]
-                                sm:h-[350px]
-                                md:h-[450px]
-                                lg:h-[550px]
+                                h-auto
+                                max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px]
                                 object-cover">
 
                             <source src="{{ $video }}"
@@ -469,14 +474,19 @@
     const menuBtn =
         document.getElementById('menuBtn');
 
+    const closeSidebarBtn =
+        document.getElementById('closeSidebarBtn');
+
     function openSidebar() {
         sidebar.classList.add('active');
         overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeSidebar() {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
+        document.body.style.overflow = '';
     }
 
     menuBtn.addEventListener('click', () => {
@@ -485,7 +495,27 @@
             : openSidebar();
     });
 
+    closeSidebarBtn.addEventListener('click', closeSidebar);
+
     overlay.addEventListener('click', closeSidebar);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSidebar();
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+
+        if (diff > 50 && sidebar.classList.contains('active')) {
+            closeSidebar();
+        }
+    });
 </script>
 
 </body>
