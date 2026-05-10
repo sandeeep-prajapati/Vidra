@@ -1,0 +1,5 @@
+npm run record:classes
+# or with an Indian English voice + your own music:
+node scripts/record-doc.js tests/docs/class-management-walkthrough.spec.js \
+    --voice en-IN-NeerjaNeural \
+    --music path/to/your-music.mp3

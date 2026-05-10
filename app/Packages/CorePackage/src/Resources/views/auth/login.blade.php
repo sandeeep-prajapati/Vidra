@@ -4,117 +4,604 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign In — {{ config('app.name', 'School Management') }}</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; background: #f1f5f9; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .login-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 1rem;
-            padding: 2.5rem;
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            background: #09090b;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Left panel ── */
+        .l-panel {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 46%;
+            min-height: 100vh;
+            padding: 40px 48px;
+            background: linear-gradient(160deg, #0f0520 0%, #09090b 60%);
+            border-right: 1px solid rgba(255,255,255,.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 1024px) { .l-panel { display: flex; } }
+
+        /* decorative grid */
+        .l-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(124,58,237,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124,58,237,.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* glow orb */
+        .l-panel::after {
+            content: '';
+            position: absolute;
+            top: -80px; left: -80px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(109,40,217,.18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .l-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .l-brand-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(145deg, #6d28d9, #4338ca);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(109,40,217,.4), inset 0 1px 0 rgba(255,255,255,.12);
+        }
+
+        .l-brand-name { font-size: .9rem; font-weight: 700; color: #f4f4f5; }
+        .l-brand-sub  { font-size: .65rem; color: #71717a; text-transform: uppercase; letter-spacing: .06em; margin-top: 1px; }
+
+        /* center content */
+        .l-center { position: relative; z-index: 1; }
+
+        .l-headline {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            color: #fafafa;
+            letter-spacing: -.03em;
+            line-height: 1.18;
+            margin-bottom: 14px;
+        }
+
+        .l-headline span {
+            background: linear-gradient(135deg, #a78bfa, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .l-desc { font-size: .84rem; color: #71717a; line-height: 1.7; max-width: 320px; margin-bottom: 32px; }
+
+        /* feature list */
+        .l-features { display: flex; flex-direction: column; gap: 12px; }
+
+        .l-feat {
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+
+        .l-feat-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .82rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .l-feat-text { font-size: .8rem; color: #a1a1aa; line-height: 1.5; }
+        .l-feat-title { font-weight: 600; color: #d4d4d8; display: block; margin-bottom: 1px; }
+
+        /* bottom */
+        .l-bottom { position: relative; z-index: 1; }
+
+        .l-contact-card {
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .l-contact-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: rgba(34,197,94,.1);
+            border: 1px solid rgba(34,197,94,.2);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .l-contact-label { font-size: .65rem; color: #52525b; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; margin-bottom: 2px; }
+        .l-contact-num   { font-size: .88rem; font-weight: 700; color: #22c55e; letter-spacing: .01em; }
+        .l-contact-sub   { font-size: .68rem; color: #52525b; margin-top: 1px; }
+
+        /* ── Right panel (form) ── */
+        .r-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 24px;
+            background: #09090b;
+            min-height: 100vh;
+        }
+
+        .form-wrap {
             width: 100%;
-            max-width: 24rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,.06);
+            max-width: 380px;
         }
 
-        .form-label { display: block; font-size: .8125rem; font-weight: 500; color: #374151; margin-bottom: .375rem; }
+        /* Mobile brand */
+        .mob-brand {
+            display: flex; align-items: center; gap: 9px;
+            margin-bottom: 28px;
+        }
 
-        .form-input {
-            width: 100%; padding: .625rem .875rem;
-            border: 1px solid #d1d5db; border-radius: .5rem;
-            font-size: .875rem; color: #1e293b; background: #fff;
-            transition: border-color .15s, box-shadow .15s;
+        @media (min-width: 1024px) { .mob-brand { display: none; } }
+
+        .mob-brand-icon {
+            width: 34px; height: 34px;
+            border-radius: 9px;
+            background: linear-gradient(145deg, #6d28d9, #4338ca);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(109,40,217,.3);
+        }
+
+        .mob-brand-name { font-size: .88rem; font-weight: 700; color: #fafafa; }
+
+        /* Form header */
+        .form-heading {
+            margin-bottom: 24px;
+        }
+
+        .form-heading h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fafafa;
+            letter-spacing: -.02em;
+            margin-bottom: 4px;
+        }
+
+        .form-heading p { font-size: .8rem; color: #71717a; }
+
+        /* Error banner */
+        .err-banner {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(239,68,68,.07);
+            border: 1px solid rgba(239,68,68,.2);
+            border-radius: 9px;
+            padding: 11px 14px;
+            margin-bottom: 18px;
+        }
+
+        .err-banner svg { flex-shrink: 0; color: #f87171; }
+        .err-banner p   { font-size: .79rem; color: #f87171; font-weight: 500; }
+
+        /* Demo credentials */
+        .demo-box {
+            background: rgba(124,58,237,.06);
+            border: 1px solid rgba(124,58,237,.16);
+            border-radius: 9px;
+            padding: 11px 14px;
+            margin-bottom: 20px;
+        }
+
+        .demo-box-label {
+            display: flex; align-items: center; gap: 5px;
+            font-size: .63rem; font-weight: 700;
+            letter-spacing: .07em; text-transform: uppercase;
+            color: #a78bfa;
+            margin-bottom: 8px;
+        }
+
+        .demo-row {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .demo-row:last-child { margin-bottom: 0; }
+
+        .demo-key  { font-size: .74rem; color: #71717a; font-weight: 500; }
+
+        .demo-val {
+            font-size: .74rem; color: #c4b5fd;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: rgba(124,58,237,.1);
+            padding: 1px 7px;
+            border-radius: 4px;
+        }
+
+        .demo-fill-btn {
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+            width: 100%; margin-top: 10px;
+            padding: 6px;
+            background: rgba(124,58,237,.08);
+            border: 1px dashed rgba(124,58,237,.25);
+            border-radius: 7px;
+            font-size: .73rem; font-weight: 600; color: #a78bfa;
+            cursor: pointer;
+            transition: background .15s;
+        }
+
+        .demo-fill-btn:hover { background: rgba(124,58,237,.14); }
+
+        /* Form fields */
+        .field { margin-bottom: 14px; }
+
+        .field label {
+            display: block;
+            font-size: .77rem; font-weight: 500; color: #a1a1aa;
+            margin-bottom: 5px;
+        }
+
+        .input-wrap { position: relative; }
+
+        .input-icon {
+            position: absolute;
+            left: 11px; top: 50%;
+            transform: translateY(-50%);
+            color: #3f3f46;
+            pointer-events: none;
+        }
+
+        .field input[type="email"],
+        .field input[type="password"] {
+            width: 100%;
+            padding: 9px 12px 9px 36px;
+            background: #0f0f12;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 8px;
+            font-size: .84rem;
+            color: #f4f4f5;
+            font-family: inherit;
             outline: none;
+            transition: border-color .15s, box-shadow .15s;
         }
-        .form-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
-        .form-input.error { border-color: #ef4444; }
 
-        .btn-primary {
-            width: 100%; padding: .75rem 1.5rem;
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
-            color: #fff; font-size: .875rem; font-weight: 600;
-            border: none; border-radius: .5rem; cursor: pointer;
-            transition: opacity .15s;
+        .field input:focus {
+            border-color: rgba(124,58,237,.45);
+            box-shadow: 0 0 0 3px rgba(124,58,237,.08);
         }
-        .btn-primary:hover { opacity: .9; }
 
-        .error-msg { font-size: .75rem; color: #dc2626; margin-top: .375rem; }
+        .field input.err { border-color: rgba(239,68,68,.4); }
+        .field input::placeholder { color: #3f3f46; }
+
+        /* Password toggle */
+        .pw-wrap { position: relative; }
+        .pw-toggle {
+            position: absolute; right: 10px; top: 50%;
+            transform: translateY(-50%);
+            background: none; border: none; cursor: pointer;
+            color: #52525b; padding: 2px;
+            transition: color .15s;
+        }
+        .pw-toggle:hover { color: #a1a1aa; }
+
+        /* Remember + options */
+        .form-opts {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .remember {
+            display: flex; align-items: center; gap: 7px;
+            cursor: pointer;
+        }
+
+        .remember input[type="checkbox"] {
+            width: 14px; height: 14px;
+            accent-color: #7c3aed;
+            cursor: pointer;
+        }
+
+        .remember span { font-size: .78rem; color: #71717a; }
+
+        /* Submit */
+        .btn-submit {
+            width: 100%;
+            padding: 10px 16px;
+            background: #7c3aed;
+            color: #fff;
+            font-size: .84rem; font-weight: 700;
+            border: none; border-radius: 9px;
+            cursor: pointer;
+            transition: background .15s, transform .15s, box-shadow .15s;
+            letter-spacing: .01em;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+
+        .btn-submit:hover {
+            background: #6d28d9;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(109,40,217,.35);
+        }
+
+        .btn-submit:active { transform: translateY(0); }
+
+        /* Help + back */
+        .form-footer { margin-top: 22px; text-align: center; }
+
+        .form-footer a {
+            font-size: .76rem; color: #52525b;
+            text-decoration: none;
+            transition: color .14s;
+        }
+
+        .form-footer a:hover { color: #a1a1aa; }
+
+        /* Mobile contact */
+        .mob-contact {
+            display: flex; align-items: center; gap: 8px;
+            margin-top: 18px;
+            padding: 10px 14px;
+            background: rgba(34,197,94,.05);
+            border: 1px solid rgba(34,197,94,.12);
+            border-radius: 9px;
+        }
+
+        @media (min-width: 1024px) { .mob-contact { display: none; } }
+
+        .mob-contact svg { color: #22c55e; flex-shrink: 0; }
+        .mob-contact-info { }
+        .mob-contact-label { font-size: .63rem; color: #52525b; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+        .mob-contact-num   { font-size: .82rem; font-weight: 700; color: #22c55e; }
     </style>
 </head>
 <body>
 
-<div class="login-card">
+<!-- ══ LEFT PANEL ══ -->
+<div class="l-panel">
 
-    {{-- Logo --}}
-    <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:2rem;">
-        <div style="width:2.5rem;height:2.5rem;background:linear-gradient(135deg,#4f46e5,#6366f1);border-radius:.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg style="width:1.25rem;height:1.25rem;color:#fff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+    <!-- Brand -->
+    <div class="l-brand">
+        <div class="l-brand-icon">
+            <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
         </div>
         <div>
-            <p style="font-size:.9375rem;font-weight:700;color:#1e293b;line-height:1.2;">{{ config('app.name', 'School Management') }}</p>
-            <p style="font-size:.7rem;color:#94a3b8;">Management System</p>
+            <div class="l-brand-name">{{ config('app.name', 'OpenVidra') }}</div>
+            <div class="l-brand-sub">School ERP</div>
         </div>
     </div>
 
-    <h1 style="font-size:1.25rem;font-weight:700;color:#1e293b;margin-bottom:.25rem;">Welcome back</h1>
-    <p style="font-size:.8125rem;color:#64748b;margin-bottom:1.75rem;">Sign in to your account to continue.</p>
+    <!-- Center copy -->
+    <div class="l-center">
+        <h2 class="l-headline">
+            The smarter way to<br>
+            run your <span>school</span>.
+        </h2>
+        <p class="l-desc">
+            Manage students, staff, fees, exams, attendance, and timetables — all in one AI-powered platform.
+        </p>
 
-    @if($errors->any())
-    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:.5rem;padding:.75rem 1rem;margin-bottom:1.25rem;">
-        <p style="font-size:.8125rem;color:#b91c1c;font-weight:500;">{{ $errors->first() }}</p>
+        <div class="l-features">
+            <div class="l-feat">
+                <div class="l-feat-icon" style="background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.2);">🎓</div>
+                <div class="l-feat-text">
+                    <span class="l-feat-title">Student Management</span>
+                    Admissions, profiles, attendance and results in one place.
+                </div>
+            </div>
+            <div class="l-feat">
+                <div class="l-feat-icon" style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.18);">📅</div>
+                <div class="l-feat-text">
+                    <span class="l-feat-title">Timetable & Exams</span>
+                    Automated scheduling, substitutions and report cards.
+                </div>
+            </div>
+            <div class="l-feat">
+                <div class="l-feat-icon" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.18);">💰</div>
+                <div class="l-feat-text">
+                    <span class="l-feat-title">Fee Management</span>
+                    Fee structures, payments, discounts and financial reports.
+                </div>
+            </div>
+            <div class="l-feat">
+                <div class="l-feat-icon" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.18);">🔐</div>
+                <div class="l-feat-text">
+                    <span class="l-feat-title">Role-Based Access</span>
+                    Fine-grained permissions for every staff member.
+                </div>
+            </div>
+        </div>
     </div>
-    @endif
 
-    <form method="POST" action="{{ route('login.submit') }}">
-        @csrf
-
-        <div style="margin-bottom:1.125rem;">
-            <label class="form-label" for="email">Email address</label>
-            <input
-                id="email"
-                type="email"
-                name="email"
-                value="{{ old('email') }}"
-                autocomplete="email"
-                required
-                class="form-input {{ $errors->has('email') ? 'error' : '' }}"
-                placeholder="admin@school.com"
-            >
+    <!-- Contact -->
+    <div class="l-bottom">
+        <div class="l-contact-card">
+            <div class="l-contact-icon">
+                <svg width="16" height="16" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="l-contact-label">Need help?</div>
+                <div class="l-contact-num">+91 63924 24180</div>
+                <div class="l-contact-sub">Call us for support &amp; enquiries</div>
+            </div>
         </div>
+    </div>
 
-        <div style="margin-bottom:1.5rem;">
-            <label class="form-label" for="password">Password</label>
-            <input
-                id="password"
-                type="password"
-                name="password"
-                autocomplete="current-password"
-                required
-                class="form-input {{ $errors->has('password') ? 'error' : '' }}"
-                placeholder="••••••••"
-            >
-        </div>
-
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
-            <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;">
-                <input type="checkbox" name="remember" style="width:1rem;height:1rem;accent-color:#6366f1;">
-                <span style="font-size:.8125rem;color:#4b5563;">Remember me</span>
-            </label>
-        </div>
-
-        <button type="submit" class="btn-primary">Sign in</button>
-    </form>
-
-    <p style="text-align:center;font-size:.75rem;color:#94a3b8;margin-top:1.5rem;">
-        <a href="{{ route('home') }}" style="color:#6366f1;text-decoration:none;font-weight:500;">← Back to home</a>
-    </p>
 </div>
+
+<!-- ══ RIGHT PANEL (form) ══ -->
+<div class="r-panel">
+    <div class="form-wrap">
+
+        <!-- Mobile brand -->
+        <div class="mob-brand">
+            <div class="mob-brand-icon">
+                <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+            </div>
+            <div class="mob-brand-name">{{ config('app.name', 'OpenVidra') }}</div>
+        </div>
+
+        <!-- Heading -->
+        <div class="form-heading">
+            <h1>Welcome back</h1>
+            <p>Sign in to your administrator account</p>
+        </div>
+
+        <!-- Error -->
+        @if($errors->any())
+        <div class="err-banner">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4M12 16h.01"/>
+            </svg>
+            <p>{{ $errors->first() }}</p>
+        </div>
+        @endif
+
+        <!-- Demo credentials -->
+        <div class="demo-box">
+            <div class="demo-box-label">
+                <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                Demo Credentials
+            </div>
+            <div class="demo-row">
+                <span class="demo-key">Email</span>
+                <span class="demo-val">admin@school.com</span>
+            </div>
+            <div class="demo-row">
+                <span class="demo-key">Password</span>
+                <span class="demo-val">admin123</span>
+            </div>
+            <button class="demo-fill-btn" type="button" onclick="fillDemo()">
+                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                Fill demo credentials
+            </button>
+        </div>
+
+        <!-- Form -->
+        <form method="POST" action="{{ route('login.submit') }}">
+            @csrf
+
+            <div class="field">
+                <label for="email">Email address</label>
+                <div class="input-wrap">
+                    <svg class="input-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value="{{ old('email') }}"
+                        autocomplete="email"
+                        required
+                        class="{{ $errors->has('email') ? 'err' : '' }}"
+                        placeholder="admin@school.com"
+                    >
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <div class="input-wrap pw-wrap">
+                    <svg class="input-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                        class="{{ $errors->has('password') ? 'err' : '' }}"
+                        placeholder="••••••••"
+                    >
+                    <button type="button" class="pw-toggle" onclick="togglePw()" id="pw-btn" title="Show/hide password">
+                        <svg id="pw-eye" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-opts">
+                <label class="remember">
+                    <input type="checkbox" name="remember">
+                    <span>Remember me</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+                </svg>
+                Sign in
+            </button>
+        </form>
+
+        <!-- Mobile contact -->
+        <div class="mob-contact">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <div class="mob-contact-info">
+                <div class="mob-contact-label">Need help?</div>
+                <div class="mob-contact-num">+91 63924 24180</div>
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <a href="{{ route('home') }}">← Back to home</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function fillDemo() {
+    document.getElementById('email').value    = 'admin@school.com';
+    document.getElementById('password').value = 'admin123';
+}
+
+function togglePw() {
+    const pw  = document.getElementById('password');
+    const eye = document.getElementById('pw-eye');
+    const show = pw.type === 'password';
+    pw.type = show ? 'text' : 'password';
+    eye.innerHTML = show
+        ? '<path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>'
+        : '<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+}
+</script>
 
 </body>
 </html>

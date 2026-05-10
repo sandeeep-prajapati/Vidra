@@ -44,7 +44,9 @@ export default defineConfig({
     baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: docsVideo ? 'on' : 'retain-on-failure',
+    video: docsVideo
+      ? { mode: 'on', size: { width: 1920, height: 1080 } }
+      : 'retain-on-failure',
   },
   webServer: {
     command: `php artisan serve --host=127.0.0.1 --port=${port}`,

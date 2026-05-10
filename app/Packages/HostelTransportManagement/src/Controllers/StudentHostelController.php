@@ -46,7 +46,7 @@ class StudentHostelController extends Controller
         $validated = $request->validate([
             'student_id'    => 'required|integer',
             'hostel_id'     => 'required|integer|exists:hostels,hostel_id',
-            'room_id'       => 'required|integer|exists:rooms,room_id',
+            'room_id'       => 'required|integer|exists:hostel_rooms,room_id',
             'assigned_date' => 'required|date',
             'checkout_date' => 'nullable|date|after_or_equal:assigned_date',
         ]);
@@ -77,7 +77,7 @@ class StudentHostelController extends Controller
         $validated = $request->validate([
             'student_id'    => 'required|integer',
             'hostel_id'     => 'required|integer|exists:hostels,hostel_id',
-            'room_id'       => 'required|integer|exists:rooms,room_id',
+            'room_id'       => 'required|integer|exists:hostel_rooms,room_id',
             'assigned_date' => 'required|date',
             'checkout_date' => 'nullable|date|after_or_equal:assigned_date',
         ]);

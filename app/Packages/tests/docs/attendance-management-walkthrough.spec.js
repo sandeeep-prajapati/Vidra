@@ -6,9 +6,11 @@ const DEMO_DATE = '2026-05-08';
 const LEAVE_END_DATE = '2026-05-10';
 
 test('Attendance Management documentation walkthrough', async ({ page }) => {
-  test.setTimeout(480_000);
+  test.setTimeout(720_000);
 
-  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  page.setDefaultTimeout(10000);
+  page.setDefaultNavigationTimeout(15000);
 
   await showCaption(page, 'Sign in with the school administrator account');
   await page.goto('/login');
@@ -139,9 +141,9 @@ async function selectField(page, selector, value) {
 
 async function clickAndWait(page, locator) {
   await spotlight(locator);
-  await locator.click();
+  await locator.click({ timeout: 30000 });
   await page.waitForLoadState('networkidle').catch(() => {});
-  await pause(page, 1000);
+  await pause(page, 200);
 }
 
 async function highlightText(page, text) {
@@ -184,6 +186,21 @@ async function showCaption(page, text) {
     }
     caption.textContent = captionText;
   }, text);
+  if (process.env.PLAYWRIGHT_DOCS_NARRATE) {
+    await page.evaluate(async (captionText) => {
+      await new Promise((resolve) => {
+        if (!('speechSynthesis' in window)) { resolve(); return; }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(captionText);
+        utter.rate = 0.88;
+        utter.pitch = 1.0;
+        utter.volume = 1.0;
+        utter.onend = resolve;
+        utter.onerror = resolve;
+        window.speechSynthesis.speak(utter);
+      });
+    }, text);
+  }
   await pause(page, 900);
 }
 

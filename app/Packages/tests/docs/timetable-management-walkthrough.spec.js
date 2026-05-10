@@ -8,9 +8,11 @@ const DOC_ROOM_NAME = `Documentation Lab ${DOC_STAMP}`;
 const DOC_DAY_NAME = `Doc Day ${DOC_STAMP}`;
 
 test('Timetable Management documentation walkthrough', async ({ page }) => {
-  test.setTimeout(480_000);
+  test.setTimeout(720_000);
 
-  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  page.setDefaultTimeout(10000);
+  page.setDefaultNavigationTimeout(15000);
 
   await showCaption(page, 'Sign in with the school administrator account');
   await page.goto('/login');
@@ -38,7 +40,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await fillField(page, '#capacity', '32');
   await fillField(page, '#description', 'Room added during the Timetable documentation walkthrough');
   await clickAndWait(page, page.getByRole('button', { name: 'Save Room' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1400);
 
   await openPage(page, '/period', 'Periods');
@@ -48,7 +50,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await fillField(page, '#start_time', '15:00');
   await fillField(page, '#end_time', '15:45');
   await clickAndWait(page, page.getByRole('button', { name: 'Save Period' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1400);
 
   await openPage(page, '/day', 'Days');
@@ -57,7 +59,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Add Day' })).toBeVisible();
   await fillField(page, '#day_name', DOC_DAY_NAME);
   await clickAndWait(page, page.getByRole('button', { name: 'Save Day' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1400);
 
   await openPage(page, '/timetable/create', 'Add Timetable Entry');
@@ -71,7 +73,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await selectFirstOption(page, '#teacher_id');
   await selectLastOption(page, '#room_id');
   await clickAndWait(page, page.getByRole('button', { name: 'Save Entry' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1600);
 
   await openPage(page, '/substituteAssignment', 'Substitute Assignments');
@@ -83,7 +85,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await selectField(page, '#substitute_teacher_id', '2');
   await fillField(page, '#date_of_substitution', EVENT_DATE);
   await clickAndWait(page, page.getByRole('button', { name: 'Save Substitution' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1600);
 
   await openPage(page, '/specialEvent', 'Special Events');
@@ -97,7 +99,7 @@ test('Timetable Management documentation walkthrough', async ({ page }) => {
   await selectLastOption(page, '#room_id');
   await fillField(page, '#description', 'Event created for the Timetable Management documentation video');
   await clickAndWait(page, page.getByRole('button', { name: 'Save Event' }));
-  await expect(page.getByText(/created|saved|success/i).first()).toBeVisible();
+  await expect(page).not.toHaveURL(/\/create/i, { timeout: 15000 });
   await pause(page, 1600);
 
   await openPage(page, '/timetable?class_id=1&section_id=1&academic_year_id=1', 'Timetable');
@@ -150,9 +152,9 @@ async function selectLastOption(page, selector) {
 
 async function clickAndWait(page, locator) {
   await spotlight(locator);
-  await locator.click();
+  await locator.click({ timeout: 30000 });
   await page.waitForLoadState('networkidle').catch(() => {});
-  await pause(page, 1000);
+  await pause(page, 200);
 }
 
 async function highlightText(page, text) {
@@ -195,6 +197,21 @@ async function showCaption(page, text) {
     }
     caption.textContent = captionText;
   }, text);
+  if (process.env.PLAYWRIGHT_DOCS_NARRATE) {
+    await page.evaluate(async (captionText) => {
+      await new Promise((resolve) => {
+        if (!('speechSynthesis' in window)) { resolve(); return; }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(captionText);
+        utter.rate = 0.88;
+        utter.pitch = 1.0;
+        utter.volume = 1.0;
+        utter.onend = resolve;
+        utter.onerror = resolve;
+        window.speechSynthesis.speak(utter);
+      });
+    }, text);
+  }
   await pause(page, 900);
 }
 

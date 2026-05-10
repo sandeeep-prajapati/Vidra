@@ -32,12 +32,12 @@ class DocsController extends Controller
         // Detect demo video automatically
         $slug = basename($page);
 
-        $videoPath = public_path("demo/{$slug}.webm");
+        $videoPath = public_path("demo/{$slug}.mp4");
 
         $video = null;
 
         if (File::exists($videoPath)) {
-            $video = asset("demo/{$slug}.webm");
+            $video = asset("demo/{$slug}.mp4");
         }
 
         return view('docs.show', [
