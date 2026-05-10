@@ -65,9 +65,201 @@
             #topbar-date { display: none; }
             #install-bundle-btn span { display: none; }
         }
+
+        /* ══════════════════════════════
+           PAGE LOADER
+        ══════════════════════════════ */
+        #page-loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: #fff;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: opacity .5s ease, transform .5s ease;
+        }
+
+        #page-loader.out {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        /* pulse rings */
+        .ldr-rings {
+            position: absolute;
+            width: 160px; height: 160px;
+            pointer-events: none;
+        }
+
+        .ldr-ring {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(79,70,229,.25);
+            animation: ldr-pulse 2.2s ease-out infinite;
+        }
+
+        .ldr-ring:nth-child(2) { animation-delay: .75s; }
+        .ldr-ring:nth-child(3) { animation-delay: 1.5s; }
+
+        @keyframes ldr-pulse {
+            0%   { transform: scale(.5);  opacity: .9; }
+            100% { transform: scale(1.7); opacity: 0; }
+        }
+
+        /* spinning conic arc */
+        .ldr-arc-wrap {
+            position: relative;
+            width: 76px; height: 76px;
+            flex-shrink: 0;
+        }
+
+        .ldr-arc {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #4f46e5 0%, #818cf8 35%, transparent 60%);
+            animation: ldr-spin 1s linear infinite;
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+            mask:         radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+        }
+
+        @keyframes ldr-spin { to { transform: rotate(360deg); } }
+
+        .ldr-icon-bg {
+            position: absolute; inset: 7px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 8px rgba(79,70,229,.12);
+        }
+
+        /* inner logo */
+        .ldr-logo {
+            width: 28px; height: 28px; border-radius: 7px;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 3px 10px rgba(79,70,229,.35);
+        }
+
+        /* text */
+        .ldr-text {
+            margin-top: 24px;
+            text-align: center;
+            animation: ldr-fadein .5s ease both;
+            animation-delay: .15s;
+        }
+
+        @keyframes ldr-fadein {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ldr-name {
+            font-size: 1.1rem; font-weight: 800;
+            color: #1e293b; letter-spacing: -.025em;
+            margin-bottom: 7px;
+        }
+
+        /* AI badge — light theme version */
+        .ldr-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 11px;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-radius: 999px;
+            font-size: .68rem; font-weight: 700; color: #4338ca;
+            letter-spacing: .055em; text-transform: uppercase;
+        }
+
+        .ldr-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #22c55e;
+            flex-shrink: 0;
+            animation: ldr-blink 1s ease-in-out infinite;
+        }
+
+        @keyframes ldr-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: .3; transform: scale(.65); }
+        }
+
+        .ldr-dots { display: inline-flex; gap: 3px; margin-left: 1px; }
+        .ldr-dots span {
+            width: 3px; height: 3px; border-radius: 50%;
+            background: #6366f1;
+            animation: ldr-bounce .85s ease-in-out infinite;
+        }
+        .ldr-dots span:nth-child(2) { animation-delay: .14s; }
+        .ldr-dots span:nth-child(3) { animation-delay: .28s; }
+
+        @keyframes ldr-bounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: .35; }
+            40%            { transform: translateY(-4px); opacity: 1; }
+        }
+
+        /* progress bar */
+        .ldr-progress {
+            margin-top: 28px;
+            width: 140px; height: 2px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .ldr-bar {
+            height: 100%; width: 0;
+            background: linear-gradient(90deg, #4f46e5, #818cf8);
+            border-radius: 2px;
+            animation: ldr-fill 1.8s cubic-bezier(.4,0,.2,1) forwards;
+        }
+
+        @keyframes ldr-fill {
+            0%   { width: 0; }
+            55%  { width: 70%; }
+            80%  { width: 88%; }
+            100% { width: 100%; }
+        }
+
+        body.loading { overflow: hidden; }
     </style>
 </head>
-<body style="background:#f1f5f9; margin:0;">
+<body style="background:#f1f5f9; margin:0;" class="loading">
+
+<!-- ══ PAGE LOADER ══ -->
+<div id="page-loader" role="status" aria-label="Loading">
+
+    <div class="ldr-rings">
+        <div class="ldr-ring"></div>
+        <div class="ldr-ring"></div>
+        <div class="ldr-ring"></div>
+    </div>
+
+    <div class="ldr-arc-wrap">
+        <div class="ldr-arc"></div>
+        <div class="ldr-icon-bg">
+            <div class="ldr-logo">
+                <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="ldr-text">
+        <div class="ldr-name">{{ config('app.name', 'School Management') }}</div>
+        <div class="ldr-badge">
+            <span class="ldr-dot"></span>
+            AI Powered
+            <span class="ldr-dots">
+                <span></span><span></span><span></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="ldr-progress">
+        <div class="ldr-bar"></div>
+    </div>
+
+</div>
 
 <div style="display:flex; min-height:100vh;">
 
@@ -247,6 +439,29 @@
 </div>
 
 <script>
+/* ── Loader dismiss ── */
+(function () {
+    function dismissLoader() {
+        var loader = document.getElementById('page-loader');
+        if (!loader || loader.classList.contains('out')) return;
+        loader.classList.add('out');
+        loader.addEventListener('transitionend', function () {
+            loader.style.display = 'none';
+            document.body.classList.remove('loading');
+        }, { once: true });
+    }
+
+    if (document.readyState === 'complete') {
+        setTimeout(dismissLoader, 350);
+    } else {
+        window.addEventListener('load', function () {
+            setTimeout(dismissLoader, 350);
+        });
+    }
+    // hard cap — never block UI more than 3s
+    setTimeout(dismissLoader, 3000);
+})();
+
 const SB_SECTIONS = ['s-people', 's-academics', 's-subjects', 's-attendance', 's-finance', 's-timetable', 's-communication', 's-hostel', 's-exams', 's-datatransfer', 's-rbac', 's-system'];
 
 function toggleSection(id) {

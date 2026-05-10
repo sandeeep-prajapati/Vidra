@@ -463,9 +463,198 @@
             .stats { grid-template-columns: 1fr 1fr; }
             .stat-num { font-size: 1.4rem; }
         }
+
+        /* ── PAGE LOADER ── */
+        #page-loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: #09090b;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 0;
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        #page-loader.out {
+            opacity: 0;
+            transform: scale(1.06);
+            pointer-events: none;
+        }
+
+        /* pulse rings */
+        .ldr-rings {
+            position: absolute;
+            width: 180px; height: 180px;
+        }
+
+        .ldr-ring {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(124,58,237,.35);
+            animation: ldr-pulse 2.4s ease-out infinite;
+        }
+
+        .ldr-ring:nth-child(2) { animation-delay: .8s; }
+        .ldr-ring:nth-child(3) { animation-delay: 1.6s; }
+
+        @keyframes ldr-pulse {
+            0%   { transform: scale(.55); opacity: .8; }
+            100% { transform: scale(1.6);  opacity: 0; }
+        }
+
+        /* spinning arc */
+        .ldr-arc-wrap {
+            position: relative;
+            width: 84px; height: 84px;
+            flex-shrink: 0;
+        }
+
+        .ldr-arc {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #7c3aed 0%, #a78bfa 30%, transparent 60%);
+            animation: ldr-spin 1.1s linear infinite;
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 0);
+            mask:         radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 0);
+        }
+
+        @keyframes ldr-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* icon center */
+        .ldr-icon-bg {
+            position: absolute; inset: 8px;
+            border-radius: 50%;
+            background: #0f0f12;
+            border: 1px solid rgba(255,255,255,.07);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* text block */
+        .ldr-text {
+            margin-top: 28px;
+            text-align: center;
+            animation: ldr-fadein .6s ease both;
+            animation-delay: .2s;
+        }
+
+        @keyframes ldr-fadein {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ldr-name {
+            font-size: 1.25rem; font-weight: 800;
+            color: #fafafa; letter-spacing: -.03em;
+            margin-bottom: 8px;
+        }
+
+        /* AI badge */
+        .ldr-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 5px 12px;
+            background: rgba(124,58,237,.08);
+            border: 1px solid rgba(124,58,237,.2);
+            border-radius: 999px;
+            font-size: .72rem; font-weight: 600; color: #a78bfa;
+            letter-spacing: .05em; text-transform: uppercase;
+        }
+
+        /* animated green dot */
+        .ldr-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #22c55e;
+            animation: ldr-blink 1.1s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes ldr-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: .3; transform: scale(.7); }
+        }
+
+        /* typing dots */
+        .ldr-dots { display: inline-flex; gap: 3px; margin-left: 2px; }
+        .ldr-dots span {
+            width: 3px; height: 3px; border-radius: 50%;
+            background: #a78bfa;
+            animation: ldr-dot-bounce .9s ease-in-out infinite;
+        }
+        .ldr-dots span:nth-child(2) { animation-delay: .15s; }
+        .ldr-dots span:nth-child(3) { animation-delay: .3s; }
+
+        @keyframes ldr-dot-bounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: .4; }
+            40%            { transform: translateY(-4px); opacity: 1; }
+        }
+
+        /* progress bar */
+        .ldr-progress {
+            margin-top: 32px;
+            width: 160px; height: 2px;
+            background: rgba(255,255,255,.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .ldr-progress-bar {
+            height: 100%; width: 0%;
+            background: linear-gradient(90deg, #6d28d9, #a78bfa);
+            border-radius: 2px;
+            animation: ldr-fill 2s cubic-bezier(.4,0,.2,1) forwards;
+        }
+
+        @keyframes ldr-fill {
+            0%   { width: 0%; }
+            60%  { width: 75%; }
+            85%  { width: 88%; }
+            100% { width: 100%; }
+        }
+
+        /* body hidden during load */
+        body.loading { overflow: hidden; }
     </style>
 </head>
-<body>
+<body class="loading">
+
+<!-- ══ PAGE LOADER ══ -->
+<div id="page-loader" role="status" aria-label="Loading">
+
+    <!-- pulse rings (behind) -->
+    <div class="ldr-rings">
+        <div class="ldr-ring"></div>
+        <div class="ldr-ring"></div>
+        <div class="ldr-ring"></div>
+    </div>
+
+    <!-- spinning arc + icon -->
+    <div class="ldr-arc-wrap">
+        <div class="ldr-arc"></div>
+        <div class="ldr-icon-bg">
+            <svg width="22" height="22" fill="none" stroke="#a78bfa" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- text -->
+    <div class="ldr-text">
+        <div class="ldr-name">{{ config('app.name', 'Vidra') }}</div>
+        <div class="ldr-badge">
+            <span class="ldr-dot"></span>
+            AI Powered
+            <span class="ldr-dots">
+                <span></span><span></span><span></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- progress bar -->
+    <div class="ldr-progress">
+        <div class="ldr-progress-bar"></div>
+    </div>
+
+</div>
 
 <!-- ══ HEADER ══ -->
 <header class="site-header">
@@ -811,6 +1000,30 @@
 </footer>
 
 <script>
+/* ── Loader dismiss ── */
+(function () {
+    function dismissLoader() {
+        const loader = document.getElementById('page-loader');
+        if (!loader) return;
+        loader.classList.add('out');
+        loader.addEventListener('transitionend', function () {
+            loader.style.display = 'none';
+            document.body.classList.remove('loading');
+        }, { once: true });
+    }
+
+    // Dismiss after progress bar completes (~2.1s), or immediately if page already loaded
+    if (document.readyState === 'complete') {
+        setTimeout(dismissLoader, 400);
+    } else {
+        window.addEventListener('load', function () {
+            setTimeout(dismissLoader, 400);
+        });
+    }
+    // Hard cap: never show loader more than 3.5s regardless
+    setTimeout(dismissLoader, 3500);
+})();
+
 function toggleNav() {
     const btn      = document.getElementById('nav-toggle');
     const collapse = document.getElementById('nav-collapse');
