@@ -36,14 +36,17 @@
         a { text-decoration: none; color: inherit; }
 
         /* ── NAV ── */
-        nav {
+        .site-header {
             position: sticky; top: 0; z-index: 100;
+            background: rgba(9,9,11,.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 5%;
             height: 60px;
-            background: rgba(9,9,11,.85);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
         }
 
         .nav-brand {
@@ -82,11 +85,68 @@
 
         .nav-links .btn-login:hover { background: var(--accent2); transform: translateY(-1px); }
 
+        /* hamburger button */
         .nav-menu-btn {
             display: none;
-            background: none; border: none; cursor: pointer;
-            color: var(--muted); padding: 4px;
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: var(--muted);
+            transition: background .15s, color .15s;
         }
+
+        .nav-menu-btn:hover { background: rgba(255,255,255,.09); color: var(--text); }
+
+        /* animated bars */
+        .hbg { display: flex; flex-direction: column; gap: 4px; width: 18px; }
+        .hbg span {
+            display: block; height: 2px; border-radius: 2px;
+            background: currentColor;
+            transition: transform .25s ease, opacity .25s ease, width .25s ease;
+            transform-origin: center;
+        }
+        .hbg span:nth-child(1) { width: 18px; }
+        .hbg span:nth-child(2) { width: 13px; }
+        .hbg span:nth-child(3) { width: 18px; }
+
+        .nav-menu-btn.active .hbg span:nth-child(1) { transform: translateY(6px) rotate(45deg); width: 18px; }
+        .nav-menu-btn.active .hbg span:nth-child(2) { opacity: 0; }
+        .nav-menu-btn.active .hbg span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); width: 18px; }
+
+        /* collapsible dropdown */
+        .nav-collapse {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s cubic-bezier(.4,0,.2,1);
+        }
+
+        .nav-collapse.open { max-height: 240px; }
+
+        .nav-collapse-inner {
+            padding: 10px 5% 16px;
+            display: flex; flex-direction: column; gap: 4px;
+            border-top: 1px solid var(--border);
+        }
+
+        .nav-collapse-inner a {
+            display: block;
+            padding: 10px 14px; border-radius: 8px;
+            font-size: .88rem; font-weight: 500; color: var(--muted);
+            transition: background .15s, color .15s;
+        }
+
+        .nav-collapse-inner a:hover { background: rgba(255,255,255,.06); color: var(--text); }
+
+        .nav-collapse-inner .btn-login {
+            background: var(--accent); color: #fff;
+            font-weight: 700; text-align: center; margin-top: 4px;
+        }
+
+        .nav-collapse-inner .btn-login:hover { background: var(--accent2); }
 
         /* ── HERO ── */
         .hero {
@@ -385,46 +445,6 @@
 
         .footer-copy { font-size: .74rem; color: var(--subtle); }
 
-        /* ── MOBILE NAV DRAWER ── */
-        .mob-drawer {
-            display: none;
-            position: fixed; inset: 0; z-index: 200;
-        }
-
-        .mob-drawer.open { display: block; }
-
-        .mob-drawer-overlay {
-            position: absolute; inset: 0;
-            background: rgba(0,0,0,.6);
-        }
-
-        .mob-drawer-panel {
-            position: absolute; top: 0; right: 0; bottom: 0;
-            width: 220px;
-            background: #0f0f12;
-            border-left: 1px solid var(--border);
-            padding: 20px;
-            display: flex; flex-direction: column; gap: 6px;
-        }
-
-        .mob-drawer-close {
-            align-self: flex-end; background: none; border: none;
-            color: var(--muted); cursor: pointer; padding: 4px; margin-bottom: 8px;
-        }
-
-        .mob-drawer-panel a {
-            padding: 10px 14px; border-radius: 8px;
-            font-size: .88rem; font-weight: 500; color: var(--muted);
-            transition: background .15s, color .15s;
-        }
-
-        .mob-drawer-panel a:hover { background: rgba(255,255,255,.06); color: var(--text); }
-
-        .mob-drawer-panel .btn-login {
-            background: var(--accent); color: #fff;
-            font-weight: 700; text-align: center; margin-top: 6px;
-        }
-
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
             .stats { grid-template-columns: repeat(2, 1fr); }
@@ -432,7 +452,7 @@
 
         @media (max-width: 640px) {
             .nav-links { display: none; }
-            .nav-menu-btn { display: block; }
+            .nav-menu-btn { display: flex; }
             .hero { padding: 72px 5% 56px; }
             .stats { grid-template-columns: repeat(2, 1fr); }
             .cta-banner { padding: 36px 24px; }
@@ -447,7 +467,8 @@
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- ══ HEADER ══ -->
+<header class="site-header">
 <nav>
     <div class="nav-brand">
         <div class="nav-brand-icon">
@@ -467,22 +488,16 @@
         @endauth
     </div>
 
-    <button class="nav-menu-btn" onclick="openDrawer()" aria-label="Menu">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+    <button class="nav-menu-btn" id="nav-toggle" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">
+        <div class="hbg">
+            <span></span><span></span><span></span>
+        </div>
     </button>
 </nav>
 
-<!-- ══ MOBILE DRAWER ══ -->
-<div class="mob-drawer" id="drawer">
-    <div class="mob-drawer-overlay" onclick="closeDrawer()"></div>
-    <div class="mob-drawer-panel">
-        <button class="mob-drawer-close" onclick="closeDrawer()">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
+<!-- collapsible dropdown -->
+<div class="nav-collapse" id="nav-collapse">
+    <div class="nav-collapse-inner">
         <a href="{{ url('/docs') }}">Docs</a>
         @auth
             <a href="{{ url('/dashboard') }}" class="btn-login" style="border-radius:8px;">Dashboard</a>
@@ -491,6 +506,7 @@
         @endauth
     </div>
 </div>
+</header>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -795,9 +811,47 @@
 </footer>
 
 <script>
-function openDrawer()  { document.getElementById('drawer').classList.add('open'); }
-function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+function toggleNav() {
+    const btn      = document.getElementById('nav-toggle');
+    const collapse = document.getElementById('nav-collapse');
+    const isOpen   = collapse.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+}
+
+// Close on outside click
+document.addEventListener('click', function (e) {
+    const btn      = document.getElementById('nav-toggle');
+    const collapse = document.getElementById('nav-collapse');
+    const header   = document.querySelector('.site-header');
+    if (!header.contains(e.target) && collapse.classList.contains('open')) {
+        collapse.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+});
+
+// Close on Escape
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        const btn      = document.getElementById('nav-toggle');
+        const collapse = document.getElementById('nav-collapse');
+        collapse.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+});
+
+// On resize to desktop, close the dropdown
+window.addEventListener('resize', function () {
+    if (window.innerWidth > 640) {
+        const btn      = document.getElementById('nav-toggle');
+        const collapse = document.getElementById('nav-collapse');
+        collapse.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+});
 </script>
 
 </body>
