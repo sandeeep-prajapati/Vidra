@@ -8,7 +8,7 @@ use League\CommonMark\CommonMarkConverter;
 
 class DocsController extends Controller
 {
-    public function show($page = 'getting-started/readme')
+    public function show($page = 'getting-started/timetable-management-walkthrough')
     {
         $docsPath = resource_path('views/docs');
 

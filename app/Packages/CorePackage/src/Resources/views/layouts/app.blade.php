@@ -52,6 +52,19 @@
         /* ── Mobile overlay ── */
         #sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.25); z-index:29; }
         #sidebar-overlay.active { display:block; }
+
+        /* ── Responsive: hide sidebar by default on mobile ── */
+        @media (max-width: 767px) {
+            #sidebar { transform: translateX(-100%); }
+            #main-content { margin-left: 0 !important; }
+            #main-content.no-sidebar { margin-left: 0 !important; }
+        }
+
+        /* ── Responsive: header adjustments on small screens ── */
+        @media (max-width: 480px) {
+            #topbar-date { display: none; }
+            #install-bundle-btn span { display: none; }
+        }
     </style>
 </head>
 <body style="background:#f1f5f9; margin:0;">
@@ -179,13 +192,13 @@
                 @yield('breadcrumb')
             </div>
             <div style="display:flex;align-items:center;gap:.75rem;">
-                <a href="/bundle-installer" style="display:inline-flex;align-items:center;gap:.375rem;padding:.375rem .875rem;background:#4f46e5;color:#fff;border-radius:9999px;font-size:.75rem;font-weight:600;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='#4338ca'" onmouseout="this.style.background='#4f46e5'">
+                <a id="install-bundle-btn" href="/bundle-installer" style="display:inline-flex;align-items:center;gap:.375rem;padding:.375rem .875rem;background:#4f46e5;color:#fff;border-radius:9999px;font-size:.75rem;font-weight:600;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='#4338ca'" onmouseout="this.style.background='#4f46e5'">
                     <svg style="width:.875rem;height:.875rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
                     </svg>
-                    Install Bundle
+                    <span>Install Bundle</span>
                 </a>
-                <span style="font-size:.75rem;color:#94a3b8;">{{ now()->format('D, M d Y') }}</span>
+                <span id="topbar-date" style="font-size:.75rem;color:#94a3b8;">{{ now()->format('D, M d Y') }}</span>
             </div>
         </header>
 
@@ -250,11 +263,13 @@ function toggleSidebar() {
     const sidebar  = document.getElementById('sidebar');
     const main     = document.getElementById('main-content');
     const overlay  = document.getElementById('sidebar-overlay');
+    const isMobile = window.innerWidth < 768;
     const isOpen   = !sidebar.classList.contains('sidebar-hidden');
     sidebar.classList.toggle('sidebar-hidden', isOpen);
-    main.classList.toggle('no-sidebar', isOpen);
-    if (overlay) overlay.classList.toggle('active', !isOpen);
-    try { localStorage.setItem('sb-sidebar', isOpen ? 'closed' : 'open'); } catch(e) {}
+    // On mobile, don't shift content — overlay instead
+    if (!isMobile) main.classList.toggle('no-sidebar', isOpen);
+    if (overlay) overlay.classList.toggle('active', !isOpen && isMobile);
+    if (!isMobile) try { localStorage.setItem('sb-sidebar', isOpen ? 'closed' : 'open'); } catch(e) {}
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -283,13 +298,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Restore full sidebar state
-    try {
-        if (localStorage.getItem('sb-sidebar') === 'closed') {
-            document.getElementById('sidebar').classList.add('sidebar-hidden');
-            document.getElementById('main-content').classList.add('no-sidebar');
+    // On mobile, always start with sidebar hidden (CSS already hides it visually)
+    if (window.innerWidth < 768) {
+        document.getElementById('sidebar').classList.add('sidebar-hidden');
+        document.getElementById('main-content').classList.add('no-sidebar');
+    } else {
+        // Restore full sidebar state on desktop
+        try {
+            if (localStorage.getItem('sb-sidebar') === 'closed') {
+                document.getElementById('sidebar').classList.add('sidebar-hidden');
+                document.getElementById('main-content').classList.add('no-sidebar');
+            }
+        } catch(e) {}
+    }
+
+    // Close sidebar on overlay click on mobile when sidebar opens
+    window.addEventListener('resize', function () {
+        if (window.innerWidth < 768) {
+            const sidebar = document.getElementById('sidebar');
+            const main    = document.getElementById('main-content');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (!sidebar.classList.contains('sidebar-hidden')) {
+                sidebar.classList.add('sidebar-hidden');
+                main.classList.add('no-sidebar');
+                if (overlay) overlay.classList.remove('active');
+            }
         }
-    } catch(e) {}
+    });
 
     // Flash auto-dismiss
     document.querySelectorAll('.flash-msg').forEach(function (msg) {
