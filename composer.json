@@ -50,6 +50,7 @@
             "App\\Packages\\Pro\\HomeworkManagement\\": "app/Packages/Pro/HomeworkManagement/src",
             "App\\Packages\\Pro\\InventoryManagement\\": "app/Packages/Pro/InventoryManagement/src",
             "App\\Packages\\Pro\\LibraryManagement\\": "app/Packages/Pro/LibraryManagement/src",
+            "App\\Packages\\Pro\\PersonaDashboard\\": "app/Packages/Pro/PersonaDashboard/src",
             "App\\Packages\\Pro\\PTMManagement\\": "app/Packages/Pro/PTMManagement/src",
             "App\\Packages\\Pro\\ReportsManagement\\": "app/Packages/Pro/ReportsManagement/src",
             "App\\Packages\\Pro\\TransportGpsManagement\\": "app/Packages/Pro/TransportGpsManagement/src",

@@ -1,7 +1,11 @@
 <?php
 
+use App\Packages\StudentManagement\Controllers\Api\StudentApiController;
 use App\Packages\StudentManagement\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
+
+// Web-auth search endpoint (avoids API middleware auth requirement)
+Route::get('students/search', [StudentApiController::class, 'search'])->name('students.search');
 
 Route::middleware('permission:create-students')->group(function () {
     Route::get('students/create', [StudentController::class, 'create'])->name('students.create');

@@ -29,6 +29,7 @@ use App\Packages\Pro\HealthManagement\Providers\HealthManagementServiceProvider;
 use App\Packages\Pro\HomeworkManagement\Providers\HomeworkManagementServiceProvider;
 use App\Packages\Pro\InventoryManagement\Providers\InventoryManagementServiceProvider;
 use App\Packages\Pro\LibraryManagement\Providers\LibraryManagementServiceProvider;
+use App\Packages\Pro\PersonaDashboard\Providers\PersonaDashboardServiceProvider;
 use App\Packages\Pro\PTMManagement\Providers\PTMManagementServiceProvider;
 use App\Packages\Pro\ReportsManagement\Providers\ReportsManagementServiceProvider;
 use App\Packages\Pro\TransportGpsManagement\Providers\TransportGpsManagementServiceProvider;
@@ -50,6 +51,7 @@ return [
     HomeworkManagementServiceProvider::class,
     InventoryManagementServiceProvider::class,
     LibraryManagementServiceProvider::class,
+    PersonaDashboardServiceProvider::class,
     PTMManagementServiceProvider::class,
     ReportsManagementServiceProvider::class,
     TransportGpsManagementServiceProvider::class,

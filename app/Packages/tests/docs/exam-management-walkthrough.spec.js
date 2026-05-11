@@ -74,7 +74,7 @@ test('Exam Management documentation walkthrough', async ({ page }) => {
   await showCaption(page, 'Record marks obtained by a student in a scheduled exam');
   await clickAndWait(page, page.getByRole('link', { name: 'Add Marks' }));
   await expect(page.getByRole('heading', { name: /Mark/ }).first()).toBeVisible();
-  await fillField(page, '#student_id', '1');
+  await selectStudentFromPicker(page, '');
   await selectLastOption(page, '#schedule_id');
   await fillField(page, '#marks_obtained', '87');
   await fillField(page, '#grade', 'A');
@@ -143,6 +143,40 @@ async function clickAndWait(page, locator) {
   await locator.click({ timeout: 30000 });
   await page.waitForLoadState('networkidle').catch(() => {});
   await pause(page, 200);
+}
+
+async function selectStudentFromPicker(page, query) {
+  // Highlight the trigger for visual context
+  const trigger = page.locator('#student_search');
+  await spotlight(trigger);
+
+  // Use JS to reliably open the picker (avoids onfocus/click event inconsistencies)
+  await page.evaluate(() => {
+    if (typeof window.openStudentPicker === 'function') {
+      window.openStudentPicker();
+    }
+  });
+
+  // Wait for the panel to be visible
+  await page.locator('#student-panel.open').waitFor({ state: 'visible', timeout: 5000 });
+  await pause(page, 900); // allow auto-fetch (openStudentPicker calls fetchStudents(''))
+
+  // If a specific query is needed, type it to filter
+  if (query) {
+    const searchBox = page.locator('#student-search-box');
+    await searchBox.fill(query);
+    await pause(page, 700);
+  }
+
+  // Wait for at least one result option
+  const firstOption = page.locator('#student-results .ls-option').first();
+  await firstOption.waitFor({ state: 'visible', timeout: 12000 });
+  await spotlight(firstOption);
+  await pause(page, 500);
+
+  // Click the first result to select it
+  await firstOption.click();
+  await pause(page, 400);
 }
 
 async function highlightText(page, text) {

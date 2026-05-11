@@ -12,7 +12,7 @@ class AuthController extends Controller
     public function showLogin(): View|RedirectResponse
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->to($this->dashboardRouteForUser(Auth::user()));
         }
 
         return view('core-package::auth.login');
@@ -28,12 +28,21 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'));
+            return redirect()->to($this->dashboardRouteForUser(Auth::user()));
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    private function dashboardRouteForUser(\App\Models\User $user): string
+    {
+        if ($user->hasRole('student'))    return route('student.dashboard');
+        if ($user->hasRole('teacher'))    return route('teacher.dashboard');
+        if ($user->hasRole('librarian'))  return route('librarian.dashboard');
+        if ($user->hasRole('accountant')) return route('accountant.dashboard');
+        return route('dashboard');
     }
 
     public function logout(Request $request): RedirectResponse

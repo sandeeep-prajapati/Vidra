@@ -1,11 +1,11 @@
 @props(['label' => null, 'name', 'required' => false, 'rows' => 3, 'hint' => null])
 @php
 $hasError = isset($errors) && $errors->has($name);
-$taStyle = 'display:block;width:100%;border-radius:.5rem;border:1px solid ' . ($hasError ? '#fca5a5;background:#fef2f2;' : '#d1d5db;background:#fff;') . 'padding:.5rem .75rem;font-size:.8125rem;color:#111827;outline:none;resize:vertical;box-sizing:border-box;transition:border-color .15s,box-shadow .15s;font-family:inherit;';
+$taStyle = 'display:block;width:100%;border-radius:.5rem;border:1px solid ' . ($hasError ? '#fca5a5;background:#fef2f2;color:#111827;' : 'var(--border);background:var(--bg-surface);color:var(--text-primary);') . 'padding:.5rem .75rem;font-size:.8125rem;outline:none;resize:vertical;box-sizing:border-box;transition:border-color .15s,box-shadow .15s;font-family:inherit;';
 @endphp
 <div>
     @if($label)
-    <label for="{{ $name }}" style="display:block;font-size:.8125rem;font-weight:500;color:#374151;margin-bottom:.375rem;">
+    <label for="{{ $name }}" style="display:block;font-size:.8125rem;font-weight:500;color:var(--text-secondary);margin-bottom:.375rem;">
         {{ $label }}@if($required)<span style="color:#ef4444;margin-left:.125rem;">*</span>@endif
     </label>
     @endif

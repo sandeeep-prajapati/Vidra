@@ -2,12 +2,12 @@
 @php
 $colors = [
     'primary'   => 'background:#4f46e5;color:#fff;',
-    'secondary' => 'background:#fff;color:#374151;border:1px solid #d1d5db;',
+    'secondary' => 'background:var(--bg-surface);color:var(--text-primary);border:1px solid var(--border);',
     'success'   => 'background:#16a34a;color:#fff;',
     'danger'    => 'background:#dc2626;color:#fff;',
     'warning'   => 'background:#d97706;color:#fff;',
     'dark'      => 'background:#374151;color:#fff;',
-    'ghost'     => 'background:transparent;color:#475569;',
+    'ghost'     => 'background:transparent;color:var(--text-secondary);',
     'green'     => 'background:#16a34a;color:#fff;',
     'orange'    => 'background:#ea580c;color:#fff;',
     'red'       => 'background:#dc2626;color:#fff;',

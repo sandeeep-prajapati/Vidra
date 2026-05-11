@@ -3,6 +3,9 @@
 use App\Packages\StudentManagement\Controllers\Api\StudentApiController;
 use Illuminate\Support\Facades\Route;
 
+// Search endpoint — must be declared before apiResource to avoid conflict with {student}
+Route::get('students/search', [StudentApiController::class, 'search'])->name('api.students.search');
+
 // API routes
 Route::apiResource('students', StudentApiController::class, [
     'names' => [

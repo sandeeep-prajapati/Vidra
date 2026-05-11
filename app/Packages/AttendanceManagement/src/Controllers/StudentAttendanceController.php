@@ -48,13 +48,13 @@ class StudentAttendanceController extends Controller
 
         $attendance = StudentAttendance::create($validated);
 
-        Event::dispatch('webhook.attendance.marked', [
+        Event::dispatch('webhook.attendance.marked', [[
             'id'         => $attendance->attendance_id,
             'type'       => 'student',
             'student_id' => $attendance->student_id,
             'date'       => $attendance->date,
             'status'     => $attendance->status,
-        ]);
+        ]]);
 
         return redirect()->route('studentAttendance.index')
             ->with('success', 'Attendance recorded successfully.');

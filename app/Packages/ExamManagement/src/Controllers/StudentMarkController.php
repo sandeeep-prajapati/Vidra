@@ -52,13 +52,13 @@ class StudentMarkController extends Controller
 
         $mark = StudentMark::create($validated);
 
-        Event::dispatch('webhook.exam.result', [
+        Event::dispatch('webhook.exam.result', [[
             'id'             => $mark->mark_id,
             'student_id'     => $mark->student_id,
             'schedule_id'    => $mark->schedule_id,
             'marks_obtained' => $mark->marks_obtained,
             'grade'          => $mark->grade,
-        ]);
+        ]]);
 
         return redirect()->route('studentMark.index')
             ->with('success', 'Marks saved successfully.');

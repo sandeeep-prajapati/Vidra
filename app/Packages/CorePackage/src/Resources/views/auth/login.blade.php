@@ -205,51 +205,89 @@
 
         /* Demo credentials */
         .demo-box {
-            background: rgba(124,58,237,.06);
-            border: 1px solid rgba(124,58,237,.16);
-            border-radius: 9px;
-            padding: 11px 14px;
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 10px;
+            padding: 12px 14px;
             margin-bottom: 20px;
         }
 
         .demo-box-label {
             display: flex; align-items: center; gap: 5px;
-            font-size: .63rem; font-weight: 700;
+            font-size: .62rem; font-weight: 700;
             letter-spacing: .07em; text-transform: uppercase;
-            color: #a78bfa;
-            margin-bottom: 8px;
+            color: #71717a;
+            margin-bottom: 10px;
         }
+
+        /* role tabs */
+        .demo-tabs {
+            display: flex; gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .demo-tab {
+            flex: 1;
+            padding: 5px 4px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,.07);
+            background: transparent;
+            font-size: .69rem; font-weight: 600;
+            color: #52525b;
+            cursor: pointer;
+            transition: all .15s;
+            text-align: center;
+        }
+
+        .demo-tab:hover { background: rgba(255,255,255,.04); color: #a1a1aa; }
+
+        .demo-tab.active-admin      { background: rgba(124,58,237,.12); border-color: rgba(124,58,237,.3);  color: #c4b5fd; }
+        .demo-tab.active-student    { background: rgba(16,185,129,.1);  border-color: rgba(16,185,129,.25); color: #6ee7b7; }
+        .demo-tab.active-teacher    { background: rgba(14,165,233,.1);  border-color: rgba(14,165,233,.25); color: #7dd3fc; }
+        .demo-tab.active-librarian  { background: rgba(245,158,11,.1);  border-color: rgba(245,158,11,.25); color: #fcd34d; }
+        .demo-tab.active-accountant { background: rgba(5,150,105,.1);   border-color: rgba(5,150,105,.25);  color: #6ee7b7; }
+
+        .demo-pane { display: none; }
+        .demo-pane.active { display: block; }
 
         .demo-row {
             display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
+        .demo-row:last-of-type { margin-bottom: 0; }
 
-        .demo-row:last-child { margin-bottom: 0; }
-
-        .demo-key  { font-size: .74rem; color: #71717a; font-weight: 500; }
+        .demo-key { font-size: .73rem; color: #52525b; font-weight: 500; flex-shrink: 0; }
 
         .demo-val {
-            font-size: .74rem; color: #c4b5fd;
+            font-size: .7rem; color: #a1a1aa;
             font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            background: rgba(124,58,237,.1);
-            padding: 1px 7px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+            padding: 1px 6px;
             border-radius: 4px;
+            max-width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .demo-fill-btn {
             display: flex; align-items: center; justify-content: center; gap: 5px;
-            width: 100%; margin-top: 10px;
+            width: 100%; margin-top: 9px;
             padding: 6px;
-            background: rgba(124,58,237,.08);
-            border: 1px dashed rgba(124,58,237,.25);
+            background: transparent;
+            border: 1px dashed rgba(255,255,255,.1);
             border-radius: 7px;
-            font-size: .73rem; font-weight: 600; color: #a78bfa;
+            font-size: .72rem; font-weight: 600; color: #52525b;
             cursor: pointer;
-            transition: background .15s;
+            transition: all .15s;
         }
 
-        .demo-fill-btn:hover { background: rgba(124,58,237,.14); }
+        .demo-fill-btn:hover {
+            background: rgba(255,255,255,.04);
+            border-color: rgba(255,255,255,.18);
+            color: #a1a1aa;
+        }
 
         /* Form fields */
         .field { margin-bottom: 14px; }
@@ -468,7 +506,7 @@
         <!-- Heading -->
         <div class="form-heading">
             <h1>Welcome back</h1>
-            <p>Sign in to your administrator account</p>
+            <p>Sign in as admin, teacher or student</p>
         </div>
 
         <!-- Error -->
@@ -490,20 +528,65 @@
                 </svg>
                 Demo Credentials
             </div>
-            <div class="demo-row">
-                <span class="demo-key">Email</span>
-                <span class="demo-val">admin@school.com</span>
+
+            {{-- Role tabs --}}
+            <div class="demo-tabs" style="flex-wrap:wrap;">
+                <button class="demo-tab active-admin" type="button" onclick="switchDemo('admin')">Admin</button>
+                <button class="demo-tab" type="button" onclick="switchDemo('student')">Student</button>
+                <button class="demo-tab" type="button" onclick="switchDemo('teacher')">Teacher</button>
+                <button class="demo-tab" type="button" onclick="switchDemo('librarian')">Librarian</button>
+                <button class="demo-tab" type="button" onclick="switchDemo('accountant')">Accountant</button>
             </div>
-            <div class="demo-row">
-                <span class="demo-key">Password</span>
-                <span class="demo-val">admin123</span>
+
+            {{-- Admin pane --}}
+            <div class="demo-pane active" id="demo-admin">
+                <div class="demo-row"><span class="demo-key">Email</span><span class="demo-val">admin@school.com</span></div>
+                <div class="demo-row"><span class="demo-key">Password</span><span class="demo-val">admin123</span></div>
+                <button class="demo-fill-btn" type="button" onclick="fillDemo('admin@school.com','admin123')">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Use Admin account
+                </button>
             </div>
-            <button class="demo-fill-btn" type="button" onclick="fillDemo()">
-                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-                Fill demo credentials
-            </button>
+
+            {{-- Student pane --}}
+            <div class="demo-pane" id="demo-student">
+                <div class="demo-row"><span class="demo-key">Email</span><span class="demo-val" title="ishaan.verma.student@school.com">ishaan.verma.student@school.com</span></div>
+                <div class="demo-row"><span class="demo-key">Password</span><span class="demo-val">student123</span></div>
+                <button class="demo-fill-btn" type="button" onclick="fillDemo('ishaan.verma.student@school.com','student123')">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Use Student account
+                </button>
+            </div>
+
+            {{-- Teacher pane --}}
+            <div class="demo-pane" id="demo-teacher">
+                <div class="demo-row"><span class="demo-key">Email</span><span class="demo-val" title="anjali.sharma.teacher@school.com">anjali.sharma.teacher@school.com</span></div>
+                <div class="demo-row"><span class="demo-key">Password</span><span class="demo-val">teacher123</span></div>
+                <button class="demo-fill-btn" type="button" onclick="fillDemo('anjali.sharma.teacher@school.com','teacher123')">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Use Teacher account
+                </button>
+            </div>
+
+            {{-- Librarian pane --}}
+            <div class="demo-pane" id="demo-librarian">
+                <div class="demo-row"><span class="demo-key">Email</span><span class="demo-val">librarian@school.com</span></div>
+                <div class="demo-row"><span class="demo-key">Password</span><span class="demo-val">librarian123</span></div>
+                <button class="demo-fill-btn" type="button" onclick="fillDemo('librarian@school.com','librarian123')">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Use Librarian account
+                </button>
+            </div>
+
+            {{-- Accountant pane --}}
+            <div class="demo-pane" id="demo-accountant">
+                <div class="demo-row"><span class="demo-key">Email</span><span class="demo-val">accountant@school.com</span></div>
+                <div class="demo-row"><span class="demo-key">Password</span><span class="demo-val">accountant123</span></div>
+                <button class="demo-fill-btn" type="button" onclick="fillDemo('accountant@school.com','accountant123')">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Use Accountant account
+                </button>
+            </div>
         </div>
 
         <!-- Form -->
@@ -587,9 +670,30 @@
 </div>
 
 <script>
-function fillDemo() {
-    document.getElementById('email').value    = 'admin@school.com';
-    document.getElementById('password').value = 'admin123';
+var _demoActive = 'admin';
+var _tabClasses = {
+    admin:      'active-admin',
+    student:    'active-student',
+    teacher:    'active-teacher',
+    librarian:  'active-librarian',
+    accountant: 'active-accountant'
+};
+var _tabIdx = { admin: 0, student: 1, teacher: 2, librarian: 3, accountant: 4 };
+
+function switchDemo(role) {
+    var oldTab = document.querySelector('.demo-tab.' + _tabClasses[_demoActive]);
+    if (oldTab) oldTab.classList.remove(_tabClasses[_demoActive]);
+    document.getElementById('demo-' + _demoActive).classList.remove('active');
+
+    _demoActive = role;
+    var tabs = document.querySelectorAll('.demo-tab');
+    tabs[_tabIdx[role]].classList.add(_tabClasses[role]);
+    document.getElementById('demo-' + role).classList.add('active');
+}
+
+function fillDemo(email, password) {
+    document.getElementById('email').value    = email;
+    document.getElementById('password').value = password;
 }
 
 function togglePw() {

@@ -52,13 +52,13 @@ class FeePaymentController extends Controller
         $payment = FeePayment::create($validated);
         $payment->studentFee->syncPaymentStatus();
 
-        Event::dispatch('webhook.fee.paid', [
+        Event::dispatch('webhook.fee.paid', [[
             'id'             => $payment->payment_id,
             'student_fee_id' => $payment->student_fee_id,
             'amount_paid'    => $payment->amount_paid,
             'payment_mode'   => $payment->payment_mode,
             'payment_date'   => $payment->payment_date,
-        ]);
+        ]]);
 
         return redirect()->route('feePayment.index')->with('success', 'Payment recorded successfully.');
     }

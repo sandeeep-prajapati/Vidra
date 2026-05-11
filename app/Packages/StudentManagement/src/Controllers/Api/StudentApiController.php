@@ -33,6 +33,28 @@ class StudentApiController extends BaseController
         return response()->json($students);
     }
 
+    public function search(Request $request): JsonResponse
+    {
+        $q = trim($request->input('q', ''));
+
+        $query = Student::query()->select('student_id', 'first_name', 'last_name', 'admission_number');
+
+        if ($q !== '') {
+            $query->where(function ($sub) use ($q) {
+                $sub->where('first_name', 'like', "%{$q}%")
+                    ->orWhere('last_name', 'like', "%{$q}%")
+                    ->orWhere('admission_number', 'like', "%{$q}%");
+            });
+        }
+
+        $students = $query->orderBy('first_name')->limit(30)->get();
+
+        return response()->json($students->map(fn ($s) => [
+            'id'   => $s->student_id,
+            'text' => $s->first_name . ' ' . $s->last_name . ' (' . $s->admission_number . ')',
+        ]));
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
